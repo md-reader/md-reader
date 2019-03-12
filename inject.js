@@ -1,5 +1,5 @@
 const { addStyleToHead, createEle, renderPage, getAssetsURL } = utils
-const DEFAULT_CSS_STYLE_URL = 'css/md-css-github.css' // 'md-css-github.css'
+const DEFAULT_CSS_STYLE_URL = 'css/md-css-github.css'
 
 const codeEle = document.body.firstElementChild
 const code = codeEle.textContent
