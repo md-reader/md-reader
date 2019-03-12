@@ -1,0 +1,18 @@
+{
+  "name": "md-reader",
+  "version": "0.0.1",
+  "manifest_version": 2,
+  "description": "A markdown file reader",
+  "permissions": ["file://*.md", "file://*.markdown"],
+  "icons": {
+    "16": "images/icon16.png",
+    "32": "images/icon32.png",
+    "48": "images/icon48.png",
+    "128": "images/icon128.png"
+  },
+  "web_accessible_resources": ["css/*", "images/*"],
+  "content_scripts": [{
+    "js": ["js/highlight.min.js", "js/markdown-it.min.js", "utils.js", "inject.js"],
+    "matches": ["file://*.md", "file://*.markdown"]
+  }]
+}
