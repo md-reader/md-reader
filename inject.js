@@ -11,7 +11,7 @@ addStyleToHead('css/hljs-style-atom-one-dark.css')
 document.head.appendChild(createEle('meta', [], {charset: "UTF-8"}))
 document.head.appendChild(createEle('link', [], {
   rel: "shortcut icon",
-  href: "images/icon128.png"
+  href: getAssetsURL("images/icon128.png")
 }))
 
 const md = markdownit({

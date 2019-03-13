@@ -10,9 +10,9 @@ const utils = {
     return chrome.extension.getURL(path)
   },
 
-  addStyleToHead(href) {
+  addStyleToHead(url) {
     const linkEle = utils.createEle('link', [], {
-      href,
+      href: utils.getAssetsURL(url),
       rel: 'stylesheet'
     })
     document.head.appendChild(linkEle)
