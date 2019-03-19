@@ -1,19 +1,8 @@
 {
   "name": "md-reader",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "manifest_version": 2,
   "description": "A markdown file reader",
-  "permissions": [
-    "file://*/*.md",
-    "http://*/*.md",
-    "https://*/*.md",
-    "file://*/*.mkd",
-    "http://*/*.mkd",
-    "https://*/*.mkd",
-    "file://*/*.markdown",
-    "http://*/*.markdown",
-    "https://*/*.markdown"
-  ],
   "icons": {
     "16": "images/icon16.png",
     "32": "images/icon32.png",
