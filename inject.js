@@ -44,7 +44,7 @@ const articleEle = createEle('article', {
 })
 renderPage(articleEle, md.render(mdCode))
 
-// rander sidebar
+// render sidebar
 const headList = [...document.querySelectorAll('h1, h2, h3, h4')]
 const sidebar = createEle('ul', {
   className: 'sidebar-wrap'
@@ -67,7 +67,6 @@ const handleNavItem = (ele, i) => {
   li.appendChild(a)
   sidebar.appendChild(li)
 }
-
 headList.forEach(handleNavItem)
 
 BODY.insertBefore(sidebar, BODY.firstElementChild)
