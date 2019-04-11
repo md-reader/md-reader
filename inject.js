@@ -1,20 +1,30 @@
-const { addStyleToHead, createEle, renderPage, getAssetsURL } = utils
-const DEFAULT_CSS_STYLE_URL = 'css/md-css-github.css'
+const {
+  injectStyle,
+  createEle,
+  renderPage,
+  getAssetsURL,
+  anchorTo
+} = utils
+const DEFAULT_MD_CSS_URL = 'css/md-css-github.css'
 
-const codeEle = document.body.firstElementChild
-const code = codeEle.textContent
-codeEle.style.display = 'none'
+const mdCodeEle = BODY.firstElementChild
+const mdCode = mdCodeEle.textContent
+mdCodeEle.style.display = 'none'
 
-addStyleToHead(DEFAULT_CSS_STYLE_URL)
-addStyleToHead('css/hljs-style-atom-one-dark.css')
-addStyleToHead('css/index.css')
+// inject styles
+void[
+  DEFAULT_MD_CSS_URL,
+  'css/hljs-style-atom-one-dark.css',
+  'css/index.css',
+].forEach(injectStyle)
 
-document.head.appendChild(createEle('meta', [], {charset: "UTF-8"}))
-document.head.appendChild(createEle('link', [], {
+HEAD.appendChild(createEle('meta', {charset: "UTF-8"}))
+HEAD.appendChild(createEle('link', {
   rel: "shortcut icon",
   href: getAssetsURL("images/icon128.png")
 }))
 
+// render code to markdown
 const md = markdownit({
   html: true,
   xhtmlOut: true,
@@ -23,34 +33,41 @@ const md = markdownit({
   highlight: function (str, lang) {
     if (lang && hljs.getLanguage(lang)) {
       try {
-        return `<pre class="hljs-pre"><code class="hljs" lang="${lang}">${hljs.highlight(lang, str, true).value}</code></pre>`;
-      } catch (__) {}
+        return `<pre class="hljs-pre"><code class="hljs" lang="${lang}">${hljs.highlight(lang, str, true).value}</code></pre>`
+      } catch (_) {}
     }
-    return '';
+    return ''
   }
 })
-const articleEle = createEle('article', ['markdown-body'])
-renderPage(articleEle, md.render(code))
+const articleEle = createEle('article', {
+  className: ['markdown-body']
+})
+renderPage(articleEle, md.render(mdCode))
 
-
+// rander sidebar
 const headList = [...document.querySelectorAll('h1, h2, h3, h4')]
-const nav = document.createElement('ul')
-nav.classList.add('nav-wrap')
+const sidebar = createEle('ul', {
+  className: 'sidebar-wrap'
+})
 
 const handleNavItem = (ele, i) => {
   const content = ele.textContent
   ele.id = content
+  ele.onclick = () => anchorTo(content)
 
-  const a = document.createElement('a')
-  a.setAttribute('href', `#${content}`)
-  a.dataset.id = i
+  const a = createEle('a', {
+    href: `#${content}`,
+    'data-id': i,
+  })
   a.textContent = content
-  const li = document.createElement('li')
-  li.classList.add(ele.tagName.toLowerCase())
+
+  const li = createEle('li', {
+    className: ele.tagName.toLowerCase()
+  })
   li.appendChild(a)
-  nav.appendChild(li)
+  sidebar.appendChild(li)
 }
 
 headList.forEach(handleNavItem)
 
-document.body.insertBefore(nav, document.body.firstElementChild)
+BODY.insertBefore(sidebar, BODY.firstElementChild)
