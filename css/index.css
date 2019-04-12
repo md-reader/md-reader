@@ -1,24 +1,12 @@
 body {
-  max-width: 1000px;
-  margin: auto;
-  padding: 20px 20px 20px 280px;
+  margin: 0;
 }
 
-@media screen and (max-width: 1000px) {
-  body {
-    padding-left: 0;
-  }
-  .sidebar-wrap {
-    display: none;
-  }
-}
 
 h1:hover,
 h2:hover,
 h3:hover,
-h4:hover,
-h5:hover,
-h6:hover {
+h4:hover {
   color: #00BCD4;
   cursor: pointer;
 }
@@ -26,9 +14,7 @@ h6:hover {
 h1:hover:before,
 h2:hover:before,
 h3:hover:before,
-h4:hover:before,
-h5:hover:before,
-h6:hover:before {
+h4:hover:before {
   position: absolute;
   margin-left: -1em;
   content: '#';
@@ -38,25 +24,17 @@ h6:hover:before {
   overflow: auto;
   position: fixed;
   top: 0;
+  bottom: 0;
   left: 0;
-  width: 280px;
-  height: 100%;
-  padding: 30px;
+  width: 260px;
+  margin: 20px 0;
+  padding: 0 25px;
   list-style: none;
-}
-
-.sidebar-wrap::after {
-  content: '';
-  position: absolute;
-  top: 20px;
-  bottom: 20px;
-  right: 0;
-  width: 1px;
-  background: #eee;
+  border-right: 1px solid #eee;
 }
 
 .sidebar-wrap li {
-  padding: 2px 0;
+  margin-bottom: 4px;
   word-wrap: break-word;
 }
 
@@ -81,6 +59,31 @@ h6:hover:before {
   padding-left: 3em;
 }
 
+.md-code-wrap {
+  max-width: 900px;
+  font-size: 15px;
+  padding: 30px;
+  margin: auto;
+}
+
 article.markdown-body {
-  padding-left: 20px;
+  max-width: 900px;
+  padding: 20px 40px 20px 300px;
+  margin: auto;
+  box-sizing: content-box;
+}
+
+@media screen and (max-width: 1100px) {
+  article.markdown-body {
+    padding: 20px 40px;
+  }
+  .sidebar-wrap {
+    display: none;
+  }
+}
+
+.top-bar {
+  position: fixed;
+  top: 20px;
+  right: 40px;
 }

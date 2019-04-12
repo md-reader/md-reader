@@ -1,0 +1,34 @@
+.btn {
+  padding: 4px 15px;
+  border: 1px solid #eee;
+  border-radius: 3px;
+  outline: none;
+  background: #fff;
+  color: #666;
+  font-size: 12px;
+}
+
+.btn:not(:last-child) {
+  margin-right: 10px;
+}
+
+.btn.primary {
+  border: none;
+  background: #00BCD4;
+  color: #fff;
+}
+
+.edit-btn {
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 100px;
+  background: #f3f3f3 url('../images/icon_see.png') no-repeat center/20px 20px;
+}
+.edit-btn:hover {
+  transition: background .2s;
+  background-color: #f0f0f0;
+}
+.edit-btn:active {
+  background-color: #f3f3f3;
+}
