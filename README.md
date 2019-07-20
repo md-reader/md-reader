@@ -1,6 +1,6 @@
 # md-reader
 
-English | [中文](https://github.com/Heroor/md-reader-cn)
+English | [中文](https://github.com/Heroor/md-reader/blob/master/README-CN.md)
 
 A markdown reader for chrome extensions(for PC).
 
