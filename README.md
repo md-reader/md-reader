@@ -1,5 +1,7 @@
 # md-reader
 
+English | [中文](https://github.com/Heroor/md-reader-cn)
+
 A markdown reader for chrome extensions(for PC).
 
 > Support `file://` `http://` `https://` three protocols and `.md` `.markdown` two extension name.
@@ -19,7 +21,7 @@ Click [https://chrome.google.com/webstore/detail/medapdbncneneejhbgcjceippjlfkmk
 
 ### local
 
-1. Download repo:
+1. Download this repo:
 
 ```bash
 $ git clone https://github.com/Heroor/md-reader.git
