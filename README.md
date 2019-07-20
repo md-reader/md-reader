@@ -1,2 +1,2 @@
 # md-reader
-md-reader for chrome extensions
+A markdown reader for chrome extensions
