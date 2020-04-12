@@ -6,6 +6,8 @@ A markdown reader for chrome extensions(for PC).
 
 > Support `file://` `http://` `https://` three protocols and `.md` `.markdown` two extension name.
 
+![banner](./images/banner.jpg)
+
 For example:
 
 `https://***.md`
