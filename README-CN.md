@@ -1,8 +1,8 @@
 # md-reader
 
-[English](https://github.com/Heroor/md-reader) | 中文
+一个使 chrome 可以预览 markdown 文件的浏览器扩展。
 
-一个使 chrome 可以预览 markdown 文件的浏览器插件（PC 端）。
+[English](https://github.com/Heroor/md-reader) | 中文
 
 > 支持 `file://` `http://` `https://` 三种协议与 `.md` `.markdown` 两种文件扩展名。
 

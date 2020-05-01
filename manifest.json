@@ -1,6 +1,6 @@
 {
   "name": "MD Reader",
-  "version": "0.0.5",
+  "version": "1.0.0",
   "manifest_version": 2,
   "description": "A markdown file reader",
   "icons": {
