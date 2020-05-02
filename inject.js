@@ -1,45 +1,36 @@
-import markdownIt from 'markdown-it'
-import hljs from 'highlight.js'
-import {
-  BODY,
-  HEAD,
+const {
   injectStyle,
   createEle,
   renderPage,
   getAssetsURL,
-  anchorTo,
-} from './utils/index'
-
+  anchorTo
+} = utils
 const DEFAULT_MD_CSS_URL = 'css/md-css-github.css'
 let SHOW_CODE = false
 
-const mdCodeEle: HTMLElement = BODY.firstElementChild as HTMLElement
-const mdCode = mdCodeEle.textContent || 'No content here.'
+const mdCodeEle = BODY.firstElementChild
+const mdCode = mdCodeEle.textContent
 mdCodeEle.classList.add('md-code-wrap')
 mdCodeEle.style.display = 'none'
 
 // inject styles
-void [
+void[
   DEFAULT_MD_CSS_URL,
   'css/hljs-style-atom-one-dark.css',
   'css/index.css',
   'css/btn.css',
 ].forEach(injectStyle)
 
-HEAD.appendChild(
-  createEle('meta', {
-    charset: 'UTF-8',
-  })
-)
-HEAD.appendChild(
-  createEle('link', {
-    rel: 'shortcut icon',
-    href: getAssetsURL('images/icon128.png'),
-  })
-)
+HEAD.appendChild(createEle('meta', {
+  charset: "UTF-8"
+}))
+HEAD.appendChild(createEle('link', {
+  rel: "shortcut icon",
+  href: getAssetsURL("images/icon128.png")
+}))
 
 // render code to markdown
-const md = markdownIt({
+const md = markdownit({
   html: true,
   xhtmlOut: true,
   breaks: true,
@@ -47,29 +38,27 @@ const md = markdownIt({
   highlight: function (str, lang) {
     if (lang && hljs.getLanguage(lang)) {
       try {
-        return `<pre class="hljs-pre"><code class="hljs" lang="${lang}">${
-          hljs.highlight(lang, str, true).value
-        }</code></pre>`
+        return `<pre class="hljs-pre"><code class="hljs" lang="${lang}">${hljs.highlight(lang, str, true).value}</code></pre>`
       } catch (_) {}
     }
     return ''
-  },
+  }
 })
 const articleEle = createEle('article', {
-  className: ['markdown-body'],
+  className: ['markdown-body']
 })
 renderPage(articleEle, md.render(mdCode))
 
 // render sidebar
-const headList = Array.from(document.querySelectorAll('h1, h2, h3, h4'))
+const headList = [...document.querySelectorAll('h1, h2, h3, h4')]
 const sidebar = createEle('ul', {
-  className: 'sidebar-wrap',
+  className: 'sidebar-wrap'
 })
 
-const handleNavItem = (ele: Element, i: number) => {
-  const content = ele.textContent!
-  ele.setAttribute('id', content)
-  ele.addEventListener('onclick', () => anchorTo(content))
+const handleNavItem = (ele, i) => {
+  const content = ele.textContent
+  ele.id = content
+  ele.onclick = () => anchorTo(content)
 
   const a = createEle('a', {
     href: `#${content}`,
@@ -78,7 +67,7 @@ const handleNavItem = (ele: Element, i: number) => {
   a.textContent = content
 
   const li = createEle('li', {
-    className: ele.tagName.toLowerCase(),
+    className: ele.tagName.toLowerCase()
   })
   li.appendChild(a)
   sidebar.appendChild(li)
@@ -87,22 +76,24 @@ headList.forEach(handleNavItem)
 
 BODY.insertBefore(sidebar, BODY.firstElementChild)
 
+
 // toggle code
 const topBarEle = createEle('div', {
-  className: 'top-bar',
+  className: 'top-bar'
 })
 const btn = createEle('button', {
   className: 'btn edit-btn',
-  title: '编辑',
+  title: '编辑'
 })
 
 const editBtn = btn.cloneNode()
-editBtn.addEventListener('onclick', toggleMode)
+editBtn.onclick = toggleMode
 topBarEle.appendChild(editBtn)
 BODY.insertBefore(topBarEle, BODY.firstElementChild)
 
 function toggleMode() {
   SHOW_CODE = !SHOW_CODE
-  articleEle.style.display = sidebar.style.display = SHOW_CODE ? 'none' : ''
+  articleEle.style.display = sidebar.style.display =
+    SHOW_CODE ? 'none' : ''
   mdCodeEle.style.display = SHOW_CODE ? '' : 'none'
 }
