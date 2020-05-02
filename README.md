@@ -1,8 +1,8 @@
 # md-reader
 
-A markdown reader for chrome extension(for PC).
-
 English | [中文](https://github.com/Heroor/md-reader/blob/master/README-CN.md)
+
+A markdown reader for chrome extensions(for PC).
 
 > Support `file://` `http://` `https://` three protocols and `.md` `.markdown` two extension name.
 
