@@ -6,16 +6,14 @@
   background: #fff;
   color: #666;
   font-size: 12px;
-}
-
-.btn:not(:last-child) {
-  margin-right: 10px;
-}
-
-.btn.primary {
-  border: none;
-  background: #00BCD4;
-  color: #fff;
+  &:not(:last-child) {
+    margin-right: 10px;
+  }
+  &.primary {
+    border: none;
+    background: #00bcd4;
+    color: #fff;
+  }
 }
 
 .edit-btn {
@@ -24,11 +22,11 @@
   border: none;
   border-radius: 100px;
   background: #f3f3f3 url('../images/icon_see.png') no-repeat center/20px 20px;
-}
-.edit-btn:hover {
-  transition: background .2s;
-  background-color: #f0f0f0;
-}
-.edit-btn:active {
-  background-color: #f3f3f3;
+  &:hover {
+    transition: background 0.2s;
+    background-color: #f0f0f0;
+  }
+  &:active {
+    background-color: #f3f3f3;
+  }
 }

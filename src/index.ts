@@ -1,5 +1,9 @@
-import markdownIt from 'markdown-it'
+import './style/index.less'
+import './style/btn.less'
+import './style/hljs-style-atom-one-dark.css'
+import './style/md-css-juejin.css'
 import hljs from 'highlight.js'
+import markdownIt from 'markdown-it'
 import {
   BODY,
   HEAD,
@@ -44,7 +48,7 @@ const md = markdownIt({
   xhtmlOut: true,
   breaks: true,
   linkify: true,
-  highlight: function (str, lang) {
+  highlight: function (str: string, lang: string) {
     if (lang && hljs.getLanguage(lang)) {
       try {
         return `<pre class="hljs-pre"><code class="hljs" lang="${lang}">${
@@ -69,7 +73,7 @@ const sidebar = createEle('ul', {
 const handleNavItem = (ele: Element, i: number) => {
   const content = ele.textContent!
   ele.setAttribute('id', content)
-  ele.addEventListener('onclick', () => anchorTo(content))
+  ele.addEventListener('click', () => anchorTo(content))
 
   const a = createEle('a', {
     href: `#${content}`,
@@ -97,7 +101,7 @@ const btn = createEle('button', {
 })
 
 const editBtn = btn.cloneNode()
-editBtn.addEventListener('onclick', toggleMode)
+editBtn.addEventListener('click', toggleMode)
 topBarEle.appendChild(editBtn)
 BODY.insertBefore(topBarEle, BODY.firstElementChild)
 
