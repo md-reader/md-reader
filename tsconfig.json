@@ -9,5 +9,5 @@
     "types": ["chrome"],
     "allowJs": true
   },
-  "exclude": ["node_modules", "extension", "configs"]
+  "include": ["src"]
 }

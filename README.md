@@ -4,9 +4,9 @@ A markdown reader for chrome extension(for PC).
 
 English | [中文](https://github.com/Heroor/md-reader/blob/master/README-CN.md)
 
-> Support `file://` `http://` `https://` three protocols and `.md` `.markdown` two extension name.
+> Support `file`, `http`, `https` protocols and path ending in `.md`, `mkd`, `.markdown`.
 
-![banner](./images/banner.jpg)
+![banner](./src/images/banner1-crx.jpg)
 
 For example:
 
@@ -14,27 +14,32 @@ For example:
 
 `file://***.markdown`
 
+## INSTALL
 
-## install
-
-### online
+### ONLINE
 
 Click [https://chrome.google.com/webstore/detail/medapdbncneneejhbgcjceippjlfkmkg/publish-accepted](https://chrome.google.com/webstore/detail/medapdbncneneejhbgcjceippjlfkmkg/publish-accepted) to install.
 
-### local
+### LOCAL
 
-1. Download this repo:
+1. Clone this repo:
 
-```bash
-$ git clone https://github.com/Heroor/md-reader.git
-```
+    ```bash
+    git clone https://github.com/Heroor/md-reader.git
+    ```
 
-2. Open Chrome -> moretools -> extensions
+2. Open: `Chrome` / `Menu` / `More Tools` / `Extensions`;
 
-3. Open `developer mode`.
+3. Open `Developer mode`;
 
-4. Click `load the unzipped extension` button, select folder of this repo.
+4. Click `Load unpacked` button, select folder of this repo;
 
-5. Finally open `details` button of `md-reader extension`, open `allow access to file URLs`.
+5. Finally open `details` button of `md-reader` extension, open `allow access to file URLs`.
 
 All right! Open this [https://raw.githubusercontent.com/Heroor/md-reader/master/example.md](https://raw.githubusercontent.com/Heroor/md-reader/master/example.md) to test if it works.
+
+## LICENSE
+
+The MIT License (MIT)
+
+Copyright (c) 2018-present Bener

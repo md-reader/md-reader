@@ -3,6 +3,7 @@ const { HotModuleReplacementPlugin } = require('webpack')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const miniCssExtractPlugin = require('mini-css-extract-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
+const FriendlyErrors = require('friendly-errors-webpack-plugin')
 
 module.exports = {
   entry: resolve(__dirname, '../src/index.ts'),
@@ -40,6 +41,7 @@ module.exports = {
     extensions: ['.ts', '.js', '.json'],
   },
   plugins: [
+    new FriendlyErrors(),
     new CleanWebpackPlugin(),
     new HotModuleReplacementPlugin(),
     new miniCssExtractPlugin({
@@ -54,10 +56,10 @@ module.exports = {
         {
           from: resolve(__dirname, '../src/images'),
           to: 'images',
+          ignore: ['*-crx.jpg', '*-crx.png']
         },
       ],
       {
-        ignore: [/-crx\.(jpg|png)$/],
         copyUnmodified: true,
       }
     ),

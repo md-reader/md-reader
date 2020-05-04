@@ -14,15 +14,15 @@
     {
       "js": ["js/inject.js"],
       "matches": [
-        "file://*/*.md",
-        "http://*/*.md",
-        "https://*/*.md",
-        "file://*/*.mkd",
-        "http://*/*.mkd",
-        "https://*/*.mkd",
-        "file://*/*.markdown",
-        "http://*/*.markdown",
-        "https://*/*.markdown"
+        "file://**/*.md",
+        "file://**/*.mkd",
+        "file://**/*.markdown",
+        "http://**/*.md",
+        "http://**/*.mkd",
+        "http://**/*.markdown",
+        "https://**/*.md",
+        "https://**/*.mkd",
+        "https://**/*.markdown"
       ]
     }
   ]
