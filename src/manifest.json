@@ -13,16 +13,17 @@
   "content_scripts": [
     {
       "js": ["js/inject.js"],
+      "css": ["css/index.css"],
       "matches": [
-        "file://**/*.md",
-        "file://**/*.mkd",
-        "file://**/*.markdown",
-        "http://**/*.md",
-        "http://**/*.mkd",
-        "http://**/*.markdown",
-        "https://**/*.md",
-        "https://**/*.mkd",
-        "https://**/*.markdown"
+        "file://*/*.md",
+        "file://*/*.mkd",
+        "file://*/*.markdown",
+        "http://*/*.md",
+        "http://*/*.mkd",
+        "http://*/*.markdown",
+        "https://*/*.md",
+        "https://*/*.mkd",
+        "https://*/*.markdown"
       ]
     }
   ]

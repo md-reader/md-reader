@@ -1,9 +1,10 @@
+import hljs from 'highlight.js'
+import markdownIt from 'markdown-it'
 import './style/index.less'
 import './style/btn.less'
 import './style/hljs-style-atom-one-dark.css'
 import './style/md-css-juejin.css'
-import hljs from 'highlight.js'
-import markdownIt from 'markdown-it'
+
 import {
   BODY,
   HEAD,
@@ -23,18 +24,23 @@ mdCodeEle.classList.add('md-code-wrap')
 mdCodeEle.style.display = 'none'
 
 // inject styles
-void [
-  DEFAULT_MD_CSS_URL,
-  'css/hljs-style-atom-one-dark.css',
-  'css/index.css',
-  'css/btn.css',
-].forEach(injectStyle)
+// void [
+//   DEFAULT_MD_CSS_URL,
+//   'css/hljs-style-atom-one-dark.css',
+//   'css/index.css',
+//   'css/btn.css',
+// ].forEach(injectStyle)
 
 HEAD.appendChild(
   createEle('meta', {
     charset: 'UTF-8',
   })
 )
+
+if (HEAD.querySelector("link[rel=icon]")) {
+
+}
+
 HEAD.appendChild(
   createEle('link', {
     rel: 'shortcut icon',
