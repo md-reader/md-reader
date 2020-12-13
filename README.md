@@ -6,7 +6,7 @@ English | [中文](https://github.com/Heroor/md-reader/blob/master/README-CN.md)
 
 > Support `file`, `http`, `https` protocols and path ending in `.md`, `mkd`, `.markdown`.
 
-![banner](./src/images/banner1-crx.jpg)
+![banner](./template/feature-0.png)
 
 For example:
 
