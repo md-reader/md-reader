@@ -9,11 +9,18 @@
     "48": "images/icon48.png",
     "128": "images/icon128.png"
   },
-  "web_accessible_resources": ["css/*", "images/*"],
+  "web_accessible_resources": [
+    "css/*",
+    "images/*"
+  ],
   "content_scripts": [
     {
-      "js": ["js/inject.js"],
-      "css": ["css/index.css"],
+      "js": [
+        "js/inject.js"
+      ],
+      "css": [
+        "css/index.css"
+      ],
       "matches": [
         "file://*/*.md",
         "file://*/*.mkd",
