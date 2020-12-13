@@ -6,7 +6,7 @@
 
 > 支持 `file`，`http`，`https` 三种协议与以 `.md`，`.mkd`，`.markdown` 结尾的访问地址。
 
-![banner](./src/images/banner1-crx.jpg)
+![banner](./template/feature-0.png)
 
 下面是预览 markdown 文件的地址的例子:
 
