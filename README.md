@@ -1,5 +1,7 @@
 # md-reader
 
+<img src="https://github.com/Heroor/md-reader/blob/master/src/images/icon.png" align="right" width="120">
+
 A markdown reader for chrome extension(for PC).
 
 English | [中文](https://github.com/Heroor/md-reader/blob/master/README-CN.md)
