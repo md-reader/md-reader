@@ -1,5 +1,7 @@
 # md-reader
 
+<img src="https://github.com/Heroor/md-reader/blob/master/src/images/icon.png" align="right" width="120">
+
 一个使 chrome 可以预览 markdown 文件的浏览器扩展。
 
 [English](https://github.com/Heroor/md-reader) | 中文
