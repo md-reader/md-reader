@@ -1,47 +1,55 @@
 # md-reader
 
-<img src="https://github.com/Heroor/md-reader/blob/master/src/images/icon.png" align="right" width="120">
+<img src="./src/images/icon.png" align="right" width="120">
 
-English | [中文](https://github.com/Heroor/md-reader/blob/master/README-CN.md)
+English | [中文](./README-cn.md)
 
-A markdown reader extension for chrome.
+A markdown reader extension for Chrome.
 
-> Support `file`, `http`, `https` protocols and path ending in `.md`, `mkd`, `.markdown`.
+Support view `file://`, `http://`, `https://` URL and `*.md`, `*.mkd`, `*.markdown` extension files.
 
-![banner](./template/feature-0.png)
+Example:
 
-For example:
+- `https://example.com/example.md`
+- `file://my-project/readme.markdown`
 
-`https://***.md`
+![banner](./example/feature-0.png)
 
-`file://***.markdown`
+## Install & Usage
 
-## INSTALL
+### Online
 
-### ONLINE
+Install in the [chrome extension store](https://chrome.google.com/webstore/detail/medapdbncneneejhbgcjceippjlfkmkg/publish-accepted).
 
-Click [https://chrome.google.com/webstore/detail/medapdbncneneejhbgcjceippjlfkmkg/publish-accepted](https://chrome.google.com/webstore/detail/medapdbncneneejhbgcjceippjlfkmkg/publish-accepted) to install.
+### Local
 
-### LOCAL
-
-1. Clone this repo:
+1. Clone this repo and build:
 
     ```bash
     git clone https://github.com/Heroor/md-reader.git
+    cd md-reader
+    npm install
+    npm run build
     ```
 
-2. Open: `Chrome` / `Menu` / `More Tools` / `Extensions`;
+2. Open `Chrome` -> `Menu` -> `More Tools` -> `Extensions`;
 
-3. Open `Developer mode`;
+3. Open `Developer mode`, click `Load unpacked` button, select folder `md-reader/extension`;
 
-4. Click `Load unpacked` button, select folder of this repo;
+### Usage
 
-5. Finally open `details` button of `md-reader` extension, open `allow access to file URLs`.
+After installation, we must set local file access permissions before we can preview local files:
 
-All right! Open this [https://raw.githubusercontent.com/Heroor/md-reader/master/example.md](https://raw.githubusercontent.com/Heroor/md-reader/master/example.md) to test if it works.
+Open `details` page of `md-reader` extension, open `allow access to file URLs` option.
 
-## LICENSE
+All right!
 
-The MIT License (MIT)
+Visit this [https://raw.githubusercontent.com/Heroor/md-reader/main/example/example.md](https://raw.githubusercontent.com/Heroor/md-reader/main/example/example.md) to test if it works.
 
-Copyright (c) 2018-present Bener
+Or try dragging and dropping `*.md` file to the Chrome window!
+
+## License
+
+License [MIT](https://github.com/Heroor/md-reader/blob/master/LICENSE)
+
+© 2018-present [Bener](https://github.com/Heroor)
