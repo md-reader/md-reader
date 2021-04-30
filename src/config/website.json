@@ -1,0 +1,10 @@
+{
+  "comment": "config website' markdown DOM element",
+  "websites": [
+    {
+      "name": "github",
+      "rule": "github.com\\/.",
+      "disable": true
+    }
+  ]
+}

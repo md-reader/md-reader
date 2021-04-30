@@ -1,0 +1,141 @@
+@color-primary: #607cd2;
+
+body.md-reader {
+  margin: 0;
+  padding: 0;
+  * {
+    box-sizing: border-box;
+  }
+  .md-reader {
+    &__side {
+      overflow: auto;
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      font-size: 14px;
+      width: 260px;
+      padding: 20px 25px;
+      margin: 0;
+      list-style: none;
+      &:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: 0;
+        margin: 20px 0;
+        border-right: 1px solid #eee;
+        z-index: 1;
+      }
+      li {
+        word-wrap: break-word;
+        margin-bottom: 8px;
+        a {
+          color: #383838;
+          text-decoration: none;
+          word-break: break-all;
+          &:hover {
+            color: @color-primary;
+          }
+        }
+        &.md-reader__side {
+          &-h2 {
+            padding-left: 0.6em;
+          }
+          &-h3 {
+            padding-left: 1.2em;
+          }
+          &-h4 {
+            padding-left: 1.8em;
+          }
+          &-h5 {
+            padding-left: 2.4em;
+          }
+          &-h6 {
+            padding-left: 3em;
+          }
+        }
+      }
+    }
+
+    &__body {
+      padding: 20px 40px 20px 300px;
+      .md-reader__markdown-content {
+        max-width: 900px;
+        margin: auto;
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+          &:hover {
+            .md-reader__head-anchor {
+              opacity: 1;
+              transition: 0s;
+            }
+          }
+          .md-reader__head-anchor {
+            position: absolute;
+            opacity: 0;
+            text-decoration: none;
+            padding-right: 8px;
+            margin-left: -0.8em;
+            border: none;
+            color: @color-primary;
+            cursor: pointer;
+            transition: 0.3s;
+          }
+        }
+      }
+    }
+
+    @media screen and (max-width: 1100px) {
+      .md-reader__markdown-body {
+        padding: 20px 40px;
+      }
+      .md-reader__side {
+        display: none;
+      }
+    }
+  }
+}
+
+.md-reader {
+  &__top {
+    position: fixed;
+    top: 20px;
+    right: 40px;
+    z-index: 1;
+  }
+
+  &__btn {
+    outline: none;
+    font-size: 12px;
+    border-radius: 3px;
+    background: #fff;
+    color: #666;
+    cursor: pointer;
+    &:not(:last-child) {
+      margin-right: 10px;
+      margin-bottom: 10px;
+    }
+    &--toggle {
+      width: 40px;
+      height: 40px;
+      padding: 7px;
+      border-radius: 100%;
+      border: 1px solid #eee;
+      background: #f3f3f3 url('../images/icon_see.png') no-repeat center/100%
+        100%;
+      background-origin: content-box;
+      transition: background 0.2s;
+      &:hover,
+      &:active {
+        background-color: #eee;
+      }
+    }
+  }
+}

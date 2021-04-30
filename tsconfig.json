@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "baseUrl": ".",
+    "module": "es2015",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+    "lib": [
+      "ES5",
+      "ES6",
+      "DOM"
+    ],
+    "types": [
+      "chrome"
+    ],
+    "allowJs": true
+  },
+  "include": [
+    "src"
+  ]
+}
