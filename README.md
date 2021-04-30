@@ -42,6 +42,8 @@ After installation, we must set local file access permissions before we can prev
 
 Open `details` page of `md-reader` extension, open `allow access to file URLs` option.
 
+<br/>
+
 All right!
 
 Visit this [https://raw.githubusercontent.com/Heroor/md-reader/main/example/example.md](https://raw.githubusercontent.com/Heroor/md-reader/main/example/example.md) to test if it works.
