@@ -16,7 +16,6 @@ interface WebsiteConfig {
 }
 
 void (function () {
-  // 是否开启功能
   const targetConfig: WebsiteConfig = websites.find((config: WebsiteConfig) =>
     new RegExp(config.rule).test(window.location.href),
   )
