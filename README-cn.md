@@ -13,7 +13,11 @@
 - `https://example.com/example.md`
 - `file://my-project/readme.markdown`
 
-![banner](./example/feature-0.png)
+![banner1](./example/example-1.png)
+
+![banner2](./example/example-2.png)
+
+![banner3](./example/example-3.png)
 
 ## 安装 & 使用
 
