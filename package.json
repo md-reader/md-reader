@@ -48,6 +48,13 @@
     "lodash.debounce": "^4.0.8",
     "lodash.throttle": "^4.1.1",
     "markdown-it": "^10.0.0",
-    "markdown-it-emoji": "^2.0.0"
+    "markdown-it-abbr": "^1.0.4",
+    "markdown-it-deflist": "^2.1.0",
+    "markdown-it-emoji": "^2.0.0",
+    "markdown-it-footnote": "^3.0.2",
+    "markdown-it-ins": "^3.0.1",
+    "markdown-it-mark": "^3.0.1",
+    "markdown-it-sub": "^1.0.0",
+    "markdown-it-sup": "^1.0.0"
   }
 }

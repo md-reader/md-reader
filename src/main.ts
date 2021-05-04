@@ -1,6 +1,13 @@
 import hljs from 'highlight.js'
 import markdownIt from 'markdown-it'
-import emoji from 'markdown-it-emoji'
+import mEmoji from 'markdown-it-emoji'
+import mSub from 'markdown-it-sub'
+import mSup from 'markdown-it-sup'
+import mIns from 'markdown-it-ins'
+import mMark from 'markdown-it-mark'
+import mFootnote from 'markdown-it-footnote'
+import mDeflist from 'markdown-it-deflist'
+import mAbbr from 'markdown-it-abbr'
 import throttle from 'lodash.throttle'
 import { websites } from './config/website.json'
 import Ele from './core'
@@ -60,7 +67,14 @@ void (function () {
       return ''
     },
   })
-  md.use(emoji)
+  md.use(mEmoji)
+    .use(mSub)
+    .use(mSup)
+    .use(mIns)
+    .use(mMark)
+    .use(mFootnote)
+    .use(mDeflist)
+    .use(mAbbr)
   const mdHTML = md.render(mdSource)
 
   // render md body
