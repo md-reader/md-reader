@@ -13,7 +13,7 @@ export default class Ele {
   query(selectors: string) {
     return this.ele.querySelector(selectors)
   }
-  queryAll(selectors: string) {
+  queryAll(selectors: string): HTMLElement[] {
     return Array.from(this.ele.querySelectorAll(selectors))
   }
   remove() {

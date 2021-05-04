@@ -6,9 +6,12 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const FriendlyErrors = require('friendly-errors-webpack-plugin')
 
 module.exports = {
-  entry: resolve(__dirname, '../src/main.ts'),
+  entry: {
+    'content-script': resolve(__dirname, '../src/main.ts'),
+    background: resolve(__dirname, '../src/background.ts'),
+  },
   output: {
-    filename: 'js/inject.js',
+    filename: 'js/[name].js',
     path: resolve(__dirname, '../extension'),
   },
   module: {

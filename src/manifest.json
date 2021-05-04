@@ -13,10 +13,15 @@
     "css/*",
     "images/*"
   ],
+  "background": {
+    "scripts": [
+      "js/background.js"
+    ]
+  },
   "content_scripts": [
     {
       "js": [
-        "js/inject.js"
+        "js/content-script.js"
       ],
       "css": [
         "css/index.css"

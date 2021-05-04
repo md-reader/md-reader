@@ -1,6 +1,7 @@
 import hljs from 'highlight.js'
 import markdownIt from 'markdown-it'
 import emoji from 'markdown-it-emoji'
+import throttle from 'lodash.throttle'
 import { websites } from './config/website.json'
 import Ele from './core'
 import { HEAD, BODY, getAssetsURL } from './shared/index'
@@ -75,11 +76,12 @@ void (function () {
   BODY.appendChild(mdBody.ele)
 
   // render md side
-  const headEleList: Element[] = mdContent.queryAll(HEADERS)
+  const headEleList = mdContent.queryAll(HEADERS)
   const mdSide = new Ele('ul', {
     className: 'md-reader__side',
   })
-  const handleHeadItem = (headEle: HTMLElement, index: number) => {
+  const sideLis: HTMLElement[] = []
+  const handleHeadItem = (headEle: HTMLElement) => {
     const content = headEle.textContent
     headEle.setAttribute('id', content)
 
@@ -97,11 +99,42 @@ void (function () {
     const li = new Ele('li', {
       className: `md-reader__side-${headEle.tagName.toLowerCase()}`,
     })
+    sideLis.push(li.ele)
     li.ele.appendChild(a.ele)
     mdSide.ele.appendChild(li.ele)
   }
   headEleList.forEach(handleHeadItem)
   BODY.appendChild(mdSide.ele)
+
+  const onScroll = () => {
+    let targetIndex
+    headEleList.some((head: HTMLElement, index) => {
+      const headOffsetHeight = head.offsetHeight
+      const headOffsetTop = head.offsetTop
+      let sectionHeight = headOffsetTop + headOffsetHeight
+
+      if (headEleList[index + 1]) {
+        sectionHeight +=
+          headEleList[index + 1].offsetTop - headOffsetTop - headOffsetHeight
+      }
+
+      const hit = sectionHeight > document.documentElement.scrollTop + 15
+      if (hit) {
+        targetIndex = index
+      }
+      return hit
+    })
+
+    sideLis.forEach((li, index) => {
+      if (index === targetIndex) {
+        li.classList.add('md-reader__side-li--active')
+      } else {
+        li.classList.remove('md-reader__side-li--active')
+      }
+    })
+  }
+  onScroll()
+  document.addEventListener('scroll', throttle(onScroll, 200))
 
   // render md toggle
   const topBarEle = new Ele('div', {

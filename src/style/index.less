@@ -1,4 +1,7 @@
 @color-primary: #607cd2;
+.head-padding (@l) {
+  padding-left: 0.5em * (@l - 1);
+}
 
 body.md-reader {
   margin: 0;
@@ -22,34 +25,44 @@ body.md-reader {
       li {
         word-wrap: break-word;
         margin-bottom: 8px;
+        &.md-reader__side-li--active {
+          a {
+            font-weight: bolder;
+            color: @color-primary;
+          }
+        }
         a {
-          color: #383838;
           text-decoration: none;
           word-break: break-all;
+          color: #383838;
           &:hover {
             color: @color-primary;
           }
         }
         &.md-reader__side {
+          &-h1 {
+            font-size: 14px;
+            .head-padding(1);
+          }
           &-h2 {
             font-size: 14px;
-            padding-left: 0.6em;
+            .head-padding(2);
           }
           &-h3 {
             font-size: 13px;
-            padding-left: 1.2em;
+            .head-padding(3);
           }
           &-h4 {
             font-size: 12px;
-            padding-left: 1.8em;
+            .head-padding(4);
           }
           &-h5 {
             font-size: 12px;
-            padding-left: 2.4em;
+            .head-padding(5);
           }
           &-h6 {
             font-size: 12px;
-            padding-left: 3em;
+            .head-padding(6);
           }
         }
       }
@@ -70,7 +83,6 @@ body.md-reader {
           &:hover {
             .md-reader__head-anchor {
               opacity: 1;
-              transition: 0s;
             }
           }
           .md-reader__head-anchor {
@@ -82,7 +94,6 @@ body.md-reader {
             border: none;
             color: @color-primary;
             cursor: pointer;
-            transition: 0.3s;
           }
         }
       }
