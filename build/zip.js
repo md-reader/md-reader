@@ -1,8 +1,9 @@
 const fs = require('fs')
 const { resolve } = require('path')
+const pkg = require('../package.json')
 
 const entryDir = resolve(__dirname, '../extension')
-const outputDir = resolve(__dirname, '../extension.zip')
+const outputDir = resolve(__dirname, `../md-reader-${pkg.version}.zip`)
 const hasDir = fs.existsSync(entryDir)
 
 if (hasDir) {
