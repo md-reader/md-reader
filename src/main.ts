@@ -1,126 +1,67 @@
-import hljs from 'highlight.js'
-import markdownIt from 'markdown-it'
-import mEmoji from 'markdown-it-emoji'
-import mSub from 'markdown-it-sub'
-import mSup from 'markdown-it-sup'
-import mIns from 'markdown-it-ins'
-import mMark from 'markdown-it-mark'
-import mFootnote from 'markdown-it-footnote'
-import mDeflist from 'markdown-it-deflist'
-import mAbbr from 'markdown-it-abbr'
 import throttle from 'lodash.throttle'
-import { websites } from './config/website.json'
-import Ele from './core'
-import { HEAD, BODY, getAssetsURL } from './shared/index'
+import Ele from './core/ele'
+import md from './core/markdown'
+import lifeCircle from './core/life-circle'
+import { getHeads, CONTENT_TYPES } from './shared/index'
+import className from './config/class-name'
 import './style/index.less'
 import './style/theme/markdown-theme-juejin.less'
 import './style/theme/hljs-theme-atom-one-dark.less'
 
-interface WebsiteConfig {
-  name: string
-  rule: string
-  disable: boolean
-  container?: string
-}
-
-void (function () {
-  const targetConfig: WebsiteConfig = websites.find((config: WebsiteConfig) =>
-    new RegExp(config.rule).test(window.location.href),
-  )
-  if (targetConfig && targetConfig.disable) {
+void (() => {
+  if (!~CONTENT_TYPES.indexOf(document.contentType)) {
     return
   }
 
-  const HEADERS = 'h1, h2, h3, h4, h5, h6'
-  let SHOW_MD_SOURCE: boolean = true
-
-  const cssSelector = (targetConfig && targetConfig.container) || 'pre'
-  const mdSourceEle: HTMLElement = BODY.querySelector(cssSelector)
+  // init
+  const mdSourceEle = lifeCircle.init()
   const mdSource = mdSourceEle.textContent || 'No markdown here.'
-  const mdSourceEleDisplay = mdSourceEle.style.display
-  mdSourceEle.style.display = 'none'
-
-  HEAD.appendChild(
-    new Ele('link', {
-      rel: 'icon',
-      href: getAssetsURL('images/icon128.png'),
-    }).ele,
-  )
 
   // parse source
-  const md = markdownIt({
-    html: true,
-    breaks: true,
-    linkify: true,
-    xhtmlOut: true,
-    highlight(str: string, lang: string) {
-      if (lang && hljs.getLanguage(lang)) {
-        try {
-          return `<pre class="hljs-pre"><code class="hljs" lang="${lang}">${
-            hljs.highlight(lang, str, true).value
-          }</code></pre>`
-        } catch (err) {
-          console.error(err)
-          return 'parse error'
-        }
-      }
-      return ''
-    },
-  })
-  md.use(mEmoji)
-    .use(mSub)
-    .use(mSup)
-    .use(mIns)
-    .use(mMark)
-    .use(mFootnote)
-    .use(mDeflist)
-    .use(mAbbr)
   const mdHTML = md.render(mdSource)
 
   // render md body
-  BODY.classList.toggle('md-reader')
   const mdBody = new Ele('div', {
-    className: 'md-reader__body',
+    className: className.MD_BODY,
   })
   const mdContent = new Ele('article', {
-    className: 'md-reader__markdown-content',
+    className: className.MD_CONTENT,
   })
-  mdContent.ele.innerHTML = mdHTML
-  mdBody.ele.appendChild(mdContent.ele)
-  BODY.appendChild(mdBody.ele)
+  mdContent.innerHTML = mdHTML
+  mdBody.appendChild(mdContent)
 
   // render md side
-  const headEleList = mdContent.queryAll(HEADERS)
+  const headEleList: HTMLElement[] = getHeads(mdContent)
   const mdSide = new Ele('ul', {
-    className: 'md-reader__side',
+    className: className.MD_SIDE,
   })
-  const sideLis: HTMLElement[] = []
-  const handleHeadItem = (headEle: HTMLElement) => {
+  const handleHeadItem = (eleList: HTMLElement[], headEle: HTMLElement) => {
     const content = headEle.textContent
     headEle.setAttribute('id', content)
 
     const headAnchor = new Ele('a', {
-      className: 'md-reader__head-anchor',
+      className: className.HEAD_ANCHOR,
       href: `#${window.encodeURIComponent(content)}`,
     })
-    headAnchor.ele.textContent = '#'
+    headAnchor.textContent = '#'
     headEle.insertBefore(headAnchor.ele, headEle.firstChild)
 
     const a = new Ele('a', {
       href: `#${window.encodeURIComponent(content)}`,
     })
-    a.ele.textContent = content
+    a.textContent = content
     const li = new Ele('li', {
       className: `md-reader__side-${headEle.tagName.toLowerCase()}`,
     })
-    sideLis.push(li.ele)
-    li.ele.appendChild(a.ele)
-    mdSide.ele.appendChild(li.ele)
-  }
-  headEleList.forEach(handleHeadItem)
-  BODY.appendChild(mdSide.ele)
+    eleList.push(li.ele)
+    li.appendChild(a)
+    mdSide.appendChild(li)
 
-  const onScroll = () => {
+    return eleList
+  }
+  const sideLis: HTMLElement[] = headEleList.reduce(handleHeadItem, [])
+
+  const onScroll = throttle(() => {
     let targetIndex
     headEleList.some((head: HTMLElement, index) => {
       const headOffsetHeight = head.offsetHeight
@@ -141,32 +82,28 @@ void (function () {
 
     sideLis.forEach((li, index) => {
       if (index === targetIndex) {
-        li.classList.add('md-reader__side-li--active')
+        li.classList.add(className.MD_SIDE_ACTIVE)
       } else {
-        li.classList.remove('md-reader__side-li--active')
+        li.classList.remove(className.MD_SIDE_ACTIVE)
       }
     })
-  }
+  }, 200)
   onScroll()
-  document.addEventListener('scroll', throttle(onScroll, 200))
+  document.addEventListener('scroll', onScroll)
 
   // render md toggle
   const topBarEle = new Ele('div', {
-    className: 'md-reader__top',
+    className: className.TOP_BAR_ELE,
   })
   const toggleBtn = new Ele('button', {
-    className: 'md-reader__btn md-reader__btn--toggle',
+    className: className.TOGGLE_BTN,
     title: 'Toggle',
   })
-  toggleBtn.addEventListener('click', toggleMode)
-  topBarEle.ele.appendChild(toggleBtn.ele)
-  BODY.appendChild(topBarEle.ele)
+  toggleBtn.addEventListener('click', () => {
+    lifeCircle.modeChange([mdBody, mdSide])
+  })
+  topBarEle.appendChild(toggleBtn)
 
-  function toggleMode() {
-    SHOW_MD_SOURCE = !SHOW_MD_SOURCE
-    BODY.classList.toggle('md-reader')
-    mdBody.toggle(SHOW_MD_SOURCE)
-    mdSide.toggle(SHOW_MD_SOURCE)
-    mdSourceEle.style.display = SHOW_MD_SOURCE ? 'none' : mdSourceEleDisplay
-  }
+  // mount
+  lifeCircle.mount([mdSide, mdBody, topBarEle])
 })()

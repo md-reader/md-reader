@@ -1,13 +1,19 @@
-import { createEle } from '../shared'
+import { createEle, getEle } from '../shared'
 
 export default class Ele {
-  tagName: string
   ele: HTMLElement
   display: string
 
   constructor(tagName: string, attrs) {
     this.ele = createEle(tagName, attrs)
     this.display = this.ele.style.display
+  }
+
+  set innerHTML(content: string) {
+    this.ele.innerHTML = content
+  }
+  set textContent(content: string) {
+    this.ele.textContent = content
   }
 
   query(selectors: string) {
@@ -27,6 +33,12 @@ export default class Ele {
   }
   hidden() {
     this.ele.style.display = 'none'
+  }
+  appendChild(newChild: HTMLElement | Ele): Node {
+    return this.ele.appendChild(getEle(newChild))
+  }
+  insertBefore(newChild: HTMLElement | Ele, refChild: HTMLElement | Ele): Node {
+    return this.ele.insertBefore(getEle(newChild), getEle(refChild))
   }
   addEventListener(
     eventType: keyof HTMLElementEventMap,
