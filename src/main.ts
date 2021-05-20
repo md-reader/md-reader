@@ -36,6 +36,7 @@ void (() => {
   const mdSide = new Ele('ul', {
     className: className.MD_SIDE,
   })
+  const df = document.createDocumentFragment()
   const handleHeadItem = (eleList: HTMLElement[], headEle: HTMLElement) => {
     const content = headEle.textContent
     headEle.setAttribute('id', content)
@@ -56,17 +57,18 @@ void (() => {
     })
     eleList.push(li.ele)
     li.appendChild(a)
-    mdSide.appendChild(li)
+    df.appendChild(li.ele)
 
     return eleList
   }
   const sideLis: HTMLElement[] = headEleList.reduce(handleHeadItem, [])
+  mdSide.ele.appendChild(df)
 
-  const onScroll = throttle(() => {
-    let targetIndex
-    headEleList.some((head: HTMLElement, index) => {
-      const headOffsetHeight = head.offsetHeight
-      const headOffsetTop = head.offsetTop
+  let targetIndex: number = null
+  const onScroll = () => {
+    headEleList.some((head: HTMLElement, index: number) => {
+      const { offsetHeight: headOffsetHeight, offsetTop: headOffsetTop } = head
+      const documentScrollTop = document.documentElement.scrollTop
       let sectionHeight = headOffsetTop + headOffsetHeight
 
       if (headEleList[index + 1]) {
@@ -74,23 +76,22 @@ void (() => {
           headEleList[index + 1].offsetTop - headOffsetTop - headOffsetHeight
       }
 
-      const hit = sectionHeight > document.documentElement.scrollTop + 15
+      const posi = sectionHeight - 15
+      const hit = posi < 0 ? true : posi > documentScrollTop
+
       if (hit) {
+        sideLis[targetIndex] &&
+          sideLis[targetIndex].classList.remove(className.MD_SIDE_ACTIVE)
         targetIndex = index
+
+        sideLis[targetIndex] &&
+          sideLis[targetIndex].classList.add(className.MD_SIDE_ACTIVE)
       }
       return hit
     })
-
-    sideLis.forEach((li, index) => {
-      if (index === targetIndex) {
-        li.classList.add(className.MD_SIDE_ACTIVE)
-      } else {
-        li.classList.remove(className.MD_SIDE_ACTIVE)
-      }
-    })
-  }, 200)
+  }
   onScroll()
-  document.addEventListener('scroll', onScroll)
+  document.addEventListener('scroll', throttle(onScroll, 200))
 
   // render md toggle
   const topBarEle = new Ele('div', {
