@@ -1,0 +1,23 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - release
+      - master
+  pull_request:
+    branches:
+      - release
+      - master
+
+jobs:
+  update_release:
+    runs-on: ubuntu-latest
+    container:
+      image: thonatos/github-actions-nodejs
+    steps:
+    - uses: actions/checkout@master
+    - run: npm install && npm run build
+    - uses: release-drafter/release-drafter@v5
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
