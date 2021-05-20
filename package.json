@@ -8,8 +8,8 @@
   },
   "scripts": {
     "dev": "webpack --config ./build/webpack.dev.js",
-    "build": "webpack --config ./build/webpack.prod.js && npm run zip",
-    "zip": "node ./build/zip.js"
+    "build": "webpack --config ./build/webpack.prod.js && npm run build:zip",
+    "build:zip": "node ./build/zip.js"
   },
   "keywords": [
     "md-reader",
