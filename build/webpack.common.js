@@ -32,11 +32,14 @@ module.exports = {
             loader: 'url-loader',
             options: {
               limit: 1024 * 10,
-              // name: '[name].[contenthash].[ext]',
               outputPath: 'images',
             },
           },
         ],
+      },
+      {
+        test: /\.svg$/,
+        use: 'svg-loader',
       },
     ],
   },

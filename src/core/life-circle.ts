@@ -2,13 +2,6 @@ import Ele from './ele'
 import { BODY, HEAD, getAssetsURL, getEle, SOURCE_SELECTOR } from '../shared'
 
 const headTags = [
-  // {
-  //   tag: 'meta',
-  //   attrs: {
-  //     'http-equiv': 'Content-Security-Policy',
-  //     content: "img-src 'self' data:;",
-  //   },
-  // },
   {
     tag: 'link',
     attrs: {

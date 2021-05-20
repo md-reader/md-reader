@@ -123,7 +123,7 @@ body.md-reader {
     font-size: 12px;
     border-radius: 3px;
     background: #fff;
-    color: #666;
+    color: #353535;
     cursor: pointer;
     &:not(:last-child) {
       margin-right: 10px;
@@ -135,13 +135,17 @@ body.md-reader {
       padding: 7px;
       border-radius: 100%;
       border: 1px solid #eee;
-      background: #f3f3f3 url('../images/icon_see.png') no-repeat center/100%
-        100%;
+      background: #f7f7f7;
       background-origin: content-box;
       transition: background 0.2s;
       &:hover,
       &:active {
-        background-color: #eee;
+        background-color: #f3f3f3;
+      }
+      svg {
+        width: 100%;
+        height: 100%;
+        fill: currentColor;
       }
     }
   }

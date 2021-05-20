@@ -4,6 +4,7 @@ import md from './core/markdown'
 import lifeCircle from './core/life-circle'
 import { getHeads, CONTENT_TYPES } from './shared/index'
 import className from './config/class-name'
+import toggleIcon from './images/icon_toggle.svg'
 import './style/index.less'
 import './style/theme/markdown-theme-juejin.less'
 import './style/theme/hljs-theme-atom-one-dark.less'
@@ -102,6 +103,12 @@ void (() => {
   toggleBtn.addEventListener('click', () => {
     lifeCircle.modeChange([mdBody, mdSide])
   })
+
+  const attrs = Object.keys(toggleIcon.attributes)
+    .map((k) => `${k}="${toggleIcon.attributes[k]}"`)
+    .join(' ')
+
+  toggleBtn.innerHTML = `<svg ${attrs}>${toggleIcon.content}</svg>`
   topBarEle.appendChild(toggleBtn)
 
   // mount
