@@ -39,17 +39,19 @@ void (() => {
   const df = document.createDocumentFragment()
   const handleHeadItem = (eleList: HTMLElement[], headEle: HTMLElement) => {
     const content = headEle.textContent
+    const enCodeContent = window.encodeURIComponent(content)
+
     headEle.setAttribute('id', content)
 
     const headAnchor = new Ele('a', {
       className: className.HEAD_ANCHOR,
-      href: `#${window.encodeURIComponent(content)}`,
+      href: `#${enCodeContent}`,
     })
     headAnchor.textContent = '#'
     headEle.insertBefore(headAnchor.ele, headEle.firstChild)
 
     const a = new Ele('a', {
-      href: `#${window.encodeURIComponent(content)}`,
+      href: `#${enCodeContent}`,
     })
     a.textContent = content
     const li = new Ele('li', {
@@ -66,24 +68,19 @@ void (() => {
 
   let targetIndex: number = null
   const onScroll = () => {
-    headEleList.some((head: HTMLElement, index: number) => {
-      const { offsetHeight: headOffsetHeight, offsetTop: headOffsetTop } = head
-      const documentScrollTop = document.documentElement.scrollTop
-      let sectionHeight = headOffsetTop + headOffsetHeight
-
+    headEleList.some((_, index: number) => {
+      let sectionHeight = -20
       if (headEleList[index + 1]) {
-        sectionHeight +=
-          headEleList[index + 1].offsetTop - headOffsetTop - headOffsetHeight
+        sectionHeight += headEleList[index + 1].offsetTop
       }
 
-      const posi = sectionHeight - 15
-      const hit = posi < 0 ? true : posi > documentScrollTop
+      const hit =
+        sectionHeight <= 0 || sectionHeight > document.documentElement.scrollTop
 
-      if (hit) {
+      if (hit && targetIndex !== index) {
         sideLis[targetIndex] &&
           sideLis[targetIndex].classList.remove(className.MD_SIDE_ACTIVE)
         targetIndex = index
-
         sideLis[targetIndex] &&
           sideLis[targetIndex].classList.add(className.MD_SIDE_ACTIVE)
       }
