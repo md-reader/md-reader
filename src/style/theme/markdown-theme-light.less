@@ -149,28 +149,31 @@
   }
 
   table {
-    display: inline-block !important;
-    font-size: 1rem;
+    display: block;
     width: auto;
     max-width: 100%;
-    overflow: auto;
-    border: 1px solid #f6f6f6;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    overflow-x: auto;
   }
 
   thead {
     background: #f6f6f6;
-    color: #000;
     text-align: left;
   }
 
-  tr:nth-child(2n) {
-    background-color: #fcfcfc;
+  tr {
+    border-top: 1px solid #dfe2e5;
   }
 
-  td,
-  th {
-    padding: 0.6rem;
-    line-height: 2rem;
+  tr:nth-child(2n) {
+    background-color: #f6f8fa;
+  }
+
+  th,
+  td {
+    border: 1px solid #dfe2e5;
+    padding: 0.6em 1em;
   }
 
   td {

@@ -6,7 +6,7 @@ import { getHeads, CONTENT_TYPES } from './shared/index'
 import className from './config/class-name'
 import toggleIcon from './images/icon_toggle.svg'
 import './style/index.less'
-import './style/theme/markdown-theme-juejin.less'
+import './style/theme/markdown-theme-light.less'
 import './style/theme/hljs-theme-atom-one-dark.less'
 
 void (() => {
