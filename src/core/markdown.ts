@@ -8,6 +8,7 @@ import mMark from 'markdown-it-mark'
 import mFootnote from 'markdown-it-footnote'
 import mDeflist from 'markdown-it-deflist'
 import mAbbr from 'markdown-it-abbr'
+import taskLists from 'markdown-it-task-lists'
 
 const md = markdownIt({
   html: true,
@@ -37,5 +38,6 @@ md.use(mEmoji)
   .use(mFootnote)
   .use(mDeflist)
   .use(mAbbr)
+  .use(taskLists)
 
 export default md
