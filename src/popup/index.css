@@ -1,0 +1,6 @@
+body {
+  --mdc-theme-primary: rgb(96, 124, 210);
+  --mdc-theme-secondary: rgb(96, 124, 210);
+  width: 200px;
+  padding: 1px 18px 10px;
+}

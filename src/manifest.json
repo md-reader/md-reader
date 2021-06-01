@@ -18,13 +18,17 @@
       "js/background.js"
     ]
   },
+  "browser_action": {
+    "default_title": "md-reader",
+    "default_popup": "popup.html"
+  },
   "content_scripts": [
     {
       "js": [
         "js/content-script.js"
       ],
       "css": [
-        "css/index.css"
+        "css/content-script.css"
       ],
       "matches": [
         "file://*/*.md",

@@ -9,6 +9,7 @@ module.exports = {
   entry: {
     'content-script': resolve(__dirname, '../src/main.ts'),
     background: resolve(__dirname, '../src/background.ts'),
+    popup: resolve(__dirname, '../src/popup/index.ts'),
   },
   output: {
     filename: 'js/[name].js',
@@ -20,6 +21,10 @@ module.exports = {
         test: /\.(js|ts)$/,
         use: 'ts-loader',
         exclude: /node_modules/,
+      },
+      {
+        test: /\.svelte$/,
+        use: 'svelte-loader',
       },
       {
         test: /\.(css|less)$/,
@@ -44,14 +49,14 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: ['.ts', '.js', '.json'],
+    extensions: ['.ts', '.js', '.svelte', '.json'],
   },
   plugins: [
     new FriendlyErrors(),
     new CleanWebpackPlugin(),
     new HotModuleReplacementPlugin(),
     new miniCssExtractPlugin({
-      filename: 'css/index.css',
+      filename: 'css/[name].css',
     }),
     new CopyWebpackPlugin(
       [
@@ -63,6 +68,10 @@ module.exports = {
           from: resolve(__dirname, '../src/images'),
           to: 'images',
           ignore: ['*-crx.jpg', '*-crx.png'],
+        },
+        {
+          from: resolve(__dirname, '../src/popup/index.html'),
+          to: 'popup.html',
         },
       ],
       {
