@@ -10,7 +10,7 @@ import './style/theme/markdown-theme-light.less'
 import './style/theme/hljs-theme-atom-one-dark.less'
 
 void (() => {
-  if (!~CONTENT_TYPES.indexOf(document.contentType)) {
+  if (!CONTENT_TYPES.includes(document.contentType)) {
     return
   }
 

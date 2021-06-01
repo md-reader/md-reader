@@ -1,22 +1,22 @@
 {
   "compilerOptions": {
-    "target": "ESNext",
+    "target": "ES6",
     "baseUrl": ".",
-    "module": "es2015",
+    "allowJs": true,
+    "module": "ESNext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
     "lib": [
-      "ES5",
-      "ES6",
+      "ESNext",
       "DOM"
     ],
     "types": [
-      "chrome"
+      "chrome",
+      "svelte"
     ],
-    "allowJs": true
   },
   "include": [
-    "src"
+    "src/**/*"
   ]
 }

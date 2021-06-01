@@ -9,6 +9,7 @@ import mFootnote from 'markdown-it-footnote'
 import mDeflist from 'markdown-it-deflist'
 import mAbbr from 'markdown-it-abbr'
 import taskLists from 'markdown-it-task-lists'
+import container from 'markdown-it-container'
 
 const md = markdownIt({
   html: true,
@@ -39,5 +40,23 @@ md.use(mEmoji)
   .use(mDeflist)
   .use(mAbbr)
   .use(taskLists)
+  .use(container, 'warning', {
+    render: function (tokens, idx) {
+      if (tokens[idx].nesting === 1) {
+        return '<blockquote class="warning">\n'
+      } else {
+        return '</blockquote>\n'
+      }
+    },
+  })
+  .use(container, 'tip', {
+    render: function (tokens, idx) {
+      if (tokens[idx].nesting === 1) {
+        return '<blockquote class="tip">\n'
+      } else {
+        return '</blockquote>\n'
+      }
+    },
+  })
 
 export default md

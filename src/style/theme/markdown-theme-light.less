@@ -104,9 +104,9 @@
     vertical-align: text-bottom;
   }
 
-  img:not(.equation) {
-    cursor: zoom-in;
-  }
+  // img:not(.equation) {
+  //   cursor: zoom-in;
+  // }
 
   input[type='checkbox'] {
     vertical-align: middle;
@@ -140,7 +140,7 @@
     word-break: break-word;
     color: #4e5980;
     background-color: #f8f8f8;
-    border-radius: 2px;
+    border-radius: 4px;
     overflow-x: auto;
   }
 
@@ -256,7 +256,7 @@
 
   blockquote.warning {
     position: relative;
-    border-left-color: #f75151;
+    border-left-color: #ff6a6a;
     margin-left: 8px;
   }
 
@@ -264,15 +264,36 @@
     position: absolute;
     top: 14px;
     left: -12px;
-    background: #f75151;
-    border-radius: 50%;
-    content: '!';
-    width: 20px;
-    height: 20px;
-    color: #fff;
     display: flex;
     align-items: center;
     justify-content: center;
+    content: '!';
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    color: #fff;
+    background: #ff6a6a;
+  }
+
+  blockquote.tip {
+    position: relative;
+    border-left-color: #607cd2;
+    margin-left: 8px;
+  }
+
+  blockquote.tip:before {
+    position: absolute;
+    top: 14px;
+    left: -12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    content: '?';
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    color: #fff;
+    background: #607cd2;
   }
 
   ol,
