@@ -74,6 +74,8 @@ body.md-reader {
         max-width: 900px;
         padding: 30px 50px 40px;
         margin: auto;
+        @import url('./theme/markdown-theme-light.less');
+        @import url('./theme/hljs-theme-atom-one-dark.less');
         h1,
         h2,
         h3,
@@ -105,6 +107,16 @@ body.md-reader {
       }
       &__side {
         display: none;
+      }
+    }
+  }
+  &.md-reader--dark {
+    .md-reader {
+      &__body {
+        .md-reader__markdown-content {
+          @import url('./theme/markdown-theme-dark.less');
+          @import url('./theme/hljs-theme-atom-one-light.less');
+        }
       }
     }
   }

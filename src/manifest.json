@@ -42,5 +42,8 @@
         "https://*/*.markdown"
       ]
     }
+  ],
+  "permissions": [
+    "storage"
   ]
 }

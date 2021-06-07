@@ -1,5 +1,7 @@
 body {
   --mdc-theme-primary: #607cd2;
   --mdc-theme-secondary: #607cd2;
+  box-sizing: border-box;
+  padding-bottom: 1px;
   margin: 0;
 }

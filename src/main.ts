@@ -6,11 +6,11 @@ import { getHeads, CONTENT_TYPES } from './shared/index'
 import className from './config/class-name'
 import toggleIcon from './images/icon_toggle.svg'
 import './style/index.less'
-import './style/theme/markdown-theme-light.less'
-import './style/theme/hljs-theme-atom-one-dark.less'
+import storage from './core/storage'
 
-void (() => {
-  if (!CONTENT_TYPES.includes(document.contentType)) {
+void (async () => {
+  const { enable = true } = await storage.get()
+  if (!enable || !CONTENT_TYPES.includes(document.contentType)) {
     return
   }
 

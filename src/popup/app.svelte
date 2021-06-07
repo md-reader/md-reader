@@ -1,22 +1,34 @@
 <script>
+  import storage from '../core/storage'
+  import { onMount } from 'svelte'
   import Radio from '@smui/radio'
   import Switch from '@smui/switch'
-  import Button from '@smui/button'
   import FormField from '@smui/form-field'
   import logo from '../images/icon48.png'
 
+  const modes = ['Light', 'Dark']
   let isAllowFile = true
-  chrome.extension.isAllowedFileSchemeAccess((isAllow) => {
-    isAllowFile = isAllow
-  })
-
-  let enable = true
+  let enable = false
   let pageTheme = 'Light'
   let codeTheme = 'Dark'
-  const modes = ['Light', 'Dark']
+
+  onMount(() => {
+    chrome.extension.isAllowedFileSchemeAccess((isAllow) => {
+      isAllowFile = !!isAllow
+    })
+    storage.get().then((data) => {
+      enable = data.enable === undefined || data.enable
+      pageTheme = data.pageTheme || pageTheme
+      codeTheme = data.codeTheme || codeTheme
+    })
+  })
 
   function changeMode(type, mode) {
     console.log(type, mode)
+    chrome.runtime.sendMessage({
+      type,
+      value: mode,
+    })
   }
 
 </script>
@@ -34,7 +46,11 @@
   <div class="form-item">
     <span class="label-item">Enable:</span>
     <FormField align="end">
-      <Switch bind:checked={enable} color="primary" />
+      <Switch
+        bind:checked={enable}
+        color="primary"
+        on:change={() => changeMode('enable', enable)}
+      />
     </FormField>
   </div>
 
@@ -46,7 +62,7 @@
         <Radio
           bind:group={pageTheme}
           bind:value={mode}
-          on:change={() => changeMode('page', mode)}
+          on:change={() => changeMode('pageTheme', mode)}
         />
       </FormField>
     {/each}
@@ -60,7 +76,7 @@
         <Radio
           bind:group={codeTheme}
           bind:value={mode}
-          on:change={() => changeMode('code', mode)}
+          on:change={() => changeMode('codeTheme', mode)}
         />
       </FormField>
     {/each}
@@ -80,6 +96,8 @@
 <style>
   main {
     padding: 10px 26px 15px;
+    border: 1px solid #24315870;
+    border-radius: 1px;
   }
   h1 {
     padding: 8px 0 5px;
