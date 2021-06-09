@@ -6,11 +6,11 @@
   import FormField from '@smui/form-field'
   import logo from '../images/icon48.png'
 
-  const modes = ['Light', 'Dark']
+  const modes = ['light', 'dark']
   let isAllowFile = true
   let enable = false
-  let pageTheme = 'Light'
-  let codeTheme = 'Dark'
+  let pageTheme = 'light'
+  let codeTheme = 'dark'
 
   onMount(() => {
     chrome.extension.isAllowedFileSchemeAccess((isAllow) => {

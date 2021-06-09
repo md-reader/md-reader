@@ -1,21 +1,29 @@
 import throttle from 'lodash.throttle'
 import Ele from './core/ele'
 import md from './core/markdown'
+import storage from './core/storage'
 import lifeCircle from './core/life-circle'
 import { getHeads, CONTENT_TYPES } from './shared/index'
 import className from './config/class-name'
 import toggleIcon from './images/icon_toggle.svg'
 import './style/index.less'
-import storage from './core/storage'
 
 void (async () => {
-  const { enable = true } = await storage.get()
+  const {
+    enable = true,
+    pageTheme = 'light',
+    codeTheme = 'dark',
+  } = await storage.get()
+
   if (!enable || !CONTENT_TYPES.includes(document.contentType)) {
     return
   }
 
   // init
-  const mdSourceEle = lifeCircle.init()
+  const mdSourceEle = lifeCircle.init({
+    pageTheme,
+    codeTheme,
+  })
   const mdSource = mdSourceEle.textContent || 'No markdown here.'
 
   // parse source

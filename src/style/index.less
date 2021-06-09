@@ -22,6 +22,7 @@ body.md-reader {
       border-right: 1px solid #eee;
       margin: 0;
       list-style: none;
+      color: #383838;
       li {
         word-wrap: break-word;
         margin-bottom: 8px;
@@ -34,7 +35,7 @@ body.md-reader {
         a {
           text-decoration: none;
           word-break: break-all;
-          color: #383838;
+          color: currentColor;
           &:hover {
             color: @color-primary;
           }
@@ -110,12 +111,23 @@ body.md-reader {
       }
     }
   }
-  &.md-reader--dark {
+  &.page-theme--dark {
+    background: #1f2022;
     .md-reader {
       &__body {
         .md-reader__markdown-content {
           @import url('./theme/markdown-theme-dark.less');
           @import url('./theme/hljs-theme-atom-one-light.less');
+        }
+      }
+      &__side {
+        border-color: #474a4e;
+        color: #abb2bf;
+      }
+      &__btn {
+        &--toggle {
+          background: hsla(0, 0%, 46.7%, 0.35);
+          color: #abb2bf;
         }
       }
     }
@@ -134,9 +146,11 @@ body.md-reader {
     outline: none;
     font-size: 12px;
     border-radius: 3px;
+    border: none;
     background: #fff;
     color: #818181;
     cursor: pointer;
+    transition: 0.2s;
     &:not(:last-child) {
       margin-right: 10px;
       margin-bottom: 10px;
@@ -144,9 +158,8 @@ body.md-reader {
     &--toggle {
       width: 40px;
       height: 40px;
-      padding: 9px;
+      padding: 10px;
       border-radius: 100%;
-      border: 1px solid #eee;
       background: #f7f7f7;
       background-origin: content-box;
       transition: background 0.2s;
