@@ -1,6 +1,6 @@
 {
   "name": "md-reader",
-  "version": "2.0.6",
+  "version": "2.0.7",
   "description": "A markdown reader extension for chrome",
   "repository": {
     "type": "git",
@@ -8,7 +8,8 @@
   },
   "scripts": {
     "dev": "webpack --config ./build/webpack.dev.js",
-    "build": "webpack --config ./build/webpack.prod.js && npm run build:zip",
+    "build": "npm run build:dist && npm run build:zip",
+    "build:dist": "webpack --config ./build/webpack.prod.js",
     "build:zip": "node ./build/zip.js"
   },
   "keywords": [
