@@ -10,7 +10,6 @@
   let isAllowFile = true
   let enable = false
   let pageTheme = 'light'
-  let codeTheme = 'dark'
 
   onMount(() => {
     chrome.extension.isAllowedFileSchemeAccess((isAllow) => {
@@ -19,7 +18,6 @@
     storage.get().then((data) => {
       enable = data.enable === undefined || data.enable
       pageTheme = data.pageTheme || pageTheme
-      codeTheme = data.codeTheme || codeTheme
     })
   })
 
@@ -63,20 +61,6 @@
           bind:group={pageTheme}
           bind:value={mode}
           on:change={() => changeMode('pageTheme', mode)}
-        />
-      </FormField>
-    {/each}
-  </div>
-
-  <div class="form-item">
-    <div class="label-item">Code theme:</div>
-    {#each modes as mode}
-      <FormField style="margin-right: 1em;">
-        <span slot="label"> {mode} </span>
-        <Radio
-          bind:group={codeTheme}
-          bind:value={mode}
-          on:change={() => changeMode('codeTheme', mode)}
         />
       </FormField>
     {/each}

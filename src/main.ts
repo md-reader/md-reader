@@ -9,11 +9,7 @@ import toggleIcon from './images/icon_toggle.svg'
 import './style/index.less'
 
 void (async () => {
-  const {
-    enable = true,
-    pageTheme = 'light',
-    codeTheme = 'dark',
-  } = await storage.get()
+  const { enable = true, pageTheme = 'light' } = await storage.get()
 
   if (!enable || !CONTENT_TYPES.includes(document.contentType)) {
     return
@@ -22,7 +18,6 @@ void (async () => {
   // init
   const mdSourceEle = lifeCircle.init({
     pageTheme,
-    codeTheme,
   })
   const mdSource = mdSourceEle.textContent || 'No markdown here.'
 

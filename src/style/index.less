@@ -1,4 +1,5 @@
-@color-primary: #607cd2;
+@import url('./variable.less');
+
 .head-padding (@l) {
   padding-left: 0.5em * (@l - 1);
 }
@@ -6,6 +7,7 @@
 body.md-reader {
   margin: 0;
   padding: 0;
+  background: var(--color-bg);
   * {
     box-sizing: border-box;
   }
@@ -19,17 +21,17 @@ body.md-reader {
       font-size: 14px;
       width: 260px;
       padding: 20px;
-      border-right: 1px solid #eee;
+      border-right: 1px solid var(--color-border);
       margin: 0;
       list-style: none;
-      color: #383838;
+      color: var(--color-text-secondary);
       li {
         word-wrap: break-word;
         margin-bottom: 8px;
         &.md-reader__side-li--active {
           a {
             font-weight: bolder;
-            color: @color-primary;
+            color: var(--color-primary);
           }
         }
         a {
@@ -37,7 +39,7 @@ body.md-reader {
           word-break: break-all;
           color: currentColor;
           &:hover {
-            color: @color-primary;
+            color: var(--color-primary);
           }
         }
         &.md-reader__side {
@@ -75,19 +77,16 @@ body.md-reader {
         max-width: 900px;
         padding: 30px 50px 40px;
         margin: auto;
-        @import url('./theme/markdown-theme-light.less');
-        @import url('./theme/hljs-theme-atom-one-dark.less');
+        color: var(--color-text-secondary);
+
+        @import url('./theme/markdown-theme.less');
+        @import url('./theme/hljs-theme.less');
         h1,
         h2,
         h3,
         h4,
         h5,
         h6 {
-          &:hover {
-            .md-reader__head-anchor {
-              opacity: 1;
-            }
-          }
           .md-reader__head-anchor {
             position: absolute;
             opacity: 0;
@@ -95,8 +94,13 @@ body.md-reader {
             padding-right: 8px;
             margin-left: -0.8em;
             border: none;
-            color: @color-primary;
             cursor: pointer;
+            color: var(--color-primary);
+          }
+          &:hover {
+            .md-reader__head-anchor {
+              opacity: 1;
+            }
           }
         }
       }
@@ -112,22 +116,15 @@ body.md-reader {
     }
   }
   &.page-theme--dark {
-    background: #1f2022;
     .md-reader {
-      &__body {
-        .md-reader__markdown-content {
-          @import url('./theme/markdown-theme-dark.less');
-          @import url('./theme/hljs-theme-atom-one-light.less');
-        }
-      }
-      &__side {
-        border-color: #474a4e;
-        color: #abb2bf;
-      }
       &__btn {
         &--toggle {
-          background: hsla(0, 0%, 46.7%, 0.35);
-          color: #abb2bf;
+          background: rgba(68, 68, 68, 0.4);
+          color: var(--color-text-secondary);
+          &:hover,
+          &:active {
+            background: rgba(68, 68, 68, 0.6);
+          }
         }
       }
     }
@@ -145,12 +142,10 @@ body.md-reader {
   &__btn {
     outline: none;
     font-size: 12px;
-    border-radius: 3px;
+    border-radius: 100%;
     border: none;
-    background: #fff;
-    color: #818181;
     cursor: pointer;
-    transition: 0.2s;
+    transition: 0.1s;
     &:not(:last-child) {
       margin-right: 10px;
       margin-bottom: 10px;
@@ -159,13 +154,13 @@ body.md-reader {
       width: 40px;
       height: 40px;
       padding: 10px;
-      border-radius: 100%;
-      background: #f7f7f7;
+      background: rgba(247, 247, 247, 0.8);
       background-origin: content-box;
-      transition: background 0.2s;
+      color: #6a737d56;
+      backdrop-filter: blur(3px);
       &:hover,
       &:active {
-        background-color: #f3f3f3;
+        background: rgba(243, 243, 243, 0.8);
       }
       svg {
         width: 100%;

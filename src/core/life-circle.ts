@@ -16,9 +16,8 @@ let mdSourceEle: HTMLElement = null
 let mdSourceEleDisplay: string = ''
 
 export default {
-  init({ pageTheme, codeTheme }) {
+  init({ pageTheme }) {
     BODY.classList.add(`page-theme--${pageTheme}`)
-    BODY.classList.add(`code-theme--${codeTheme}`)
     mdSourceEle = BODY.querySelector(SOURCE_SELECTOR)
     mdSourceEleDisplay = mdSourceEle.style.display
     mdSourceEle.style.display = 'none'
