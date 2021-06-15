@@ -114,16 +114,24 @@ body.md-reader {
         display: none;
       }
     }
+    @media screen and (min-width: 1660px) {
+      &__body {
+        .md-reader__markdown-content {
+          max-width: 1200px;
+        }
+      }
+    }
   }
   &.page-theme--dark {
     .md-reader {
       &__btn {
         &--toggle {
           background: rgba(68, 68, 68, 0.4);
-          color: var(--color-text-secondary);
+          color: fade(#abb2bf, 70%);
           &:hover,
           &:active {
             background: rgba(68, 68, 68, 0.6);
+            color: #abb2bf;
           }
         }
       }
@@ -154,13 +162,14 @@ body.md-reader {
       width: 40px;
       height: 40px;
       padding: 10px;
-      background: rgba(247, 247, 247, 0.8);
+      background: rgba(241, 241, 241, 0.5);
       background-origin: content-box;
-      color: #6a737d56;
+      color: fade(#586069, 40%);
       backdrop-filter: blur(3px);
       &:hover,
       &:active {
-        background: rgba(243, 243, 243, 0.8);
+        background: rgba(241, 241, 241, 0.8);
+        color: fade(#586069, 60%);
       }
       svg {
         width: 100%;
