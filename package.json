@@ -1,6 +1,6 @@
 {
   "name": "md-reader",
-  "version": "2.0.7",
+  "version": "2.0.8",
   "description": "A markdown reader extension for chrome",
   "repository": {
     "type": "git",
