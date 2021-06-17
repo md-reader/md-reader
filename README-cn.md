@@ -23,7 +23,7 @@
 
 ### 在线安装（需要机智上网）
 
-可以在 [Chrome 扩展商店](https://chrome.google.com/webstore/detail/medapdbncneneejhbgcjceippjlfkmkg/publish-accepted) 直接安装。
+可以在 [Chrome 扩展商店](https://chrome.google.com/webstore/detail/md-reader/medapdbncneneejhbgcjceippjlfkmkg) 直接安装。
 
 ### 本地安装
 
