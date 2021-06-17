@@ -23,7 +23,7 @@ Example:
 
 ### Online
 
-Install in the [chrome extension store](https://chrome.google.com/webstore/detail/medapdbncneneejhbgcjceippjlfkmkg/publish-accepted).
+Install in the [chrome extension store](https://chrome.google.com/webstore/detail/md-reader/medapdbncneneejhbgcjceippjlfkmkg).
 
 ### Local
 
