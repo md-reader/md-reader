@@ -16,12 +16,12 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Build
-        run: npm i && npm run build
+        run: npm i && npm run build && ls
 
       - name: Release
         uses: release-drafter/release-drafter@v5
         with:
           config-name: template-config.yml
-          upload_url: ./*.zip
+          asset_path: ./*.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
