@@ -1,9 +1,6 @@
 name: CI
 
-on: 
-  push:
-    tags:
-      - 'v*.*.*'
+on: push
 
 jobs:
   build:
@@ -19,5 +16,6 @@ jobs:
         uses: softprops/action-gh-release@v0.1.5
         with:
           files: '*.zip'
+          tag_name: ${{ github.ref }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
