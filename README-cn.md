@@ -2,7 +2,7 @@
 
 <img src="./src/images/icon.png" align="right" width="120">
 
-[English](https://github.com/Heroor/md-reader) | 中文
+[English](./README.md) | 中文
 
 一个可以使 Chrome 预览 MarkDown 文件的浏览器扩展。
 
