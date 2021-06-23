@@ -9,7 +9,7 @@ on:
       - main
 
 jobs:
-  update_release_draft:
+  ci-build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -19,9 +19,18 @@ jobs:
         run: npm i && npm run build && ls
 
       - name: Release
-        uses: release-drafter/release-drafter@v5
-        with:
-          config-name: template-config.yml
-          asset_path: ./*.zip
+        uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          draft: false
+          prerelease: false
+      - name: Upload
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          asset_path: ./*.zip
+          asset_content_type: application/zip
