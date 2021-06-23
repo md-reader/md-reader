@@ -22,6 +22,6 @@ jobs:
         uses: release-drafter/release-drafter@v5
         with:
           config-name: template-config.yml
-          upload_url: '*.zip'
+          upload_url: ./*.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
