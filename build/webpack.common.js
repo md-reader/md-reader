@@ -60,7 +60,6 @@ module.exports = {
     }),
     new CopyWebpackPlugin(
       [
-        // { from: resolve(PROJECT_ROOT, 'template'), ignore: ['*.html'] },
         {
           from: resolve(__dirname, '../src/manifest.json'),
         },
