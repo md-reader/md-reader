@@ -1,4 +1,4 @@
-import App from './app.svelte'
+import App from './components/app.svelte'
 import './index.css'
 import '@smui/radio/bare.css'
 import '@smui/switch/bare.css'
