@@ -17,8 +17,6 @@
 
 ![banner2](./example/example-2.png)
 
-![banner3](./example/example-3.png)
-
 ## 安装 & 使用
 
 ### 在线安装（需要机智上网）

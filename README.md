@@ -17,8 +17,6 @@ Example:
 
 ![banner2](./example/example-2.png)
 
-![banner3](./example/example-3.png)
-
 ## Install & Usage
 
 ### Online
