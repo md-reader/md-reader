@@ -8,3 +8,5 @@ export default function i18n(lang = defaultLang) {
     return local[key] || localMap[defaultLang][key] || key
   }
 }
+
+i18n.localMap = localMap

@@ -9,7 +9,11 @@ import toggleIcon from './images/icon_toggle.svg'
 import './style/index.less'
 
 void (async () => {
-  const { enable = true, pageTheme = 'light' } = await storage.get()
+  const {
+    enable = true,
+    refresh = true,
+    pageTheme = 'light',
+  } = await storage.get()
 
   if (!enable || !CONTENT_TYPES.includes(document.contentType)) {
     return
@@ -114,4 +118,27 @@ void (async () => {
 
   // mount
   lifeCircle.mount([mdSide, mdBody, topBarEle])
+
+  if (refresh) {
+    let resource = ''
+    let timer = null
+
+    void (function watch() {
+      clearTimeout(timer)
+      chrome.runtime.sendMessage(
+        {
+          type: 'tryReload',
+          value: window.location.href,
+        },
+        (res) => {
+          if (!resource) {
+            resource = res
+          } else if (resource !== res) {
+            return window.location.reload()
+          }
+          timer = setTimeout(watch, 200)
+        },
+      )
+    })()
+  }
 })()

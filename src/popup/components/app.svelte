@@ -6,13 +6,12 @@
   import Switch from '@smui/switch'
   import FormField from '@smui/form-field'
   import i18n from '../i18n'
-  import local from '../i18n/local.json'
 
   let language = chrome.i18n.getUILanguage()
   let getLocal = i18n(language)
 
   const modes = ['light', 'dark']
-  const languages = Object.keys(local)
+  const languages = Object.keys(i18n.localMap)
   let isAllowViewFile = true
   let enable = true
   let refresh = true
@@ -29,10 +28,13 @@
     changeLang(language)
   })
 
-  function changeMode(type, mode) {
+  function changeMode(key, value) {
     chrome.runtime.sendMessage({
-      value: mode,
-      type,
+      value: {
+        key,
+        value,
+      },
+      type: 'storage',
     })
   }
   function changeLang(language) {
