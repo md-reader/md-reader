@@ -49,7 +49,7 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: ['.ts', '.js', '.svelte', '.json'],
+    extensions: ['.ts', '.js', '.svelte', '.json', '.less'],
   },
   plugins: [
     new FriendlyErrors(),
