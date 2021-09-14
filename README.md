@@ -48,7 +48,7 @@ Open `details` page of `md-reader` extension, open `allow access to file URLs` o
 
 All right!
 
-Visit this [https://raw.githubusercontent.com/Heroor/md-reader/main/example/example.md](https://raw.githubusercontent.com/Heroor/md-reader/main/example/example.md) to test if it works.
+Visit this [example.md](https://raw.githubusercontent.com/Heroor/md-reader/main/example/example.md) to test if it works.
 
 Or try dragging and dropping `*.md` file to the Chrome window!
 

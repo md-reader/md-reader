@@ -50,7 +50,7 @@
 
 这样就大功告成啦~！ヾ(◍°∇°◍)ﾉ
 
-打开这个在线文件试一下效果吧：[https://raw.githubusercontent.com/Heroor/md-reader/main/example/example.md](https://raw.githubusercontent.com/Heroor/md-reader/main/example/example.md)
+打开这个在线文件试一下效果吧：[example.md](https://raw.githubusercontent.com/Heroor/md-reader/main/example/example.md)
 
 或者直接将 `*.md` 文件 **拖进浏览器** 试试！
 
