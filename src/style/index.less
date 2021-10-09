@@ -1,13 +1,17 @@
 @import url('./variable.less');
 
 .head-padding (@l) {
-  padding-left: 0.5em * (@l - 1);
+  padding-left: 0.618em * (@l - 1);
 }
 
 body.md-reader {
   margin: 0;
   padding: 0;
   background: var(--color-bg);
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   * {
     box-sizing: border-box;
   }
@@ -18,17 +22,17 @@ body.md-reader {
       top: 0;
       bottom: 0;
       left: 0;
+      line-height: 1.4;
       font-size: 14px;
       width: 260px;
       padding: 20px 26px;
       border-right: 1px solid var(--color-side-border);
       margin: 0;
       list-style: none;
-      color: var(--color-text-secondary);
+      color: var(--color-text-primary);
       background: var(--color-side-bg);
       li {
         word-wrap: break-word;
-        margin-bottom: 8px;
         &.md-reader__side-li--active {
           a {
             font-weight: bolder;
@@ -36,36 +40,31 @@ body.md-reader {
           }
         }
         a {
+          display: block;
+          padding: 0.3em 0;
           text-decoration: none;
-          word-break: break-all;
-          color: currentColor;
+          color: inherit;
           &:hover {
             color: var(--color-primary);
           }
         }
         &.md-reader__side {
           &-h1 {
-            font-size: 14px;
             .head-padding(1);
           }
           &-h2 {
-            font-size: 14px;
             .head-padding(2);
           }
           &-h3 {
-            font-size: 13px;
             .head-padding(3);
           }
           &-h4 {
-            font-size: 12px;
             .head-padding(4);
           }
           &-h5 {
-            font-size: 12px;
             .head-padding(5);
           }
           &-h6 {
-            font-size: 12px;
             .head-padding(6);
           }
         }
@@ -78,7 +77,7 @@ body.md-reader {
         max-width: 900px;
         padding: 30px 50px 40px;
         margin: auto;
-        color: var(--color-text-secondary);
+        color: var(--color-text-primary);
 
         @import url('./theme/theme-juejin');
         h1,

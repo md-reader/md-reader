@@ -42,7 +42,7 @@ Install in the [chrome extension store](https://chrome.google.com/webstore/detai
 
 After installation, we must set local file access permissions before we can preview local files:
 
-Open `details` page of `md-reader` extension, open `allow access to file URLs` option.
+Open `details` page of `md-reader` extension, enabled `Allow access to file URLs`.
 
 <br/>
 
