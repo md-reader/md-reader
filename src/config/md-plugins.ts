@@ -8,6 +8,7 @@ export default [
   'Deflist',
   'Footnote',
   'TaskLists',
+  'TOC',
   'Warning',
   'Tips',
 ]

@@ -41,10 +41,12 @@ module.exports = {
             },
           },
         ],
+        exclude: /node_modules/,
       },
       {
         test: /\.svg$/,
         use: 'svg-loader',
+        exclude: /node_modules/,
       },
       {
         test: /\.woff|woff2$/,
@@ -52,6 +54,7 @@ module.exports = {
         options: {
           publicPath: '../',
         },
+        exclude: /node_modules/,
       },
     ],
   },

@@ -18,6 +18,7 @@
     "Deflist": "Definition",
     "Footnote": "Footnote",
     "TaskLists": "TaskList",
+    "TOC": "TOC",
     "Warning": "Warning",
     "Tips": "Tips"
   },
@@ -38,6 +39,7 @@
     "Deflist": "释义",
     "Footnote": "注解",
     "TaskLists": "复选框",
+    "TOC": "目录",
     "Warning": "警告",
     "Tips": "提示"
   }

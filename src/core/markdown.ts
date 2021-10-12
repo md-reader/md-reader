@@ -10,6 +10,8 @@ import mDeflist from 'markdown-it-deflist'
 import mFootnote from 'markdown-it-footnote'
 import mTaskLists from 'markdown-it-task-lists'
 import mContainer from 'markdown-it-container'
+import mToc from 'markdown-it-table-of-contents'
+import mMultimdTable from 'markdown-it-multimd-table'
 
 const PLUGINS = {
   Emoji: [mEmoji],
@@ -21,6 +23,7 @@ const PLUGINS = {
   Deflist: [mDeflist],
   Footnote: [mFootnote],
   TaskLists: [mTaskLists],
+  TOC: [mToc],
   Warning: [
     mContainer,
     'warning',
@@ -65,6 +68,8 @@ function initMd({ plugins = [] }) {
       return ''
     },
   })
+
+  md.use(mMultimdTable)
 
   plugins.forEach((name) => {
     const plugin = PLUGINS[name]
