@@ -1,18 +1,20 @@
 import storage from './core/storage'
 
-chrome.runtime.onMessage.addListener(
-  async ({ type, value }, _sender, callback) => {
-    switch (type) {
-      case 'storage':
-        storage.set({ [value.key]: value.value })
-        break
-      case 'tryReload':
-        const res: XMLHttpRequest = await fetch(value)
-        callback && callback(res.responseText)
-        break
-    }
-  },
-)
+chrome.runtime.onMessage.addListener(({ type, value }, _sender, callback) => {
+  switch (type) {
+    case 'storage':
+      storage.set({ [value.key]: value.value })
+      break
+    case 'tryReload':
+      fetch(value)
+        .then((res: XMLHttpRequest) => {
+          callback && callback(res.responseText)
+        })
+        .catch(console.error)
+      break
+  }
+  return true
+})
 
 function fetch(url, method = 'GET', params?): Promise<any> {
   return new Promise((resolve, reject) => {
