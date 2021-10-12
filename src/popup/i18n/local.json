@@ -4,17 +4,41 @@
     "label_auto-refresh": "Auto Refresh",
     "label_theme": "Theme",
     "label_language": "Language",
+    "label_md-plugins": "Plugins",
     "light": "light",
     "dark": "dark",
     "en-US": "English",
-    "zh-CN": "中文"
+    "zh-CN": "中文",
+    "Emoji": "Emoji",
+    "Sub": "Sub",
+    "Sup": "Sup",
+    "Ins": "Insert",
+    "Mark": "Mark",
+    "Abbr": "Abbreviation",
+    "Deflist": "Definition",
+    "Footnote": "Footnote",
+    "TaskLists": "TaskList",
+    "Warning": "Warning",
+    "Tips": "Tips"
   },
   "zh-CN": {
     "label_enable": "启用",
     "label_auto-refresh": "自动更新",
     "label_theme": "主题",
     "label_language": "语言",
+    "label_md-plugins": "插件",
     "light": "亮色",
-    "dark": "暗色"
+    "dark": "暗色",
+    "Emoji": "表情",
+    "Sub": "下标",
+    "Sup": "上标",
+    "Ins": "插入",
+    "Mark": "标记",
+    "Abbr": "缩写",
+    "Deflist": "释义",
+    "Footnote": "注解",
+    "TaskLists": "复选框",
+    "Warning": "警告",
+    "Tips": "提示"
   }
 }

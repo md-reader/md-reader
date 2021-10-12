@@ -4,59 +4,74 @@ import mEmoji from 'markdown-it-emoji'
 import mSub from 'markdown-it-sub'
 import mSup from 'markdown-it-sup'
 import mIns from 'markdown-it-ins'
-import mMark from 'markdown-it-mark'
-import mFootnote from 'markdown-it-footnote'
-import mDeflist from 'markdown-it-deflist'
 import mAbbr from 'markdown-it-abbr'
-import taskLists from 'markdown-it-task-lists'
-import container from 'markdown-it-container'
+import mMark from 'markdown-it-mark'
+import mDeflist from 'markdown-it-deflist'
+import mFootnote from 'markdown-it-footnote'
+import mTaskLists from 'markdown-it-task-lists'
+import mContainer from 'markdown-it-container'
 
-const md = markdownIt({
-  html: true,
-  breaks: true,
-  linkify: true,
-  xhtmlOut: true,
-  highlight(str: string, lang: string) {
-    if (lang && hljs.getLanguage(lang)) {
-      try {
-        return `<pre class="hljs-pre"><code class="hljs" lang="${lang}">${
-          hljs.highlight(lang, str, true).value
-        }</code></pre>`
-      } catch (err) {
-        console.error(err)
-        return 'parse error'
-      }
-    }
-    return ''
-  },
-})
+const PLUGINS = {
+  Emoji: [mEmoji],
+  Sub: [mSub],
+  Sup: [mSup],
+  Ins: [mIns],
+  Abbr: [mAbbr],
+  Mark: [mMark],
+  Deflist: [mDeflist],
+  Footnote: [mFootnote],
+  TaskLists: [mTaskLists],
+  Warning: [
+    mContainer,
+    'warning',
+    {
+      render(tokens, idx) {
+        return tokens[idx].nesting === 1
+          ? '<blockquote class="warning">\n'
+          : '</blockquote>\n'
+      },
+    },
+  ],
+  Tips: [
+    mContainer,
+    'tips',
+    {
+      render(tokens, idx) {
+        return tokens[idx].nesting === 1
+          ? '<blockquote class="tip">\n'
+          : '</blockquote>\n'
+      },
+    },
+  ],
+}
 
-md.use(mEmoji)
-  .use(mSub)
-  .use(mSup)
-  .use(mIns)
-  .use(mMark)
-  .use(mFootnote)
-  .use(mDeflist)
-  .use(mAbbr)
-  .use(taskLists)
-  .use(container, 'warning', {
-    render: function (tokens, idx) {
-      if (tokens[idx].nesting === 1) {
-        return '<blockquote class="warning">\n'
-      } else {
-        return '</blockquote>\n'
+function initMd({ plugins = [] }) {
+  const md = markdownIt({
+    html: true,
+    breaks: true,
+    linkify: true,
+    xhtmlOut: true,
+    highlight(str: string, language: string) {
+      if (language && hljs.getLanguage(language)) {
+        try {
+          return `<pre class="hljs-pre"><code class="hljs" lang="${language}">${
+            hljs.highlight(str, { language, ignoreIllegals: true }).value
+          }</code></pre>`
+        } catch (err) {
+          console.error(err)
+          return 'parse error'
+        }
       }
+      return ''
     },
   })
-  .use(container, 'tip', {
-    render: function (tokens, idx) {
-      if (tokens[idx].nesting === 1) {
-        return '<blockquote class="tip">\n'
-      } else {
-        return '</blockquote>\n'
-      }
-    },
+
+  plugins.forEach((name) => {
+    const plugin = PLUGINS[name]
+    plugin && md.use(plugin[0], ...plugin.slice(1))
   })
 
-export default md
+  return md
+}
+
+export default initMd

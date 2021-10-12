@@ -19,11 +19,13 @@ export default {
   init({ pageTheme }) {
     BODY.classList.add(`page-theme--${pageTheme}`)
     mdSourceEle = BODY.querySelector(SOURCE_SELECTOR)
-    mdSourceEleDisplay = mdSourceEle.style.display
-    mdSourceEle.style.display = 'none'
+    if (mdSourceEle) {
+      mdSourceEleDisplay = mdSourceEle.style.display
+      mdSourceEle.style.display = 'none'
 
-    headTags.forEach((el) => HEAD.appendChild(new Ele(el.tag, el.attrs).ele))
-    BODY.classList.add('md-reader')
+      headTags.forEach((el) => HEAD.appendChild(new Ele(el.tag, el.attrs).ele))
+      BODY.classList.add('md-reader')
+    }
 
     return mdSourceEle
   },

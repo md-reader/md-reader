@@ -1,6 +1,6 @@
 {
   "name": "md-reader",
-  "version": "2.0.12",
+  "version": "2.0.13",
   "description": "A markdown reader extension for chrome",
   "repository": {
     "type": "git",
@@ -27,13 +27,14 @@
   "devDependencies": {
     "@tsconfig/svelte": "^1.0.13",
     "@types/chrome": "0.0.106",
-    "@types/highlight.js": "^9.12.3",
+    "@types/highlight.js": "^9.12.4",
     "@types/markdown-it": "^10.0.1",
     "@types/node": "^13.13.51",
     "archiver": "^5.3.0",
     "clean-webpack-plugin": "^3.0.0",
     "copy-webpack-plugin": "^5.1.1",
     "css-loader": "^3.5.3",
+    "file-loader": "^6.2.0",
     "friendly-errors-webpack-plugin": "^1.7.0",
     "less": "^3.11.1",
     "less-loader": "^6.0.0",
@@ -51,6 +52,7 @@
   },
   "dependencies": {
     "@smui/button": "^4.2.0",
+    "@smui/chips": "^4.2.0",
     "@smui/form-field": "^4.2.0",
     "@smui/radio": "^4.2.0",
     "@smui/switch": "^4.2.0",

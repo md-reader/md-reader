@@ -46,6 +46,13 @@ module.exports = {
         test: /\.svg$/,
         use: 'svg-loader',
       },
+      {
+        test: /\.woff|woff2$/,
+        loader: 'file-loader',
+        options: {
+          publicPath: '../',
+        },
+      },
     ],
   },
   resolve: {

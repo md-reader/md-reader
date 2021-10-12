@@ -1,11 +1,12 @@
 import throttle from 'lodash.throttle'
 import Ele from './core/ele'
-import md from './core/markdown'
+import initMd from './core/markdown'
 import storage from './core/storage'
 import lifeCircle from './core/life-circle'
 import { getHeads, CONTENT_TYPES } from './shared/index'
 import className from './config/class-name'
 import toggleIcon from './images/icon_toggle.svg'
+import MD_PLUGINS from './config/md-plugins'
 import './style/index.less'
 
 void (async () => {
@@ -13,6 +14,7 @@ void (async () => {
     enable = true,
     refresh = true,
     pageTheme = 'light',
+    mdPlugins = [...MD_PLUGINS],
   } = await storage.get()
 
   if (!enable || !CONTENT_TYPES.includes(document.contentType)) {
@@ -23,9 +25,13 @@ void (async () => {
   const mdSourceEle = lifeCircle.init({
     pageTheme,
   })
-  const mdSource = mdSourceEle.textContent || 'No markdown here.'
+  let mdSource = ''
+  if (mdSourceEle) {
+    mdSource = mdSourceEle.textContent
+  }
 
   // parse source
+  const md = initMd({ plugins: mdPlugins })
   const mdHTML = md.render(mdSource)
 
   // render md body
@@ -119,8 +125,9 @@ void (async () => {
   // mount
   lifeCircle.mount([mdSide, mdBody, topBarEle])
 
+  // auto refresh
   if (refresh) {
-    let resource = ''
+    let resource = null
     let timer = null
 
     void (function watch() {
@@ -131,7 +138,7 @@ void (async () => {
           value: window.location.href,
         },
         (res) => {
-          if (!resource) {
+          if (resource === null) {
             resource = res
           } else if (resource !== res) {
             return window.location.reload()
