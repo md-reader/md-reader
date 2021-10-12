@@ -51,20 +51,23 @@ void (async () => {
   })
   const df = document.createDocumentFragment()
   const handleHeadItem = (eleList: HTMLElement[], headEle: HTMLElement) => {
-    const content = headEle.textContent
-    const enCodeContent = window.encodeURIComponent(content)
+    const content = String(headEle.textContent).trim()
 
-    headEle.setAttribute('id', content)
+    const encodeContent = window.encodeURIComponent(
+      content.toLowerCase().replace(/\s+/g, '-'),
+    )
+
+    headEle.setAttribute('id', encodeContent)
 
     const headAnchor = new Ele('a', {
       className: className.HEAD_ANCHOR,
-      href: `#${enCodeContent}`,
+      href: `#${encodeContent}`,
     })
     headAnchor.textContent = '#'
     headEle.insertBefore(headAnchor.ele, headEle.firstChild)
 
     const a = new Ele('a', {
-      href: `#${enCodeContent}`,
+      href: `#${encodeContent}`,
     })
     a.textContent = content
     const li = new Ele('li', {

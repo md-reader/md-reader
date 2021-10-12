@@ -53,6 +53,8 @@
     href={'https://chrome.google.com/webstore/detail/md-reader/medapdbncneneejhbgcjceippjlfkmkg'}
   />
 
+  {#if !isAllowViewFile} <Warning /> {/if}
+
   <div class="form-item inline">
     <span class="label-item">{local('label_enable')}:</span>
     <FormField align="end">
@@ -121,16 +123,16 @@
       </FormField>
     {/each}
   </div>
-
-  {#if !isAllowViewFile} <Warning /> {/if}
 </main>
 
 <style>
   main {
+    overflow: auto;
     width: 266px;
     padding: 20px 27px 12px;
     border: 1px solid #24315870;
     border-radius: 1px;
+    max-height: 520px;
   }
   .form-item {
     margin-bottom: 6px;

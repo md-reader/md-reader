@@ -12,15 +12,15 @@
 <style>
   .warning {
     font-size: 12px;
-    padding: 12px 16px 0;
+    padding: 12px 14px 8px;
     border: 1px solid #ff493c;
-    border-radius: 3px;
-    margin: 12px -10px 4px;
+    border-radius: 4px;
+    margin: -5px 0px 15px;
     background: #fff1f0;
     color: #ff493c;
   }
   .warning p {
-    margin: 0 0 12px;
+    margin: 0 0 6px;
     padding: 0;
   }
 </style>
