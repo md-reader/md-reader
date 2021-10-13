@@ -16,7 +16,7 @@ body {
   font-family: 'Material Icons';
   font-weight: normal;
   font-style: normal;
-  font-size: 24px;
+  font-size: 20px;
   line-height: 1;
   letter-spacing: normal;
   text-transform: none;
@@ -26,4 +26,9 @@ body {
   direction: ltr;
   -webkit-font-feature-settings: 'liga';
   -webkit-font-smoothing: antialiased;
+}
+
+.material-icons.mdc-chip__icon--leading-hidden {
+  margin-left: -4px;
+  margin-right: 4px;
 }

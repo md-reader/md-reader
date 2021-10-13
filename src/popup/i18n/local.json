@@ -24,7 +24,7 @@
   },
   "zh-CN": {
     "label_enable": "启用",
-    "label_auto-refresh": "自动更新",
+    "label_auto-refresh": "自动刷新",
     "label_theme": "主题",
     "label_language": "语言",
     "label_md-plugins": "插件",

@@ -80,11 +80,17 @@
 
   <div class="form-item">
     <div class="label-item">{local('label_md-plugins')}:</div>
-    <Set chips={MD_PLUGINS} let:chip bind:selected={selectedMdPlugins} filter>
+    <Set
+      let:chip
+      bind:selected={selectedMdPlugins}
+      chips={MD_PLUGINS}
+      nonInteractive={!enable}
+      filter={enable}
+    >
       <Chip
         {chip}
         title={chip}
-        on:click={() => changeMode('mdPlugins', selectedMdPlugins)}
+        on:click={() => enable && changeMode('mdPlugins', selectedMdPlugins)}
       >
         <LeadingIcon class="material-icons">block</LeadingIcon>
         <Text>{local(chip)}</Text>
