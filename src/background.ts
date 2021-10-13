@@ -4,6 +4,7 @@ chrome.runtime.onMessage.addListener(({ type, value }, _sender, callback) => {
   switch (type) {
     case 'storage':
       storage.set({ [value.key]: value.value })
+      updatePage(value.key, value.value)
       break
     case 'tryReload':
       fetch(value)
@@ -28,4 +29,25 @@ function fetch(url, method = 'GET', params?): Promise<any> {
     xml.open(method, url)
     xml.send(params)
   })
+}
+
+function updatePage(type: string, value: any) {
+  let action: string
+  switch (type) {
+    case 'mdPlugins':
+      action = 'reload'
+      break
+    case 'pageTheme':
+      action = 'updatePageTheme'
+      break
+    case 'refresh':
+      action = 'toggleRefresh'
+      break
+  }
+
+  action &&
+    chrome.tabs.query({}, (tabs) => {
+      const target = tabs.find((tab) => tab.active)
+      chrome.tabs.sendMessage(target.id, { type: action, value })
+    })
 }

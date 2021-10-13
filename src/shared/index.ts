@@ -40,3 +40,11 @@ export function getHeads(
 ): Array<HTMLElement> {
   return Array.from(getEle(container).querySelectorAll(selector))
 }
+
+export function setPageTheme(className: string) {
+  BODY.className =
+    BODY.className
+      .split(' ')
+      .filter((item) => !item.trim().startsWith('page-theme--'))
+      .join(' ') + ` page-theme--${className}`
+}

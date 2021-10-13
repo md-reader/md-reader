@@ -16,8 +16,7 @@ let mdSourceEle: HTMLElement = null
 let mdSourceEleDisplay: string = ''
 
 export default {
-  init({ pageTheme }) {
-    BODY.classList.add(`page-theme--${pageTheme}`)
+  init() {
     mdSourceEle = BODY.querySelector(SOURCE_SELECTOR)
     if (mdSourceEle) {
       mdSourceEleDisplay = mdSourceEle.style.display

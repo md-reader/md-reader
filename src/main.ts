@@ -3,10 +3,10 @@ import Ele from './core/ele'
 import initMd from './core/markdown'
 import storage from './core/storage'
 import lifeCircle from './core/life-circle'
-import { getHeads, CONTENT_TYPES } from './shared/index'
 import className from './config/class-name'
 import toggleIcon from './images/icon_toggle.svg'
 import MD_PLUGINS from './config/md-plugins'
+import { getHeads, CONTENT_TYPES, setPageTheme } from './shared'
 import './style/index.less'
 
 void (async () => {
@@ -17,14 +17,31 @@ void (async () => {
     mdPlugins = [...MD_PLUGINS],
   } = await storage.get()
 
+  chrome.runtime.onMessage.addListener(({ type, value }) => {
+    switch (type) {
+      case 'reload':
+        window.location.reload()
+        break
+      case 'updatePageTheme':
+        setPageTheme(value)
+        break
+      case 'toggleRefresh':
+        clearTimeout(pollingTimer)
+        value && polling()
+        break
+    }
+  })
+
   if (!enable || !CONTENT_TYPES.includes(document.contentType)) {
     return
   }
 
+  let pollingTimer = null
+  let resource = null
+
   // init
-  const mdSourceEle = lifeCircle.init({
-    pageTheme,
-  })
+  setPageTheme(pageTheme)
+  const mdSourceEle = lifeCircle.init()
   let mdSource = ''
   if (mdSourceEle) {
     mdSource = mdSourceEle.textContent
@@ -103,8 +120,8 @@ void (async () => {
       return hit
     })
   }
-  onScroll()
   document.addEventListener('scroll', throttle(onScroll, 200))
+  setTimeout(onScroll, 0)
 
   // render md toggle
   const topBarEle = new Ele('div', {
@@ -130,11 +147,12 @@ void (async () => {
 
   // auto refresh
   if (refresh) {
-    let resource = null
-    let timer = null
+    polling()
+  }
 
+  function polling() {
     void (function watch() {
-      clearTimeout(timer)
+      clearTimeout(pollingTimer)
       chrome.runtime.sendMessage(
         {
           type: 'tryReload',
@@ -146,7 +164,7 @@ void (async () => {
           } else if (resource !== res) {
             return window.location.reload()
           }
-          timer = setTimeout(watch, 200)
+          pollingTimer = setTimeout(watch, 200)
         },
       )
     })()
