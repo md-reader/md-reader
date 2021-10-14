@@ -16,7 +16,7 @@ let mdSourceEle: HTMLElement = null
 let mdSourceEleDisplay: string = ''
 
 export default {
-  init() {
+  getContainer() {
     mdSourceEle = BODY.querySelector(SOURCE_SELECTOR)
     if (mdSourceEle) {
       mdSourceEleDisplay = mdSourceEle.style.display

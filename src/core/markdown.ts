@@ -12,6 +12,7 @@ import mTaskLists from 'markdown-it-task-lists'
 import mContainer from 'markdown-it-container'
 import mToc from 'markdown-it-table-of-contents'
 import mMultimdTable from 'markdown-it-multimd-table'
+import MD_PLUGINS from '../config/md-plugins'
 
 const PLUGINS = {
   Emoji: [mEmoji],
@@ -48,7 +49,11 @@ const PLUGINS = {
   ],
 }
 
-function initMd({ plugins = [] }) {
+export interface MdPlugins {
+  plugins?: Array<string>
+}
+
+function initMd({ plugins = [...MD_PLUGINS] }: MdPlugins) {
   const md = markdownIt({
     html: true,
     breaks: true,
@@ -77,6 +82,17 @@ function initMd({ plugins = [] }) {
   })
 
   return md
+}
+
+interface MdRender {
+  (code: string, options?: MdPlugins): string
+  md?: markdownIt
+}
+export const mdRender: MdRender = (code, options): string => {
+  if (!mdRender.md || options) {
+    mdRender.md = initMd(options)
+  }
+  return mdRender.md.render(code)
 }
 
 export default initMd
