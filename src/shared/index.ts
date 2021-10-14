@@ -27,7 +27,9 @@ export function getAssetsURL(path: string) {
   return chrome.extension.getURL(path)
 }
 
-export function getEle(node: HTMLElement | Ele): HTMLElement {
+export function getEle(
+  node: HTMLElement | DocumentFragment | Ele,
+): HTMLElement | DocumentFragment {
   if (node instanceof Ele) {
     return node.ele
   }

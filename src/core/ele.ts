@@ -34,7 +34,7 @@ export default class Ele {
   hidden() {
     this.ele.style.display = 'none'
   }
-  appendChild(newChild: HTMLElement | Ele): Node {
+  appendChild(newChild: HTMLElement | DocumentFragment | Ele): Node {
     return this.ele.appendChild(getEle(newChild))
   }
   insertBefore(newChild: HTMLElement | Ele, refChild: HTMLElement | Ele): Node {

@@ -1,7 +1,7 @@
 import throttle from 'lodash.throttle'
 import Ele from './core/ele'
 import storage from './core/storage'
-import lifeCircle from './core/life-circle'
+import events from './core/events'
 import className from './config/class-name'
 import { mdRender } from './core/markdown'
 import { getHeads, CONTENT_TYPES, setPageTheme } from './shared'
@@ -14,13 +14,17 @@ storage
     chrome.runtime.onMessage.addListener(({ type, value }) => {
       switch (type) {
         case 'reload':
+          reloading = true
           if (mdSource) {
             contentRender(mdSource, {
               plugins: value,
             })
+            renderSide()
+            onScroll()
           } else {
             window.location.reload()
           }
+          reloading = false
           break
         case 'updatePageTheme':
           setPageTheme(value)
@@ -37,6 +41,7 @@ storage
     }
 
     let pollingTimer: number = null
+    let reloading: boolean = false
     let mdSource: string = null
 
     // init page
@@ -49,7 +54,7 @@ storage
     })
 
     // parse source
-    const mdSourceEle = lifeCircle.getContainer()
+    const mdSourceEle = events.getContainer()
     if (mdSourceEle) {
       mdSource = mdSourceEle.textContent
     }
@@ -67,9 +72,64 @@ storage
     const mdSide = new Ele('ul', {
       className: className.MD_SIDE,
     })
-    let headEleList: HTMLElement[] = getHeads(mdContent)
-    const df = document.createDocumentFragment()
-    const handleHeadItem = (eleList: HTMLElement[], headEle: HTMLElement) => {
+    let headEleList: HTMLElement[] = []
+    let sideLis: HTMLElement[] = []
+    let df: DocumentFragment = null
+    let targetIndex: number = null
+
+    renderSide()
+    setTimeout(onScroll, 0)
+    document.addEventListener('scroll', throttle(onScroll, 100))
+
+    // render md toggle button
+    const topBarEle = new Ele('div', {
+      className: className.TOP_BAR_ELE,
+    })
+    const toggleBtn = new Ele('button', {
+      className: className.TOGGLE_BTN,
+      title: 'Toggle',
+    })
+    toggleBtn.addEventListener('click', () => {
+      events.modeChange([mdBody, mdSide])
+    })
+
+    const attrs = Object.keys(toggleIcon.attributes)
+      .map((k) => `${k}="${toggleIcon.attributes[k]}"`)
+      .join(' ')
+
+    toggleBtn.innerHTML = `<svg ${attrs}>${toggleIcon.content}</svg>`
+    topBarEle.appendChild(toggleBtn)
+
+    // mount
+    events.mount([mdSide, mdBody, topBarEle])
+
+    // auto refresh
+    if (refresh) {
+      polling()
+    }
+
+    function polling() {
+      void (function watch() {
+        clearTimeout(pollingTimer)
+        chrome.runtime.sendMessage(
+          {
+            type: 'tryReload',
+            value: window.location.href,
+          },
+          (res) => {
+            if (mdSource === null) {
+              mdSource = res
+            } else if (mdSource !== res) {
+              mdSource = res
+              contentRender(res)
+            }
+            pollingTimer = setTimeout(watch, 200)
+          },
+        )
+      })()
+    }
+
+    function handleHeadItem(eleList: HTMLElement[], headEle: HTMLElement) {
       const content = String(headEle.textContent).trim()
 
       const encodeContent = window.encodeURIComponent(
@@ -98,22 +158,27 @@ storage
 
       return eleList
     }
-    const sideLis: HTMLElement[] = headEleList.reduce(handleHeadItem, [])
-    mdSide.ele.appendChild(df)
 
-    let targetIndex: number = null
-    const onScroll = () => {
-      headEleList.some((_, index: number) => {
+    function renderSide() {
+      headEleList = getHeads(mdContent)
+      df = document.createDocumentFragment()
+      sideLis = headEleList.reduce(handleHeadItem, [])
+      mdSide.innerHTML = null
+      mdSide.appendChild(df)
+    }
+
+    function onScroll() {
+      const documentScrollTop = document.documentElement.scrollTop
+      headEleList.some((_, index) => {
         let sectionHeight = -20
-        if (headEleList[index + 1]) {
-          sectionHeight += headEleList[index + 1].offsetTop
+        const item = headEleList[index + 1]
+        if (item) {
+          sectionHeight += item.offsetTop
         }
 
-        const hit =
-          sectionHeight <= 0 ||
-          sectionHeight > document.documentElement.scrollTop
+        const hit = sectionHeight <= 0 || sectionHeight > documentScrollTop
 
-        if (hit && targetIndex !== index) {
+        if (hit && (targetIndex !== index || reloading)) {
           sideLis[targetIndex] &&
             sideLis[targetIndex].classList.remove(className.MD_SIDE_ACTIVE)
           targetIndex = index
@@ -122,55 +187,5 @@ storage
         }
         return hit
       })
-    }
-    document.addEventListener('scroll', throttle(onScroll, 200))
-    setTimeout(onScroll, 0)
-
-    // render md toggle
-    const topBarEle = new Ele('div', {
-      className: className.TOP_BAR_ELE,
-    })
-    const toggleBtn = new Ele('button', {
-      className: className.TOGGLE_BTN,
-      title: 'Toggle',
-    })
-    toggleBtn.addEventListener('click', () => {
-      lifeCircle.modeChange([mdBody, mdSide])
-    })
-
-    const attrs = Object.keys(toggleIcon.attributes)
-      .map((k) => `${k}="${toggleIcon.attributes[k]}"`)
-      .join(' ')
-
-    toggleBtn.innerHTML = `<svg ${attrs}>${toggleIcon.content}</svg>`
-    topBarEle.appendChild(toggleBtn)
-
-    // mount
-    lifeCircle.mount([mdSide, mdBody, topBarEle])
-
-    // auto refresh
-    if (refresh) {
-      polling()
-    }
-
-    function polling() {
-      void (function watch() {
-        clearTimeout(pollingTimer)
-        chrome.runtime.sendMessage(
-          {
-            type: 'tryReload',
-            value: window.location.href,
-          },
-          (res) => {
-            if (mdSource === null) {
-              mdSource = res
-            } else if (mdSource !== res) {
-              mdSource = res
-              contentRender(res)
-            }
-            pollingTimer = setTimeout(watch, 200)
-          },
-        )
-      })()
     }
   })
