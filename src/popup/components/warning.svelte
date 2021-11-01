@@ -1,7 +1,6 @@
 <div class="warning">
   <p>
-    Open details page of "md-reader" extension, open "allow access to file URLs"
-    option.
+    Open the details page of extension "md-reader" and active "allow access to file URLs".
   </p>
   <p>
     请在 ”扩展程序“ -> “md-reader” -> “详细信息” 中开启 “允许访问文件网址”
