@@ -74,6 +74,10 @@ module.exports = {
           from: resolve(__dirname, '../src/manifest.json'),
         },
         {
+          from: resolve(__dirname, '../src/_locales'),
+          to: '_locales',
+        },
+        {
           from: resolve(__dirname, '../src/images'),
           to: 'images',
           ignore: ['*-crx.jpg', '*-crx.png'],
