@@ -9,10 +9,10 @@
   import Chip, { Set, Text, LeadingIcon } from '@smui/chips'
   import MD_PLUGINS from '../../config/md-plugins'
   import { homepage } from '../../../package.json'
-  import i18n from '../i18n'
+  import i18n, { DEFAULT_LANG } from '../i18n'
 
-  let language = chrome.i18n.getUILanguage()
-  let local = i18n(language)
+  let language
+  let local = i18n()
 
   const modes = ['light', 'dark']
   const languageList = Object.keys(i18n.localMap)
@@ -22,11 +22,6 @@
   let pageTheme = 'light'
   let selectedMdPlugins = []
 
-  $: {
-    changeMode('language', language)
-    changeLang(language)
-  }
-
   chrome.extension.isAllowedFileSchemeAccess((isAllow) => {
     isAllowViewFile = !!isAllow
   })
@@ -34,10 +29,16 @@
     enable = data.enable === undefined || data.enable
     refresh = data.refresh === undefined || data.refresh
     pageTheme = data.pageTheme || pageTheme
-    language = data.language || language
+    const lang = data.language || chrome.i18n.getUILanguage()
+    language = lang in i18n.localMap ? lang : DEFAULT_LANG
     selectedMdPlugins = data.mdPlugins || [...MD_PLUGINS]
     changeLang(language)
   })
+
+  $: if (language) {
+    changeMode('language', language)
+    changeLang(language)
+  }
 
   function changeMode(key, value) {
     setTimeout(() => {

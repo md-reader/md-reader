@@ -1,5 +1,7 @@
 {
-  "en-US": {
+  "en-GB": {},
+  "en-US": {},
+  "en": {
     "label_enable": "Enable",
     "label_auto-refresh": "Auto Refresh",
     "label_theme": "Theme",
@@ -8,7 +10,9 @@
     "light": "Light",
     "dark": "Dark",
     "auto": "Auto",
-    "en-US": "English",
+    "en": "English",
+    "en-GB": "English (UK)",
+    "en-US": "English (US)",
     "zh-CN": "中文",
     "ko": "한국어",
     "Emoji": "Emoji",
