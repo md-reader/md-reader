@@ -122,6 +122,8 @@ storage
             } else if (mdSource !== res) {
               mdSource = res
               contentRender(res)
+              renderSide()
+              onScroll()
             }
             pollingTimer = setTimeout(watch, 200)
           },
