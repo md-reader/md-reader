@@ -1,7 +1,7 @@
 <script lang="ts">
-  export let local = {}
-  const messageList = Object.keys(local)
-    .map((l) => local[l].warning_message)
+  export let locale = {}
+  const messageList = Object.keys(locale)
+    .map((l) => locale[l].warning_message)
     .filter(Boolean)
 </script>
 
