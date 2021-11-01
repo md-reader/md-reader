@@ -33,6 +33,6 @@ body {
   margin-right: 4px;
 }
 
-.mdc-form-field:last-child {
-  margin-right: 0 !important;
+.mdc-form-field:not(:last-child) {
+  margin-right: 14px;
 }

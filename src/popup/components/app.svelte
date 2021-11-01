@@ -7,6 +7,7 @@
   import FormField from '@smui/form-field'
   import Chip, { Set, Text, LeadingIcon } from '@smui/chips'
   import MD_PLUGINS from '../../config/md-plugins'
+  import { homepage } from '../../../package.json'
   import i18n from '../i18n'
 
   let language = chrome.i18n.getUILanguage()
@@ -49,11 +50,11 @@
 </script>
 
 <main>
-  <Header
-    href={'https://chrome.google.com/webstore/detail/md-reader/medapdbncneneejhbgcjceippjlfkmkg'}
-  />
+  <Header href={homepage} />
 
-  {#if !isAllowViewFile} <Warning /> {/if}
+  {#if !isAllowViewFile}
+    <Warning local={i18n.localMap} />
+  {/if}
 
   <div class="form-item inline">
     <span class="label-item">{local('label_enable')}:</span>
@@ -101,7 +102,7 @@
   <div class="form-item">
     <div class="label-item">{local('label_theme')}:</div>
     {#each modes as mode}
-      <FormField style="margin-right: 1em;">
+      <FormField>
         <span slot="label"> {local(mode)} </span>
         <Radio
           disabled={!enable}

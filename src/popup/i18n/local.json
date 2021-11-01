@@ -22,7 +22,8 @@
     "TaskLists": "TaskList",
     "TOC": "TOC",
     "Warning": "Warning",
-    "Tips": "Tips"
+    "Tips": "Tips",
+    "warning_message": "Open the details page of extension \"md-reader\" and active \"allow access to file URLs\"."
   },
   "zh-CN": {
     "label_enable": "启用",
@@ -44,7 +45,8 @@
     "TaskLists": "复选框",
     "TOC": "目录",
     "Warning": "警告",
-    "Tips": "提示"
+    "Tips": "提示",
+    "warning_message": "请在 “md-reader” 扩展程序的 “详情” 中开启 “允许访问文件网址” 权限。"
   },
   "ko": {
     "label_enable": "활성화",
@@ -66,6 +68,7 @@
     "TaskLists": "작업 목록",
     "TOC": "카테고리",
     "Warning": "경고",
-    "Tips": "제안"
+    "Tips": "제안",
+    "warning_message": "확장 프로그램 \"md-reader\" 의 세부 정보 페이지를 열고 \"파일 URL에 대한 액세스 허용\"을 활성화 하세요."
   }
 }

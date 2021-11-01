@@ -2,6 +2,7 @@
   "name": "md-reader",
   "version": "2.0.16",
   "description": "A markdown reader extension for chrome",
+  "homepage": "https://chrome.google.com/webstore/detail/md-reader/medapdbncneneejhbgcjceippjlfkmkg",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Heroor/md-reader.git"
@@ -23,7 +24,6 @@
   "bugs": {
     "url": "https://github.com/Heroor/md-reader/issues"
   },
-  "homepage": "https://github.com/Heroor/md-reader#readme",
   "devDependencies": {
     "@tsconfig/svelte": "^1.0.13",
     "@types/chrome": "0.0.106",

@@ -1,11 +1,12 @@
 import localMap from './local.json'
 
-const defaultLang = 'en-US'
+const DEFAULT_LANG = 'en-US'
 
-export default function i18n(lang = defaultLang) {
-  const local = localMap[lang] || localMap[defaultLang]
+export default function i18n(lang = DEFAULT_LANG) {
+  const defaultLocalMap = localMap[DEFAULT_LANG]
+  const local = localMap[lang] || defaultLocalMap
   return function getLocal(key) {
-    return local[key] || localMap[defaultLang][key] || key
+    return local[key] || defaultLocalMap[key] || key
   }
 }
 
