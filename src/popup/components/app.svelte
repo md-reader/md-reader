@@ -5,6 +5,7 @@
   import Radio from '@smui/radio'
   import Switch from '@smui/switch'
   import FormField from '@smui/form-field'
+  import Select, { Option } from '@smui/select'
   import Chip, { Set, Text, LeadingIcon } from '@smui/chips'
   import MD_PLUGINS from '../../config/md-plugins'
   import { homepage } from '../../../package.json'
@@ -14,12 +15,17 @@
   let local = i18n(language)
 
   const modes = ['light', 'dark']
-  const languages = Object.keys(i18n.localMap)
+  const languageList = Object.keys(i18n.localMap)
   let isAllowViewFile = true
   let enable = true
   let refresh = true
   let pageTheme = 'light'
   let selectedMdPlugins = []
+
+  $: {
+    changeMode('language', language)
+    changeLang(language)
+  }
 
   chrome.extension.isAllowedFileSchemeAccess((isAllow) => {
     isAllowViewFile = !!isAllow
@@ -116,26 +122,20 @@
 
   <div class="form-item">
     <div class="label-item">{local('label_language')}:</div>
-    {#each languages as lang}
-      <FormField style="margin-right: 1em;">
-        <span slot="label"> {local(lang)} </span>
-        <Radio
-          disabled={!enable}
-          bind:group={language}
-          bind:value={lang}
-          on:change={() => (
-            changeMode('language', language), changeLang(language)
-          )}
-        />
-      </FormField>
-    {/each}
+    <FormField style="padding-left: 10px">
+      <Select disabled={!enable} bind:value={language}>
+        {#each languageList as lang}
+          <Option value={lang}>{local(lang)}</Option>
+        {/each}
+      </Select>
+    </FormField>
   </div>
 </main>
 
 <style>
   main {
     overflow: auto;
-    width: 266px;
+    width: 270px;
     padding: 20px 27px 12px;
     border: 1px solid #24315870;
     border-radius: 1px;

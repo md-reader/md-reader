@@ -5,6 +5,7 @@ specifiers:
   '@smui/chips': ^4.2.0
   '@smui/form-field': ^4.2.0
   '@smui/radio': ^4.2.0
+  '@smui/select': ^4.2.0
   '@smui/switch': ^4.2.0
   '@tsconfig/svelte': ^1.0.13
   '@types/chrome': 0.0.106
@@ -54,6 +55,7 @@ dependencies:
   '@smui/chips': 4.2.0
   '@smui/form-field': 4.2.0
   '@smui/radio': 4.2.0
+  '@smui/select': 4.2.0
   '@smui/switch': 4.2.0
   highlight.js: 10.7.3
   lodash.debounce: 4.0.8
@@ -192,6 +194,19 @@ packages:
       tslib: 2.3.1
     dev: false
 
+  /@material/floating-label/11.0.0:
+    resolution: {integrity: sha1-VPjZok4jhcVDqx2c4w/5IqbQke4=, tarball: '@material/floating-label/download/@material/floating-label-11.0.0.tgz'}
+    dependencies:
+      '@material/animation': 11.0.0
+      '@material/base': 11.0.0
+      '@material/dom': 11.0.0
+      '@material/feature-targeting': 11.0.0
+      '@material/rtl': 11.0.0
+      '@material/theme': 11.0.0
+      '@material/typography': 11.0.0
+      tslib: 2.3.1
+    dev: false
+
   /@material/form-field/11.0.0:
     resolution: {integrity: sha1-eDnHhQKzhQPWMbCs0QdiO4zMALU=, tarball: '@material/form-field/download/@material/form-field-11.0.0.tgz'}
     dependencies:
@@ -201,6 +216,71 @@ packages:
       '@material/rtl': 11.0.0
       '@material/theme': 11.0.0
       '@material/typography': 11.0.0
+      tslib: 2.3.1
+    dev: false
+
+  /@material/line-ripple/11.0.0:
+    resolution: {integrity: sha1-sTVX5iCtbGpkIh1nXRjfc5CjLis=, tarball: '@material/line-ripple/download/@material/line-ripple-11.0.0.tgz'}
+    dependencies:
+      '@material/animation': 11.0.0
+      '@material/base': 11.0.0
+      '@material/feature-targeting': 11.0.0
+      '@material/theme': 11.0.0
+      tslib: 2.3.1
+    dev: false
+
+  /@material/list/11.0.0:
+    resolution: {integrity: sha1-pftxmZDg0klmtpfhJT6BHU9jp5c=, tarball: '@material/list/download/@material/list-11.0.0.tgz'}
+    dependencies:
+      '@material/base': 11.0.0
+      '@material/density': 11.0.0
+      '@material/dom': 11.0.0
+      '@material/feature-targeting': 11.0.0
+      '@material/ripple': 11.0.0
+      '@material/rtl': 11.0.0
+      '@material/shape': 11.0.0
+      '@material/theme': 11.0.0
+      '@material/typography': 11.0.0
+      tslib: 2.3.1
+    dev: false
+
+  /@material/menu-surface/11.0.0:
+    resolution: {integrity: sha1-Nv73QcM+rJjOmNh5ChzhetCH2qk=, tarball: '@material/menu-surface/download/@material/menu-surface-11.0.0.tgz'}
+    dependencies:
+      '@material/animation': 11.0.0
+      '@material/base': 11.0.0
+      '@material/elevation': 11.0.0
+      '@material/feature-targeting': 11.0.0
+      '@material/rtl': 11.0.0
+      '@material/shape': 11.0.0
+      '@material/theme': 11.0.0
+      tslib: 2.3.1
+    dev: false
+
+  /@material/menu/11.0.0:
+    resolution: {integrity: sha1-drUZ7b9O067oXNDVbuq/6jSb/zc=, tarball: '@material/menu/download/@material/menu-11.0.0.tgz'}
+    dependencies:
+      '@material/base': 11.0.0
+      '@material/dom': 11.0.0
+      '@material/elevation': 11.0.0
+      '@material/feature-targeting': 11.0.0
+      '@material/list': 11.0.0
+      '@material/menu-surface': 11.0.0
+      '@material/ripple': 11.0.0
+      '@material/rtl': 11.0.0
+      '@material/theme': 11.0.0
+      tslib: 2.3.1
+    dev: false
+
+  /@material/notched-outline/11.0.0:
+    resolution: {integrity: sha1-jqHCMgOkJH1o5liKPIC4hmWGDi0=, tarball: '@material/notched-outline/download/@material/notched-outline-11.0.0.tgz'}
+    dependencies:
+      '@material/base': 11.0.0
+      '@material/feature-targeting': 11.0.0
+      '@material/floating-label': 11.0.0
+      '@material/rtl': 11.0.0
+      '@material/shape': 11.0.0
+      '@material/theme': 11.0.0
       tslib: 2.3.1
     dev: false
 
@@ -233,6 +313,28 @@ packages:
     resolution: {integrity: sha1-aeD/VOcjmWcwkW5WsqEbUCdezRU=, tarball: '@material/rtl/download/@material/rtl-11.0.0.tgz'}
     dependencies:
       '@material/theme': 11.0.0
+      tslib: 2.3.1
+    dev: false
+
+  /@material/select/11.0.0:
+    resolution: {integrity: sha1-hbPPM6kahajpwjSfuPqYGknzZRk=, tarball: '@material/select/download/@material/select-11.0.0.tgz'}
+    dependencies:
+      '@material/animation': 11.0.0
+      '@material/base': 11.0.0
+      '@material/density': 11.0.0
+      '@material/dom': 11.0.0
+      '@material/feature-targeting': 11.0.0
+      '@material/floating-label': 11.0.0
+      '@material/line-ripple': 11.0.0
+      '@material/list': 11.0.0
+      '@material/menu': 11.0.0
+      '@material/menu-surface': 11.0.0
+      '@material/notched-outline': 11.0.0
+      '@material/ripple': 11.0.0
+      '@material/rtl': 11.0.0
+      '@material/shape': 11.0.0
+      '@material/theme': 11.0.0
+      '@material/typography': 11.0.0
       tslib: 2.3.1
     dev: false
 
@@ -312,12 +414,61 @@ packages:
       svelte: 3.44.0
     dev: false
 
+  /@smui/floating-label/4.2.0:
+    resolution: {integrity: sha1-COGNGfYZZ6ZhO+aOkAKGIpE++Xw=, tarball: '@smui/floating-label/download/@smui/floating-label-4.2.0.tgz'}
+    dependencies:
+      '@material/floating-label': 11.0.0
+      '@smui/common': 4.2.0
+    dev: false
+
   /@smui/form-field/4.2.0:
     resolution: {integrity: sha1-8AnfnxJjF06/wdsrLf6nRfmb6sY=, tarball: '@smui/form-field/download/@smui/form-field-4.2.0.tgz'}
     dependencies:
       '@material/feature-targeting': 11.0.0
       '@material/form-field': 11.0.0
       '@material/rtl': 11.0.0
+      '@smui/common': 4.2.0
+    dev: false
+
+  /@smui/line-ripple/4.2.0:
+    resolution: {integrity: sha1-UarBsWldh9IzHwCgzVYm4PSNvw8=, tarball: '@smui/line-ripple/download/@smui/line-ripple-4.2.0.tgz'}
+    dependencies:
+      '@material/line-ripple': 11.0.0
+      '@smui/common': 4.2.0
+    dev: false
+
+  /@smui/list/4.2.0:
+    resolution: {integrity: sha1-yDaNa3eY9AUxZmIS5bYFwk8oN7E=, tarball: '@smui/list/download/@smui/list-4.2.0.tgz'}
+    dependencies:
+      '@material/dom': 11.0.0
+      '@material/feature-targeting': 11.0.0
+      '@material/list': 11.0.0
+      '@smui/common': 4.2.0
+      '@smui/ripple': 4.2.0
+    dev: false
+
+  /@smui/menu-surface/4.2.0:
+    resolution: {integrity: sha1-upRBENRhmrqVY+gc2HM9nk5/ElY=, tarball: '@smui/menu-surface/download/@smui/menu-surface-4.2.0.tgz'}
+    dependencies:
+      '@material/animation': 11.0.0
+      '@material/menu-surface': 11.0.0
+      '@smui/common': 4.2.0
+    dev: false
+
+  /@smui/menu/4.2.0:
+    resolution: {integrity: sha1-WW/R6Nnp3lMY+kZRAyEYwTPV1no=, tarball: '@smui/menu/download/@smui/menu-4.2.0.tgz'}
+    dependencies:
+      '@material/dom': 11.0.0
+      '@material/menu': 11.0.0
+      '@smui/common': 4.2.0
+      '@smui/list': 4.2.0
+      '@smui/menu-surface': 4.2.0
+    dev: false
+
+  /@smui/notched-outline/4.2.0:
+    resolution: {integrity: sha1-Pl44KiQTX6ICDoDzy6Po3AQ0K+E=, tarball: '@smui/notched-outline/download/@smui/notched-outline-4.2.0.tgz'}
+    dependencies:
+      '@material/notched-outline': 11.0.0
       '@smui/common': 4.2.0
     dev: false
 
@@ -334,6 +485,24 @@ packages:
     dependencies:
       '@material/dom': 11.0.0
       '@material/ripple': 11.0.0
+    dev: false
+
+  /@smui/select/4.2.0:
+    resolution: {integrity: sha1-KVDsnycvdI3u+79oCGAAIceTAq4=, tarball: '@smui/select/download/@smui/select-4.2.0.tgz'}
+    dependencies:
+      '@material/feature-targeting': 11.0.0
+      '@material/ripple': 11.0.0
+      '@material/rtl': 11.0.0
+      '@material/select': 11.0.0
+      '@material/theme': 11.0.0
+      '@smui/common': 4.2.0
+      '@smui/floating-label': 4.2.0
+      '@smui/line-ripple': 4.2.0
+      '@smui/list': 4.2.0
+      '@smui/menu': 4.2.0
+      '@smui/menu-surface': 4.2.0
+      '@smui/notched-outline': 4.2.0
+      '@smui/ripple': 4.2.0
     dev: false
 
   /@smui/switch/4.2.0:
@@ -3610,7 +3779,7 @@ packages:
     dev: true
 
   /tslib/2.3.1:
-    resolution: {integrity: sha1-6KM1rdXOrlGqJh0ypJAVjvBC7wE=, tarball: tslib/download/tslib-2.3.1.tgz?cache=0&sync_timestamp=1632920830240&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Ftslib%2Fdownload%2Ftslib-2.3.1.tgz}
+    resolution: {integrity: sha1-6KM1rdXOrlGqJh0ypJAVjvBC7wE=, tarball: tslib/download/tslib-2.3.1.tgz}
     dev: false
 
   /tty-browserify/0.0.0:
