@@ -10,6 +10,7 @@
     "auto": "Auto",
     "en-US": "English",
     "zh-CN": "中文",
+    "ko": "한국어",
     "Emoji": "Emoji",
     "Sub": "Sub",
     "Sup": "Sup",
@@ -44,5 +45,27 @@
     "TOC": "目录",
     "Warning": "警告",
     "Tips": "提示"
+  },
+  "ko": {
+    "label_enable": "활성화",
+    "label_auto-refresh": "자동 새로고침",
+    "label_theme": "테마",
+    "label_language": "언어",
+    "label_md-plugins": "플러그인",
+    "light": "라이트",
+    "dark": "다크",
+    "auto": "자동",
+    "Emoji": "이모지",
+    "Sub": "아래 첨자",
+    "Sup": "위 참자",
+    "Ins": "삽입",
+    "Mark": "강조",
+    "Abbr": "약어",
+    "Deflist": "정의",
+    "Footnote": "각주",
+    "TaskLists": "작업 목록",
+    "TOC": "카테고리",
+    "Warning": "경고",
+    "Tips": "제안"
   }
 }
