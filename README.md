@@ -2,11 +2,11 @@
 
 <img src="./src/images/icon.png" align="right" width="120">
 
-English | [中文](./README-cn.md)
+English | [中文](./README-cn.md) | [한국어](./README-ko.md)
 
 A markdown reader extension for Chrome.
 
-Support view `file://`, `http://`, `https://` URL and `*.md`, `*.mkd`, `*.markdown` extension files.
+> Support view `file://`, `http://`, `https://` URL and `*.md`, `*.mkd`, `*.markdown` extension files.
 
 Example:
 
