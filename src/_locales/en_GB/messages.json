@@ -1,0 +1,10 @@
+{
+  "ext_name": {
+    "message": "MD Reader",
+    "description": "A markdown reader extension for Chrome."
+  },
+  "ext_desc": {
+    "message": "A markdown reader extension for Chrome.",
+    "description": "Support view file://, http://, https:// URL and *.md, *.mkd, *.markdown extension files."
+  }
+}
