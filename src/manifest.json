@@ -1,8 +1,10 @@
 {
-  "name": "MD Reader",
+  "name": "__MSG_ext_name__",
   "version": "2.0.16",
+  "author": "Bener",
   "manifest_version": 2,
-  "description": "A markdown reader extension for Chrome.",
+  "description": "__MSG_ext_desc__",
+  "default_locale": "en",
   "icons": {
     "16": "images/icon16.png",
     "32": "images/icon32.png",
