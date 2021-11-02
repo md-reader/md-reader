@@ -14,6 +14,10 @@ storage
     chrome.runtime.onMessage.addListener(({ type, value }) => {
       switch (type) {
         case 'reload':
+          enable = value;
+          window.location.reload();
+          break
+        case 'updateMdPlugins':
           reloading = true
           if (mdSource) {
             contentRender(mdSource, {
