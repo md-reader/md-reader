@@ -34,8 +34,11 @@ function fetch(url, method = 'GET', params?): Promise<any> {
 function updatePage(type: string, value: any) {
   let action: string
   switch (type) {
+    case 'enable':
+      action = "reload"
+      break
     case 'mdPlugins':
-      action = 'reload'
+      action = 'updateMdPlugins'
       break
     case 'pageTheme':
       action = 'updatePageTheme'
