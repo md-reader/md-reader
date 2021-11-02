@@ -46,8 +46,7 @@ function updatePage(type: string, value: any) {
   }
 
   action &&
-    chrome.tabs.query({}, (tabs) => {
-      const target = tabs.find((tab) => tab.active)
-      chrome.tabs.sendMessage(target.id, { type: action, value })
+    chrome.tabs.query({ currentWindow: true, active: true }, (tabs) => {
+      chrome.tabs.sendMessage(tabs[0].id, { type: action, value })
     })
 }
