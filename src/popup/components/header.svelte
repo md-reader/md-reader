@@ -1,5 +1,5 @@
 <script>
-  import logo from '../../images/icon48.png'
+  import logo from '../../images/icon128.png'
   export let href
 </script>
 
@@ -23,7 +23,7 @@
     align-items: center;
     justify-content: space-between;
     text-decoration: none;
-    color: #243158e3;
+    color: #35363a;
   }
   h1 a:hover {
     text-decoration: underline;

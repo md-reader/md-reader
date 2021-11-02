@@ -136,11 +136,12 @@
 <style>
   main {
     overflow: auto;
-    width: 270px;
-    padding: 20px 27px 12px;
+    box-sizing: border-box;
+    width: 330px;
+    max-height: 599px;
+    padding: 22px 25px 10px;
     border: 1px solid #24315870;
     border-radius: 1px;
-    max-height: 520px;
   }
   .form-item {
     margin-bottom: 6px;
