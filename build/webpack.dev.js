@@ -1,5 +1,6 @@
 const merge = require('webpack-merge')
 const commentConfig = require('./webpack.common.js')
+const { HotModuleReplacementPlugin } = require('webpack')
 const ExtensionReloader = require('webpack-extension-reloader')
 
 module.exports = merge(commentConfig, {
@@ -9,5 +10,5 @@ module.exports = merge(commentConfig, {
   watchOptions: {
     ignored: [/node_modules/, /extension/, /template/],
   },
-  plugins: [new ExtensionReloader()],
+  plugins: [new HotModuleReplacementPlugin(), new ExtensionReloader()],
 })

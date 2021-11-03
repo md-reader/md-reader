@@ -1,5 +1,4 @@
 const { resolve } = require('path')
-const { HotModuleReplacementPlugin } = require('webpack')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const miniCssExtractPlugin = require('mini-css-extract-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
@@ -64,7 +63,6 @@ module.exports = {
   plugins: [
     new FriendlyErrors(),
     new CleanWebpackPlugin(),
-    new HotModuleReplacementPlugin(),
     new miniCssExtractPlugin({
       filename: 'css/[name].css',
     }),
