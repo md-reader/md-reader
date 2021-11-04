@@ -1,5 +1,5 @@
 <script lang="ts">
-  export let localize// : (field: string) => string 
+  export let localize: (field: string) => string
 </script>
 
 <div class="warning">
