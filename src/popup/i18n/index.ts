@@ -1,13 +1,15 @@
 import localeJson from './locale.json'
 
-/** Unmatched languages (in locale.json file) will default to the 'en'.*/
-const DEFAULT_LOCALE: string = 'en';
+/* Unmatched languages (in locale.json file) default use the 'en'. */
+const DEFAULT_LOCALE: string = 'en'
 
-export default function i18n(locale: string = DEFAULT_LOCALE): (field: string)=>string {
-  const defaultLocalizeMap :Object = localeJson[DEFAULT_LOCALE]
-  const localizeMap        :Object = localeJson[locale] || defaultLocalizeMap
+export default function i18n(
+  locale: string = DEFAULT_LOCALE,
+): (field: string) => string {
+  const defaultLocalizeMap: Object = localeJson[DEFAULT_LOCALE]
+  const localizeMap: Object = localeJson[locale] || defaultLocalizeMap
   return function localize(field: string): string {
-    // Also include fields
+    // Also includes fields
     return localizeMap[field] || defaultLocalizeMap[field] || field
   }
 }
