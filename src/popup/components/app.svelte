@@ -60,7 +60,7 @@
   <Header href={homepage} />
 
   {#if !isAllowViewFile}
-    <Warning localize={localize} />
+    <Warning {localize} />
   {/if}
 
   <div class="form-item inline">
