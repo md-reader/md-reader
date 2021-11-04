@@ -1,14 +1,9 @@
 <script lang="ts">
-  export let locale = {}
-  const messageList = Object.keys(locale)
-    .map((l) => locale[l].warning_message)
-    .filter(Boolean)
+  export let localize// : (field: string) => string 
 </script>
 
 <div class="warning">
-  {#each messageList as msg}
-    <p>{msg}</p>
-  {/each}
+  <p>{localize('warning_message')}</p>
 </div>
 
 <style>
