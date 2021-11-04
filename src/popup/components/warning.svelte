@@ -9,7 +9,7 @@
 <style>
   .warning {
     font-size: 12px;
-    padding: 12px 14px 8px;
+    padding: 10px 12px;
     border: 1px solid currentColor;
     border-radius: 4px;
     margin: -5px 0px 15px;
@@ -17,7 +17,6 @@
     color: #ff493c;
   }
   .warning p {
-    margin: 0 0 6px;
-    padding: 0;
+    margin: 0;
   }
 </style>
