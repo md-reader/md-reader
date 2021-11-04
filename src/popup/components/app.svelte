@@ -9,13 +9,13 @@
   import Chip, { Set, Text, LeadingIcon } from '@smui/chips'
   import MD_PLUGINS from '../../config/md-plugins'
   import { homepage } from '../../../package.json'
-  import i18n, { DEFAULT_LANG } from '../i18n'
+  import i18n from '../i18n'
 
   let language
-  let locale = i18n()
+  let localize = i18n()
 
   const modes = ['light', 'dark']
-  const languageList = Object.keys(i18n.localeMap)
+  const languageList = Object.keys(i18n.localeJson)
   let isAllowViewFile = true
   let enable = true
   let refresh = true
@@ -30,7 +30,7 @@
     refresh = data.refresh === undefined || data.refresh
     pageTheme = data.pageTheme || pageTheme
     const lang = data.language || chrome.i18n.getUILanguage()
-    language = lang in i18n.localeMap ? lang : DEFAULT_LANG
+    language = lang in i18n.localeJson ? lang : i18n.DEFAULT_LOCALE
     selectedMdPlugins = data.mdPlugins || [...MD_PLUGINS]
     changeLang(language)
   })
@@ -52,7 +52,7 @@
     }, 0)
   }
   function changeLang(language) {
-    locale = i18n(language)
+    localize = i18n(language)
   }
 </script>
 
@@ -60,11 +60,11 @@
   <Header href={homepage} />
 
   {#if !isAllowViewFile}
-    <Warning locale={i18n.localeMap} />
+    <Warning locale={i18n.localeJson} />
   {/if}
 
   <div class="form-item inline">
-    <span class="label-item">{locale('label_enable')}:</span>
+    <span class="label-item">{localize('label_enable')}:</span>
     <FormField align="end">
       <Switch
         bind:checked={enable}
@@ -75,7 +75,7 @@
   </div>
 
   <div class="form-item inline">
-    <span class="label-item">{locale('label_auto-refresh')}:</span>
+    <span class="label-item">{localize('label_auto-refresh')}:</span>
     <FormField align="end">
       <Switch
         disabled={!enable}
@@ -87,7 +87,7 @@
   </div>
 
   <div class="form-item">
-    <div class="label-item">{locale('label_md-plugins')}:</div>
+    <div class="label-item">{localize('label_md-plugins')}:</div>
     <Set
       let:chip
       bind:selected={selectedMdPlugins}
@@ -101,16 +101,16 @@
         on:click={() => enable && changeMode('mdPlugins', selectedMdPlugins)}
       >
         <LeadingIcon class="material-icons">block</LeadingIcon>
-        <Text>{locale(chip)}</Text>
+        <Text>{localize(chip)}</Text>
       </Chip>
     </Set>
   </div>
 
   <div class="form-item">
-    <div class="label-item">{locale('label_theme')}:</div>
+    <div class="label-item">{localize('label_theme')}:</div>
     {#each modes as mode}
       <FormField>
-        <span slot="label"> {locale(mode)} </span>
+        <span slot="label"> {localize(mode)} </span>
         <Radio
           disabled={!enable}
           bind:group={pageTheme}
@@ -122,11 +122,11 @@
   </div>
 
   <div class="form-item">
-    <div class="label-item">{locale('label_language')}:</div>
+    <div class="label-item">{localize('label_language')}:</div>
     <FormField style="padding-left: 10px">
       <Select disabled={!enable} bind:value={language}>
         {#each languageList as lang}
-          <Option value={lang}>{locale(lang)}</Option>
+          <Option value={lang}>{localize(lang)}</Option>
         {/each}
       </Select>
     </FormField>
