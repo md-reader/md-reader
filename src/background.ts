@@ -24,7 +24,7 @@ function fetch(url: string, method: string = 'GET', params?): Promise<any> {
       if (req.readyState === req.DONE) {
         if (req.status === 200) {
           resolve(target)
-        }else if (req.status === 404) {
+        } else if (req.status === 404) {
           reject(new Error('404 Not Found'))
         }
       }
@@ -39,7 +39,7 @@ function updatePage(type: string, value: any) {
   let action: string
   switch (type) {
     case 'enable':
-      action = "reload"
+      action = 'reload'
       break
     case 'mdPlugins':
       action = 'updateMdPlugins'
