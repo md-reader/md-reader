@@ -42,7 +42,7 @@ function main(_data) {
     }
   })
 
-  if (data.enable || !CONTENT_TYPES.includes(document.contentType)) {
+  if (!data.enable || !CONTENT_TYPES.includes(document.contentType)) {
     return
   }
 
