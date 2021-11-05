@@ -1,20 +1,15 @@
 <script lang="ts">
-  export let locale = {}
-  const messageList = Object.keys(locale)
-    .map((l) => locale[l].warning_message)
-    .filter(Boolean)
+  export let localize: (field: string) => string
 </script>
 
 <div class="warning">
-  {#each messageList as msg}
-    <p>{msg}</p>
-  {/each}
+  <p>{localize('warning_message')}</p>
 </div>
 
 <style>
   .warning {
     font-size: 12px;
-    padding: 12px 14px 8px;
+    padding: 10px 12px;
     border: 1px solid currentColor;
     border-radius: 4px;
     margin: -5px 0px 15px;
@@ -22,7 +17,6 @@
     color: #ff493c;
   }
   .warning p {
-    margin: 0 0 6px;
-    padding: 0;
+    margin: 0;
   }
 </style>

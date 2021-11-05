@@ -17,17 +17,21 @@ chrome.runtime.onMessage.addListener(({ type, value }, _sender, callback) => {
   return true
 })
 
-function fetch(url, method = 'GET', params?): Promise<any> {
+function fetch(url: string, method: string = 'GET', params?): Promise<any> {
   return new Promise((resolve, reject) => {
-    const xml = new XMLHttpRequest()
-    xml.onreadystatechange = ({ target }) => {
-      if (xml.readyState === 4) {
-        resolve(target)
+    const req = new XMLHttpRequest()
+    req.onreadystatechange = ({ target }) => {
+      if (req.readyState === req.DONE) {
+        if (req.status === 200) {
+          resolve(target)
+        } else if (req.status === 404) {
+          reject(new Error('404 Not Found'))
+        }
       }
     }
-    xml.onerror = reject
-    xml.open(method, url)
-    xml.send(params)
+    req.onerror = reject
+    req.open(method, url)
+    req.send(params)
   })
 }
 
@@ -35,7 +39,7 @@ function updatePage(type: string, value: any) {
   let action: string
   switch (type) {
     case 'enable':
-      action = "reload"
+      action = 'reload'
       break
     case 'mdPlugins':
       action = 'updateMdPlugins'
@@ -50,6 +54,7 @@ function updatePage(type: string, value: any) {
 
   action &&
     chrome.tabs.query({ currentWindow: true, active: true }, (tabs) => {
-      chrome.tabs.sendMessage(tabs[0].id, { type: action, value })
+      tabs.length &&
+        chrome.tabs.sendMessage(tabs[0].id, { type: action, value })
     })
 }

@@ -3,6 +3,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const miniCssExtractPlugin = require('mini-css-extract-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const FriendlyErrors = require('friendly-errors-webpack-plugin')
+const SveltePreprocess = require('svelte-preprocess')
 
 module.exports = {
   entry: {
@@ -23,7 +24,12 @@ module.exports = {
       },
       {
         test: /\.svelte$/,
-        use: 'svelte-loader',
+        use: {
+          loader: 'svelte-loader',
+          options: {
+            preprocess: SveltePreprocess.typescript(),
+          }
+        },
       },
       {
         test: /\.(css|less)$/,
