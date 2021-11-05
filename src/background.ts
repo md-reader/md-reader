@@ -54,6 +54,7 @@ function updatePage(type: string, value: any) {
 
   action &&
     chrome.tabs.query({ currentWindow: true, active: true }, (tabs) => {
-      chrome.tabs.sendMessage(tabs[0].id, { type: action, value })
+      tabs.length &&
+        chrome.tabs.sendMessage(tabs[0].id, { type: action, value })
     })
 }
