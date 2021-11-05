@@ -35,3 +35,5 @@ const i18n: I18n = (
 i18n.localeJson = localeJson
 i18n.locales = Object.keys(i18n.localeJson)
 i18n.DEFAULT_LOCALE = DEFAULT_LOCALE
+
+export default i18n
