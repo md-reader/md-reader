@@ -8,9 +8,7 @@ chrome.runtime.onMessage.addListener(({ type, value }, _sender, callback) => {
       break
     case 'tryReload':
       fetch(value)
-        .then((res: XMLHttpRequest) => {
-          callback && callback(res.responseText)
-        })
+        .then((res: XMLHttpRequest) => callback && callback(res.responseText))
         .catch(console.error)
       break
   }

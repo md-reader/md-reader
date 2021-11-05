@@ -8,36 +8,29 @@
   import Select, { Option } from '@smui/select'
   import Chip, { Set, Text, LeadingIcon } from '@smui/chips'
   import MD_PLUGINS from '../../config/md-plugins'
+  import PAGE_THEMES from '../../config/page-themes'
+  import Data, { getDefaultData } from '../../core/data'
   import { homepage } from '../../../package.json'
   import i18n from '../i18n'
 
-  let language
   let localize = i18n()
 
-  const modes = ['light', 'dark']
-  const languageList = Object.keys(i18n.localeJson)
   let isAllowViewFile = true
-  let enable = true
-  let refresh = true
-  let pageTheme = 'light'
-  let selectedMdPlugins = []
+  let data = getDefaultData()
 
-  chrome.extension.isAllowedFileSchemeAccess((isAllow) => {
-    isAllowViewFile = !!isAllow
-  })
-  storage.get().then((data) => {
-    enable = data.enable === undefined || data.enable
-    refresh = data.refresh === undefined || data.refresh
-    pageTheme = data.pageTheme || pageTheme
-    const lang = data.language || chrome.i18n.getUILanguage()
-    language = lang in i18n.localeJson ? lang : i18n.DEFAULT_LOCALE
-    selectedMdPlugins = data.mdPlugins || [...MD_PLUGINS]
-    changeLang(language)
+  // Get if file allowed access
+  chrome.extension.isAllowedFileSchemeAccess(
+    (isAllow: boolean) => (isAllowViewFile = !!isAllow),
+  )
+
+  storage.get().then((_data: Data) => {
+    Object.assign(data, _data)
+    changeLocale(data.locale)
   })
 
-  $: if (language) {
-    changeMode('language', language)
-    changeLang(language)
+  $: if (data.locale) {
+    changeMode('locale', data.locale)
+    changeLocale(data.locale)
   }
 
   function changeMode(key, value) {
@@ -51,7 +44,8 @@
       })
     }, 0)
   }
-  function changeLang(language) {
+
+  function changeLocale(language) {
     localize = i18n(language)
   }
 </script>
@@ -67,9 +61,9 @@
     <span class="label-item">{localize('label_enable')}:</span>
     <FormField align="end">
       <Switch
-        bind:checked={enable}
+        bind:checked={data.enable}
         color="primary"
-        on:change={() => changeMode('enable', enable)}
+        on:change={() => changeMode('enable', data.enable)}
       />
     </FormField>
   </div>
@@ -78,10 +72,10 @@
     <span class="label-item">{localize('label_auto-refresh')}:</span>
     <FormField align="end">
       <Switch
-        disabled={!enable}
-        bind:checked={refresh}
+        disabled={!data.enable}
+        bind:checked={data.refresh}
         color="primary"
-        on:change={() => changeMode('refresh', refresh)}
+        on:change={() => changeMode('refresh', data.refresh)}
       />
     </FormField>
   </div>
@@ -90,15 +84,15 @@
     <div class="label-item">{localize('label_md-plugins')}:</div>
     <Set
       let:chip
-      bind:selected={selectedMdPlugins}
+      bind:selected={data.mdPlugins}
       chips={MD_PLUGINS}
-      nonInteractive={!enable}
-      filter={enable}
+      nonInteractive={!data.enable}
+      filter={data.enable}
     >
       <Chip
         {chip}
         title={chip}
-        on:click={() => enable && changeMode('mdPlugins', selectedMdPlugins)}
+        on:click={() => data.enable && changeMode('mdPlugins', data.mdPlugins)}
       >
         <LeadingIcon class="material-icons">block</LeadingIcon>
         <Text>{localize(chip)}</Text>
@@ -108,12 +102,12 @@
 
   <div class="form-item">
     <div class="label-item">{localize('label_theme')}:</div>
-    {#each modes as mode}
+    {#each PAGE_THEMES as mode}
       <FormField>
         <span slot="label"> {localize(mode)} </span>
         <Radio
-          disabled={!enable}
-          bind:group={pageTheme}
+          disabled={!data.enable}
+          bind:group={data.pageTheme}
           bind:value={mode}
           on:change={() => changeMode('pageTheme', mode)}
         />
@@ -124,9 +118,9 @@
   <div class="form-item">
     <div class="label-item">{localize('label_language')}:</div>
     <FormField style="padding-left: 10px">
-      <Select disabled={!enable} bind:value={language}>
-        {#each languageList as lang}
-          <Option value={lang}>{localize(lang)}</Option>
+      <Select disabled={!data.enable} bind:value={data.locale}>
+        {#each i18n.locales as locale}
+          <Option value={locale}>{localize(locale)}</Option>
         {/each}
       </Select>
     </FormField>
