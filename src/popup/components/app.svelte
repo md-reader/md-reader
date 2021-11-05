@@ -25,12 +25,12 @@
 
   storage.get().then((_data: Data) => {
     Object.assign(data, _data)
-    changeLocale(data.locale)
+    changeLocale(data.language)
   })
 
-  $: if (data.locale) {
-    changeMode('locale', data.locale)
-    changeLocale(data.locale)
+  $: if (data.language) {
+    changeMode('language', data.language)
+    changeLocale(data.language)
   }
 
   function changeMode(key, value) {
@@ -84,7 +84,7 @@
     <div class="label-item">{localize('label_md-plugins')}:</div>
     <Set
       let:chip
-      bind:selected={data.mdPlugins}
+      bind:selected={data.selectedMdPlugins}
       chips={MD_PLUGINS}
       nonInteractive={!data.enable}
       filter={data.enable}
@@ -92,7 +92,8 @@
       <Chip
         {chip}
         title={chip}
-        on:click={() => data.enable && changeMode('mdPlugins', data.mdPlugins)}
+        on:click={() =>
+          data.enable && changeMode('mdPlugins', data.selectedMdPlugins)}
       >
         <LeadingIcon class="material-icons">block</LeadingIcon>
         <Text>{localize(chip)}</Text>
@@ -118,7 +119,7 @@
   <div class="form-item">
     <div class="label-item">{localize('label_language')}:</div>
     <FormField style="padding-left: 10px">
-      <Select disabled={!data.enable} bind:value={data.locale}>
+      <Select disabled={!data.enable} bind:value={data.language}>
         {#each i18n.locales as locale}
           <Option value={locale}>{localize(locale)}</Option>
         {/each}
