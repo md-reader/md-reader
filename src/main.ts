@@ -124,15 +124,17 @@ function main({
           value: window.location.href,
         },
         (res) => {
-          if (mdSource === null) {
-            mdSource = res
-          } else if (mdSource !== res) {
-            mdSource = res
-            contentRender(res)
-            renderSide()
-            onScroll()
+          if (res !== undefined) {
+            if (mdSource === null) {
+              mdSource = res
+            } else if (mdSource !== res) {
+              mdSource = res
+              contentRender(res)
+              renderSide()
+              onScroll()
+            }
           }
-          pollingTimer = setTimeout(watch, 200)
+          pollingTimer = setTimeout(watch, 500)
         },
       )
     })()

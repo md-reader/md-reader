@@ -8,10 +8,11 @@ chrome.runtime.onMessage.addListener(({ type, value }, _sender, callback) => {
       break
     case 'tryReload':
       fetch(value)
-        .then((res: XMLHttpRequest) => {
-          callback && callback(res.responseText)
+        .then((res: XMLHttpRequest) => callback && callback(res.responseText))
+        .catch((err) => {
+          console.error(err)
+          callback()
         })
-        .catch(console.error)
       break
   }
   return true
@@ -19,19 +20,20 @@ chrome.runtime.onMessage.addListener(({ type, value }, _sender, callback) => {
 
 function fetch(url: string, method: string = 'GET', params?): Promise<any> {
   return new Promise((resolve, reject) => {
-    const req = new XMLHttpRequest()
-    req.onreadystatechange = ({ target }) => {
-      if (req.readyState === req.DONE) {
-        if (req.status === 200) {
+    const xhr = new XMLHttpRequest()
+    xhr.onreadystatechange = ({ target }) => {
+      const { readyState, status } = xhr
+      if (readyState === xhr.DONE) {
+        if (status === 0 || (status >= 200 && status < 400)) {
           resolve(target)
-        } else if (req.status === 404) {
-          reject(new Error('404 Not Found'))
+        } else {
+          reject(new Error('Request failed'))
         }
       }
     }
-    req.onerror = reject
-    req.open(method, url)
-    req.send(params)
+    xhr.onerror = reject
+    xhr.open(method, url)
+    xhr.send(params)
   })
 }
 
@@ -54,6 +56,7 @@ function updatePage(type: string, value: any) {
 
   action &&
     chrome.tabs.query({ currentWindow: true, active: true }, (tabs) => {
-      chrome.tabs.sendMessage(tabs[0].id, { type: action, value })
+      tabs.length &&
+        chrome.tabs.sendMessage(tabs[0].id, { type: action, value })
     })
 }
