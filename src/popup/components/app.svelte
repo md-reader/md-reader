@@ -24,7 +24,8 @@
   )
 
   storage.get().then((_data: Data) => {
-    Object.assign(data, _data)
+    // need an assignment to updata UI
+    data = { ...data, ..._data }
     changeLocale(data.language)
   })
 
