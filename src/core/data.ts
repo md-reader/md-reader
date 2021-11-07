@@ -5,19 +5,19 @@ import i18n from '../popup/i18n'
 interface Data {
   enable?: boolean
   refresh?: boolean
-  pageTheme?: typeof PAGE_THEMES[0]
   language?: string
-  selectedMdPlugins?: typeof MD_PLUGINS
+  mdPlugins?: typeof MD_PLUGINS
+  pageTheme?: typeof PAGE_THEMES[0]
 }
 
 export function getDefaultData(): Data {
   return {
     enable: true,
     refresh: true,
-    pageTheme: PAGE_THEMES[0],
     language: i18n().locale,
-    selectedMdPlugins: [...MD_PLUGINS],
-  } as Data
+    mdPlugins: [...MD_PLUGINS],
+    pageTheme: PAGE_THEMES[0],
+  }
 }
 
 export default Data
