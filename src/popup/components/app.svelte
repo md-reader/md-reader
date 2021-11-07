@@ -85,7 +85,7 @@
     <div class="label-item">{localize('label_md-plugins')}:</div>
     <Set
       let:chip
-      bind:selected={data.selectedMdPlugins}
+      bind:selected={data.mdPlugins}
       chips={MD_PLUGINS}
       nonInteractive={!data.enable}
       filter={data.enable}
@@ -94,7 +94,7 @@
         {chip}
         title={chip}
         on:click={() =>
-          data.enable && changeMode('mdPlugins', data.selectedMdPlugins)}
+          data.enable && changeMode('mdPlugins', data.mdPlugins)}
       >
         <LeadingIcon class="material-icons">block</LeadingIcon>
         <Text>{localize(chip)}</Text>
