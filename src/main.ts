@@ -70,7 +70,7 @@ function main(_data) {
 
   const contentRender = mdRenderer(mdContent)
   contentRender(mdSource, {
-    plugins: data.selectedMdPlugins,
+    plugins: data.mdPlugins,
   })
   mdBody.appendChild(mdContent)
 
