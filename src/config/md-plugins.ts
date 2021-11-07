@@ -11,4 +11,4 @@ export default [
   'TaskLists',
   'Warning',
   'Tips',
-]
+] as string[]

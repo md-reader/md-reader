@@ -7,17 +7,16 @@ import { mdRender } from './core/markdown'
 import { getHeads, CONTENT_TYPES, setPageTheme } from './shared'
 import toggleIcon from './images/icon_toggle.svg'
 import './style/index.less'
+import Data, { getDefaultData } from './core/data'
 
-function main({
-  enable = true,
-  refresh = true,
-  pageTheme = 'light',
-  mdPlugins,
-}) {
+function main(_data) {
+  let data: Data = getDefaultData()
+  Object.assign(data, _data)
+
   chrome.runtime.onMessage.addListener(({ type, value }) => {
     switch (type) {
       case 'reload':
-        enable = value
+        data.enable = value
         window.location.reload()
         break
       case 'updateMdPlugins':
@@ -43,7 +42,7 @@ function main({
     }
   })
 
-  if (!enable || !CONTENT_TYPES.includes(document.contentType)) {
+  if (!data.enable || !CONTENT_TYPES.includes(document.contentType)) {
     return
   }
 
@@ -52,7 +51,7 @@ function main({
   let mdSource: string = null
 
   // init page
-  setPageTheme(pageTheme)
+  setPageTheme(data.pageTheme)
   const mdBody: Ele = new Ele('main', {
     className: className.MD_BODY,
   })
@@ -71,7 +70,7 @@ function main({
 
   const contentRender = mdRenderer(mdContent)
   contentRender(mdSource, {
-    plugins: mdPlugins,
+    plugins: data.mdPlugins,
   })
   mdBody.appendChild(mdContent)
 
@@ -111,7 +110,7 @@ function main({
   events.mount([mdSide, mdBody, topBarEle])
 
   // auto refresh
-  if (refresh) {
+  if (data.refresh) {
     polling()
   }
 

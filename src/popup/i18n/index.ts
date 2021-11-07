@@ -1,30 +1,35 @@
 import localeJson from './locale.json'
 
-/* Unmatched languages (in locale.json file) default use the 'en'. */
+/* Unmatched language (in locale.json file) default use the 'en'. */
 const DEFAULT_LOCALE: string = 'en'
+/* The language of your browser Settings. */
+const BROWSER_LOCALE: string = chrome.i18n.getUILanguage()
+const targetLocale =
+  BROWSER_LOCALE in localeJson ? BROWSER_LOCALE : DEFAULT_LOCALE
 
 interface Localize {
-  (field?: string): string
+  (field: string): string
+  locale: string
 }
 
 interface I18n {
-  (locale?: string): (field: string) => string
-  localeJson: Object
-  DEFAULT_LOCALE: string
+  (locale?: string): Localize
+  locales: string[]
 }
 
-const i18n: I18n = (
-  locale: string = DEFAULT_LOCALE,
-): ((field: string) => string) => {
-  const defaultLocalizeMap: Localize = localeJson[DEFAULT_LOCALE]
-  const localizeMap: Localize = localeJson[locale] || defaultLocalizeMap
-  return function localize(field: string): string {
+const i18n: I18n = (locale: string = targetLocale): Localize => {
+  const defaultLocalizeMap: Object = localeJson[DEFAULT_LOCALE]
+  const localizeMap: Object = localeJson[locale] || defaultLocalizeMap
+
+  const localize: Localize = (field: string): string => {
     /* Also includes fields (default 'en') */
     return localizeMap[field] || defaultLocalizeMap[field] || field
   }
+  localize.locale = locale
+
+  return localize
 }
 
-i18n.localeJson = localeJson
-i18n.DEFAULT_LOCALE = DEFAULT_LOCALE
+i18n.locales = Object.keys(localeJson)
 
 export default i18n

@@ -1,16 +1,18 @@
-class Storage {
+import type Data from './data'
+
+class Storage<T> {
   local: chrome.storage.LocalStorageArea
   constructor() {
     this.local = chrome.storage.local
   }
-  set(items: Object): Promise<any> {
-    return new Promise((resolve) =>
-      this.local.set(items, resolve.bind(null, items)),
-    )
+  set(data: T): Promise<T> {
+    return new Promise((resolve) => {
+      this.local.set(data, resolve.bind(null, data))
+    })
   }
-  get(items: string[] | string = null): Promise<any> {
-    return new Promise((resolve) => this.local.get(items, resolve))
+  get(keys: keyof T[] | keyof T = null): Promise<T> {
+    return new Promise((resolve) => this.local.get(keys, resolve))
   }
 }
 
-export default new Storage()
+export default new Storage<Data>()
