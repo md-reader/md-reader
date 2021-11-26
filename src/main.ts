@@ -189,11 +189,16 @@ function main(_data) {
       const hit = sectionHeight <= 0 || sectionHeight > documentScrollTop
 
       if (hit && (targetIndex !== index || reloading)) {
-        sideLis[targetIndex] &&
-          sideLis[targetIndex].classList.remove(className.MD_SIDE_ACTIVE)
-        targetIndex = index
-        sideLis[targetIndex] &&
-          sideLis[targetIndex].classList.add(className.MD_SIDE_ACTIVE)
+        let target = sideLis[targetIndex]
+        target && target.classList.remove(className.MD_SIDE_ACTIVE)
+
+        target = sideLis[(targetIndex = index)]
+        if (target) {
+          target.classList.add(className.MD_SIDE_ACTIVE)
+          if (target.scrollIntoView) {
+            target.scrollIntoView({ block: 'nearest' })
+          }
+        }
       }
       return hit
     })
