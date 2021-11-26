@@ -1,6 +1,6 @@
 const { resolve } = require('path')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-const miniCssExtractPlugin = require('mini-css-extract-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const FriendlyErrors = require('friendly-errors-webpack-plugin')
 const SveltePreprocess = require('svelte-preprocess')
@@ -28,12 +28,12 @@ module.exports = {
           loader: 'svelte-loader',
           options: {
             preprocess: SveltePreprocess.typescript(),
-          }
+          },
         },
       },
       {
         test: /\.(css|less)$/,
-        use: [miniCssExtractPlugin.loader, 'css-loader', 'less-loader'],
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'less-loader'],
       },
       {
         test: /\.(png|bmp|gif|jpg)$/,
@@ -69,11 +69,11 @@ module.exports = {
   plugins: [
     new FriendlyErrors(),
     new CleanWebpackPlugin(),
-    new miniCssExtractPlugin({
+    new MiniCssExtractPlugin({
       filename: 'css/[name].css',
     }),
-    new CopyWebpackPlugin(
-      [
+    new CopyWebpackPlugin({
+      patterns: [
         {
           from: resolve(__dirname, '../src/manifest.json'),
         },
@@ -84,16 +84,12 @@ module.exports = {
         {
           from: resolve(__dirname, '../src/images'),
           to: 'images',
-          ignore: ['*-crx.jpg', '*-crx.png'],
         },
         {
           from: resolve(__dirname, '../src/popup/index.html'),
           to: 'popup.html',
         },
       ],
-      {
-        copyUnmodified: true,
-      },
-    ),
+    }),
   ],
 }
