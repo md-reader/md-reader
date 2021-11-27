@@ -1,6 +1,6 @@
 {
   "name": "md-reader",
-  "version": "2.7.2",
+  "version": "2.7.3",
   "description": "A markdown reader extension for chrome",
   "homepage": "https://chrome.google.com/webstore/detail/md-reader/medapdbncneneejhbgcjceippjlfkmkg",
   "repository": {
