@@ -11,14 +11,9 @@
     "48": "images/icon48.png",
     "128": "images/icon128.png"
   },
-  "web_accessible_resources": [
-    "css/*",
-    "images/*"
-  ],
+  "web_accessible_resources": ["css/*", "images/*"],
   "background": {
-    "scripts": [
-      "js/background.js"
-    ]
+    "scripts": ["js/background.js"]
   },
   "browser_action": {
     "default_title": "md-reader",
@@ -26,12 +21,8 @@
   },
   "content_scripts": [
     {
-      "js": [
-        "js/content-script.js"
-      ],
-      "css": [
-        "css/content-script.css"
-      ],
+      "js": ["js/content-script.js"],
+      "css": ["css/content-script.css"],
       "matches": [
         "file://*/*.md",
         "file://*/*.mkd",
@@ -45,8 +36,5 @@
       ]
     }
   ],
-  "permissions": [
-    "storage",
-    "tabs"
-  ]
+  "permissions": ["storage", "tabs"]
 }

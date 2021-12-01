@@ -65,7 +65,7 @@ function main(_data) {
     mdSource = mdSourceEle.textContent
   }
 
-  const mdRenderer = (target) => (code, options?) =>
+  const mdRenderer = target => (code, options?) =>
     (target.innerHTML = mdRender(code, options))
 
   const contentRender = mdRenderer(mdContent)
@@ -100,7 +100,7 @@ function main(_data) {
   })
 
   const attrs = Object.keys(toggleIcon.attributes)
-    .map((k) => `${k}="${toggleIcon.attributes[k]}"`)
+    .map(k => `${k}="${toggleIcon.attributes[k]}"`)
     .join(' ')
 
   toggleBtn.innerHTML = `<svg ${attrs}>${toggleIcon.content}</svg>`
@@ -122,7 +122,7 @@ function main(_data) {
           type: 'tryReload',
           value: window.location.href,
         },
-        (res) => {
+        res => {
           if (res !== undefined) {
             if (mdSource === null) {
               mdSource = res

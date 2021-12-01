@@ -20,7 +20,7 @@ class Storage<T extends object> {
     }
   }
   protected setObjData(data: T): Promise<T> {
-    return new Promise((resolve) => {
+    return new Promise(resolve => {
       this.local.set(data, resolve.bind(null, data))
     })
   }
@@ -31,7 +31,7 @@ class Storage<T extends object> {
   get(keys: keyof T): Promise<T>
   get(keys: Array<keyof T>): Promise<T>
   get(keys = null) {
-    return new Promise((resolve) => this.local.get(keys, resolve))
+    return new Promise(resolve => this.local.get(keys, resolve))
   }
 }
 
