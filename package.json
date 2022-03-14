@@ -11,7 +11,8 @@
     "dev": "webpack --config ./build/webpack.dev.js",
     "build": "npm run build:dist && npm run build:zip",
     "build:dist": "webpack --config ./build/webpack.prod.js",
-    "build:zip": "node ./build/zip.js"
+    "build:zip": "node ./scripts/zip.mjs",
+    "preinstall": "node ./scripts/preinstall.mjs"
   },
   "keywords": [
     "md-reader",

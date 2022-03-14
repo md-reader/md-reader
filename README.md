@@ -4,43 +4,46 @@
 
 English | [中文](./README-cn.md) | [한국어](./README-ko.md)
 
+[![](https://badgen.net/chrome-web-store/v/medapdbncneneejhbgcjceippjlfkmkg?icon=chrome&color=607cd2)](https://chrome.google.com/webstore/detail/md-reader/medapdbncneneejhbgcjceippjlfkmkg) [![](https://badgen.net/chrome-web-store/stars/medapdbncneneejhbgcjceippjlfkmkg?icon=chrome&color=607cd2)](https://chrome.google.com/webstore/detail/md-reader/medapdbncneneejhbgcjceippjlfkmkg) [![](https://badgen.net/chrome-web-store/users/medapdbncneneejhbgcjceippjlfkmkg?icon=chrome&color=607cd2)](https://chrome.google.com/webstore/detail/md-reader/medapdbncneneejhbgcjceippjlfkmkg)
+
 A markdown reader extension for Chrome.
 
-> Support view `file://`, `http://`, `https://` URL and `*.md`, `*.mkd`, `*.markdown` extension files.
+> Support view `file://` `http://` `https://` URL and `*.md` `*.mkd` `*.markdown` extension files.
 
 Example:
 
 - `https://example.com/example.md`
-- `file://my-project/readme.markdown`
+- `file:///Users/my-project/readme.markdown`
 
 ![banner1](./example/example-1.png)
 
 ![banner2](./example/example-2.png)
 
-## Install & Usage
 
-### Online
+## Install
+
+### A. Online installation
 
 Install in the [chrome extension store](https://chrome.google.com/webstore/detail/md-reader/medapdbncneneejhbgcjceippjlfkmkg).
 
-### Local
+### B. Building installation
 
-1. Clone this repo and build:
+1. Clone `md-reader` repo and build:
 
     ```bash
     git clone https://github.com/Heroor/md-reader.git
     cd md-reader
-    npm install
-    npm run build
+    pnpm install
+    pnpm build
     ```
 
-2. Open `Chrome` -> `Menu` -> `More Tools` -> `Extensions`;
+2. After build, the `md-reader/dist` folder will generate a `md-reader-xxx.zip` extension package.
 
-3. Open `Developer mode`, click `Load unpacked` button, select folder `md-reader/extension`;
+3. On the Chrome extension management page and drag the extension into the browser.
 
-### Usage
+## Usage
 
-After installation, we must set local file access permissions before we can preview local files:
+After installation, you should set local file access permissions before preview local files:
 
 Open `details` page of `md-reader` extension, enabled `Allow access to file URLs`.
 
@@ -48,12 +51,22 @@ Open `details` page of `md-reader` extension, enabled `Allow access to file URLs
 
 All right!
 
-Visit this [example.md](https://raw.githubusercontent.com/Heroor/md-reader/main/example/example.md) to test if it works.
+Visit this [example.md](https://raw.githubusercontent.com/Heroor/md-reader/main/example/example.md) to test if it works, Or **drag** markdown file to the Chrome!
 
-Or try dragging and dropping `*.md` file to the Chrome window!
+## Develop
+
+```bash
+# Installation dependencies
+pnpm install
+
+# Develop project
+pnpm dev
+```
+
+On the Chrome extension management page, click "Load unpacked extension" and select `md-reader/extension` directory.
 
 ## License
 
 License [MIT](https://github.com/Heroor/md-reader/blob/master/LICENSE)
 
-© 2018-present [Bener](https://github.com/Heroor)
+© 2018-present, [Bener](https://github.com/Heroor)
