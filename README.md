@@ -24,16 +24,20 @@ Example:
 
 ### A. Online installation
 
-Install in the [chrome extension store](https://chrome.google.com/webstore/detail/md-reader/medapdbncneneejhbgcjceippjlfkmkg).
+Install from the [chrome extension store](https://chrome.google.com/webstore/detail/md-reader/medapdbncneneejhbgcjceippjlfkmkg).
 
 ### B. Building installation
 
 1. Clone `md-reader` repo and build:
 
     ```bash
-    git clone https://github.com/Heroor/md-reader.git
-    cd md-reader
+    # Clone repository
+    git clone https://github.com/Heroor/md-reader.git && cd md-reader
+
+    # Install dependencies
     pnpm install
+
+    # Build extension
     pnpm build
     ```
 
@@ -56,6 +60,9 @@ Visit this [example.md](https://raw.githubusercontent.com/Heroor/md-reader/main/
 ## Develop
 
 ```bash
+# Clone repository
+git clone https://github.com/Heroor/md-reader.git && cd md-reader
+
 # Installation dependencies
 pnpm install
 

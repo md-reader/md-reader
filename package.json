@@ -1,18 +1,16 @@
 {
   "name": "md-reader",
   "version": "2.7.3",
+  "author": "Bener",
+  "license": "MIT",
   "description": "A markdown reader extension for chrome",
   "homepage": "https://chrome.google.com/webstore/detail/md-reader/medapdbncneneejhbgcjceippjlfkmkg",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Heroor/md-reader.git"
   },
-  "scripts": {
-    "dev": "webpack --config ./build/webpack.dev.js",
-    "build": "npm run build:dist && npm run build:zip",
-    "build:dist": "webpack --config ./build/webpack.prod.js",
-    "build:zip": "node ./scripts/zip.mjs",
-    "preinstall": "node ./scripts/preinstall.mjs"
+  "bugs": {
+    "url": "https://github.com/Heroor/md-reader/issues"
   },
   "keywords": [
     "md-reader",
@@ -20,10 +18,12 @@
     "markdown reader",
     "chrome extension"
   ],
-  "author": "Bener",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/Heroor/md-reader/issues"
+  "scripts": {
+    "dev": "webpack --config ./build/webpack.dev.js",
+    "build": "npm run build:ext && npm run build:zip",
+    "build:ext": "webpack --config ./build/webpack.prod.js",
+    "build:zip": "node ./scripts/zip.mjs",
+    "preinstall": "node ./scripts/preinstall.mjs"
   },
   "devDependencies": {
     "@tsconfig/svelte": "^2.0.1",

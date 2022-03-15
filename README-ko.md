@@ -30,9 +30,13 @@
 1. 이 저장소를 Clone한 후 빌드하세요:
 
     ```bash
-    git clone https://github.com/Heroor/md-reader.git
-    cd md-reader
+    # Clone repository
+    git clone https://github.com/Heroor/md-reader.git && cd md-reader
+
+    # Install dependencies
     pnpm install
+
+    # Building extension zip
     pnpm build
     ```
 
@@ -55,6 +59,9 @@
 ## 개발하다
 
 ```bash
+# Clone repository
+git clone https://github.com/Heroor/md-reader.git && cd md-reader
+
 # 종속성 설치
 pnpm install
 
