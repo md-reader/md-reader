@@ -29,16 +29,16 @@
 
 1. 이 저장소를 Clone한 후 빌드하세요:
 
-    ```bash
-    # Clone repository
-    git clone https://github.com/Heroor/md-reader.git && cd md-reader
+   ```bash
+   # Clone repository
+   git clone https://github.com/Heroor/md-reader.git && cd md-reader
 
-    # Install dependencies
-    pnpm install
+   # Install dependencies
+   pnpm install
 
-    # Building extension zip
-    pnpm build
-    ```
+   # Building extension zip
+   pnpm build
+   ```
 
 2. 빌드가 성공하면 `md-reader/dist` 폴더가 `md-reader-xxx.zip` 확장 패키지를 생성합니다.
 
@@ -56,7 +56,7 @@
 
 [example.md](https://raw.githubusercontent.com/Heroor/md-reader/main/example/example.md) 페이지에서 잘 실행되는지 테스트 해보세요, 아니면 직접 markdown 파일을 Chrome창에 드래그 앤 드롭 해보세요!
 
-## 개발하다
+## 빌드
 
 ```bash
 # Clone repository
@@ -69,7 +69,7 @@ pnpm install
 pnpm dev
 ```
 
-Chrome 확장 프로그램 관리 페이지에서'압축이 풀린 확장 프로그램 불러오기'를 클릭한 후 `md-reader/extension` 디렉터리를 선택하면 된다.
+이후, Chrome 확장 프로그램 관리 페이지에서 '압축이 풀린 확장 프로그램 불러오기'를 클릭한 후 `md-reader/extension` 디렉터리를 선택하면 됩니다.
 
 ## 라이선스
 
