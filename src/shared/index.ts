@@ -14,7 +14,7 @@ export function createEle(tagName: string, attrs: any = {}): HTMLElement {
     typeof className === 'string' && (className = className.split(' '))
     addClassName(ele, className)
   }
-  Object.keys(restAttrs).forEach((attr) => ele.setAttribute(attr, attrs[attr]))
+  Object.keys(restAttrs).forEach(attr => ele.setAttribute(attr, attrs[attr]))
   return ele
 }
 
@@ -47,6 +47,6 @@ export function setPageTheme(className: string) {
   BODY.className =
     BODY.className
       .split(' ')
-      .filter((item) => !item.trim().startsWith('page-theme--'))
+      .filter(item => !item.trim().startsWith('page-theme--'))
       .join(' ') + ` page-theme--${className}`
 }

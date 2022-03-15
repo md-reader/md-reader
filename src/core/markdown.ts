@@ -76,7 +76,7 @@ function initMd({ plugins = [...MD_PLUGINS] }: MdPlugins) {
 
   md.use(mMultimdTable)
 
-  plugins.forEach((name) => {
+  plugins.forEach(name => {
     const plugin = PLUGINS[name]
     plugin && md.use(plugin[0], ...plugin.slice(1))
   })

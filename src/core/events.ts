@@ -22,20 +22,20 @@ export default {
       mdSourceEleDisplay = mdSourceEle.style.display
       mdSourceEle.style.display = 'none'
 
-      headTags.forEach((el) => HEAD.appendChild(new Ele(el.tag, el.attrs).ele))
+      headTags.forEach(el => HEAD.appendChild(new Ele(el.tag, el.attrs).ele))
       BODY.classList.add('md-reader')
     }
 
     return mdSourceEle
   },
   mount(nodes: Array<HTMLElement | Ele>) {
-    nodes.forEach((node) => BODY.appendChild(getEle(node)))
+    nodes.forEach(node => BODY.appendChild(getEle(node)))
   },
   modeChange(eles: Array<Ele>) {
     isShowMDSource = !isShowMDSource
 
     BODY.classList.toggle('md-reader')
-    eles.forEach((ele) => ele.toggle(isShowMDSource))
+    eles.forEach(ele => ele.toggle(isShowMDSource))
 
     mdSourceEle.style.display = isShowMDSource ? 'none' : mdSourceEleDisplay
   },

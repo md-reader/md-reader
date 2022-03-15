@@ -9,7 +9,7 @@ chrome.runtime.onMessage.addListener(({ type, value }, _sender, callback) => {
     case 'tryReload':
       fetch(value)
         .then((res: XMLHttpRequest) => callback && callback(res.responseText))
-        .catch((err) => {
+        .catch(err => {
           console.error(err)
           callback()
         })
@@ -55,7 +55,7 @@ function updatePage(type: string, value: any) {
   }
 
   action &&
-    chrome.tabs.query({ currentWindow: true, active: true }, (tabs) => {
+    chrome.tabs.query({ currentWindow: true, active: true }, tabs => {
       tabs.length &&
         chrome.tabs.sendMessage(tabs[0].id, { type: action, value })
     })
