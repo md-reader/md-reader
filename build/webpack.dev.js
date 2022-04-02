@@ -8,7 +8,7 @@ module.exports = merge(commentConfig, {
   devtool: 'inline-source-map',
   watch: true,
   watchOptions: {
-    ignored: [/node_modules/, /extension/, /template/],
+    ignored: [/node_modules/, /extension/, /example/, /dist/],
   },
   plugins: [new HotModuleReplacementPlugin(), new ExtensionReloader()],
 })
