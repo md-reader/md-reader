@@ -20,8 +20,9 @@
   ],
   "scripts": {
     "dev": "webpack --config ./build/webpack.dev.js",
-    "build": "npm run build:ext && npm run build:zip",
-    "build:ext": "webpack --config ./build/webpack.prod.js",
+    "build": "run-s build:*",
+    "build:manifest": "node ./scripts/manifest.mjs",
+    "build:extension": "webpack --config ./build/webpack.prod.js",
     "build:zip": "node ./scripts/zip.mjs",
     "preinstall": "node ./scripts/preinstall.mjs"
   },
@@ -39,6 +40,7 @@
     "less": "^3.13.1",
     "less-loader": "^7.3.0",
     "mini-css-extract-plugin": "^1.6.2",
+    "npm-run-all": "^4.1.5",
     "prettier": "^2.6.1",
     "svelte-loader": "^3.1.2",
     "svelte-preprocess": "^4.10.4",
