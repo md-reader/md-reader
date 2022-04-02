@@ -25,11 +25,11 @@ body.md-reader {
       line-height: 1.4;
       font-size: 14px;
       width: 260px;
-      padding: 20px 26px;
+      padding: 22px 26px;
       border-right: 1px solid var(--color-side-border);
       margin: 0;
       list-style: none;
-      color: var(--color-text-primary);
+      color: var(--color-side);
       background: var(--color-side-bg);
       li {
         word-wrap: break-word;
@@ -40,10 +40,16 @@ body.md-reader {
           }
         }
         a {
-          display: block;
+          overflow: hidden;
+          display: -webkit-box;
           padding: 0.3em 0;
+          word-break: break-all;
+          text-overflow: ellipsis;
           text-decoration: none;
+          transition: color 0.1s;
           color: inherit;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 2;
           &:hover {
             color: var(--color-primary);
           }
@@ -51,9 +57,17 @@ body.md-reader {
         &.md-reader__side {
           &-h1 {
             .head-padding(1);
+            a {
+              font-size: 1.02em;
+              font-weight: bolder;
+            }
           }
           &-h2 {
             .head-padding(2);
+            a {
+              font-size: 1.01em;
+              font-weight: bolder;
+            }
           }
           &-h3 {
             .head-padding(3);
@@ -161,6 +175,7 @@ body.md-reader {
       width: 40px;
       height: 40px;
       padding: 10px;
+      border: 1px solid var(--color-toggle-border);
       background: rgba(241, 241, 241, 0.5);
       background-origin: content-box;
       color: fade(#586069, 40%);

@@ -156,6 +156,7 @@ function main(_data) {
     headEle.insertBefore(headAnchor.ele, headEle.firstChild)
 
     const a = new Ele('a', {
+      title: content,
       href: `#${encodeContent}`,
     })
     a.textContent = content
