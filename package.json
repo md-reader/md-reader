@@ -76,7 +76,7 @@
     "markdown-it-sup": "^1.0.0",
     "markdown-it-table-of-contents": "^0.6.0",
     "markdown-it-task-lists": "^2.1.1",
-    "md-reader-theme-juejin": "^1.0.1",
+    "@md-reader/theme-juejin": "^1.0.2",
     "svelte": "^3.46.6"
   },
   "engines": {
