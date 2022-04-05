@@ -30,11 +30,11 @@
   })
 
   $: if (data.language) {
-    changeMode('language', data.language)
+    updateConfig('language', data.language)
     changeLocale(data.language)
   }
 
-  function changeMode(key, value) {
+  function updateConfig(key, value) {
     setTimeout(() => {
       chrome.runtime.sendMessage({
         value: {
@@ -64,7 +64,19 @@
       <Switch
         bind:checked={data.enable}
         color="primary"
-        on:change={() => changeMode('enable', data.enable)}
+        on:change={() => updateConfig('enable', data.enable)}
+      />
+    </FormField>
+  </div>
+
+  <div class="form-item inline">
+    <span class="label-item">{localize('label_centered')}:</span>
+    <FormField align="end">
+      <Switch
+        disabled={!data.enable}
+        bind:checked={data.centered}
+        color="primary"
+        on:change={() => updateConfig('centered', data.centered)}
       />
     </FormField>
   </div>
@@ -76,7 +88,7 @@
         disabled={!data.enable}
         bind:checked={data.refresh}
         color="primary"
-        on:change={() => changeMode('refresh', data.refresh)}
+        on:change={() => updateConfig('refresh', data.refresh)}
       />
     </FormField>
   </div>
@@ -94,7 +106,7 @@
         {chip}
         title={chip}
         on:click={() =>
-          data.enable && changeMode('mdPlugins', data.mdPlugins)}
+          data.enable && updateConfig('mdPlugins', data.mdPlugins)}
       >
         <LeadingIcon class="material-icons">block</LeadingIcon>
         <Text>{localize(chip)}</Text>
@@ -111,7 +123,7 @@
           disabled={!data.enable}
           bind:group={data.pageTheme}
           bind:value={mode}
-          on:change={() => changeMode('pageTheme', mode)}
+          on:change={() => updateConfig('pageTheme', mode)}
         />
       </FormField>
     {/each}

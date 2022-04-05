@@ -4,11 +4,14 @@ export default class Ele {
   ele: HTMLElement
   display: string
 
-  constructor(tagName: string, attrs) {
+  constructor(tagName: string, attrs: { [key: string]: string | string[] }) {
     this.ele = createEle(tagName, attrs)
     this.display = this.ele.style.display
   }
 
+  get classList(): DOMTokenList {
+    return this.ele.classList
+  }
   set innerHTML(content: string) {
     this.ele.innerHTML = content
   }

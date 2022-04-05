@@ -88,11 +88,12 @@ body.md-reader {
     &__body {
       padding-left: 260px;
       .md-reader__markdown-content {
-        max-width: 900px;
         padding: 30px 50px 40px;
         margin: auto;
         color: var(--color-text-primary);
-
+        &.centered {
+          max-width: 900px;
+        }
         @import url('./theme/theme-juejin');
         h1,
         h2,
@@ -129,8 +130,15 @@ body.md-reader {
     }
     @media screen and (min-width: 1660px) {
       &__body {
-        .md-reader__markdown-content {
+        .md-reader__markdown-content.centered {
           max-width: 1200px;
+        }
+      }
+    }
+    @media screen and (min-width: 2048px) {
+      &__body {
+        .md-reader__markdown-content.centered {
+          max-width: 1600px;
         }
       }
     }

@@ -1,6 +1,6 @@
 {
   "name": "md-reader",
-  "version": "2.7.5",
+  "version": "2.8.0",
   "author": "Bener",
   "license": "MIT",
   "description": "A markdown reader extension for chrome",
@@ -54,6 +54,7 @@
     "webpack-merge": "^4.2.2"
   },
   "dependencies": {
+    "@md-reader/theme-juejin": "^1.0.3",
     "@smui/button": "^4.2.0",
     "@smui/chips": "^4.2.0",
     "@smui/form-field": "^4.2.0",
@@ -76,7 +77,6 @@
     "markdown-it-sup": "^1.0.0",
     "markdown-it-table-of-contents": "^0.6.0",
     "markdown-it-task-lists": "^2.1.1",
-    "@md-reader/theme-juejin": "^1.0.2",
     "svelte": "^3.46.6"
   },
   "engines": {

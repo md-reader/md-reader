@@ -37,22 +37,16 @@ function fetch(url: string, method: string = 'GET', params?): Promise<any> {
   })
 }
 
+const actions = {
+  enable: 'reload',
+  refresh: 'toggleRefresh',
+  centered: 'toggleCentered',
+  mdPlugins: 'updateMdPlugins',
+  pageTheme: 'updatePageTheme',
+}
+
 function updatePage(type: string, value: any) {
-  let action: string
-  switch (type) {
-    case 'enable':
-      action = 'reload'
-      break
-    case 'mdPlugins':
-      action = 'updateMdPlugins'
-      break
-    case 'pageTheme':
-      action = 'updatePageTheme'
-      break
-    case 'refresh':
-      action = 'toggleRefresh'
-      break
-  }
+  const action = actions[type]
 
   action &&
     chrome.tabs.query({ currentWindow: true, active: true }, tabs => {

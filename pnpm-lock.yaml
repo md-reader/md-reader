@@ -1,7 +1,7 @@
 lockfileVersion: 5.3
 
 specifiers:
-  '@md-reader/theme-juejin': ^1.0.2
+  '@md-reader/theme-juejin': ^1.0.3
   '@smui/button': ^4.2.0
   '@smui/chips': ^4.2.0
   '@smui/form-field': ^4.2.0
@@ -52,7 +52,7 @@ specifiers:
   webpack-merge: ^4.2.2
 
 dependencies:
-  '@md-reader/theme-juejin': 1.0.2
+  '@md-reader/theme-juejin': 1.0.3
   '@smui/button': 4.2.0
   '@smui/chips': 4.2.0
   '@smui/form-field': 4.2.0
@@ -391,8 +391,8 @@ packages:
       tslib: 2.3.1
     dev: false
 
-  /@md-reader/theme-juejin/1.0.2:
-    resolution: {integrity: sha512-JTEjyMptCIukUJ1qyCThnj2i7unFXmbfHG8o3+oR5WsrHCDmAnQN7LqPvo8HS1UUfipXTz8TIl+iZJ34MwsZZw==}
+  /@md-reader/theme-juejin/1.0.3:
+    resolution: {integrity: sha512-S5r7wHD2bhQvQalF8xfqmeuxDXx1YarFV6vkNYEWH8quolm+L2d4a/jY0VWvr3XF+QdzmK6oKMkN2aEEYpuGAw==}
     dev: false
 
   /@nodelib/fs.scandir/2.1.5:

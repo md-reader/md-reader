@@ -39,6 +39,9 @@ function main(_data) {
         clearTimeout(pollingTimer)
         value && polling()
         break
+      case 'toggleCentered':
+        mdContent.classList.toggle('centered', value)
+        break
     }
   })
 
@@ -56,7 +59,7 @@ function main(_data) {
     className: className.MD_BODY,
   })
   const mdContent: Ele = new Ele('article', {
-    className: className.MD_CONTENT,
+    className: [className.MD_CONTENT, data.centered && 'centered'],
   })
 
   // parse source

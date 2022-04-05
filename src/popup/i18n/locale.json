@@ -4,6 +4,7 @@
   "en": {
     "label_enable": "Enable",
     "label_auto-refresh": "Auto Refresh",
+    "label_centered": "Centered",
     "label_theme": "Theme",
     "label_language": "Language",
     "label_md-plugins": "Plugins",
@@ -32,6 +33,7 @@
   "zh-CN": {
     "label_enable": "启用",
     "label_auto-refresh": "自动刷新",
+    "label_centered": "内容居中",
     "label_theme": "主题",
     "label_language": "语言",
     "label_md-plugins": "插件",
@@ -55,6 +57,7 @@
   "ko": {
     "label_enable": "활성화",
     "label_auto-refresh": "자동 새로고침",
+    "label_centered": "중간에서",
     "label_theme": "테마",
     "label_language": "언어",
     "label_md-plugins": "플러그인",
