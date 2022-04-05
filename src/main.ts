@@ -1,13 +1,13 @@
 import throttle from 'lodash.throttle'
 import Ele from './core/ele'
-import storage from './core/storage'
 import events from './core/events'
+import storage from './core/storage'
 import className from './config/class-name'
-import { mdRender } from './core/markdown'
+import Data, { getDefaultData } from './core/data'
+import { MdPlugins, mdRender } from './core/markdown'
 import { getHeads, CONTENT_TYPES, setPageTheme } from './shared'
 import toggleIcon from './images/icon_toggle.svg'
 import './style/index.less'
-import Data, { getDefaultData } from './core/data'
 
 function main(_data) {
   let data: Data = getDefaultData()
@@ -65,7 +65,7 @@ function main(_data) {
     mdSource = mdSourceEle.textContent
   }
 
-  const mdRenderer = target => (code, options?) =>
+  const mdRenderer = target => (code: string, options?: MdPlugins) =>
     (target.innerHTML = mdRender(code, options))
 
   const contentRender = mdRenderer(mdContent)

@@ -59,6 +59,7 @@ function initMd({ plugins = [...MD_PLUGINS] }: MdPlugins) {
     breaks: true,
     linkify: true,
     xhtmlOut: true,
+    typographer: true,
     highlight(str: string, language: string) {
       if (language && hljs.getLanguage(language)) {
         try {
