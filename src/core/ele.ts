@@ -1,4 +1,4 @@
-import { createEle, getEle } from '../shared'
+import { createEle } from '../shared'
 
 export default class Ele {
   ele: HTMLElement
@@ -55,4 +55,13 @@ export default class Ele {
   ) {
     this.ele.removeEventListener(eventType, listener)
   }
+}
+
+export function getEle(
+  node: HTMLElement | DocumentFragment | Ele,
+): HTMLElement | DocumentFragment {
+  if (node instanceof Ele) {
+    return node.ele
+  }
+  return node
 }

@@ -1,4 +1,4 @@
-import Ele from '../core/ele'
+import Ele, { getEle } from '../core/ele'
 
 export const HEAD = document.head
 export const BODY = document.body
@@ -9,7 +9,12 @@ export const CONTENT_TYPES = ['text/plain', 'text/markdown']
 export function createEle(tagName: string, attrs: any = {}): HTMLElement {
   let { className = [], ...restAttrs } = attrs
 
-  const ele = document.createElement(tagName)
+  let ele
+  if (tagName === 'svg') {
+    ele = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
+  } else {
+    ele = document.createElement(tagName)
+  }
   if (typeof className === 'string' || className instanceof Array) {
     typeof className === 'string' && (className = className.split(' '))
     addClassName(ele, className)
@@ -27,15 +32,6 @@ export function getAssetsURL(path: string) {
   return chrome.extension.getURL(path)
 }
 
-export function getEle(
-  node: HTMLElement | DocumentFragment | Ele,
-): HTMLElement | DocumentFragment {
-  if (node instanceof Ele) {
-    return node.ele
-  }
-  return node
-}
-
 export function getHeads(
   container: HTMLElement | Ele,
   selector: string = HEADERS,
@@ -49,4 +45,17 @@ export function setPageTheme(className: string) {
       .split(' ')
       .filter(item => !item.trim().startsWith('page-theme--'))
       .join(' ') + ` page-theme--${className}`
+}
+
+type Svg = {
+  attributes: { [attr: string]: string }
+  content: string
+}
+
+export function svg(options: Svg): Ele {
+  const svgEle = new Ele('svg', {
+    ...options.attributes,
+  })
+  svgEle.innerHTML = options.content
+  return svgEle
 }

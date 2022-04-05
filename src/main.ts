@@ -5,8 +5,9 @@ import storage from './core/storage'
 import className from './config/class-name'
 import Data, { getDefaultData } from './core/data'
 import { MdPlugins, mdRender } from './core/markdown'
-import { getHeads, CONTENT_TYPES, setPageTheme } from './shared'
-import toggleIcon from './images/icon_toggle.svg'
+import { getHeads, CONTENT_TYPES, setPageTheme, svg } from './shared'
+import eyeIcon from './images/icon_eye.svg'
+
 import './style/index.less'
 
 function main(_data) {
@@ -91,7 +92,7 @@ function main(_data) {
   document.addEventListener('scroll', throttle(onScroll, 100))
 
   // render md toggle button
-  const topBarEle = new Ele('div', {
+  const topBar = new Ele('div', {
     className: className.TOP_BAR_ELE,
   })
   const toggleBtn = new Ele('button', {
@@ -101,16 +102,11 @@ function main(_data) {
   toggleBtn.addEventListener('click', () => {
     events.modeChange([mdBody, mdSide])
   })
-
-  const attrs = Object.keys(toggleIcon.attributes)
-    .map(k => `${k}="${toggleIcon.attributes[k]}"`)
-    .join(' ')
-
-  toggleBtn.innerHTML = `<svg ${attrs}>${toggleIcon.content}</svg>`
-  topBarEle.appendChild(toggleBtn)
+  toggleBtn.appendChild(svg(eyeIcon))
+  topBar.appendChild(toggleBtn)
 
   // mount
-  events.mount([mdSide, mdBody, topBarEle])
+  events.mount([mdSide, mdBody, topBar])
 
   // auto refresh
   if (data.refresh) {

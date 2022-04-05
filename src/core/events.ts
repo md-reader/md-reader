@@ -1,5 +1,5 @@
-import Ele from './ele'
-import { BODY, HEAD, getAssetsURL, getEle, SOURCE_SELECTOR } from '../shared'
+import Ele, { getEle } from './ele'
+import { BODY, HEAD, getAssetsURL, SOURCE_SELECTOR } from '../shared'
 
 const headTags = [
   {

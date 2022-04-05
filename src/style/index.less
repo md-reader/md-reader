@@ -1,7 +1,16 @@
 @import url('./variable.less');
 
-.head-padding (@l) {
-  padding-left: 0.618em * (@l - 1);
+.head-indent (@l) {
+  padding-left: 0.618em * (@l - 1) + 1.6em;
+}
+
+.side--hide () {
+  &__side {
+    transform: translateX(-100%);
+  }
+  &__body {
+    padding-left: 0px;
+  }
 }
 
 body.md-reader {
@@ -25,12 +34,14 @@ body.md-reader {
       line-height: 1.4;
       font-size: 14px;
       width: 260px;
-      padding: 22px 26px;
+      padding: 22px 0;
       border-right: 1px solid var(--color-side-border);
       margin: 0;
       list-style: none;
       color: var(--color-side);
       background: var(--color-side-bg);
+      transition: transform 0.3s;
+      z-index: 1;
       li {
         word-wrap: break-word;
         &.md-reader__side-li--active {
@@ -42,7 +53,7 @@ body.md-reader {
         a {
           overflow: hidden;
           display: -webkit-box;
-          padding: 0.3em 0;
+          padding: 0.3em 1.6em 0.3em 0;
           word-break: break-all;
           text-overflow: ellipsis;
           text-decoration: none;
@@ -55,31 +66,27 @@ body.md-reader {
           }
         }
         &.md-reader__side {
-          &-h1 {
-            .head-padding(1);
-            a {
-              font-size: 1.02em;
-              font-weight: bolder;
-            }
+          &-h1 a {
+            .head-indent(1);
+            font-size: 1.02em;
+            font-weight: bolder;
           }
-          &-h2 {
-            .head-padding(2);
-            a {
-              font-size: 1.01em;
-              font-weight: bolder;
-            }
+          &-h2 a {
+            .head-indent(2);
+            font-size: 1.01em;
+            font-weight: bolder;
           }
-          &-h3 {
-            .head-padding(3);
+          &-h3 a {
+            .head-indent(3);
           }
-          &-h4 {
-            .head-padding(4);
+          &-h4 a {
+            .head-indent(4);
           }
-          &-h5 {
-            .head-padding(5);
+          &-h5 a {
+            .head-indent(5);
           }
-          &-h6 {
-            .head-padding(6);
+          &-h6 a {
+            .head-indent(6);
           }
         }
       }
@@ -87,10 +94,12 @@ body.md-reader {
 
     &__body {
       padding-left: 260px;
+      transition: padding 0.3s;
       .md-reader__markdown-content {
         padding: 30px 50px 40px;
         margin: auto;
         color: var(--color-text-primary);
+        transition: max-width 0.1s;
         &.centered {
           max-width: 900px;
         }
@@ -121,12 +130,7 @@ body.md-reader {
     }
 
     @media screen and (max-width: 960px) {
-      &__body {
-        padding-left: 0px;
-      }
-      &__side {
-        display: none;
-      }
+      .side--hide();
     }
     @media screen and (min-width: 1660px) {
       &__body {
@@ -171,10 +175,11 @@ body.md-reader {
   &__btn {
     outline: none;
     font-size: 12px;
-    border-radius: 100%;
     border: none;
     cursor: pointer;
     transition: 0.1s;
+    padding: 0;
+    background: none;
     &:not(:last-child) {
       margin-right: 10px;
       margin-bottom: 10px;
@@ -184,6 +189,7 @@ body.md-reader {
       height: 40px;
       padding: 10px;
       border: 1px solid var(--color-toggle-border);
+      border-radius: 100%;
       background: rgba(241, 241, 241, 0.5);
       background-origin: content-box;
       color: fade(#586069, 40%);
