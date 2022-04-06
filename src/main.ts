@@ -6,8 +6,8 @@ import className from './config/class-name'
 import Data, { getDefaultData } from './core/data'
 import { MdPlugins, mdRender } from './core/markdown'
 import { getHeads, CONTENT_TYPES, setPageTheme, svg } from './shared'
-import eyeIcon from './images/icon_eye.svg'
-
+import codeIcon from './images/icon_code.svg'
+import sideIcon from './images/icon_side.svg'
 import './style/index.less'
 
 function main(_data) {
@@ -36,11 +36,11 @@ function main(_data) {
       case 'updatePageTheme':
         setPageTheme(value)
         break
-      case 'toggleRefresh':
+      case 'switchRefresh':
         clearTimeout(pollingTimer)
         value && polling()
         break
-      case 'toggleCentered':
+      case 'switchCentered':
         mdContent.classList.toggle('centered', value)
         break
     }
@@ -91,22 +91,42 @@ function main(_data) {
   setTimeout(onScroll, 0)
   document.addEventListener('scroll', throttle(onScroll, 100))
 
-  // render md toggle button
   const topBar = new Ele('div', {
     className: className.TOP_BAR_ELE,
   })
-  const toggleBtn = new Ele('button', {
-    className: className.TOGGLE_BTN,
-    title: 'Toggle',
+  // render code toggle button
+  const codeToggleBtn = new Ele('button', {
+    className: className.CODE_TOGGLE_BTN,
+    title: 'Toggle code',
   })
-  toggleBtn.addEventListener('click', () => {
+  codeToggleBtn.addEventListener('click', () => {
     events.modeChange([mdBody, mdSide])
   })
-  toggleBtn.appendChild(svg(eyeIcon))
-  topBar.appendChild(toggleBtn)
+  codeToggleBtn.appendChild(svg(codeIcon))
+  topBar.appendChild(codeToggleBtn)
 
-  // mount
-  events.mount([mdSide, mdBody, topBar])
+  // render side expand button
+  const sideExpandBtn = new Ele('button', {
+    className: className.SIDE_EXPAND_BTN,
+    title: 'Expand side',
+  })
+  sideExpandBtn.appendChild(svg(sideIcon))
+  sideExpandBtn.addEventListener('click', () => {
+    document.body.classList.add('sidebar-expanded')
+    function foldSide() {
+      document.body.classList.remove('sidebar-expanded')
+      mdBody.removeEventListener('click', foldSide)
+      window.removeEventListener('resize', foldSide)
+    }
+    setTimeout(() => {
+      mdBody.addEventListener('click', foldSide)
+      window.addEventListener('resize', foldSide)
+    }, 0)
+  })
+  topBar.appendChild(sideExpandBtn)
+
+  // mount elements
+  events.mount([topBar, mdBody, mdSide])
 
   // auto refresh
   if (data.refresh) {

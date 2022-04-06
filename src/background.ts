@@ -39,8 +39,8 @@ function fetch(url: string, method: string = 'GET', params?): Promise<any> {
 
 const actions = {
   enable: 'reload',
-  refresh: 'toggleRefresh',
-  centered: 'toggleCentered',
+  refresh: 'switchRefresh',
+  centered: 'switchCentered',
   mdPlugins: 'updateMdPlugins',
   pageTheme: 'updatePageTheme',
 }
