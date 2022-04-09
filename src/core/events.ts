@@ -6,7 +6,8 @@ const headTags = [
     tag: 'link',
     attrs: {
       rel: 'icon',
-      href: getAssetsURL('images/icon128.png'),
+      type: 'image/svg+xml',
+      href: getAssetsURL('images/logo.svg'),
     },
   },
 ]

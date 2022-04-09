@@ -1,6 +1,6 @@
 # md-reader
 
-<img src="./src/images/icon.png" align="right" width="120">
+<img src="./src/images/logo.svg" align="right" width="120">
 
 [English](./README.md) | [中文](./README-cn.md) | 한국어
 

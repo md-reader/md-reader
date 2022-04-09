@@ -6,10 +6,10 @@
   "description": "__MSG_ext_desc__",
   "default_locale": "en",
   "icons": {
-    "16": "images/icon16.png",
-    "32": "images/icon32.png",
-    "48": "images/icon48.png",
-    "128": "images/icon128.png"
+    "16": "images/logo_16.png",
+    "32": "images/logo_32.png",
+    "48": "images/logo_48.png",
+    "128": "images/logo_128.png"
   },
   "web_accessible_resources": [
     "css/*",

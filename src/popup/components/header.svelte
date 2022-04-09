@@ -1,11 +1,13 @@
 <script>
-  import logo from '../../images/icon128.png'
+  import logo from '../../images/logo.svg'
   export let href
 </script>
 
 <h1>
   <a {href} target="__blank">
-    <img src={logo} alt="" />
+    <svg id="md-reader" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36">
+      {@html logo.content}
+    </svg>
     MD-READER
   </a>
 </h1>
@@ -28,10 +30,11 @@
   h1 a:hover {
     text-decoration: underline;
   }
-  h1 img {
+  h1 svg {
     display: inline-block;
-    width: 21px;
-    height: 21px;
+    width: 22px;
+    height: 22px;
     margin-right: 6px;
+    fill: #35363a;
   }
 </style>
