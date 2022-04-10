@@ -2,7 +2,7 @@ import MD_PLUGINS from '../config/md-plugins'
 import PAGE_THEMES from '../config/page-themes'
 import i18n from '../popup/i18n'
 
-interface Data {
+export interface Data {
   enable?: boolean
   refresh?: boolean
   language?: string
@@ -21,5 +21,3 @@ export function getDefaultData(): Data {
     pageTheme: PAGE_THEMES[0],
   }
 }
-
-export default Data

@@ -49,11 +49,12 @@ const PLUGINS = {
   ],
 }
 
-export interface MdPlugins {
+export interface MdOptions {
+  config?: markdownIt.Options
   plugins?: Array<string>
 }
 
-function initMd({ plugins = [...MD_PLUGINS] }: MdPlugins) {
+function initRender({ config = {}, plugins = [...MD_PLUGINS] }: MdOptions) {
   const md = markdownIt({
     html: true,
     breaks: true,
@@ -73,10 +74,13 @@ function initMd({ plugins = [...MD_PLUGINS] }: MdPlugins) {
       }
       return ''
     },
+    ...config,
   })
 
+  // default plugins
   md.use(mMultimdTable)
 
+  // custom plugins
   plugins.forEach(name => {
     const plugin = PLUGINS[name]
     plugin && md.use(plugin[0], ...plugin.slice(1))
@@ -86,14 +90,14 @@ function initMd({ plugins = [...MD_PLUGINS] }: MdPlugins) {
 }
 
 interface MdRender {
-  (code: string, options?: MdPlugins): string
+  (code: string, options: MdOptions): string
   md?: markdownIt
 }
 export const mdRender: MdRender = (code, options): string => {
   if (!mdRender.md || options) {
-    mdRender.md = initMd(options)
+    mdRender.md = initRender(options)
   }
   return mdRender.md.render(code)
 }
 
-export default initMd
+export default initRender

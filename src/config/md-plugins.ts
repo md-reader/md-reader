@@ -1,7 +1,7 @@
 export default [
   'Emoji',
-  'Sub',
   'Sup',
+  'Sub',
   'TOC',
   'Ins',
   'Mark',

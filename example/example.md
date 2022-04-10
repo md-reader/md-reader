@@ -79,6 +79,9 @@ Start numbering with offset:
 57. foo
 1. bar
 
+- [ ] Todo 1
+- [x] Todo 2
+
 
 ## Code
 
@@ -232,5 +235,9 @@ It converts "HTML", but keep intact partial entries like "xxxHTMLyyy" and so on.
 ### [Custom containers](https://github.com/markdown-it/markdown-it-container)
 
 ::: warning
-*here be dragons*
+*Here be dragons.*
+:::
+
+::: tips
+*Dragon is dangerous.*
 :::

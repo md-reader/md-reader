@@ -1,4 +1,4 @@
-import type Data from './data'
+import { type Data } from './data'
 
 class Storage<T extends object> {
   local: chrome.storage.LocalStorageArea

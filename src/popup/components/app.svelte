@@ -9,7 +9,7 @@
   import Chip, { Set, Text, LeadingIcon } from '@smui/chips'
   import MD_PLUGINS from '../../config/md-plugins'
   import PAGE_THEMES from '../../config/page-themes'
-  import Data, { getDefaultData } from '../../core/data'
+  import { getDefaultData, type Data } from '../../core/data'
   import { homepage } from '../../../package.json'
   import i18n from '../i18n'
 
@@ -132,7 +132,7 @@
   <div class="form-item">
     <div class="label-item">{localize('label_language')}:</div>
     <FormField style="padding-left: 10px">
-      <Select disabled={!data.enable} bind:value={data.language}>
+      <Select bind:value={data.language}>
         {#each i18n.locales as locale}
           <Option value={locale}>{localize(locale)}</Option>
         {/each}

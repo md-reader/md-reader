@@ -1,67 +1,139 @@
-import { createEle } from '../shared'
+export type ElementType = HTMLElement | SVGSVGElement | DocumentFragment
+export type Attrs =
+  | { className?: string | string[] }
+  | { [key: string]: string }
 
-export default class Ele {
-  ele: HTMLElement
+export default class Ele<T extends ElementType = ElementType> {
+  ele: T
   display: string
 
-  constructor(tagName: string, attrs: { [key: string]: string | string[] }) {
-    this.ele = createEle(tagName, attrs)
-    this.display = this.ele.style.display
+  static create<T extends ElementType>(tagName: string, attrs: Attrs = {}): T {
+    let { className, ...restAttrs } = attrs
+    let ele: T
+
+    if (tagName === 'svg') {
+      ;(ele as SVGSVGElement) = document.createElementNS(
+        'http://www.w3.org/2000/svg',
+        'svg',
+      )
+    } else if (tagName === '#document-fragment') {
+      ;(ele as DocumentFragment) = document.createDocumentFragment()
+    } else {
+      ;(ele as HTMLElement) = document.createElement(tagName)
+    }
+    if (!isFragment(ele)) {
+      Ele.addClassName(ele, className)
+      for (const key in restAttrs) {
+        ele.setAttribute(key, restAttrs[key])
+      }
+    }
+    return ele
+  }
+
+  static addClassName(
+    ele: HTMLElement | SVGSVGElement,
+    classList: string | string[],
+  ) {
+    if (!classList) return
+    if (typeof classList === 'string') {
+      classList = classList.split(' ')
+    }
+    ele.classList.add(...classList.filter(Boolean))
+  }
+
+  static from(node: ElementType | Ele): ElementType {
+    return node instanceof Ele ? node.ele : node
+  }
+
+  constructor(element: T, attrs?: Attrs, children?: Ele | ElementType)
+  constructor(tagName: string, attrs?: Attrs, children?: Ele | ElementType)
+  constructor(tagName: string, attrs?: Attrs, children?: (Ele | ElementType)[])
+  constructor(tagName: string | T, attrs?: Attrs, children?: any) {
+    if (typeof tagName !== 'string') {
+      this.ele = tagName
+    } else {
+      this.ele = Ele.create<T>(tagName, attrs)
+    }
+    if (!isFragment(this.ele)) {
+      this.display = this.ele.style.display
+    }
+    children && this.appendChild(children)
   }
 
   get classList(): DOMTokenList {
-    return this.ele.classList
+    return isFragment(this.ele) ? null : this.ele.classList
   }
   set innerHTML(content: string) {
-    this.ele.innerHTML = content
+    if (!isFragment(this.ele)) {
+      this.ele.innerHTML = content
+    }
   }
   set textContent(content: string) {
     this.ele.textContent = content
   }
 
-  query(selectors: string) {
+  query(selectors: string): Element | null {
     return this.ele.querySelector(selectors)
   }
   queryAll(selectors: string): HTMLElement[] {
     return Array.from(this.ele.querySelectorAll(selectors))
   }
   remove() {
-    this.ele.parentNode.removeChild(this.ele)
+    this.ele.parentNode && this.ele.parentNode.removeChild(this.ele)
   }
-  toggle(status: boolean, display?) {
-    status ? this.show(display) : this.hidden()
+  toggle(): void
+  toggle(status: boolean): void
+  toggle(status?: boolean | undefined): void {
+    if (typeof status === 'boolean') {
+      status ? this.show() : this.hidden()
+    } else {
+      if (!isFragment(this.ele)) {
+        this.ele.style.display === 'none' ? this.show() : this.hidden()
+      }
+    }
   }
-  show(display?) {
-    this.ele.style.display = display || this.display
+  show() {
+    if (!isFragment(this.ele)) {
+      this.ele.style.display = this.display
+    }
   }
   hidden() {
-    this.ele.style.display = 'none'
+    if (!isFragment(this.ele)) {
+      this.ele.style.display = 'none'
+    }
   }
-  appendChild(newChild: HTMLElement | DocumentFragment | Ele): Node {
-    return this.ele.appendChild(getEle(newChild))
+  appendChild(newChild: ElementType | Ele): ElementType
+  appendChild(newChild: (ElementType | Ele)[]): ElementType[]
+  appendChild(newChild: (ElementType | Ele)[] | ElementType | Ele) {
+    return Array.isArray(newChild)
+      ? newChild.map(child => this.appendChild(child))
+      : this.ele.appendChild(Ele.from(newChild))
   }
-  insertBefore(newChild: HTMLElement | Ele, refChild: HTMLElement | Ele): Node {
-    return this.ele.insertBefore(getEle(newChild), getEle(refChild))
+  insertBefore(
+    newChild: ElementType | Ele,
+    refChild: ElementType | Ele,
+  ): ElementType {
+    return this.ele.insertBefore(Ele.from(newChild), Ele.from(refChild))
   }
-  addEventListener(
-    eventType: keyof HTMLElementEventMap,
-    listener: (Event) => any,
-  ) {
+  on(eventType: keyof HTMLElementEventMap, listener: (e: Event) => void) {
     this.ele.addEventListener(eventType, listener)
   }
-  removeEventListener(
-    eventType: keyof HTMLElementEventMap,
-    listener: (Event) => any,
-  ) {
+  off(eventType: keyof HTMLElementEventMap, listener: (e: Event) => void) {
     this.ele.removeEventListener(eventType, listener)
   }
 }
 
-export function getEle(
-  node: HTMLElement | DocumentFragment | Ele,
-): HTMLElement | DocumentFragment {
-  if (node instanceof Ele) {
-    return node.ele
-  }
-  return node
+function isFragment(element: ElementType | Ele): element is DocumentFragment {
+  return element instanceof DocumentFragment
+}
+
+export type Svg = {
+  attributes: { [key: string]: string }
+  content: string
+}
+
+export function svg(options: Svg): Ele<SVGSVGElement> {
+  const svgEle = new Ele<SVGSVGElement>('svg', options.attributes)
+  svgEle.innerHTML = options.content
+  return svgEle
 }
