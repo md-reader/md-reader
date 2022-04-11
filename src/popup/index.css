@@ -13,7 +13,7 @@ body {
   font-family: 'Material Icons';
   font-style: normal;
   font-weight: 400;
-  src: url('../style/font-icon.woff2') format('woff2');
+  src: url('../style/fonts/font-icon.woff2') format('woff2');
 }
 
 .material-icons {

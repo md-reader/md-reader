@@ -54,12 +54,12 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
-        test: /\.woff|woff2$/,
+        test: /\.woff2$/,
         loader: 'file-loader',
         options: {
-          publicPath: '../',
+          outputPath: 'fonts',
+          publicPath: 'chrome-extension://__MSG_@@extension_id__/fonts',
         },
-        exclude: /node_modules/,
       },
     ],
   },
