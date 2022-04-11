@@ -1,16 +1,17 @@
 import hljs from 'highlight.js'
 import markdownIt from 'markdown-it'
-import mEmoji from 'markdown-it-emoji'
 import mSub from 'markdown-it-sub'
 import mSup from 'markdown-it-sup'
 import mIns from 'markdown-it-ins'
 import mAbbr from 'markdown-it-abbr'
 import mMark from 'markdown-it-mark'
+import mEmoji from 'markdown-it-emoji'
 import mDeflist from 'markdown-it-deflist'
 import mFootnote from 'markdown-it-footnote'
-import mTaskLists from 'markdown-it-task-lists'
 import mContainer from 'markdown-it-container'
+import mTaskLists from 'markdown-it-task-lists'
 import mToc from 'markdown-it-table-of-contents'
+import mKatex from '@iktakahiro/markdown-it-katex'
 import mMultimdTable from 'markdown-it-multimd-table'
 import MD_PLUGINS from '../config/md-plugins'
 
@@ -79,6 +80,10 @@ function initRender({ config = {}, plugins = [...MD_PLUGINS] }: MdOptions) {
 
   // default plugins
   md.use(mMultimdTable)
+  md.use(mKatex, {
+    globalGroup: true,
+    enableBareBlocks: true,
+  })
 
   // custom plugins
   plugins.forEach(name => {

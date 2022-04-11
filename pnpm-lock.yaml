@@ -1,7 +1,8 @@
 lockfileVersion: 5.3
 
 specifiers:
-  '@md-reader/theme-juejin': ^1.0.5
+  '@iktakahiro/markdown-it-katex': ^4.0.1
+  '@md-reader/theme-juejin': ^1.0.6
   '@smui/button': ^4.2.0
   '@smui/chips': ^4.2.0
   '@smui/form-field': ^4.2.0
@@ -52,7 +53,8 @@ specifiers:
   webpack-merge: ^4.2.2
 
 dependencies:
-  '@md-reader/theme-juejin': 1.0.5
+  '@iktakahiro/markdown-it-katex': 4.0.1
+  '@md-reader/theme-juejin': 1.0.6
   '@smui/button': 4.2.0
   '@smui/chips': 4.2.0
   '@smui/form-field': 4.2.0
@@ -109,6 +111,12 @@ packages:
   /@gar/promisify/1.1.3:
     resolution: {integrity: sha512-k2Ty1JcVojjJFwrg/ThKi2ujJ7XNLYaFGNB/bWT9wGR+oSMJHMa5w+CUq6p/pVrKeNNgA7pCqEcjSnHVoqJQFw==}
     dev: true
+
+  /@iktakahiro/markdown-it-katex/4.0.1:
+    resolution: {integrity: sha512-kGFooO7fIOgY34PSG8ZNVsUlKhhNoqhzW2kq94TNGa8COzh73PO4KsEoPOsQVG1mEAe8tg7GqG0FoVao0aMHaw==}
+    dependencies:
+      katex: 0.12.0
+    dev: false
 
   /@material/animation/11.0.0:
     resolution: {integrity: sha512-pAJRl0ySvfOzqyGUme27tPf1LbqrjSTK4g5kngpXOPAIQdYYx89QLAfcqHONSpvXO7/WP+Kc9zJ3WWxbUaG8Wg==}
@@ -391,8 +399,8 @@ packages:
       tslib: 2.3.1
     dev: false
 
-  /@md-reader/theme-juejin/1.0.5:
-    resolution: {integrity: sha512-Fk+uJ3ZZztU8tiamEh2+UVR+hJ8sHhW9StByINDdiOPYlqebTUk76jXGtIiI+XhIOyYliL+bLtss2AiH9U/C5Q==}
+  /@md-reader/theme-juejin/1.0.6:
+    resolution: {integrity: sha512-WCMn3CAbxuDXOhmTWhbDsxcHhx5EqOFk8oSjMtdrdXI6YwlB+d+O7KtHcj7hdIpKiEUjOiQUzmx3TmLYID/crQ==}
     dev: false
 
   /@nodelib/fs.scandir/2.1.5:
@@ -1406,7 +1414,6 @@ packages:
 
   /commander/2.20.3:
     resolution: {integrity: sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ==}
-    dev: true
 
   /commondir/1.0.1:
     resolution: {integrity: sha1-3dgA2gxmEnOTzKWVDqloo6rxJTs=}
@@ -2672,6 +2679,13 @@ packages:
     engines: {node: '>=6'}
     hasBin: true
     dev: true
+
+  /katex/0.12.0:
+    resolution: {integrity: sha512-y+8btoc/CK70XqcHqjxiGWBOeIL8upbS0peTPXTvgrh21n1RiWWcIpSWM+4uXq+IAgNh9YYQWdc7LVDPDAEEAg==}
+    hasBin: true
+    dependencies:
+      commander: 2.20.3
+    dev: false
 
   /kind-of/3.2.2:
     resolution: {integrity: sha1-MeohpzS6ubuw8yRm2JOupR5KPGQ=}

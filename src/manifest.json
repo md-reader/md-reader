@@ -13,6 +13,7 @@
   },
   "web_accessible_resources": [
     "css/*",
+    "fonts/*",
     "images/*"
   ],
   "background": {
@@ -34,12 +35,15 @@
       ],
       "matches": [
         "file://*/*.md",
+        "file://*/*.mdx",
         "file://*/*.mkd",
         "file://*/*.markdown",
         "http://*/*.md",
+        "http://*/*.mdx",
         "http://*/*.mkd",
         "http://*/*.markdown",
         "https://*/*.md",
+        "https://*/*.mdx",
         "https://*/*.mkd",
         "https://*/*.markdown"
       ]
