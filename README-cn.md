@@ -6,7 +6,7 @@
 
 [![](https://badgen.net/chrome-web-store/v/medapdbncneneejhbgcjceippjlfkmkg?icon=chrome&color=607cd2)](https://chrome.google.com/webstore/detail/md-reader/medapdbncneneejhbgcjceippjlfkmkg) [![](https://badgen.net/chrome-web-store/stars/medapdbncneneejhbgcjceippjlfkmkg?icon=chrome&color=607cd2)](https://chrome.google.com/webstore/detail/md-reader/medapdbncneneejhbgcjceippjlfkmkg) [![](https://badgen.net/chrome-web-store/users/medapdbncneneejhbgcjceippjlfkmkg?icon=chrome&color=607cd2)](https://chrome.google.com/webstore/detail/md-reader/medapdbncneneejhbgcjceippjlfkmkg)
 
-一个可以使 Chrome 预览 MarkDown 文件的扩展程序。
+一个可以使 Chrome 预览 markdown 文件的扩展程序。
 
 > 支持浏览 `file://` `http://` `https://` 链接以及 `*.md` `*.mkd` `*.markdown` 扩展名文件。
 
