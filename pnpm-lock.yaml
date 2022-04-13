@@ -1,14 +1,14 @@
 lockfileVersion: 5.3
 
 specifiers:
-  '@iktakahiro/markdown-it-katex': ^4.0.1
-  '@md-reader/theme-juejin': ^1.0.6
+  '@md-reader/theme-juejin': ^1.0.9
   '@smui/button': ^4.2.0
   '@smui/chips': ^4.2.0
   '@smui/form-field': ^4.2.0
   '@smui/radio': ^4.2.0
   '@smui/select': ^4.2.0
   '@smui/switch': ^4.2.0
+  '@traptitech/markdown-it-katex': ^3.5.0
   '@tsconfig/svelte': ^2.0.1
   '@types/chrome': ^0.0.164
   '@types/markdown-it': ^12.2.3
@@ -53,14 +53,14 @@ specifiers:
   webpack-merge: ^4.2.2
 
 dependencies:
-  '@iktakahiro/markdown-it-katex': 4.0.1
-  '@md-reader/theme-juejin': 1.0.6
+  '@md-reader/theme-juejin': 1.0.9
   '@smui/button': 4.2.0
   '@smui/chips': 4.2.0
   '@smui/form-field': 4.2.0
   '@smui/radio': 4.2.0
   '@smui/select': 4.2.0
   '@smui/switch': 4.2.0
+  '@traptitech/markdown-it-katex': 3.5.0
   highlight.js: 11.5.0
   lodash.debounce: 4.0.8
   lodash.throttle: 4.1.1
@@ -111,12 +111,6 @@ packages:
   /@gar/promisify/1.1.3:
     resolution: {integrity: sha512-k2Ty1JcVojjJFwrg/ThKi2ujJ7XNLYaFGNB/bWT9wGR+oSMJHMa5w+CUq6p/pVrKeNNgA7pCqEcjSnHVoqJQFw==}
     dev: true
-
-  /@iktakahiro/markdown-it-katex/4.0.1:
-    resolution: {integrity: sha512-kGFooO7fIOgY34PSG8ZNVsUlKhhNoqhzW2kq94TNGa8COzh73PO4KsEoPOsQVG1mEAe8tg7GqG0FoVao0aMHaw==}
-    dependencies:
-      katex: 0.12.0
-    dev: false
 
   /@material/animation/11.0.0:
     resolution: {integrity: sha512-pAJRl0ySvfOzqyGUme27tPf1LbqrjSTK4g5kngpXOPAIQdYYx89QLAfcqHONSpvXO7/WP+Kc9zJ3WWxbUaG8Wg==}
@@ -399,8 +393,10 @@ packages:
       tslib: 2.3.1
     dev: false
 
-  /@md-reader/theme-juejin/1.0.6:
-    resolution: {integrity: sha512-WCMn3CAbxuDXOhmTWhbDsxcHhx5EqOFk8oSjMtdrdXI6YwlB+d+O7KtHcj7hdIpKiEUjOiQUzmx3TmLYID/crQ==}
+  /@md-reader/theme-juejin/1.0.9:
+    resolution: {integrity: sha512-K4Wo2RfB/IEl2tp2ojCVQF3NOOPqTofD24Lun5Q4qIoFtNfE26CvXuLLJHlJ8+7Y7IluCNue07EZf1OOmqdSkg==}
+    dependencies:
+      katex: 0.15.3
     dev: false
 
   /@nodelib/fs.scandir/2.1.5:
@@ -566,6 +562,12 @@ packages:
       '@material/switch': 11.0.0
       '@smui/common': 4.2.0
       '@smui/ripple': 4.2.0
+    dev: false
+
+  /@traptitech/markdown-it-katex/3.5.0:
+    resolution: {integrity: sha512-7/GI3ETKJjrZD9+azn7WraDWo0ZQ6grtzR4I36qu7U0vOJMBtC+znX7UghdOScrgGnxqGvgWm07SYnlcCtdCvw==}
+    dependencies:
+      katex: 0.15.3
     dev: false
 
   /@tsconfig/svelte/2.0.1:
@@ -1414,6 +1416,12 @@ packages:
 
   /commander/2.20.3:
     resolution: {integrity: sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ==}
+    dev: true
+
+  /commander/8.3.0:
+    resolution: {integrity: sha512-OkTL9umf+He2DZkUq8f8J9of7yL6RJKI24dVITBmNfZBmri9zYZQrKkuXiKhyfPSu8tUhnVBB1iKXevvnlR4Ww==}
+    engines: {node: '>= 12'}
+    dev: false
 
   /commondir/1.0.1:
     resolution: {integrity: sha1-3dgA2gxmEnOTzKWVDqloo6rxJTs=}
@@ -2680,11 +2688,11 @@ packages:
     hasBin: true
     dev: true
 
-  /katex/0.12.0:
-    resolution: {integrity: sha512-y+8btoc/CK70XqcHqjxiGWBOeIL8upbS0peTPXTvgrh21n1RiWWcIpSWM+4uXq+IAgNh9YYQWdc7LVDPDAEEAg==}
+  /katex/0.15.3:
+    resolution: {integrity: sha512-Al6V7RJsmjklT9QItyHWGaQCt+NYTle1bZwB1e9MR/tLoIT1MXaHy9UpfGSB7eaqDgjjqqRxQOaQGrALCrEyBQ==}
     hasBin: true
     dependencies:
-      commander: 2.20.3
+      commander: 8.3.0
     dev: false
 
   /kind-of/3.2.2:

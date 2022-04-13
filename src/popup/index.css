@@ -40,3 +40,8 @@ body {
 .mdc-form-field:not(:last-child) {
   margin-right: 14px;
 }
+
+.form-item .mdc-chip-set {
+  padding: 4px 0;
+  margin-right: -4px;
+}

@@ -12,6 +12,9 @@ body.md-reader {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  // Automatic equation numbers for some environments.
+  // Use parallel counters for HTML and MathML.
+  counter-reset: katexEqnNo mmlEqnNo;
   * {
     box-sizing: border-box;
   }
@@ -97,7 +100,7 @@ body.md-reader {
         &.centered {
           max-width: 900px;
         }
-        @import url('./theme/theme-juejin');
+        @import url('./theme/theme-juejin.less');
         h1,
         h2,
         h3,

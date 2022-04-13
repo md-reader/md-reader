@@ -145,9 +145,9 @@
   main {
     overflow: auto;
     box-sizing: border-box;
-    width: 330px;
+    width: 315px;
     max-height: 599px;
-    padding: 22px 25px 10px;
+    padding: 22px 24px 10px;
     border: 1px solid #24315870;
     border-radius: 1px;
   }

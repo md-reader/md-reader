@@ -5,6 +5,7 @@ export default [
   'TOC',
   'Ins',
   'Mark',
+  'Katex',
   'Abbr',
   'Deflist',
   'Footnote',

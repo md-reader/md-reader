@@ -1,6 +1,6 @@
 {
   "name": "md-reader",
-  "version": "2.11.0-beta.0",
+  "version": "2.11.0-beta.1",
   "author": "Bener",
   "license": "MIT",
   "description": "A markdown reader extension for chrome",
@@ -54,14 +54,14 @@
     "webpack-merge": "^4.2.2"
   },
   "dependencies": {
-    "@iktakahiro/markdown-it-katex": "^4.0.1",
-    "@md-reader/theme-juejin": "^1.0.6",
+    "@md-reader/theme-juejin": "^1.0.9",
     "@smui/button": "^4.2.0",
     "@smui/chips": "^4.2.0",
     "@smui/form-field": "^4.2.0",
     "@smui/radio": "^4.2.0",
     "@smui/select": "^4.2.0",
     "@smui/switch": "^4.2.0",
+    "@traptitech/markdown-it-katex": "^3.5.0",
     "highlight.js": "^11.5.0",
     "lodash.debounce": "^4.0.8",
     "lodash.throttle": "^4.1.1",

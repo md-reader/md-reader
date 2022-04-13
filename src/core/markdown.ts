@@ -11,7 +11,7 @@ import mFootnote from 'markdown-it-footnote'
 import mContainer from 'markdown-it-container'
 import mTaskLists from 'markdown-it-task-lists'
 import mToc from 'markdown-it-table-of-contents'
-import mKatex from '@iktakahiro/markdown-it-katex'
+import mKatex from '@traptitech/markdown-it-katex'
 import mMultimdTable from 'markdown-it-multimd-table'
 import MD_PLUGINS from '../config/md-plugins'
 
@@ -21,6 +21,7 @@ const PLUGINS = {
   Sup: [mSup],
   Ins: [mIns],
   Abbr: [mAbbr],
+  Katex: [mKatex],
   Mark: [mMark],
   Deflist: [mDeflist],
   Footnote: [mFootnote],
@@ -80,10 +81,6 @@ function initRender({ config = {}, plugins = [...MD_PLUGINS] }: MdOptions) {
 
   // default plugins
   md.use(mMultimdTable)
-  md.use(mKatex, {
-    globalGroup: true,
-    enableBareBlocks: true,
-  })
 
   // custom plugins
   plugins.forEach(name => {
