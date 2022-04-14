@@ -6,7 +6,7 @@
   import Switch from '@smui/switch'
   import FormField from '@smui/form-field'
   import Select, { Option } from '@smui/select'
-  import Chip, { Set, Text, LeadingIcon } from '@smui/chips'
+  import Chip, { Set, Text } from '@smui/chips'
   import MD_PLUGINS from '../../config/md-plugins'
   import PAGE_THEMES from '../../config/page-themes'
   import { getDefaultData, type Data } from '../../core/data'
@@ -107,10 +107,8 @@
         title={chip}
         on:click={() =>
           data.enable && updateConfig('mdPlugins', data.mdPlugins)}
+        ><Text>{localize(chip)}</Text></Chip
       >
-        <LeadingIcon class="material-icons">block</LeadingIcon>
-        <Text>{localize(chip)}</Text>
-      </Chip>
     </Set>
   </div>
 
@@ -145,7 +143,7 @@
   main {
     overflow: auto;
     box-sizing: border-box;
-    width: 315px;
+    width: 330px;
     max-height: 599px;
     padding: 22px 24px 10px;
     border: 1px solid #24315870;

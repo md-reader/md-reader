@@ -9,39 +9,23 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-@font-face {
-  font-family: 'Material Icons';
-  font-style: normal;
-  font-weight: 400;
-  src: url('../style/fonts/font-icon.woff2') format('woff2');
-}
-
-.material-icons {
-  font-family: 'Material Icons';
-  font-weight: normal;
-  font-style: normal;
-  font-size: 20px;
-  line-height: 1;
-  letter-spacing: normal;
-  text-transform: none;
-  display: inline-block;
-  white-space: nowrap;
-  word-wrap: normal;
-  direction: ltr;
-  -webkit-font-feature-settings: 'liga';
-  -webkit-font-smoothing: antialiased;
-}
-
-.material-icons.mdc-chip__icon--leading-hidden {
-  margin-left: -4px;
-  margin-right: 4px;
-}
-
 .mdc-form-field:not(:last-child) {
-  margin-right: 14px;
+  margin-right: 16px;
 }
 
-.form-item .mdc-chip-set {
-  padding: 4px 0;
-  margin-right: -4px;
+.mdc-chip:not([class~='mdc-chip--selected']) {
+  opacity: 0.54;
+}
+
+.mdc-chip.mdc-chip--selected {
+  background-color: var(--mdc-theme-primary);
+  color: #fff;
+}
+
+.mdc-chip.mdc-chip--selected:hover {
+  color: #fff;
+}
+
+.mdc-chip .mdc-chip__checkmark {
+  display: none;
 }
