@@ -4,6 +4,10 @@ import { URL } from 'node:url'
 export const url = (path, base = import.meta.url) => new URL(path, base)
 
 export const { version } = JSON.parse(await fs.readFile(url('../package.json')))
+export const newVersion = version
+  .split('.')
+  .map(n => parseInt(n))
+  .join('.')
 
 export function log(str) {
   console.log(str)

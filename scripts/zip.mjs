@@ -1,10 +1,10 @@
 import fs from 'fs/promises'
 import archiver from 'archiver'
-import { url, log, version } from './utils.mjs'
+import { url, log, newVersion } from './utils.mjs'
 
 const entryDir = url('../extension/')
 const outputDir = url('../dist/')
-const extName = `md-reader-${version}.zip`
+const extName = `md-reader-${newVersion}.zip`
 
 try {
   await fs.access(entryDir)
