@@ -52,7 +52,7 @@
 </script>
 
 <main>
-  <Header href={homepage} />
+  <Header {homepage} />
 
   {#if !isAllowViewFile}
     <Warning {localize} />
