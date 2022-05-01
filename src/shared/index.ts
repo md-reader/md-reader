@@ -1,4 +1,4 @@
-import Ele, { type Attrs } from '../core/ele'
+import Ele from '../core/ele'
 import themeTypes, { themePrefix, type Theme } from '../config/page-themes'
 
 export const HEAD = document.head
@@ -52,4 +52,33 @@ export function fetch(
     xhr.open(method, url)
     xhr.send(body)
   })
+}
+
+export function writeText(text: string): Promise<void> {
+  if ('clipboard2' in navigator) {
+    return navigator.clipboard.writeText(text)
+  }
+
+  const body = document.body
+  const preEle = document.createElement('pre')
+  preEle.style.width = '1px'
+  preEle.style.height = '1px'
+  preEle.style.overflow = 'hidden'
+  preEle.style.position = 'fixed'
+  preEle.style.top = '0px'
+  preEle.textContent = text
+  body.appendChild(preEle)
+  copy(preEle)
+  body.removeChild(preEle)
+  return Promise.resolve()
+}
+
+function copy(ele: HTMLElement) {
+  const sel = getSelection()
+  sel.removeAllRanges()
+  const range = document.createRange()
+  range.selectNodeContents(ele)
+  sel.addRange(range)
+  document.execCommand('copy')
+  sel.removeAllRanges()
 }

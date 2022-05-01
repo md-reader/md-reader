@@ -19,7 +19,7 @@ export default {
   init(element: HTMLElement) {
     if (element) {
       container = new Ele<HTMLElement>(element)
-      container.hidden()
+      container.hide()
     }
     htmlHeadTags.forEach(el => HEAD.appendChild(new Ele(el.tag, el.attrs).ele))
     BODY.classList.add('md-reader')

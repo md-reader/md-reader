@@ -8,6 +8,7 @@ import { mdRender, type MdOptions } from './core/markdown'
 import { getHeads, getRawContainer, setTheme, CONTENT_TYPES } from './shared'
 import codeIcon from './images/icon_code.svg'
 import sideIcon from './images/icon_side.svg'
+import goTopIcon from './images/icon_go_top.svg'
 import './style/index.less'
 
 function main(_data: Data) {
@@ -131,15 +132,26 @@ function main(_data: Data) {
       document.addEventListener('keydown', foldSide)
     }, 0)
   })
+  /* render go top button */
+  const goTopBtn = new Ele<HTMLElement>(
+    'button',
+    {
+      className: className.GO_TOP_BTN,
+      title: 'Go top',
+    },
+    svg(goTopIcon),
+  )
+  goTopBtn.hide()
+  goTopBtn.on('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }))
 
-  const topBar = new Ele<HTMLElement>(
+  const buttonWrap = new Ele<HTMLElement>(
     'div',
-    { className: className.TOP_BAR_ELE },
-    [sideExpandBtn, rawToggleBtn],
+    { className: className.BUTTON_WRAP_ELE },
+    [sideExpandBtn, rawToggleBtn, goTopBtn],
   )
 
   /* mount elements */
-  events.mount([topBar, mdBody, mdSide])
+  events.mount([buttonWrap, mdBody, mdSide])
 
   /* auto refresh */
   if (data.refresh) {
@@ -218,6 +230,8 @@ function main(_data: Data) {
 
   function onScroll() {
     const documentScrollTop = document.documentElement.scrollTop
+    goTopBtn.toggle(documentScrollTop >= 640)
+
     headElements.some((_, index) => {
       let sectionHeight = -20
       const item = headElements[index + 1]

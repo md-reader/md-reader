@@ -184,7 +184,7 @@ body.md-reader {
 }
 
 .md-reader {
-  &__top {
+  &__button-wrap {
     position: fixed;
     height: 0;
     top: 16px;
@@ -234,6 +234,11 @@ body.md-reader {
       left: 16px;
       transition: background 0.1s, color 0.1s, transform 0.3s;
       transform: translateX(-50px);
+    }
+    &--go-top {
+      position: fixed;
+      right: 16px;
+      bottom: 16px;
     }
   }
 }

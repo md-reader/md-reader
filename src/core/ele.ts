@@ -55,7 +55,8 @@ export default class Ele<T extends ElementType = ElementType> {
       this.ele = Ele.create<T>(tagName, attrs)
     }
     if (!isFragment(this.ele)) {
-      this.display = this.ele.style.display
+      this.display =
+        this.ele.style.display === 'none' ? 'initial' : this.ele.style.display
     }
     children && this.appendChild(children)
   }
@@ -85,10 +86,10 @@ export default class Ele<T extends ElementType = ElementType> {
   toggle(status: boolean): void
   toggle(status?: boolean | undefined): void {
     if (typeof status === 'boolean') {
-      status ? this.show() : this.hidden()
+      status ? this.show() : this.hide()
     } else {
       if (!isFragment(this.ele)) {
-        this.ele.style.display === 'none' ? this.show() : this.hidden()
+        this.ele.style.display === 'none' ? this.show() : this.hide()
       }
     }
   }
@@ -97,7 +98,7 @@ export default class Ele<T extends ElementType = ElementType> {
       this.ele.style.display = this.display
     }
   }
-  hidden() {
+  hide() {
     if (!isFragment(this.ele)) {
       this.ele.style.display = 'none'
     }
