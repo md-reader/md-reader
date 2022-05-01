@@ -13,15 +13,16 @@ body {
   margin-right: 16px;
 }
 
-.mdc-chip:not([class~='mdc-chip--selected']) {
+.mdc-chip {
   opacity: 0.54;
+}
+
+.mdc-chip .mdc-chip__checkmark {
+  display: none;
 }
 
 .form[disabled='false'] .mdc-chip.mdc-chip--selected {
   background-color: var(--mdc-theme-primary);
   color: #fff;
-}
-
-.mdc-chip .mdc-chip__checkmark {
-  display: none;
+  opacity: 1;
 }
