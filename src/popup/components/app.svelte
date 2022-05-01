@@ -26,7 +26,6 @@
   storage.get().then((_data: Data) => {
     // need an assignment to updata UI
     data = { ...data, ..._data }
-    changeLocale(data.language)
   })
 
   $: if (data.language) {
@@ -58,84 +57,86 @@
     <Warning {localize} />
   {/if}
 
-  <div class="form-item inline">
-    <span class="label-item">{localize('label_enable')}:</span>
-    <FormField align="end">
-      <Switch
-        bind:checked={data.enable}
-        color="primary"
-        on:change={() => updateConfig('enable', data.enable)}
-      />
-    </FormField>
-  </div>
-
-  <div class="form-item inline">
-    <span class="label-item">{localize('label_centered')}:</span>
-    <FormField align="end">
-      <Switch
-        disabled={!data.enable}
-        bind:checked={data.centered}
-        color="primary"
-        on:change={() => updateConfig('centered', data.centered)}
-      />
-    </FormField>
-  </div>
-
-  <div class="form-item inline">
-    <span class="label-item">{localize('label_auto-refresh')}:</span>
-    <FormField align="end">
-      <Switch
-        disabled={!data.enable}
-        bind:checked={data.refresh}
-        color="primary"
-        on:change={() => updateConfig('refresh', data.refresh)}
-      />
-    </FormField>
-  </div>
-
-  <div class="form-item">
-    <div class="label-item">{localize('label_md-plugins')}:</div>
-    <Set
-      let:chip
-      bind:selected={data.mdPlugins}
-      chips={MD_PLUGINS}
-      nonInteractive={!data.enable}
-      filter={data.enable}
-    >
-      <Chip
-        {chip}
-        title={chip}
-        on:click={() =>
-          data.enable && updateConfig('mdPlugins', data.mdPlugins)}
-        ><Text>{localize(chip)}</Text></Chip
-      >
-    </Set>
-  </div>
-
-  <div class="form-item">
-    <div class="label-item">{localize('label_theme')}:</div>
-    {#each PAGE_THEMES as mode}
-      <FormField>
-        <span slot="label"> {localize(mode)} </span>
-        <Radio
-          disabled={!data.enable}
-          bind:group={data.pageTheme}
-          bind:value={mode}
-          on:change={() => updateConfig('pageTheme', mode)}
+  <div class="form" disabled={!data.enable}>
+    <div class="form-item inline">
+      <span class="label-item">{localize('label_enable')}:</span>
+      <FormField align="end">
+        <Switch
+          bind:checked={data.enable}
+          color="primary"
+          on:change={() => updateConfig('enable', data.enable)}
         />
       </FormField>
-    {/each}
-  </div>
+    </div>
 
-  <div class="form-item">
-    <div class="label-item">{localize('label_language')}:</div>
-    <FormField style="padding-left: 10px">
-      <Select bind:value={data.language}>
-        {#each i18n.locales as locale}
-          <Option value={locale}>{localize(locale)}</Option>
-        {/each}
-      </Select>
-    </FormField>
+    <div class="form-item inline">
+      <span class="label-item">{localize('label_centered')}:</span>
+      <FormField align="end">
+        <Switch
+          disabled={!data.enable}
+          bind:checked={data.centered}
+          color="primary"
+          on:change={() => updateConfig('centered', data.centered)}
+        />
+      </FormField>
+    </div>
+
+    <div class="form-item inline">
+      <span class="label-item">{localize('label_auto-refresh')}:</span>
+      <FormField align="end">
+        <Switch
+          disabled={!data.enable}
+          bind:checked={data.refresh}
+          color="primary"
+          on:change={() => updateConfig('refresh', data.refresh)}
+        />
+      </FormField>
+    </div>
+
+    <div class="form-item">
+      <div class="label-item">{localize('label_md-plugins')}:</div>
+      <Set
+        let:chip
+        bind:selected={data.mdPlugins}
+        chips={MD_PLUGINS}
+        nonInteractive={!data.enable}
+        filter={data.enable}
+      >
+        <Chip
+          {chip}
+          title={chip}
+          on:click={() =>
+            data.enable && updateConfig('mdPlugins', data.mdPlugins)}
+          ><Text>{localize(chip)}</Text></Chip
+        >
+      </Set>
+    </div>
+
+    <div class="form-item">
+      <div class="label-item">{localize('label_theme')}:</div>
+      {#each PAGE_THEMES as mode}
+        <FormField>
+          <span slot="label"> {localize(mode)} </span>
+          <Radio
+            disabled={!data.enable}
+            bind:group={data.pageTheme}
+            bind:value={mode}
+            on:change={() => updateConfig('pageTheme', mode)}
+          />
+        </FormField>
+      {/each}
+    </div>
+
+    <div class="form-item">
+      <div class="label-item">{localize('label_language')}:</div>
+      <FormField style="padding-left: 10px">
+        <Select bind:value={data.language}>
+          {#each i18n.locales as locale}
+            <Option value={locale}>{localize(locale)}</Option>
+          {/each}
+        </Select>
+      </FormField>
+    </div>
   </div>
 </main>
 

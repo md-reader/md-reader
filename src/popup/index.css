@@ -17,12 +17,8 @@ body {
   opacity: 0.54;
 }
 
-.mdc-chip.mdc-chip--selected {
+.form[disabled='false'] .mdc-chip.mdc-chip--selected {
   background-color: var(--mdc-theme-primary);
-  color: #fff;
-}
-
-.mdc-chip.mdc-chip--selected:hover {
   color: #fff;
 }
 
