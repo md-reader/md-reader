@@ -1,7 +1,7 @@
 export type ElementType = HTMLElement | SVGSVGElement | DocumentFragment
-export type Attrs =
-  | { className?: string | string[] }
-  | { [key: string]: string }
+export type Attrs = { className?: string | string[] } & {
+  [key: string]: string
+}
 
 export default class Ele<T extends ElementType = ElementType> {
   ele: T
