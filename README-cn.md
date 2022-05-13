@@ -30,13 +30,13 @@
 1. 克隆 `md-reader` 仓库到本地并编译:
 
     ```bash
-    # 클론 저장소
+    # 克隆本仓库
     git clone https://github.com/Heroor/md-reader.git && cd md-reader
 
-    # 설치 종속성
+    # 安装依赖
     pnpm install
 
-    # 확장 패키지를 빌드하다
+    # 构建扩展程序
     pnpm build
     ```
 
@@ -63,13 +63,13 @@
 ## 开发
 
 ```bash
-# 클론 저장소
+# 克隆本仓库
 git clone https://github.com/Heroor/md-reader.git && cd md-reader
 
-# 설치 종속성
+# 安装依赖
 pnpm install
 
-# 개발 서비스 시작
+# 启动开发环境
 pnpm dev
 ```
 
