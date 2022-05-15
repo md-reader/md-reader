@@ -1,7 +1,9 @@
 export type ElementType = HTMLElement | SVGSVGElement | DocumentFragment
-export type Attrs = { className?: string | string[] } & {
-  [key: string]: string
-}
+export type Attrs =
+  | { className?: string | string[] }
+  | {
+      [key: string]: string
+    }
 
 export default class Ele<T extends ElementType = ElementType> {
   ele: T
@@ -116,11 +118,19 @@ export default class Ele<T extends ElementType = ElementType> {
   ): ElementType {
     return this.ele.insertBefore(Ele.from(newChild), Ele.from(refChild))
   }
-  on(eventType: keyof HTMLElementEventMap, listener: (e: Event) => void) {
-    this.ele.addEventListener(eventType, listener)
+  on(
+    eventType: keyof HTMLElementEventMap,
+    listener: EventListenerOrEventListenerObject | null,
+    options?: AddEventListenerOptions | boolean,
+  ): void {
+    this.ele.addEventListener(eventType, listener, options)
   }
-  off(eventType: keyof HTMLElementEventMap, listener: (e: Event) => void) {
-    this.ele.removeEventListener(eventType, listener)
+  off(
+    eventType: keyof HTMLElementEventMap,
+    listener: EventListenerOrEventListenerObject | null,
+    options?: EventListenerOptions | boolean,
+  ): void {
+    this.ele.removeEventListener(eventType, listener, options)
   }
 }
 
@@ -133,8 +143,11 @@ export type Svg = {
   content: string
 }
 
-export function svg(options: Svg): Ele<SVGSVGElement> {
-  const svgEle = new Ele<SVGSVGElement>('svg', options.attributes)
+export function svg(options: Svg, attrs: Attrs = {}): Ele<SVGSVGElement> {
+  const svgEle = new Ele<SVGSVGElement>('svg', {
+    ...options.attributes,
+    ...attrs,
+  })
   svgEle.innerHTML = options.content
   return svgEle
 }

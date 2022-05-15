@@ -1,9 +1,5 @@
 @import url('./variable.less');
 
-.head-indent (@l) {
-  padding-left: 0.618em * (@l - 1) + 1.6em;
-}
-
 body.md-reader {
   margin: 0;
   padding: 0;
@@ -17,6 +13,11 @@ body.md-reader {
   counter-reset: katexEqnNo mmlEqnNo;
   * {
     box-sizing: border-box;
+  }
+
+  svg,
+  svg > * {
+    pointer-events: none;
   }
 
   .md-reader {
@@ -62,6 +63,9 @@ body.md-reader {
           }
         }
         &.md-reader__side {
+          .head-indent (@l) {
+            padding-left: 0.618em * (@l - 1) + 1.6em;
+          }
           &-h1 a {
             .head-indent(1);
             font-size: 1.02em;
@@ -124,6 +128,62 @@ body.md-reader {
             }
           }
         }
+        // code-block copy button
+        pre.md-reader__code-block {
+          position: relative;
+          code {
+            &:empty + .md-reader__btn--copy {
+              display: none;
+            }
+            &::before {
+              transition: opacity 0.2s;
+            }
+          }
+          .md-reader__btn--copy {
+            opacity: 0;
+            position: absolute;
+            top: 7px;
+            right: 10px;
+            width: 30px;
+            height: 30px;
+            padding: 6px;
+            transition: opacity 0.2s, background 0.1s, color 0.1s;
+            background: none;
+            color: fade(#b5b5b8, 70%);
+            z-index: 1;
+            &:hover {
+              background: fade(#3a3c3e, 80%);
+              color: fade(#b5b5b8, 90%);
+            }
+            &:active {
+              background: fade(#3a3c3e, 60%);
+              color: fade(#b5b5b8, 90%);
+            }
+            svg.icon-copy {
+              display: initial;
+            }
+            svg.icon-success {
+              color: var(--color-success);
+              display: none;
+            }
+            &.copied {
+              svg.icon-copy {
+                display: none;
+              }
+              svg.icon-success {
+                display: initial;
+              }
+            }
+          }
+          &:hover {
+            code::before {
+              opacity: 0;
+            }
+            .md-reader__btn--copy {
+              opacity: 1;
+            }
+          }
+        }
       }
     }
 
@@ -173,17 +233,18 @@ body.md-reader {
     }
   }
 
+  &.page-theme--dark {
+    .dark-extra();
+  }
   &.page-theme--auto {
     @media (prefers-color-scheme: dark) {
       .dark-extra();
     }
   }
-  &.page-theme--dark {
-    .dark-extra();
-  }
 }
 
 .md-reader {
+  // buttons
   &__button-wrap {
     position: fixed;
     height: 0;
@@ -239,29 +300,6 @@ body.md-reader {
       position: fixed;
       right: 16px;
       bottom: 16px;
-    }
-  }
-}
-
-.dark-extra() {
-  &.sidebar-expanded {
-    .md-reader {
-      &__side {
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1), 0 0 20px rgba(0, 0, 0, 0.5);
-      }
-    }
-  }
-  .md-reader {
-    &__btn {
-      color: fade(#b5b5b8, 40%);
-      &:hover {
-        background: fade(#3a3c3e, 50%);
-        color: fade(#b5b5b8, 60%);
-      }
-      &:active {
-        background: fade(#3a3c3e, 30%);
-        color: fade(#b5b5b8, 60%);
-      }
     }
   }
 }

@@ -5,7 +5,13 @@ import Ele, { svg } from './core/ele'
 import className from './config/class-name'
 import { getDefaultData, type Data } from './core/data'
 import { mdRender, type MdOptions } from './core/markdown'
-import { getHeads, getRawContainer, setTheme, CONTENT_TYPES } from './shared'
+import {
+  getHeads,
+  getRawContainer,
+  setTheme,
+  writeText,
+  CONTENT_TYPES,
+} from './shared'
 import codeIcon from './images/icon_code.svg'
 import sideIcon from './images/icon_side.svg'
 import goTopIcon from './images/icon_go_top.svg'
@@ -75,6 +81,23 @@ function main(_data: Data) {
   const contentRender = mdRenderer(mdContent)
   contentRender(mdRaw, { plugins: data.mdPlugins })
 
+  // code block copy button event
+  mdContent.on(
+    'click',
+    async e => {
+      const button = e.target as HTMLElement
+      if (button.classList.contains(className.COPY_BTN)) {
+        const codeEle = button.parentNode.querySelector('code.hljs')
+        if (codeEle && !button.classList.contains('copied')) {
+          await writeText(codeEle.textContent)
+          button.classList.add('copied')
+          setTimeout(() => button.classList.remove('copied'), 1000)
+        }
+      }
+    },
+    true,
+  )
+
   const mdBody = new Ele<HTMLElement>(
     'main',
     { className: className.MD_BODY },
@@ -97,7 +120,7 @@ function main(_data: Data) {
   const rawToggleBtn = new Ele<HTMLElement>(
     'button',
     {
-      className: className.CODE_TOGGLE_BTN,
+      className: [className.MD_BUTTON, className.CODE_TOGGLE_BTN],
       title: 'Toggle raw',
     },
     svg(codeIcon),
@@ -110,7 +133,7 @@ function main(_data: Data) {
   const sideExpandBtn = new Ele<HTMLElement>(
     'button',
     {
-      className: className.SIDE_EXPAND_BTN,
+      className: [className.MD_BUTTON, className.SIDE_EXPAND_BTN],
       title: 'Expand side',
     },
     svg(sideIcon),
@@ -136,7 +159,7 @@ function main(_data: Data) {
   const goTopBtn = new Ele<HTMLElement>(
     'button',
     {
-      className: className.GO_TOP_BTN,
+      className: [className.MD_BUTTON, className.GO_TOP_BTN],
       title: 'Go top',
     },
     svg(goTopIcon),

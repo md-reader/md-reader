@@ -2,6 +2,7 @@
   --color-white: #fff;
   --color-primary: #607cd2;
   --color-primary--hover: #4c68bb;
+  --color-success: #2fc178;
   --color-warning: #ff6a6a;
   --color-mark: #fff07e;
   --color-text-primary: #2d3d50;
@@ -24,6 +25,7 @@
   --color-white: #fff;
   --color-primary: #6785e0;
   --color-primary--hover: #7191f3;
+  --color-success: #269f63;
   --color-warning: #ee6262;
   --color-mark: #fce79b;
   --color-text-primary: #b5b5b8;
@@ -50,6 +52,29 @@
   .page-theme--auto {
     @media (prefers-color-scheme: dark) {
       .dark();
+    }
+  }
+}
+
+.dark-extra() {
+  &.sidebar-expanded {
+    .md-reader {
+      &__side {
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1), 0 0 20px rgba(0, 0, 0, 0.5);
+      }
+    }
+  }
+  .md-reader {
+    &__btn {
+      color: fade(#b5b5b8, 40%);
+      &:hover {
+        background: fade(#3a3c3e, 50%);
+        color: fade(#b5b5b8, 60%);
+      }
+      &:active {
+        background: fade(#3a3c3e, 30%);
+        color: fade(#b5b5b8, 60%);
+      }
     }
   }
 }

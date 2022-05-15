@@ -14,6 +14,10 @@ import mToc from 'markdown-it-table-of-contents'
 import mKatex from '@traptitech/markdown-it-katex'
 import mMultimdTable from 'markdown-it-multimd-table'
 import MD_PLUGINS from '../config/md-plugins'
+import successIcon from '../images/icon_success.svg'
+import copyIcon from '../images/icon_copy.svg'
+import className from '../config/class-name'
+import Ele, { svg } from './ele'
 
 const PLUGINS = {
   Emoji: [mEmoji],
@@ -57,6 +61,18 @@ export interface MdOptions {
 }
 
 function initRender({ config = {}, plugins = [...MD_PLUGINS] }: MdOptions) {
+  const copyButton = new Ele<HTMLElement>(
+    'button',
+    {
+      className: [className.MD_BUTTON, className.COPY_BTN],
+      title: 'Expand side',
+    },
+    [
+      svg(copyIcon, { className: 'icon-copy' }),
+      svg(successIcon, { className: 'icon-success' }),
+    ],
+  )
+
   const md = markdownIt({
     html: true,
     breaks: true,
@@ -66,15 +82,15 @@ function initRender({ config = {}, plugins = [...MD_PLUGINS] }: MdOptions) {
     highlight(str: string, language: string) {
       if (language && hljs.getLanguage(language)) {
         try {
-          return `<pre class="hljs-pre"><code class="hljs" lang="${language}">${
+          return `<pre class="hljs-pre md-reader__code-block"><code class="hljs" lang="${language}">${
             hljs.highlight(str, { language, ignoreIllegals: true }).value
-          }</code></pre>`
+          }</code>${copyButton.ele.outerHTML}</pre>`
         } catch (err) {
           console.error(err)
           return 'parse error'
         }
       }
-      return ''
+      return `<pre class="hljs-pre md-reader__code-block"><code class="hljs">${str}</code>${copyButton.ele.outerHTML}</pre>`
     },
     ...config,
   })
