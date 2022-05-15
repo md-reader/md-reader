@@ -36,7 +36,6 @@ function main(_data: Data) {
       setTheme(value)
     },
     switchRefresh(value) {
-      console.log(value)
       clearTimeout(pollingTimer)
       value && polling()
     },
@@ -66,7 +65,7 @@ function main(_data: Data) {
 
   /* render content */
   const mdContent = new Ele<HTMLElement>('article', {
-    className: [className.MD_CONTENT, data.centered && 'centered'],
+    className: `${className.MD_CONTENT} ${data.centered ? 'centered' : ''}`,
   })
 
   const mdRenderer =
@@ -84,6 +83,7 @@ function main(_data: Data) {
 
   /* render side */
   const mdSide = new Ele<HTMLElement>('ul', { className: className.MD_SIDE })
+  let idCache: { [content: string]: number } = Object.create(null)
   let headElements: HTMLElement[] = []
   let sideLiElements: HTMLElement[] = []
   let df: Ele<DocumentFragment> = null
@@ -191,6 +191,7 @@ function main(_data: Data) {
   }
 
   function renderSide() {
+    idCache = Object.create(null)
     headElements = getHeads(mdContent)
     df = new Ele<DocumentFragment>('#document-fragment')
     sideLiElements = headElements.reduce(handleHeadItem, [])
@@ -198,11 +199,12 @@ function main(_data: Data) {
     mdSide.appendChild(df)
   }
 
-  function handleHeadItem(eleList: HTMLElement[], head: HTMLElement) {
+  function handleHeadItem(
+    eleList: HTMLElement[],
+    head: HTMLElement,
+  ): HTMLElement[] {
     const content = String(head.textContent).trim()
-    const encodeContent = window.encodeURIComponent(
-      content.toLowerCase().replace(/\s+/g, '-'),
-    )
+    const encodeContent = getDecodeContent(content)
 
     head.setAttribute('id', encodeContent)
 
@@ -213,19 +215,30 @@ function main(_data: Data) {
     headAnchor.textContent = '#'
     head.insertBefore(headAnchor.ele, head.firstChild)
 
-    const a = new Ele<HTMLElement>('a', {
+    const link = new Ele<HTMLElement>('a', {
       title: content,
       href: `#${encodeContent}`,
     })
-    a.textContent = content
+    link.textContent = content
     const li = new Ele<HTMLElement>('li', {
       className: `md-reader__side-${head.tagName.toLowerCase()}`,
     })
     eleList.push(li.ele)
-    li.appendChild(a)
+    li.appendChild(link)
     df.appendChild(li.ele)
 
     return eleList
+  }
+
+  function getDecodeContent(content: string): string {
+    return (function unique(key: string): string {
+      if (key in idCache) {
+        return unique(`${key}-${idCache[key]++}`)
+      } else {
+        idCache[key] = 1
+        return key
+      }
+    })(encodeURIComponent(content.toLowerCase().replace(/\s+/g, '-')))
   }
 
   function onScroll() {
