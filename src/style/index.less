@@ -11,13 +11,8 @@ body.md-reader {
   // Automatic equation numbers for some environments.
   // Use parallel counters for HTML and MathML.
   counter-reset: katexEqnNo mmlEqnNo;
-  * {
+  *:not(.mermaid *) {
     box-sizing: border-box;
-  }
-
-  svg,
-  svg > * {
-    pointer-events: none;
   }
 
   .md-reader {
@@ -146,7 +141,6 @@ body.md-reader {
             right: 10px;
             width: 30px;
             height: 30px;
-            padding: 6px;
             transition: opacity 0.2s, background 0.1s, color 0.1s;
             background: none;
             color: fade(#b5b5b8, 70%);
@@ -284,6 +278,10 @@ body.md-reader {
       transition: 0.1s;
       transition-property: transform, color;
       transform-origin: center center;
+      pointer-events: none;
+      * {
+        pointer-events: none;
+      }
     }
     &--code-toggle {
       position: absolute;

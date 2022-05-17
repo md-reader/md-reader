@@ -6,6 +6,7 @@ export default [
   'Ins',
   'Mark',
   'Katex',
+  'Mermaid',
   'Abbr',
   'Deflist',
   'Footnote',

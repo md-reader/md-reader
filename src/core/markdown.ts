@@ -12,6 +12,7 @@ import mContainer from 'markdown-it-container'
 import mTaskLists from 'markdown-it-task-lists'
 import mToc from 'markdown-it-table-of-contents'
 import mKatex from '@traptitech/markdown-it-katex'
+import mMermaid from '@md-reader/markdown-it-mermaid'
 import mMultimdTable from 'markdown-it-multimd-table'
 import MD_PLUGINS from '../config/md-plugins'
 import successIcon from '../images/icon_success.svg'
@@ -26,6 +27,7 @@ const PLUGINS = {
   Ins: [mIns],
   Abbr: [mAbbr],
   Katex: [mKatex],
+  Mermaid: [mMermaid, { theme: 'default' }],
   Mark: [mMark],
   Deflist: [mDeflist],
   Footnote: [mFootnote],
