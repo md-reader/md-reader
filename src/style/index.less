@@ -99,7 +99,7 @@ body.md-reader {
         &.centered {
           max-width: 900px;
         }
-        @import url('./theme/theme-juejin.less');
+        .theme(); // markdown theme
         h1,
         h2,
         h3,
@@ -132,41 +132,6 @@ body.md-reader {
             }
             &::before {
               transition: opacity 0.2s;
-            }
-          }
-          .md-reader__btn--copy {
-            opacity: 0;
-            position: absolute;
-            top: 7px;
-            right: 10px;
-            width: 30px;
-            height: 30px;
-            transition: opacity 0.2s, background 0.1s, color 0.1s;
-            background: none;
-            color: fade(#b5b5b8, 70%);
-            z-index: 1;
-            &:hover {
-              background: fade(#3a3c3e, 80%);
-              color: fade(#b5b5b8, 90%);
-            }
-            &:active {
-              background: fade(#3a3c3e, 60%);
-              color: fade(#b5b5b8, 90%);
-            }
-            svg.icon-copy {
-              display: initial;
-            }
-            svg.icon-success {
-              color: var(--color-success);
-              display: none;
-            }
-            &.copied {
-              svg.icon-copy {
-                display: none;
-              }
-              svg.icon-success {
-                display: initial;
-              }
             }
           }
           &:hover {
@@ -298,6 +263,37 @@ body.md-reader {
       position: fixed;
       right: 16px;
       bottom: 16px;
+    }
+    &--copy {
+      opacity: 0;
+      position: absolute;
+      top: 7px;
+      right: 10px;
+      width: 30px;
+      height: 30px;
+      transition: opacity 0.2s, background 0.1s, color 0.1s;
+      z-index: 1;
+      &:hover {
+        background: fade(#f1f1f1, 80%);
+      }
+      &:active {
+        background: fade(#f1f1f1, 60%);
+      }
+      svg.icon-copy {
+        display: initial;
+      }
+      svg.icon-success {
+        color: var(--color-success);
+        display: none;
+      }
+      &.copied {
+        svg.icon-copy {
+          display: none;
+        }
+        svg.icon-success {
+          display: initial;
+        }
+      }
     }
   }
 }

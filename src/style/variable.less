@@ -1,3 +1,5 @@
+@import url('@md-reader/theme-juejin');
+
 .light() {
   --color-white: #fff;
   --color-primary: #607cd2;
@@ -19,6 +21,8 @@
   --color-thead-bg: #f6f8fa;
   --color-disabled: #d2d2d2;
   --opacity-img: 1;
+  .hljs-light();
+  .highlight();
 }
 
 .dark() {
@@ -42,6 +46,8 @@
   --color-thead-bg: #222425;
   --color-disabled: #989898;
   --opacity-img: 0.8;
+  .hljs-dark();
+  .highlight();
 }
 
 :root {
@@ -74,6 +80,17 @@
       &:active {
         background: fade(#3a3c3e, 30%);
         color: fade(#b5b5b8, 60%);
+      }
+    }
+    &__btn--copy {
+      color: fade(#b5b5b8, 70%);
+      &:hover {
+        background: fade(#3a3c3e, 80%);
+        color: fade(#b5b5b8, 90%);
+      }
+      &:active {
+        background: fade(#3a3c3e, 60%);
+        color: fade(#b5b5b8, 90%);
       }
     }
   }
