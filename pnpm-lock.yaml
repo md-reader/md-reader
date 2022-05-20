@@ -2,7 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@md-reader/markdown-it-mermaid': ^0.5.0
-  '@md-reader/theme-juejin': ^1.0.13
+  '@md-reader/theme-juejin': ^1.0.14
   '@smui/button': ^4.2.0
   '@smui/chips': ^4.2.0
   '@smui/form-field': ^4.2.0
@@ -13,7 +13,7 @@ specifiers:
   '@tsconfig/svelte': ^2.0.1
   '@types/chrome': ^0.0.164
   '@types/markdown-it': ^12.2.3
-  '@types/node': ^17.0.34
+  '@types/node': ^17.0.35
   archiver: ^5.3.1
   clean-webpack-plugin: ^4.0.0
   copy-webpack-plugin: ^6.4.1
@@ -56,7 +56,7 @@ specifiers:
 
 dependencies:
   '@md-reader/markdown-it-mermaid': 0.5.0
-  '@md-reader/theme-juejin': 1.0.13
+  '@md-reader/theme-juejin': 1.0.14
   '@smui/button': 4.2.0
   '@smui/chips': 4.2.0
   '@smui/form-field': 4.2.0
@@ -86,7 +86,7 @@ devDependencies:
   '@tsconfig/svelte': 2.0.1
   '@types/chrome': 0.0.164
   '@types/markdown-it': 12.2.3
-  '@types/node': 17.0.34
+  '@types/node': 17.0.35
   archiver: 5.3.1
   clean-webpack-plugin: 4.0.0_webpack@4.46.0
   copy-webpack-plugin: 6.4.1_webpack@4.46.0
@@ -408,8 +408,8 @@ packages:
       murmurhash-js: 1.0.0
     dev: false
 
-  /@md-reader/theme-juejin/1.0.13:
-    resolution: {integrity: sha512-SIDRx54MPgpCGGuClQqE5Bg0E++/uMykIyd4zEnoyMoSy4kQqo4u6yoc6XSyXT/fC0mNJIFEYFtGAMiVM8D/Ow==}
+  /@md-reader/theme-juejin/1.0.14:
+    resolution: {integrity: sha512-ttJ+Ywcvcj+Bx0KCQRCMHTR+6Ww3V5QMsoCoZAWbrcGJi30yCuenW4JSTcyRpR8G9Mtu7oJNjat/6FWcGpSJvw==}
     dependencies:
       katex: 0.15.3
     dev: false
@@ -610,7 +610,7 @@ packages:
     resolution: {integrity: sha512-ZUxbzKl0IfJILTS6t7ip5fQQM/J3TJYubDm3nMbgubNNYS62eXeUpoLUC8/7fJNiFYHTrGPQn7hspDUzIHX3UA==}
     dependencies:
       '@types/minimatch': 3.0.5
-      '@types/node': 17.0.34
+      '@types/node': 17.0.35
     dev: true
 
   /@types/har-format/1.2.8:
@@ -640,8 +640,8 @@ packages:
     resolution: {integrity: sha512-Klz949h02Gz2uZCMGwDUSDS1YBlTdDDgbWHi+81l29tQALUtvz4rAYi5uoVhE5Lagoq6DeqAUlbrHvW/mXDgdQ==}
     dev: true
 
-  /@types/node/17.0.34:
-    resolution: {integrity: sha512-XImEz7XwTvDBtzlTnm8YvMqGW/ErMWBsKZ+hMTvnDIjGCKxwK5Xpc+c/oQjOauwq8M4OS11hEkpjX8rrI/eEgA==}
+  /@types/node/17.0.35:
+    resolution: {integrity: sha512-vu1SrqBjbbZ3J6vwY17jBs8Sr/BKA+/a/WtjRG+whKg1iuLFOosq872EXS0eXWILdO36DHQQeku/ZcL6hz2fpg==}
     dev: true
 
   /@types/pug/2.0.6:
@@ -651,7 +651,7 @@ packages:
   /@types/sass/1.43.1:
     resolution: {integrity: sha512-BPdoIt1lfJ6B7rw35ncdwBZrAssjcwzI5LByIrYs+tpXlj/CAkuVdRsgZDdP4lq5EjyWzwxZCqAoFyHKFwp32g==}
     dependencies:
-      '@types/node': 17.0.34
+      '@types/node': 17.0.35
     dev: true
 
   /@types/source-list-map/0.1.2:
@@ -671,7 +671,7 @@ packages:
   /@types/webpack-sources/0.1.9:
     resolution: {integrity: sha512-bvzMnzqoK16PQIC8AYHNdW45eREJQMd6WG/msQWX5V2+vZmODCOPb4TJcbgRljTZZTwTM4wUMcsI8FftNA7new==}
     dependencies:
-      '@types/node': 17.0.34
+      '@types/node': 17.0.35
       '@types/source-list-map': 0.1.2
       source-map: 0.6.1
     dev: true
@@ -679,7 +679,7 @@ packages:
   /@types/webpack/4.41.32:
     resolution: {integrity: sha512-cb+0ioil/7oz5//7tZUSwbrSAN/NWHrQylz5cW8G0dWTcF/g+/dSdMlKVZspBYuMAN1+WnwHrkxiRrLcwd0Heg==}
     dependencies:
-      '@types/node': 17.0.34
+      '@types/node': 17.0.35
       '@types/tapable': 1.0.8
       '@types/uglify-js': 3.13.2
       '@types/webpack-sources': 0.1.9
@@ -3441,7 +3441,7 @@ packages:
     resolution: {integrity: sha512-KWYVV1c4i+jbMpaBC+U++4Va0cp8OisU185o73T1vo99hqi7w8tSJfUXYswwqqrjzwxa6KpRK54WhPvwf5w6PQ==}
     engines: {node: '>= 10.13.0'}
     dependencies:
-      '@types/node': 17.0.34
+      '@types/node': 17.0.35
       merge-stream: 2.0.0
       supports-color: 7.2.0
     dev: true
