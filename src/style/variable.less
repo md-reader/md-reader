@@ -52,12 +52,15 @@
 
 :root {
   .light();
+  .scrollbar(true);
   .page-theme--dark {
     .dark();
+    .scrollbar(false);
   }
   .page-theme--auto {
     @media (prefers-color-scheme: dark) {
       .dark();
+      .scrollbar(false);
     }
   }
 }
@@ -93,5 +96,19 @@
         color: fade(#b5b5b8, 90%);
       }
     }
+  }
+}
+
+.scrollbar(@isLight) {
+  &::-webkit-scrollbar {
+    width: 6.5px;
+    height: 6.5px;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: if(@isLight, rgba(0, 0, 0, 0.15), rgba(255, 255, 255, 0.35));
+    border-radius: 7px;
   }
 }
