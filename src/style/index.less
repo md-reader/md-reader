@@ -35,6 +35,7 @@ body.md-reader {
       transition-property: box-shadow, transform;
       will-change: transform;
       z-index: 1;
+      .scrollbar();
       li {
         &.md-reader__side-li--active {
           a {
@@ -182,22 +183,12 @@ body.md-reader {
   &.sidebar-expanded {
     .md-reader {
       &__side {
-        box-shadow: 0 0 5px rgba(35, 36, 49, 0.02),
-          0 0 20px rgba(35, 36, 49, 0.2);
+        box-shadow: var(--color-side-shadow);
         transform: translateX(0);
       }
       &__btn--side-expand {
         transform: translateX(-50px);
       }
-    }
-  }
-
-  &.page-theme--dark {
-    .dark-extra();
-  }
-  &.page-theme--auto {
-    @media (prefers-color-scheme: dark) {
-      .dark-extra();
     }
   }
 }
@@ -223,15 +214,15 @@ body.md-reader {
     cursor: pointer;
     transition: background 0.1s, color 0.1s;
     backdrop-filter: blur(3px);
-    background: none;
-    color: fade(#586069, 50%);
+    background: var(--color-button-bg);
+    color: var(--color-button);
     &:hover {
-      background: fade(#f1f1f1, 80%);
-      color: fade(#586069, 70%);
+      background: var(--color-button-bg-hover);
+      color: var(--color-button-hover);
     }
     &:active {
-      background: fade(#f1f1f1, 50%);
-      color: fade(#586069, 70%);
+      background: var(--color-button-bg-active);
+      color: var(--color-button-active);
       svg {
         transform: scale(0.95);
       }
@@ -273,11 +264,15 @@ body.md-reader {
       height: 30px;
       transition: opacity 0.2s, background 0.1s, color 0.1s;
       z-index: 1;
+      background: var(--color-button_copy-bg);
+      color: var(--color-button_copy);
       &:hover {
-        background: fade(#f1f1f1, 80%);
+        background: var(--color-button_copy-bg-hover);
+        color: var(--color-button_copy-hover);
       }
       &:active {
-        background: fade(#f1f1f1, 60%);
+        background: var(--color-button_copy-bg-active);
+        color: var(--color-button_copy-active);
       }
       svg.icon-copy {
         display: initial;

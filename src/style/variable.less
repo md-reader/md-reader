@@ -15,11 +15,26 @@
   --color-side: var(--color-text-secondary);
   --color-side-bg: #f9fafb;
   --color-side-border: #eaebee;
+  --color-side-shadow: 0 0 5px rgba(35, 36, 49, 0.02),
+    0 0 20px rgba(35, 36, 49, 0.2);
   --color-img-bg: #f8f9fa;
   --color-block-bg: var(--hljs-base);
   --color-code-bg: #f3f6ff;
   --color-thead-bg: #f6f8fa;
   --color-disabled: #d2d2d2;
+  --color-button: fade(#586069, 50%);
+  --color-button-bg: none;
+  --color-button-hover: fade(#586069, 75%);
+  --color-button-bg-hover: fade(#f1f1f1, 80%);
+  --color-button-active: fade(#586069, 75%);
+  --color-button-bg-active: fade(#f1f1f1, 50%);
+  --color-button_copy: var(--color-button);
+  --color-button_copy-bg: var(--color-button-bg);
+  --color-button_copy-hover: var(--color-button-hover);
+  --color-button_copy-bg-hover: fade(#f1f1f1, 80%);
+  --color-button_copy-active: var(--color-button-active);
+  --color-button_copy-bg-active: fade(#f1f1f1, 60%);
+  --color-scrollbar-thumb: fade(#000, 25%);
   --opacity-img: 1;
   .hljs-light();
   .highlight();
@@ -40,11 +55,25 @@
   --color-side: var(--color-text-primary);
   --color-side-bg: #030405;
   --color-side-border: #131415;
+  --color-side-shadow: 0 0 5px rgba(0, 0, 0, 0.1), 0 0 20px rgba(0, 0, 0, 0.5);
   --color-img-bg: #5a5a5a;
   --color-block-bg: var(--hljs-base);
   --color-code-bg: #1d253d;
   --color-thead-bg: #222425;
   --color-disabled: #989898;
+  --color-button: fade(#b5b5b8, 40%);
+  --color-button-bg: none;
+  --color-button-hover: fade(#b5b5b8, 60%);
+  --color-button-bg-hover: fade(#3a3c3e, 50%);
+  --color-button-active: fade(#b5b5b8, 60%);
+  --color-button-bg-active: fade(#3a3c3e, 30%);
+  --color-button_copy: fade(#b5b5b8, 70%);
+  --color-button_copy-bg: var(--color-button-bg);
+  --color-button_copy-hover: fade(#b5b5b8, 90%);
+  --color-button_copy-bg-hover: fade(#3a3c3e, 80%);
+  --color-button_copy-active: fade(#b5b5b8, 90%);
+  --color-button_copy-bg-active: fade(#3a3c3e, 60%);
+  --color-scrollbar-thumb: fade(#fff, 25%);
   --opacity-img: 0.8;
   .hljs-dark();
   .highlight();
@@ -52,54 +81,23 @@
 
 :root {
   .light();
-  .scrollbar(true);
-  .page-theme--dark {
+  @media (prefers-color-scheme: dark) {
     .dark();
-    .scrollbar(false);
-  }
-  .page-theme--auto {
-    @media (prefers-color-scheme: dark) {
-      .dark();
-      .scrollbar(false);
-    }
-  }
-}
-
-.dark-extra() {
-  &.sidebar-expanded {
-    .md-reader {
-      &__side {
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1), 0 0 20px rgba(0, 0, 0, 0.5);
-      }
-    }
   }
   .md-reader {
-    &__btn {
-      color: fade(#b5b5b8, 40%);
-      &:hover {
-        background: fade(#3a3c3e, 50%);
-        color: fade(#b5b5b8, 60%);
-      }
-      &:active {
-        background: fade(#3a3c3e, 30%);
-        color: fade(#b5b5b8, 60%);
-      }
+    .light();
+    &.page-theme--dark {
+      .dark();
     }
-    &__btn--copy {
-      color: fade(#b5b5b8, 70%);
-      &:hover {
-        background: fade(#3a3c3e, 80%);
-        color: fade(#b5b5b8, 90%);
-      }
-      &:active {
-        background: fade(#3a3c3e, 60%);
-        color: fade(#b5b5b8, 90%);
+    &.page-theme--auto {
+      @media (prefers-color-scheme: dark) {
+        .dark();
       }
     }
   }
 }
 
-.scrollbar(@isLight) {
+.scrollbar() {
   &::-webkit-scrollbar {
     width: 6.5px;
     height: 6.5px;
@@ -108,7 +106,7 @@
     background: transparent;
   }
   &::-webkit-scrollbar-thumb {
-    background: if(@isLight, rgba(0, 0, 0, 0.15), rgba(255, 255, 255, 0.35));
+    background: var(--color-scrollbar-thumb);
     border-radius: 7px;
   }
 }
