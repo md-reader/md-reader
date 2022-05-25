@@ -35,6 +35,7 @@
   --color-button_copy-active: var(--color-button-active);
   --color-button_copy-bg-active: fade(#f1f1f1, 60%);
   --color-scrollbar-thumb: fade(#000, 25%);
+  --color-scrollbar-thumb-hover: fade(#000, 35%);
   --opacity-img: 1;
   .hljs-light();
   .highlight();
@@ -73,7 +74,9 @@
   --color-button_copy-bg-hover: fade(#3a3c3e, 80%);
   --color-button_copy-active: fade(#b5b5b8, 90%);
   --color-button_copy-bg-active: fade(#3a3c3e, 60%);
+  --size-scrollbar: 6.5px;
   --color-scrollbar-thumb: fade(#fff, 25%);
+  --color-scrollbar-thumb-hover: fade(#fff, 35%);
   --opacity-img: 0.8;
   .hljs-dark();
   .highlight();
@@ -99,14 +102,18 @@
 
 .scrollbar() {
   &::-webkit-scrollbar {
-    width: 6.5px;
-    height: 6.5px;
+    width: var(--size-scrollbar);
+    height: var(--size-scrollbar);
   }
   &::-webkit-scrollbar-track {
+    width: var(--size-scrollbar);
     background: transparent;
   }
   &::-webkit-scrollbar-thumb {
+    border-radius: var(--size-scrollbar);
     background: var(--color-scrollbar-thumb);
-    border-radius: 7px;
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background: var(--color-scrollbar-thumb-hover);
   }
 }
