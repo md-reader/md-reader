@@ -66,6 +66,7 @@ module.exports = {
   resolve: {
     extensions: ['.ts', '.js', '.svelte', '.json', '.less'],
   },
+  stats: 'errors-only',
   plugins: [
     new FriendlyErrors(),
     new CleanWebpackPlugin(),
