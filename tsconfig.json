@@ -6,17 +6,11 @@
     "module": "ESNext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
+    "isolatedModules": true,
+    "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "lib": [
-      "ESNext",
-      "DOM"
-    ],
-    "types": [
-      "chrome",
-      "svelte"
-    ],
+    "lib": ["ESNext", "DOM"],
+    "types": ["chrome", "svelte"]
   },
-  "include": [
-    "src/**/*"
-  ]
+  "include": ["src/**/*"]
 }

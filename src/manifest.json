@@ -1,6 +1,6 @@
 {
   "name": "__MSG_ext_name__",
-  "version": "2.12.0.2",
+  "version": "2.12.0.4",
   "author": "Bener",
   "manifest_version": 2,
   "description": "__MSG_ext_desc__",
@@ -11,15 +11,9 @@
     "48": "images/logo_48.png",
     "128": "images/logo_128.png"
   },
-  "web_accessible_resources": [
-    "css/*",
-    "fonts/*",
-    "images/*"
-  ],
+  "web_accessible_resources": ["css/*", "fonts/*", "images/*"],
   "background": {
-    "scripts": [
-      "js/background.js"
-    ]
+    "scripts": ["js/background.js"]
   },
   "browser_action": {
     "default_title": "md-reader",
@@ -27,12 +21,8 @@
   },
   "content_scripts": [
     {
-      "js": [
-        "js/content-script.js"
-      ],
-      "css": [
-        "css/content-script.css"
-      ],
+      "js": ["js/content-script.js"],
+      "css": ["css/content-script.css"],
       "matches": [
         "file://*/*.md",
         "file://*/*.mdx",
@@ -49,8 +39,5 @@
       ]
     }
   ],
-  "permissions": [
-    "storage",
-    "tabs"
-  ]
+  "permissions": ["storage", "tabs"]
 }
