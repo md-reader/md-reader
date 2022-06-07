@@ -11,7 +11,7 @@ export interface Data {
   pageTheme?: typeof PAGE_THEMES[0]
 }
 
-export function getDefaultData(): Data {
+export function getDefaultData(mergeData: Data): Data {
   return {
     enable: true,
     refresh: false,
@@ -19,5 +19,6 @@ export function getDefaultData(): Data {
     language: i18n().locale,
     mdPlugins: [...MD_PLUGINS],
     pageTheme: PAGE_THEMES[0],
+    ...mergeData,
   }
 }

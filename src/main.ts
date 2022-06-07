@@ -17,10 +17,8 @@ import sideIcon from './images/icon_side.svg'
 import goTopIcon from './images/icon_go_top.svg'
 import './style/index.less'
 
-function main(_data: Data) {
-  const data = getDefaultData()
-  Object.assign(data, _data)
-
+function main(data: Data) {
+  const configData = getDefaultData(data)
   const actions = {
     reload() {
       window.location.reload()
@@ -49,12 +47,13 @@ function main(_data: Data) {
       mdContent.classList.toggle('centered', value)
     },
   }
-  chrome.runtime.onMessage.addListener(({ type, value }) => {
+  chrome.runtime.onMessage.addListener(({ type, key, value }) => {
+    configData[key] = value
     const handler = actions[type]
     handler && handler(value)
   })
 
-  if (!data.enable || !CONTENT_TYPES.includes(document.contentType)) {
+  if (!configData.enable || !CONTENT_TYPES.includes(document.contentType)) {
     return
   }
 
@@ -63,7 +62,7 @@ function main(_data: Data) {
   let mdRaw: string = null
 
   /* init md page */
-  setTheme(data.pageTheme)
+  setTheme(configData.pageTheme)
 
   const rawContainer = getRawContainer()
   events.init(rawContainer)
@@ -71,7 +70,9 @@ function main(_data: Data) {
 
   /* render content */
   const mdContent = new Ele<HTMLElement>('article', {
-    className: `${className.MD_CONTENT} ${data.centered ? 'centered' : ''}`,
+    className: `${className.MD_CONTENT} ${
+      configData.centered ? 'centered' : ''
+    }`,
   })
 
   const mdRenderer =
@@ -79,7 +80,7 @@ function main(_data: Data) {
     (code: string = '', options?: MdOptions) =>
       (target.innerHTML = mdRender(code, options))
   const contentRender = mdRenderer(mdContent)
-  contentRender(mdRaw, { plugins: data.mdPlugins })
+  contentRender(mdRaw, { plugins: configData.mdPlugins })
 
   // code block copy button event
   mdContent.on(
@@ -177,7 +178,7 @@ function main(_data: Data) {
   events.mount([buttonWrap, mdBody, mdSide])
 
   /* auto refresh */
-  if (data.refresh) {
+  if (configData.refresh) {
     polling()
   }
 

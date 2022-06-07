@@ -20,7 +20,8 @@ import copyIcon from '../images/icon_copy.svg'
 import className from '../config/class-name'
 import Ele, { svg } from './ele'
 
-const PLUGINS = {
+type Plugins = { [p: string]: ((a: MdOptions) => any[]) | any[] }
+const PLUGINS: Plugins = {
   Emoji: [mEmoji],
   Sub: [mSub],
   Sup: [mSup],
@@ -97,12 +98,17 @@ function initRender({ config = {}, plugins = [...MD_PLUGINS] }: MdOptions) {
     ...config,
   })
 
+  // parse email
+  md.linkify.set({ fuzzyEmail: true })
   // default plugins
   md.use(mMultimdTable)
 
   // custom plugins
   plugins.forEach(name => {
-    const plugin = PLUGINS[name]
+    let plugin = PLUGINS[name]
+    if (typeof plugin === 'function') {
+      plugin = plugin(arguments[0])
+    }
     plugin && md.use(plugin[0], ...plugin.slice(1))
   })
 
