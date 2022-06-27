@@ -64,6 +64,7 @@ function main(_data: Data) {
 
   /* init md page */
   setTheme(data.pageTheme)
+  document.body.classList.toggle(className.SIDE_COLLAPSED, data.hiddenSide)
 
   const rawContainer = getRawContainer()
   events.init(rawContainer)
@@ -139,12 +140,21 @@ function main(_data: Data) {
     svg(sideIcon),
   )
   sideExpandBtn.on('click', () => {
-    document.body.classList.add('sidebar-expanded')
+    if (window.innerWidth <= 960) {
+      document.body.classList.toggle(className.SIDE_EXPANDED)
+    } else {
+      const value = document.body.classList.toggle(className.SIDE_COLLAPSED)
+      data.hiddenSide = value
+      chrome.runtime.sendMessage({
+        value: { key: 'hiddenSide', value },
+        type: 'storage',
+      })
+    }
     function foldSide(e) {
       if (e.type === 'keydown' && e.code !== 'Escape') {
         return
       }
-      document.body.classList.remove('sidebar-expanded')
+      document.body.classList.remove(className.SIDE_EXPANDED)
       mdBody.off('click', foldSide)
       window.removeEventListener('resize', foldSide)
       document.removeEventListener('keydown', foldSide)
@@ -244,7 +254,7 @@ function main(_data: Data) {
     })
     link.textContent = content
     const li = new Ele<HTMLElement>('li', {
-      className: `md-reader__side-${head.tagName.toLowerCase()}`,
+      className: `${className.MD_SIDE}-${head.tagName.toLowerCase()}`,
     })
     eleList.push(li.ele)
     li.appendChild(link)

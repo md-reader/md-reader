@@ -1,4 +1,5 @@
 @import url('./variable.less');
+@side-width: 260px;
 
 body.md-reader {
   margin: 0;
@@ -27,7 +28,7 @@ body.md-reader {
       top: 0;
       bottom: 0;
       left: 0;
-      width: 260px;
+      width: @side-width;
       line-height: 1.4;
       font-size: 14px;
       padding: 22px 0;
@@ -94,7 +95,7 @@ body.md-reader {
 
     &__body {
       min-height: 100vh;
-      padding-left: 260px;
+      padding-left: @side-width;
       transition: padding 0.3s;
       .md-reader__markdown-content {
         padding: 30px 70px 40px;
@@ -220,7 +221,20 @@ body.md-reader {
     }
   }
 
-  &.sidebar-expanded {
+  &.side-collapsed {
+    .md-reader {
+      &__side {
+        transform: translateX(-100%);
+      }
+      &__body {
+        padding-left: 0px;
+      }
+      &__btn--side-expand {
+        transform: translateX(0);
+      }
+    }
+  }
+  &.side-expanded {
     .md-reader {
       &__side {
         box-shadow: 0 0 5px rgba(35, 36, 49, 0.02),
@@ -228,7 +242,7 @@ body.md-reader {
         transform: translateX(0);
       }
       &__btn--side-expand {
-        transform: translateX(-50px);
+        transform: translateX(-100%);
       }
     }
   }
@@ -294,7 +308,7 @@ body.md-reader {
       position: absolute;
       left: 16px;
       transition: background 0.1s, color 0.1s, transform 0.3s;
-      transform: translateX(-50px);
+      transform: translateX(@side-width);
     }
     &--go-top {
       position: fixed;
