@@ -6,13 +6,14 @@ chrome.runtime.onMessage.addListener(({ type, value }, _sender, callback) => {
     case 'storage':
       storage.set({ [value.key]: value.value })
       updatePage(value.key, value.value)
+      callback && callback(value)
       break
     case 'fetch':
       fetch(value)
         .then((res: XMLHttpRequest) => callback && callback(res.responseText))
         .catch(err => {
           console.error(err)
-          callback()
+          callback && callback(err)
         })
       break
   }
