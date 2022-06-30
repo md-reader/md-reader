@@ -12,7 +12,7 @@ export interface Data {
   hiddenSide?: boolean
 }
 
-export function getDefaultData(mergeData: Data): Data {
+export function getDefaultData(mergeData: Data = {}): Data {
   return {
     enable: true,
     refresh: false,

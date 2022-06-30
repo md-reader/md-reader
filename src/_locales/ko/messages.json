@@ -5,5 +5,14 @@
   },
   "ext_desc": {
     "message": "크롬을 위한 마크다운 리더 확장 프로그램."
+  },
+  "command_toggle_side": {
+    "message": "토글 사이드바"
+  },
+  "command_toggle_centered": {
+    "message": "토글 센터"
+  },
+  "command_toggle_refresh": {
+    "message": "토글 새로 고침"
   }
 }

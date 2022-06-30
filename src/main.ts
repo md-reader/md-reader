@@ -39,18 +39,20 @@ function main(data: Data) {
     updatePageTheme(value) {
       setTheme(value)
     },
-    switchRefresh(value) {
+    toggleRefresh(value) {
       clearTimeout(pollingTimer)
       value && polling()
     },
-    switchCentered(value) {
+    toggleCentered(value) {
       mdContent.classList.toggle('centered', value)
     },
+    toggleSide() {
+      onToggleSide()
+    },
   }
-  chrome.runtime.onMessage.addListener(({ type, key, value }) => {
+  chrome.runtime.onMessage.addListener(({ action, data: { key, value } }) => {
     configData[key] = value
-    const handler = actions[type]
-    handler && handler(value)
+    actions[action]?.(value)
   })
 
   if (!configData.enable || !CONTENT_TYPES.includes(document.contentType)) {
@@ -144,31 +146,42 @@ function main(data: Data) {
     svg(sideIcon),
   )
   sideExpandBtn.on('click', () => {
+    chrome.runtime.sendMessage({
+      action: 'storage',
+      data: {
+        key: 'hiddenSide',
+        value: !configData.hiddenSide,
+      },
+    })
+  })
+  function onToggleSide() {
     if (window.innerWidth <= 960) {
-      document.body.classList.toggle(className.SIDE_EXPANDED)
-    } else {
-      const value = document.body.classList.toggle(className.SIDE_COLLAPSED)
-      configData.hiddenSide = value
-      chrome.runtime.sendMessage({
-        value: { key: 'hiddenSide', value },
-        type: 'storage',
-      })
-    }
-    function foldSide(e) {
-      if (e.type === 'keydown' && e.code !== 'Escape') {
-        return
-      }
-      document.body.classList.remove(className.SIDE_EXPANDED)
+      const value = document.body.classList.toggle(className.SIDE_EXPANDED)
       mdBody.off('click', foldSide)
       window.removeEventListener('resize', foldSide)
       document.removeEventListener('keydown', foldSide)
+      if (value) {
+        setTimeout(() => {
+          mdBody.on('click', foldSide)
+          window.addEventListener('resize', foldSide)
+          document.addEventListener('keydown', foldSide)
+        }, 0)
+      }
+    } else {
+      configData.hiddenSide = document.body.classList.toggle(
+        className.SIDE_COLLAPSED,
+      )
     }
-    setTimeout(() => {
-      mdBody.on('click', foldSide)
-      window.addEventListener('resize', foldSide)
-      document.addEventListener('keydown', foldSide)
-    }, 0)
-  })
+  }
+  function foldSide(e) {
+    if (e.type === 'keydown' && e.code !== 'Escape') {
+      return
+    }
+    document.body.classList.remove(className.SIDE_EXPANDED)
+    mdBody.off('click', foldSide)
+    window.removeEventListener('resize', foldSide)
+    document.removeEventListener('keydown', foldSide)
+  }
   /* render go top button */
   const goTopBtn = new Ele<HTMLElement>(
     'button',
@@ -199,10 +212,7 @@ function main(data: Data) {
     void (function watch() {
       clearTimeout(pollingTimer)
       chrome.runtime.sendMessage(
-        {
-          type: 'fetch',
-          value: window.location.href,
-        },
+        { action: 'fetch', data: window.location.href },
         res => {
           if (res !== undefined) {
             if (mdRaw === undefined || mdRaw === null) {

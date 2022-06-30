@@ -5,5 +5,14 @@
   },
   "ext_desc": {
     "message": "一个可以使 Chrome 预览 markdown 文件的浏览器扩展。"
+  },
+  "command_toggle_side": {
+    "message": "切换侧边栏"
+  },
+  "command_toggle_centered": {
+    "message": "切换居中"
+  },
+  "command_toggle_refresh": {
+    "message": "切换自动刷新"
   }
 }

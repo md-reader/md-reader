@@ -35,13 +35,7 @@
 
   function updateConfig(key, value) {
     setTimeout(() => {
-      chrome.runtime.sendMessage({
-        value: {
-          key,
-          value,
-        },
-        type: 'storage',
-      })
+      chrome.runtime.sendMessage({ action: 'storage', data: { key, value } })
     }, 0)
   }
 

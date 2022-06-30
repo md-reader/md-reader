@@ -39,5 +39,28 @@
       ]
     }
   ],
+  "commands": {
+    "toggleSide": {
+      "description": "__MSG_command_toggle_side__",
+      "suggested_key": {
+        "windows": "Alt+Shift+B",
+        "mac": "Alt+Shift+B"
+      }
+    },
+    "toggleCentered": {
+      "description": "__MSG_command_toggle_centered__",
+      "suggested_key": {
+        "windows": "Alt+Shift+C",
+        "mac": "Alt+Shift+C"
+      }
+    },
+    "toggleRefresh": {
+      "description": "__MSG_command_toggle_refresh__",
+      "suggested_key": {
+        "windows": "Alt+Shift+R",
+        "mac": "Alt+Shift+R"
+      }
+    }
+  },
   "permissions": ["storage", "tabs"]
 }
