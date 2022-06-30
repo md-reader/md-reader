@@ -2,7 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@md-reader/markdown-it-mermaid': ^0.5.0
-  '@md-reader/theme-juejin': ^1.0.15
+  '@md-reader/theme': ^1.0.16
   '@smui/button': ^4.2.0
   '@smui/chips': ^4.2.0
   '@smui/form-field': ^4.2.0
@@ -59,7 +59,7 @@ specifiers:
 
 dependencies:
   '@md-reader/markdown-it-mermaid': 0.5.0
-  '@md-reader/theme-juejin': 1.0.15
+  '@md-reader/theme': 1.0.16
   '@smui/button': 4.2.0
   '@smui/chips': 4.2.0
   '@smui/form-field': 4.2.0
@@ -497,10 +497,10 @@ packages:
       murmurhash-js: 1.0.0
     dev: false
 
-  /@md-reader/theme-juejin/1.0.15:
+  /@md-reader/theme/1.0.16:
     resolution:
       {
-        integrity: sha512-NMxgGcKWyb7Xr3BbDeyesvy0jqbafK99zU+Is+SAjUqVytVoMsCM3izLWApey+m/JYy8U+UhS+DURijUbCMHuA==,
+        integrity: sha512-rCQtiIaX3qTxlIioM2lW2vKOmLbm2/a6LnHklwTku0tMrXbklTQQFXOxR5ITabnojSzOyp4RslFHdBhKaNSACw==,
       }
     dependencies:
       katex: 0.15.3
@@ -1870,7 +1870,7 @@ packages:
       minipass-pipeline: 1.2.4
       mkdirp: 1.0.4
       p-map: 4.0.0
-      promise-inflight: 1.0.1
+      promise-inflight: 1.0.1_bluebird@3.7.2
       rimraf: 3.0.2
       ssri: 8.0.1
       tar: 6.1.11
@@ -4740,7 +4740,10 @@ packages:
     dev: true
 
   /image-size/0.5.5:
-    resolution: { integrity: sha1-Cd/Uq50g4p6xw+gLiZA3jfnjy5w= }
+    resolution:
+      {
+        integrity: sha512-6TDAlDPZxUFCv+fuOkIoXT/V/f3Qbq8e37p+YOiYrUv3v9cc3/6x78VdfPgFVaB9dZYeLUfKgHRebpkm/oP2VQ==,
+      }
     engines: { node: '>=0.10.0' }
     hasBin: true
     requiresBuild: true
@@ -7236,15 +7239,6 @@ packages:
   /process/0.11.10:
     resolution: { integrity: sha1-czIwDoQBYb2j5podHZGn1LwW8YI= }
     engines: { node: '>= 0.6.0' }
-    dev: true
-
-  /promise-inflight/1.0.1:
-    resolution: { integrity: sha1-mEcocL8igTL8vdhoEputEsPAKeM= }
-    peerDependencies:
-      bluebird: '*'
-    peerDependenciesMeta:
-      bluebird:
-        optional: true
     dev: true
 
   /promise-inflight/1.0.1_bluebird@3.7.2:

@@ -61,7 +61,7 @@
   },
   "dependencies": {
     "@md-reader/markdown-it-mermaid": "^0.5.0",
-    "@md-reader/theme-juejin": "^1.0.15",
+    "@md-reader/theme": "^1.0.16",
     "@smui/button": "^4.2.0",
     "@smui/chips": "^4.2.0",
     "@smui/form-field": "^4.2.0",
