@@ -59,7 +59,6 @@ export function writeText(text: string): Promise<void> {
     return navigator.clipboard.writeText(text)
   }
 
-  const body = document.body
   const preEle = document.createElement('pre')
   preEle.style.width = '1px'
   preEle.style.height = '1px'
@@ -67,9 +66,9 @@ export function writeText(text: string): Promise<void> {
   preEle.style.position = 'fixed'
   preEle.style.top = '0px'
   preEle.textContent = text
-  body.appendChild(preEle)
+  BODY.appendChild(preEle)
   copy(preEle)
-  body.removeChild(preEle)
+  BODY.removeChild(preEle)
   return Promise.resolve()
 }
 

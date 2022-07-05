@@ -3,6 +3,7 @@ import events from './core/events'
 import storage from './core/storage'
 import Ele, { svg } from './core/ele'
 import className from './config/class-name'
+import { imgViewer } from './plugins/img-viewer'
 import { getDefaultData, type Data } from './core/data'
 import { mdRender, type MdOptions } from './core/markdown'
 import {
@@ -88,18 +89,21 @@ function main(data: Data) {
   const contentRender = mdRenderer(mdContent)
   contentRender(mdRaw, { plugins: configData.mdPlugins })
 
-  // code block copy button event
   mdContent.on(
     'click',
     async e => {
-      const button = e.target as HTMLElement
-      if (button.classList.contains(className.COPY_BTN)) {
-        const codeEle = button.parentNode.querySelector('code.hljs')
-        if (codeEle && !button.classList.contains('copied')) {
+      const target = e.target as HTMLElement
+      // code block copy button event
+      if (target.classList.contains(className.COPY_BTN)) {
+        const codeEle = target.parentNode.querySelector('code.hljs')
+        if (codeEle && !target.classList.contains('copied')) {
           await writeText(codeEle.textContent)
-          button.classList.add('copied')
-          setTimeout(() => button.classList.remove('copied'), 1000)
+          target.classList.add('copied')
+          setTimeout(() => target.classList.remove('copied'), 1000)
         }
+      } else if (target.tagName.toLowerCase() === 'img') {
+        // image viewer event
+        imgViewer(target as HTMLImageElement)
       }
     },
     true,
@@ -157,14 +161,14 @@ function main(data: Data) {
   function onToggleSide() {
     if (window.innerWidth <= 960) {
       const value = document.body.classList.toggle(className.SIDE_EXPANDED)
-      mdBody.off('click', foldSide)
+      mdBody.off('click', foldSide, true)
       window.removeEventListener('resize', foldSide)
       document.removeEventListener('keydown', foldSide)
       if (value) {
         setTimeout(() => {
-          mdBody.on('click', foldSide)
-          window.addEventListener('resize', foldSide)
-          document.addEventListener('keydown', foldSide)
+          mdBody.on('click', foldSide, { capture: true, once: true })
+          window.addEventListener('resize', foldSide, { once: true })
+          document.addEventListener('keydown', foldSide, { once: true })
         }, 0)
       }
     } else {
@@ -173,14 +177,17 @@ function main(data: Data) {
       )
     }
   }
-  function foldSide(e) {
-    if (e.type === 'keydown' && e.code !== 'Escape') {
+  function foldSide(e: Event) {
+    if (e.type === 'keydown' && (e as KeyboardEvent).code !== 'Escape') {
       return
     }
     document.body.classList.remove(className.SIDE_EXPANDED)
-    mdBody.off('click', foldSide)
+    mdBody.off('click', foldSide, true)
     window.removeEventListener('resize', foldSide)
     document.removeEventListener('keydown', foldSide)
+    e.stopPropagation()
+    e.preventDefault()
+    return false
   }
   /* render go top button */
   const goTopBtn = new Ele<HTMLElement>(
@@ -243,7 +250,7 @@ function main(data: Data) {
     df = new Ele<DocumentFragment>('#document-fragment')
     sideLiElements = headElements.reduce(handleHeadItem, [])
     mdSide.innerHTML = null
-    mdSide.appendChild(df)
+    mdSide.append(df)
   }
 
   function handleHeadItem(
@@ -271,8 +278,8 @@ function main(data: Data) {
       className: `${className.MD_SIDE}-${head.tagName.toLowerCase()}`,
     })
     eleList.push(li.ele)
-    li.appendChild(link)
-    df.appendChild(li.ele)
+    li.append(link)
+    df.append(li.ele)
 
     return eleList
   }

@@ -56,11 +56,22 @@ export default class Ele<T extends ElementType = ElementType> {
       this.display =
         this.ele.style.display === 'none' ? 'initial' : this.ele.style.display
     }
-    children && this.appendChild(children)
+    children && this.append(children)
   }
 
   get classList(): DOMTokenList {
     return isFragment(this.ele) ? null : this.ele.classList
+  }
+  get style(): CSSStyleDeclaration {
+    return isFragment(this.ele) ? null : this.ele.style
+  }
+  get src(): string {
+    return isImg(this.ele) ? this.ele.src : undefined
+  }
+  set src(src) {
+    if (isImg(this.ele)) {
+      this.ele.src = src
+    }
   }
   set innerHTML(content: string) {
     if (!isFragment(this.ele)) {
@@ -101,11 +112,15 @@ export default class Ele<T extends ElementType = ElementType> {
       this.ele.style.display = 'none'
     }
   }
-  appendChild(newChild: ElementType | Ele): ElementType
-  appendChild(newChild: (ElementType | Ele)[]): ElementType[]
-  appendChild(newChild: (ElementType | Ele)[] | ElementType | Ele) {
+  setStyle(style: Partial<CSSStyleDeclaration>): CSSStyleDeclaration {
+    Object.assign(this.style, style)
+    return this.style
+  }
+  append(newChild: ElementType | Ele): ElementType
+  append(newChild: (ElementType | Ele)[]): ElementType[]
+  append(newChild: (ElementType | Ele)[] | ElementType | Ele) {
     return Array.isArray(newChild)
-      ? newChild.map(child => this.appendChild(child))
+      ? newChild.map(child => this.append(child))
       : this.ele.appendChild(Ele.from(newChild))
   }
   insertBefore(
@@ -132,6 +147,10 @@ export default class Ele<T extends ElementType = ElementType> {
 
 function isFragment(element: ElementType | Ele): element is DocumentFragment {
   return element instanceof DocumentFragment
+}
+
+function isImg(element: ElementType | Ele): element is HTMLImageElement {
+  return element instanceof HTMLImageElement
 }
 
 export type Svg = {
