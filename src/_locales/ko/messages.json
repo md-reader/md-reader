@@ -14,5 +14,8 @@
   },
   "command_toggle_refresh": {
     "message": "토글 새로 고침"
+  },
+  "command_toggle_theme": {
+    "message": "토글 테마"
   }
 }

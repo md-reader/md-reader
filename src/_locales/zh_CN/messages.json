@@ -14,5 +14,8 @@
   },
   "command_toggle_refresh": {
     "message": "切换自动刷新"
+  },
+  "command_toggle_theme": {
+    "message": "切换主题"
   }
 }

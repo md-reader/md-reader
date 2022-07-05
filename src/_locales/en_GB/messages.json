@@ -15,5 +15,8 @@
   },
   "command_toggle_refresh": {
     "message": "Toggle refresh"
+  },
+  "command_toggle_theme": {
+    "message": "Toggle theme"
   }
 }

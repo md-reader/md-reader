@@ -60,6 +60,13 @@
         "windows": "Alt+Shift+R",
         "mac": "Alt+Shift+R"
       }
+    },
+    "toggleTheme": {
+      "description": "__MSG_command_toggle_theme__",
+      "suggested_key": {
+        "windows": "Alt+Shift+T",
+        "mac": "Alt+Shift+T"
+      }
     }
   },
   "permissions": ["storage", "tabs"]
