@@ -32,8 +32,7 @@ body.md-reader {
       list-style: none;
       color: var(--color-side);
       background: var(--color-side-bg);
-      transition: 0.3s;
-      transition-property: box-shadow, transform;
+      transition: transform 0.3s, box-shadow 0.5s;
       will-change: transform;
       z-index: 1;
       li {
@@ -168,6 +167,9 @@ body.md-reader {
       &.opened {
         backdrop-filter: blur(10px);
         background: var(--color-modal-bg);
+        .md-reader__zoom-image {
+          opacity: 1;
+        }
       }
       .md-reader__zoom-image {
         display: none;
@@ -177,9 +179,10 @@ body.md-reader {
         border: none;
         outline: none;
         margin: 0;
+        opacity: var(--opacity-img);
         transition: 0.3s;
-        transition-property: transform, width, height;
-        will-change: transform, width, height;
+        transition-property: transform, opacity, width, height;
+        will-change: transform, opacity, width, height;
         user-select: none;
         cursor: inherit;
       }
@@ -188,6 +191,7 @@ body.md-reader {
     @media screen and (max-width: 960px) {
       &__side {
         transform: translateX(-100%);
+        border-color: transparent;
       }
       &__body {
         padding-left: 0px;
@@ -210,12 +214,18 @@ body.md-reader {
         }
       }
     }
+    @media print {
+      &__button-wrap {
+        display: none;
+      }
+    }
   }
 
   &.side-collapsed {
     .md-reader {
       &__side {
         transform: translateX(-100%);
+        border-color: transparent;
       }
       &__body {
         padding-left: 0px;
