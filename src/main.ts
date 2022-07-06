@@ -102,6 +102,13 @@ function main(data: Data) {
           setTimeout(() => target.classList.remove('copied'), 1000)
         }
       } else if (target.tagName.toLowerCase() === 'img') {
+        let parent = target.parentElement
+        while (parent) {
+          if (parent.tagName === 'A') {
+            return
+          }
+          parent = parent.parentElement
+        }
         // image viewer event
         imgViewer(target as HTMLImageElement)
       }
