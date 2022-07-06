@@ -16,4 +16,6 @@ export default {
   COPY_BTN: p`btn--copy`,
   SIDE_COLLAPSED: 'side-collapsed',
   SIDE_EXPANDED: 'side-expanded',
+  MODAL: p`modal`,
+  ZOOM_IMAGE: p`zoom-image`,
 }

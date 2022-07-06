@@ -54,7 +54,9 @@ export default class Ele<T extends ElementType = ElementType> {
     }
     if (!isFragment(this.ele)) {
       this.display =
-        this.ele.style.display === 'none' ? 'initial' : this.ele.style.display
+        !this.ele.style.display || this.ele.style.display === 'none'
+          ? 'initial'
+          : this.ele.style.display
     }
     children && this.append(children)
   }

@@ -1,98 +1,79 @@
 import debounce from 'lodash.debounce'
+import className from '../config/class-name'
 import Ele from '../core/ele'
 
 let ele: HTMLImageElement = null
 let modal: Ele<HTMLElement> = null
 let clonedEle: Ele<HTMLImageElement> = null
+let setPosition = null
+const debounceSetLastPosition = debounce(() => {
+  setPosition(calcLastPosition(ele.naturalWidth, ele.naturalHeight))
+}, 100)
 
 export function imgViewer(
   element: HTMLImageElement,
   container = document.documentElement,
 ) {
-  // Prevent the element closure
+  // prevent the element closure
   ele = element
+
   // init modal
   if (!modal) {
-    modal = new Ele<HTMLElement>('div')
-    modal.setStyle({
-      display: 'none',
-      position: 'fixed',
-      top: '0',
-      left: '0',
-      right: '0',
-      bottom: '0',
-      transition: '.3s',
-      zIndex: '1',
+    modal = new Ele<HTMLElement>('div', {
+      className: className.MODAL,
     })
     modal.on('click', closeModal)
-    window.addEventListener(
-      'resize',
-      debounce(
-        () =>
-          setPosition(calcLastPosition(ele.naturalWidth, ele.naturalHeight)),
-        100,
-      ),
-    )
     document.body.append(modal.ele)
   }
 
   // init clonedEle
   if (!clonedEle) {
-    clonedEle = new Ele<HTMLImageElement>('img')
-    clonedEle.setStyle({
-      display: 'none',
-      position: 'absolute',
-      top: '0',
-      left: '0',
-      border: 'none',
-      outline: 'none',
-      margin: '0',
-      transition: '.3s',
-      willChange: 'transform, width, height',
-      userSelect: 'none',
+    clonedEle = new Ele<HTMLImageElement>('img', {
+      className: className.ZOOM_IMAGE,
     })
+    setPosition = setPositionWithEle(clonedEle.ele)
     modal.append(clonedEle)
   }
-  clonedEle.src = ele.src
-  clonedEle.style.cursor = 'zoom-out'
-  clonedEle.style.display = 'initial'
-
-  const setPosition = setPositionWithEle(clonedEle.ele)
+  // init first position
   setPosition(calcFirstPosition(ele, container))
+  clonedEle.src = ele.src
+  clonedEle.show()
 
   // close modal
   function closeModal(e: Event) {
-    clonedEle.on(
-      'transitionend',
-      function hideModal() {
-        modal.hide()
-        ele.style.visibility = 'initial'
-        ele = null
-        clonedEle.style.display = 'none'
-        clonedEle.src = ''
-        clonedEle.off('transitionend', hideModal)
-      },
-      { once: true },
-    )
+    if (modal.classList.contains('opened')) {
+      modal.on(
+        'transitionend',
+        function hidden() {
+          ele = ele.style.visibility = null
+          modal.hide()
+          clonedEle.hide()
+          clonedEle.src = ''
+          modal.off('transitionend', hidden)
+        },
+        { once: true },
+      )
 
-    setPosition(calcFirstPosition(ele, container))
-    clonedEle.style.cursor = 'initial'
-    modal.style.background = '#0000'
-    modal.style['backdropFilter'] = 'none'
+      setPosition(calcFirstPosition(ele, container))
+      modal.classList.remove('opened')
+      window.removeEventListener('resize', debounceSetLastPosition)
+    }
 
-    e.stopPropagation()
-    e.preventDefault()
-    return false
+    return e.stopPropagation(), e.preventDefault(), false
   }
 
+  // open the modal
   modal.show()
 
+  // transition to last position after the modal opened
   requestAnimationFrame(() => {
     setPosition(calcLastPosition(ele.naturalWidth, ele.naturalHeight))
     ele.style.visibility = 'hidden'
-    modal.style.background = '#000b'
-    modal.style['backdropFilter'] = 'blur(10px)'
+    modal.classList.add('opened')
   })
+
+  // update last position
+  window.addEventListener('resize', debounceSetLastPosition)
 }
 
 type Posi = {
@@ -102,6 +83,7 @@ type Posi = {
   x: number
   y: number
 }
+
 function setElePosition(element: HTMLImageElement, position: Posi): void {
   Object.assign(element.style, {
     width: position.width + 'px',
@@ -109,11 +91,13 @@ function setElePosition(element: HTMLImageElement, position: Posi): void {
     transform: `translate(${position.x}px, ${position.y}px)`,
   })
 }
+
 function setPositionWithEle(
   element: HTMLImageElement,
 ): (position: Posi) => void {
   return (position: Posi) => setElePosition(element, position)
 }
+
 function calcFirstPosition(
   element: HTMLImageElement,
   container: HTMLElement,
@@ -125,6 +109,7 @@ function calcFirstPosition(
     y: element.offsetTop - container.scrollTop,
   }
 }
+
 function calcLastPosition(width: number, height: number): Posi {
   const rate = width / height
   const screenWidth = window.innerWidth

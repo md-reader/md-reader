@@ -153,6 +153,38 @@ body.md-reader {
       }
     }
 
+    &__modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      transition: 0.3s;
+      transition-property: backdrop-filter, background;
+      will-change: backdrop-filter, background;
+      z-index: 1;
+      cursor: zoom-out;
+      &.opened {
+        backdrop-filter: blur(10px);
+        background: var(--color-modal-bg);
+      }
+      .md-reader__zoom-image {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        border: none;
+        outline: none;
+        margin: 0;
+        transition: 0.3s;
+        transition-property: transform, width, height;
+        will-change: transform, width, height;
+        user-select: none;
+        cursor: inherit;
+      }
+    }
+
     @media screen and (max-width: 960px) {
       &__side {
         transform: translateX(-100%);
