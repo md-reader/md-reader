@@ -2,14 +2,14 @@ lockfileVersion: 5.4
 
 specifiers:
   '@md-reader/markdown-it-mermaid': ^0.5.0
-  '@md-reader/theme': ^1.0.18
+  '@md-reader/theme': ^1.0.19
   '@smui/button': ^4.2.0
   '@smui/chips': ^4.2.0
   '@smui/form-field': ^4.2.0
   '@smui/radio': ^4.2.0
   '@smui/select': ^4.2.0
   '@smui/switch': ^4.2.0
-  '@traptitech/markdown-it-katex': ^3.5.0
+  '@traptitech/markdown-it-katex': ^3.6.0
   '@tsconfig/svelte': ^2.0.1
   '@types/chrome': ^0.0.164
   '@types/markdown-it': ^12.2.3
@@ -44,7 +44,7 @@ specifiers:
   mini-css-extract-plugin: ^1.6.2
   npm-run-all: ^4.1.5
   prettier: ^2.7.1
-  svelte: ^3.48.0
+  svelte: ^3.49.0
   svelte-loader: ^3.1.3
   svelte-preprocess: ^4.10.7
   svg-loader: ^0.0.2
@@ -59,14 +59,14 @@ specifiers:
 
 dependencies:
   '@md-reader/markdown-it-mermaid': 0.5.0
-  '@md-reader/theme': 1.0.18
+  '@md-reader/theme': 1.0.19
   '@smui/button': 4.2.0
   '@smui/chips': 4.2.0
   '@smui/form-field': 4.2.0
   '@smui/radio': 4.2.0
   '@smui/select': 4.2.0
   '@smui/switch': 4.2.0
-  '@traptitech/markdown-it-katex': 3.5.0
+  '@traptitech/markdown-it-katex': 3.6.0
   highlight.js: 11.5.1
   lodash.debounce: 4.0.8
   lodash.throttle: 4.1.1
@@ -83,7 +83,7 @@ dependencies:
   markdown-it-sup: 1.0.0
   markdown-it-table-of-contents: 0.6.0
   markdown-it-task-lists: 2.1.1
-  svelte: 3.48.0
+  svelte: 3.49.0
 
 devDependencies:
   '@tsconfig/svelte': 2.0.1
@@ -104,8 +104,8 @@ devDependencies:
   mini-css-extract-plugin: 1.6.2_webpack@4.46.0
   npm-run-all: 4.1.5
   prettier: 2.7.1
-  svelte-loader: 3.1.3_svelte@3.48.0
-  svelte-preprocess: 4.10.7_hsoiyrllvwlrseub62u635x6qu
+  svelte-loader: 3.1.3_svelte@3.49.0
+  svelte-preprocess: 4.10.7_ri4nke2lig7enxdy6736abajkm
   svg-loader: 0.0.2
   terser-webpack-plugin: 4.2.3_webpack@4.46.0
   ts-loader: 8.4.0_hrl2l4xchpnd6hlkqocppvpxx4
@@ -552,10 +552,10 @@ packages:
       murmurhash-js: 1.0.0
     dev: false
 
-  /@md-reader/theme/1.0.18:
+  /@md-reader/theme/1.0.19:
     resolution:
       {
-        integrity: sha512-0piL0DB57CYR7M5YKz+KYnfXKoxXN56Itww3YpD7Y5pHs6Mq5GwSduROcRn2+oiVBlW+7NkA6eSsAKcKnx5tfQ==,
+        integrity: sha512-dsY1DVIk8OmEvJcJnDYDCJhrFOhfH8cfYtP8z4OwDJoIJCswL7ncxqpENXc8WAdG+5KNWgB2hq21xfuwXMaekQ==,
       }
     dependencies:
       katex: 0.15.6
@@ -647,7 +647,7 @@ packages:
       }
     dependencies:
       '@material/dom': 11.0.0
-      svelte: 3.48.0
+      svelte: 3.49.0
     dev: false
 
   /@smui/floating-label/4.2.0:
@@ -783,13 +783,13 @@ packages:
       '@smui/ripple': 4.2.0
     dev: false
 
-  /@traptitech/markdown-it-katex/3.5.0:
+  /@traptitech/markdown-it-katex/3.6.0:
     resolution:
       {
-        integrity: sha512-7/GI3ETKJjrZD9+azn7WraDWo0ZQ6grtzR4I36qu7U0vOJMBtC+znX7UghdOScrgGnxqGvgWm07SYnlcCtdCvw==,
+        integrity: sha512-CnJzTWxsgLGXFdSrWRaGz7GZ1kUUi8g3E9HzJmeveX1YwVJavrKYqysktfHZQsujdnRqV5O7g8FPKEA/aeTkOQ==,
       }
     dependencies:
-      katex: 0.15.6
+      katex: 0.16.0
     dev: false
 
   /@tsconfig/svelte/2.0.1:
@@ -1835,9 +1835,9 @@ packages:
     engines: { node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7 }
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001363
-      electron-to-chromium: 1.4.180
-      node-releases: 2.0.5
+      caniuse-lite: 1.0.30001364
+      electron-to-chromium: 1.4.185
+      node-releases: 2.0.6
       update-browserslist-db: 1.0.4_browserslist@4.21.1
     dev: true
 
@@ -1933,7 +1933,7 @@ packages:
       minipass-pipeline: 1.2.4
       mkdirp: 1.0.4
       p-map: 4.0.0
-      promise-inflight: 1.0.1_bluebird@3.7.2
+      promise-inflight: 1.0.1
       rimraf: 3.0.2
       ssri: 8.0.1
       tar: 6.1.11
@@ -2013,15 +2013,15 @@ packages:
       }
     dependencies:
       browserslist: 4.21.1
-      caniuse-lite: 1.0.30001363
+      caniuse-lite: 1.0.30001364
       lodash.memoize: 4.1.2
       lodash.uniq: 4.5.0
     dev: true
 
-  /caniuse-lite/1.0.30001363:
+  /caniuse-lite/1.0.30001364:
     resolution:
       {
-        integrity: sha512-HpQhpzTGGPVMnCjIomjt+jvyUu8vNFo3TaDiZ/RcoTrlOq/5+tC8zHdsbgFB6MxmaY+jCpsH09aD80Bb4Ow3Sg==,
+        integrity: sha512-9O0xzV3wVyX0SlegIQ6knz+okhBB5pE0PC40MNdwcipjwpxoUEHL24uJ+gG42cgklPjfO5ZjZPme9FTSN3QT2Q==,
       }
     dev: true
 
@@ -3778,10 +3778,10 @@ packages:
       safer-buffer: 2.1.2
     dev: true
 
-  /electron-to-chromium/1.4.180:
+  /electron-to-chromium/1.4.185:
     resolution:
       {
-        integrity: sha512-7at5ash3FD9U5gPa3/wPr6OdiZd/zBjvDZaaHBpcqFOFUhZiWnb7stkqk8xUFL9H9nk7Yok5vCCNK8wyC/+f8A==,
+        integrity: sha512-9kV/isoOGpKkBt04yYNaSWIBn3187Q5VZRtoReq8oz5NY/A4XmU6cAoqgQlDp7kKJCZMRjWZ8nsQyxfpFHvfyw==,
       }
     dev: true
 
@@ -5663,6 +5663,16 @@ packages:
       commander: 8.3.0
     dev: false
 
+  /katex/0.16.0:
+    resolution:
+      {
+        integrity: sha512-wPRB4iUPysfH97wTgG5/tRLYxmKVq6Q4jRAWRVOUxXB1dsiv4cvcNjqabHkrOvJHM1Bpk3WrgmllSO1vIvP24w==,
+      }
+    hasBin: true
+    dependencies:
+      commander: 8.3.0
+    dev: false
+
   /khroma/2.0.0:
     resolution:
       {
@@ -6678,10 +6688,10 @@ packages:
       vm-browserify: 1.1.2
     dev: true
 
-  /node-releases/2.0.5:
+  /node-releases/2.0.6:
     resolution:
       {
-        integrity: sha512-U9h1NLROZTq9uE1SNffn6WuPDg8icmi3ns4rEl/oTfIle4iLjTliCzgTsbaIFMq/Xn078/lfY/BL0GWZ+psK4Q==,
+        integrity: sha512-PiVXnNuFm5+iYkLBNeq5211hvO38y63T0i2KKh2KnUs3RpzJ+JtODFjkD8yjLwnDkTYF1eKXheUwdssR+NRZdg==,
       }
     dev: true
 
@@ -7717,6 +7727,18 @@ packages:
         integrity: sha512-cdGef/drWFoydD1JsMzuFf8100nZl+GT+yacc2bEced5f9Rjk4z+WtFUTBu9PhOi9j/jfmBPu0mMEY4wIdAF8A==,
       }
     engines: { node: '>= 0.6.0' }
+    dev: true
+
+  /promise-inflight/1.0.1:
+    resolution:
+      {
+        integrity: sha512-6zWPyEOFaQBJYcGMHBKTKJ3u6TBsnMFOIZSa6ce1e/ZrrsOlnHRHbabMjLiBYKp+n44X9eUI6VUPaukCXHuG4g==,
+      }
+    peerDependencies:
+      bluebird: '*'
+    peerDependenciesMeta:
+      bluebird:
+        optional: true
     dev: true
 
   /promise-inflight/1.0.1_bluebird@3.7.2:
@@ -9043,7 +9065,7 @@ packages:
       }
     dev: true
 
-  /svelte-hmr/0.14.12_svelte@3.48.0:
+  /svelte-hmr/0.14.12_svelte@3.49.0:
     resolution:
       {
         integrity: sha512-4QSW/VvXuqVcFZ+RhxiR8/newmwOCTlbYIezvkeN6302YFRE8cXy0naamHcjz8Y9Ce3ITTZtrHrIL0AGfyo61w==,
@@ -9052,10 +9074,10 @@ packages:
     peerDependencies:
       svelte: '>=3.19.0'
     dependencies:
-      svelte: 3.48.0
+      svelte: 3.49.0
     dev: true
 
-  /svelte-loader/3.1.3_svelte@3.48.0:
+  /svelte-loader/3.1.3_svelte@3.49.0:
     resolution:
       {
         integrity: sha512-B7HsKRrWaGB9RFef1t7JXbQ1npG/6J/Tka/ehv6pkxJx+QU9Dd8Sdi415IfhogpWEmH95VgsaWNrNU2GeBJ1VQ==,
@@ -9064,12 +9086,12 @@ packages:
       svelte: '>3.0.0'
     dependencies:
       loader-utils: 2.0.2
-      svelte: 3.48.0
+      svelte: 3.49.0
       svelte-dev-helper: 1.1.9
-      svelte-hmr: 0.14.12_svelte@3.48.0
+      svelte-hmr: 0.14.12_svelte@3.49.0
     dev: true
 
-  /svelte-preprocess/4.10.7_hsoiyrllvwlrseub62u635x6qu:
+  /svelte-preprocess/4.10.7_ri4nke2lig7enxdy6736abajkm:
     resolution:
       {
         integrity: sha512-sNPBnqYD6FnmdBrUmBCaqS00RyCsCpj2BG58A1JBswNF7b0OKviwxqVrOL/CKyJrLSClrSeqQv5BXNg2RUbPOw==,
@@ -9120,14 +9142,14 @@ packages:
       magic-string: 0.25.9
       sorcery: 0.10.0
       strip-indent: 3.0.0
-      svelte: 3.48.0
+      svelte: 3.49.0
       typescript: 4.7.4
     dev: true
 
-  /svelte/3.48.0:
+  /svelte/3.49.0:
     resolution:
       {
-        integrity: sha512-fN2YRm/bGumvjUpu6yI3BpvZnpIm9I6A7HR4oUNYd7ggYyIwSA/BX7DJ+UXXffLp6XNcUijyLvttbPVCYa/3xQ==,
+        integrity: sha512-+lmjic1pApJWDfPCpUUTc1m8azDqYCG1JN9YEngrx/hUyIcFJo6VZhj0A1Ai0wqoHcEIuQy+e9tk+4uDgdtsFA==,
       }
     engines: { node: '>= 8' }
 
