@@ -217,6 +217,18 @@ function main(data: Data) {
   /* mount elements */
   events.mount([buttonWrap, mdBody, mdSide])
 
+  if (window.location.hash) {
+    setTimeout(() => {
+      const hash = window.location.hash.slice(1)
+      const target: HTMLElement = headElements.find(head => {
+        return head.getAttribute('id') === hash
+      })
+      if (target) {
+        window.scrollTo(0, target?.offsetTop)
+      }
+    })
+  }
+
   /* auto refresh */
   if (configData.refresh) {
     polling()

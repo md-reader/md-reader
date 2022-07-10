@@ -42,17 +42,12 @@ export function imgViewer(
   // close modal
   function closeModal(e: Event) {
     if (modal.classList.contains('opened')) {
-      modal.on(
-        'transitionend',
-        function hidden() {
-          ele = ele.style.visibility = null
-          modal.hide()
-          clonedEle.hide()
-          clonedEle.src = ''
-          modal.off('transitionend', hidden)
-        },
-        { once: true },
-      )
+      modal.once('transitionend', function hidden() {
+        ele = ele.style.visibility = null
+        modal.hide()
+        clonedEle.hide()
+        clonedEle.src = ''
+      })
 
       setPosition(calcFirstPosition(ele, container))
       modal.classList.remove('opened')

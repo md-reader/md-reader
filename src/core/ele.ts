@@ -133,10 +133,35 @@ export default class Ele<T extends ElementType = ElementType> {
   }
   on(
     eventType: keyof HTMLElementEventMap,
-    listener: EventListenerOrEventListenerObject | null,
+    listener: EventListenerOrEventListenerObject,
     options?: AddEventListenerOptions | boolean,
   ): void {
     this.ele.addEventListener(eventType, listener, options)
+  }
+  once(
+    eventType: keyof HTMLElementEventMap,
+    listener: EventListenerOrEventListenerObject,
+    options?: AddEventListenerOptions | boolean,
+  ): void {
+    const defaultOptions: AddEventListenerOptions = { once: true }
+    if (typeof options === 'boolean') {
+      defaultOptions.capture = options
+    } else {
+      options = Object.assign(options || {}, defaultOptions)
+    }
+    const ele = this.ele
+    ele.addEventListener(
+      eventType,
+      function handler(e: Event) {
+        if (typeof listener === 'object') {
+          listener.handleEvent.call(this, e)
+        } else {
+          listener.call(this, e)
+        }
+        ele.removeEventListener(eventType, handler)
+      },
+      options,
+    )
   }
   off(
     eventType: keyof HTMLElementEventMap,
