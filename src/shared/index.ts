@@ -7,6 +7,16 @@ export const RAW_SELECTOR = 'pre'
 export const HEADERS = 'h1, h2, h3, h4, h5, h6'
 export const CONTENT_TYPES = ['text/plain', 'text/markdown']
 
+export const darkMediaQuery: MediaQueryList = window.matchMedia(
+  '(prefers-color-scheme: dark)',
+)
+
+export const getMediaQueryTheme = (): Theme =>
+  darkMediaQuery.matches ? 'dark' : 'light'
+
+export const getTheme = (theme: Theme): Theme =>
+  theme === 'auto' ? getMediaQueryTheme() : theme
+
 export function getAssetsURL(path: string): string {
   return chrome.extension.getURL(path)
 }

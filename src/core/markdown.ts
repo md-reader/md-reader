@@ -1,5 +1,5 @@
 import hljs from 'highlight.js'
-import markdownIt from 'markdown-it'
+import MarkdownIt from 'markdown-it'
 import mSub from 'markdown-it-sub'
 import mSup from 'markdown-it-sup'
 import mIns from 'markdown-it-ins'
@@ -28,7 +28,10 @@ const PLUGINS: Plugins = {
   Ins: [mIns],
   Abbr: [mAbbr],
   Katex: [mKatex],
-  Mermaid: [mMermaid, { theme: 'default' }],
+  Mermaid: ({ theme }) => [
+    mMermaid,
+    { theme: theme === 'dark' ? 'dark' : 'default', themeVariables: undefined },
+  ],
   Mark: [mMark],
   Deflist: [mDeflist],
   Footnote: [mFootnote],
@@ -59,7 +62,8 @@ const PLUGINS: Plugins = {
 }
 
 export interface MdOptions {
-  config?: markdownIt.Options
+  [key: string]: any
+  config?: MarkdownIt.Options
   plugins?: Array<string>
 }
 
@@ -76,7 +80,7 @@ function initRender({ config = {}, plugins = [...MD_PLUGINS] }: MdOptions) {
     ],
   )
 
-  const md = markdownIt({
+  const md = new MarkdownIt({
     html: true,
     breaks: true,
     linkify: true,
@@ -100,7 +104,7 @@ function initRender({ config = {}, plugins = [...MD_PLUGINS] }: MdOptions) {
 
   // parse email
   md.linkify.set({ fuzzyEmail: true })
-  // default plugins
+  // builtin plugins
   md.use(mMultimdTable)
 
   // custom plugins
@@ -117,7 +121,7 @@ function initRender({ config = {}, plugins = [...MD_PLUGINS] }: MdOptions) {
 
 interface MdRender {
   (code: string, options: MdOptions): string
-  md?: markdownIt
+  md?: MarkdownIt
 }
 export const mdRender: MdRender = (code, options): string => {
   if (!mdRender.md || options) {

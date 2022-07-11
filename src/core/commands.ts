@@ -1,4 +1,5 @@
 import storage from '../core/storage'
+import { getTheme } from '../shared/index'
 
 export default {
   async toggleSide(handler) {
@@ -12,11 +13,7 @@ export default {
   },
   async toggleTheme(handler) {
     let { pageTheme = 'light' } = await storage.get('pageTheme')
-    if (pageTheme === 'auto') {
-      pageTheme = window.matchMedia('(prefers-color-scheme: light)').matches
-        ? 'light'
-        : 'dark'
-    }
+    pageTheme = getTheme(pageTheme)
     const value = pageTheme === 'light' ? 'dark' : 'light'
     handler('storage', { key: 'pageTheme', value })
   },

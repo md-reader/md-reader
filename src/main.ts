@@ -4,6 +4,7 @@ import storage from './core/storage'
 import Ele, { svg } from './core/ele'
 import className from './config/class-name'
 import { imgViewer } from './plugins/img-viewer'
+import type { Theme } from './config/page-themes'
 import { getDefaultData, type Data } from './core/data'
 import { mdRender, type MdOptions } from './core/markdown'
 import {
@@ -12,6 +13,9 @@ import {
   setTheme,
   writeText,
   CONTENT_TYPES,
+  darkMediaQuery,
+  getMediaQueryTheme,
+  getTheme,
 } from './shared'
 import codeIcon from './images/icon_code.svg'
 import sideIcon from './images/icon_side.svg'
@@ -24,21 +28,19 @@ function main(data: Data) {
     reload() {
       window.location.reload()
     },
-    updateMdPlugins(value) {
+    updateMdPlugins() {
       reloading = true
       if (mdRaw) {
-        contentRender(mdRaw, {
-          plugins: value,
-        })
+        contentRender(mdRaw)
         renderSide()
-        onScroll()
       } else {
         window.location.reload()
       }
       reloading = false
     },
-    updatePageTheme(value) {
-      setTheme(value)
+    updatePageTheme(theme: Theme, prevTheme: Theme) {
+      setTheme(theme)
+      renderContentByTheme(theme, prevTheme)
     },
     toggleRefresh(value) {
       clearTimeout(pollingTimer)
@@ -52,8 +54,9 @@ function main(data: Data) {
     },
   }
   chrome.runtime.onMessage.addListener(({ action, data: { key, value } }) => {
+    const oldValue = configData[key]
     configData[key] = value
-    actions[action]?.(value)
+    actions[action]?.(value, oldValue)
   })
 
   if (!configData.enable || !CONTENT_TYPES.includes(document.contentType)) {
@@ -84,10 +87,15 @@ function main(data: Data) {
 
   const mdRenderer =
     (target: HTMLElement | Ele) =>
-    (code: string = '', options?: MdOptions) =>
-      (target.innerHTML = mdRender(code, options))
+    (code: string = '', options?: MdOptions) => {
+      target.innerHTML = mdRender(code, {
+        theme: getTheme(configData.pageTheme),
+        plugins: configData.mdPlugins,
+        ...options,
+      })
+    }
   const contentRender = mdRenderer(mdContent)
-  contentRender(mdRaw, { plugins: configData.mdPlugins })
+  contentRender(mdRaw)
 
   mdContent.on(
     'click',
@@ -131,7 +139,6 @@ function main(data: Data) {
   let targetIndex: number = null
 
   renderSide()
-  setTimeout(onScroll, 0)
   document.addEventListener('scroll', throttle(onScroll, 100))
 
   /* render raw toggle button */
@@ -229,6 +236,15 @@ function main(data: Data) {
     })
   }
 
+  darkMediaQuery.addEventListener('change', (e: MediaQueryListEvent) => {
+    if (configData.pageTheme === 'auto') {
+      renderContentByTheme(
+        e.matches ? 'light' : 'dark',
+        e.matches ? 'dark' : 'light',
+      )
+    }
+  })
+
   /* auto refresh */
   if (configData.refresh) {
     polling()
@@ -250,7 +266,6 @@ function main(data: Data) {
               mdRaw = res
               contentRender(res)
               renderSide()
-              onScroll()
               /* update raw content */
               setTimeout(() => {
                 rawContainer.textContent = res
@@ -270,6 +285,7 @@ function main(data: Data) {
     sideLiElements = headElements.reduce(handleHeadItem, [])
     mdSide.innerHTML = null
     mdSide.append(df)
+    setTimeout(onScroll, 0)
   }
 
   function handleHeadItem(
@@ -341,6 +357,19 @@ function main(data: Data) {
       }
       return hit
     })
+  }
+
+  function renderContentByTheme(theme: Theme, prevTheme: Theme) {
+    if (configData.mdPlugins.includes('Mermaid')) {
+      if (theme === 'auto' || prevTheme === 'auto') {
+        const themeScheme = getMediaQueryTheme()
+        if (theme !== themeScheme && prevTheme !== themeScheme) {
+          contentRender(mdRaw)
+        }
+      } else {
+        contentRender(mdRaw)
+      }
+    }
   }
 }
 

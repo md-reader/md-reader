@@ -7,7 +7,7 @@ chrome.runtime.onMessage.addListener(({ action, data }, _sender, callback) => {
   return true
 })
 
-async function messageHandler(action, data, callback) {
+async function messageHandler(action: string, data: any, callback?) {
   switch (action) {
     case 'storage':
       await storage.set({ [data.key]: data.value })
