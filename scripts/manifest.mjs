@@ -9,7 +9,11 @@ try {
     `📃[update manifest version]: ${manifest.version} ==> ${(manifest.version =
       newVersion)}`,
   )
-  await fs.writeFile(manifestPath, JSON.stringify(manifest, null, 2), 'utf-8')
+  await fs.writeFile(
+    manifestPath,
+    JSON.stringify(manifest, null, 2) + '\n',
+    'utf-8',
+  )
 } catch (err) {
   log.red(err)
   process.exit(1)

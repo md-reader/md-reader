@@ -25,5 +25,5 @@ const colors = {
 
 Object.keys(colors).forEach(color => {
   log[color] = str =>
-    console.log(`\u001b[${colors[color][0]}m${str}\u001b[${colors[color][1]}m`)
+    log(`\u001b[${colors[color][0]}m${str}\u001b[${colors[color][1]}m`)
 })
