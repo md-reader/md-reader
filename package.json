@@ -5,6 +5,7 @@
   "license": "MIT",
   "description": "A markdown reader extension for chrome",
   "homepage": "https://chrome.google.com/webstore/detail/md-reader/medapdbncneneejhbgcjceippjlfkmkg",
+  "packageManager": "pnpm@7.5.0",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Heroor/md-reader.git"
@@ -61,7 +62,7 @@
   },
   "dependencies": {
     "@md-reader/markdown-it-mermaid": "^0.5.0",
-    "@md-reader/theme": "^1.0.19",
+    "@md-reader/theme": "^1.0.21",
     "@smui/button": "^4.2.0",
     "@smui/chips": "^4.2.0",
     "@smui/form-field": "^4.2.0",
@@ -69,7 +70,7 @@
     "@smui/select": "^4.2.0",
     "@smui/switch": "^4.2.0",
     "@traptitech/markdown-it-katex": "^3.6.0",
-    "highlight.js": "^11.5.1",
+    "highlight.js": "^11.6.0",
     "lodash.debounce": "^4.0.8",
     "lodash.throttle": "^4.1.1",
     "markdown-it": "^13.0.1",
@@ -80,7 +81,7 @@
     "markdown-it-footnote": "^3.0.3",
     "markdown-it-ins": "^3.0.1",
     "markdown-it-mark": "^3.0.1",
-    "markdown-it-multimd-table": "^4.1.3",
+    "markdown-it-multimd-table": "^4.2.0",
     "markdown-it-sub": "^1.0.0",
     "markdown-it-sup": "^1.0.0",
     "markdown-it-table-of-contents": "^0.6.0",

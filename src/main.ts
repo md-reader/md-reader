@@ -223,18 +223,7 @@ function main(data: Data) {
 
   /* mount elements */
   events.mount([buttonWrap, mdBody, mdSide])
-
-  if (window.location.hash) {
-    setTimeout(() => {
-      const hash = window.location.hash.slice(1)
-      const target: HTMLElement = headElements.find(head => {
-        return head.getAttribute('id') === hash
-      })
-      if (target) {
-        window.scrollTo(0, target?.offsetTop)
-      }
-    })
-  }
+  updateAnchorPosition()
 
   darkMediaQuery.addEventListener('change', (e: MediaQueryListEvent) => {
     if (configData.pageTheme === 'auto') {
@@ -365,10 +354,27 @@ function main(data: Data) {
         const themeScheme = getMediaQueryTheme()
         if (theme !== themeScheme && prevTheme !== themeScheme) {
           contentRender(mdRaw)
+          renderSide()
         }
       } else {
         contentRender(mdRaw)
+        renderSide()
       }
+    }
+  }
+
+  function updateAnchorPosition() {
+    if (window.location.hash) {
+      setTimeout(() => {
+        const hash = window.location.hash.slice(1)
+        const target = headElements.find(head => {
+          return head.getAttribute('id') === hash
+        })
+        if (target) {
+          const top = target.offsetTop
+          top && window.scrollTo(0, top)
+        }
+      })
     }
   }
 }

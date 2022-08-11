@@ -5,3 +5,4 @@ extension.crx
 extension.pem
 *.zip
 .vscode/settings.json
+.idea
