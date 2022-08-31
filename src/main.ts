@@ -1,9 +1,10 @@
 import throttle from 'lodash.throttle'
-import events from './core/events'
+import Event from './core/event'
 import storage from './core/storage'
 import Ele, { svg } from './core/ele'
+import { initPlugins } from './plugins'
+import lifeCycle from './core/lifeCycle'
 import className from './config/class-name'
-import { imgViewer } from './plugins/img-viewer'
 import type { Theme } from './config/page-themes'
 import { getDefaultData, type Data } from './core/data'
 import { mdRender, type MdOptions } from './core/markdown'
@@ -11,7 +12,6 @@ import {
   getHeads,
   getRawContainer,
   setTheme,
-  writeText,
   CONTENT_TYPES,
   darkMediaQuery,
   getMediaQueryTheme,
@@ -66,6 +66,9 @@ function main(data: Data) {
   let pollingTimer: number = null
   let reloading: boolean = false
   let mdRaw: string = null
+  let globalEvent: Event = new Event()
+
+  initPlugins({ event: globalEvent })
 
   /* init md page */
   setTheme(configData.pageTheme)
@@ -75,7 +78,7 @@ function main(data: Data) {
   )
 
   const rawContainer = getRawContainer()
-  events.init(rawContainer)
+  lifeCycle.init(rawContainer)
   mdRaw = rawContainer?.textContent
 
   /* render content */
@@ -100,26 +103,7 @@ function main(data: Data) {
   mdContent.on(
     'click',
     async e => {
-      const target = e.target as HTMLElement
-      // code block copy button event
-      if (target.classList.contains(className.COPY_BTN)) {
-        const codeEle = target.parentNode.querySelector('code.hljs')
-        if (codeEle && !target.classList.contains('copied')) {
-          await writeText(codeEle.textContent)
-          target.classList.add('copied')
-          setTimeout(() => target.classList.remove('copied'), 1000)
-        }
-      } else if (target.tagName.toLowerCase() === 'img') {
-        let parent = target.parentElement
-        while (parent) {
-          if (parent.tagName === 'A') {
-            return
-          }
-          parent = parent.parentElement
-        }
-        // image viewer event
-        imgViewer(target as HTMLImageElement)
-      }
+      globalEvent.emit('click', e.target)
     },
     true,
   )
@@ -151,7 +135,7 @@ function main(data: Data) {
     svg(codeIcon),
   )
   rawToggleBtn.on('click', () => {
-    events.toggleRaw([mdBody, mdSide])
+    lifeCycle.toggleRaw([mdBody, mdSide])
   })
 
   /* render side expand button */
@@ -191,7 +175,7 @@ function main(data: Data) {
       )
     }
   }
-  function foldSide(e: Event) {
+  function foldSide(e: UIEvent) {
     if (e.type === 'keydown' && (e as KeyboardEvent).code !== 'Escape') {
       return
     }
@@ -222,7 +206,7 @@ function main(data: Data) {
   )
 
   /* mount elements */
-  events.mount([buttonWrap, mdBody, mdSide])
+  lifeCycle.mount([buttonWrap, mdBody, mdSide])
   updateAnchorPosition()
 
   darkMediaQuery.addEventListener('change', (e: MediaQueryListEvent) => {

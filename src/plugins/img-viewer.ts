@@ -73,6 +73,22 @@ export function imgViewer(
   window.addEventListener('resize', debounceSetLastPosition)
 }
 
+export default function imgViewerPlugin({ event }) {
+  // image viewer event
+  event.on('click', (target: HTMLElement) => {
+    if (target.tagName.toLowerCase() === 'img') {
+      let parent = target.parentElement
+      while (parent) {
+        if (parent.tagName === 'A') {
+          return
+        }
+        parent = parent.parentElement
+      }
+      imgViewer(target as HTMLImageElement)
+    }
+  })
+}
+
 type Posi = {
   width: number
   height: number
