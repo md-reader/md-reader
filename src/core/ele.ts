@@ -52,12 +52,6 @@ export default class Ele<T extends ElementType = ElementType> {
     } else {
       this.ele = Ele.create<T>(tagName, attrs)
     }
-    if (!isFragment(this.ele)) {
-      this.display =
-        !this.ele.style.display || this.ele.style.display === 'none'
-          ? 'initial'
-          : this.ele.style.display
-    }
     children && this.append(children)
   }
 
@@ -96,22 +90,25 @@ export default class Ele<T extends ElementType = ElementType> {
   toggle(): void
   toggle(status: boolean): void
   toggle(status?: boolean | undefined): void {
-    if (typeof status === 'boolean') {
-      status ? this.show() : this.hide()
-    } else {
-      if (!isFragment(this.ele)) {
-        this.ele.style.display === 'none' ? this.show() : this.hide()
+    if (!isFragment(this.ele)) {
+      if (typeof status === 'boolean') {
+        status ? this.show() : this.hide()
+      } else {
+        this.style.display === 'none' ? this.show() : this.hide()
       }
     }
   }
   show() {
     if (!isFragment(this.ele)) {
-      this.ele.style.display = this.display
+      if (this.style.display === 'none') {
+        this.style.display = this.display || ''
+      }
     }
   }
   hide() {
-    if (!isFragment(this.ele)) {
-      this.ele.style.display = 'none'
+    if (!isFragment(this.ele) && this.style.display !== 'none') {
+      this.display = this.style.display
+      this.style.display = 'none'
     }
   }
   setStyle(style: Partial<CSSStyleDeclaration>): CSSStyleDeclaration {
