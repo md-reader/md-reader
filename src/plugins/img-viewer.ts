@@ -22,6 +22,7 @@ export function imgViewer(
     modal = new Ele<HTMLElement>('div', {
       className: className.MODAL,
     })
+    modal.setStyle({ display: 'none' })
     modal.on('click', closeModal)
     document.body.append(modal.ele)
   }
@@ -31,6 +32,7 @@ export function imgViewer(
     clonedEle = new Ele<HTMLImageElement>('img', {
       className: className.ZOOM_IMAGE,
     })
+    clonedEle.setStyle({ display: 'none' })
     setPosition = setPositionWithEle(clonedEle.ele)
     modal.append(clonedEle)
   }

@@ -3,7 +3,7 @@ export type Attrs = { className?: string | string[] } | { [k: string]: string }
 
 export default class Ele<T extends ElementType = ElementType> {
   ele: T
-  display: string
+  protected display: string
 
   static create<T extends ElementType>(tagName: string, attrs: Attrs = {}): T {
     let { className, ...restAttrs } = attrs
