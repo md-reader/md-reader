@@ -53,7 +53,7 @@
     "svg-loader": "^0.0.2",
     "terser-webpack-plugin": "^4.2.3",
     "ts-loader": "^8.4.0",
-    "typescript": "^4.7.4",
+    "typescript": "^4.8.2",
     "url-loader": "^4.1.1",
     "webpack": "^4.46.0",
     "webpack-cli": "^3.3.12",
@@ -61,7 +61,7 @@
     "webpack-merge": "^4.2.2"
   },
   "dependencies": {
-    "@md-reader/markdown-it-mermaid": "^0.5.0",
+    "@md-reader/markdown-it-mermaid": "^0.5.1",
     "@md-reader/theme": "^1.0.21",
     "@smui/button": "^4.2.0",
     "@smui/chips": "^4.2.0",
