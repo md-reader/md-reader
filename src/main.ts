@@ -3,7 +3,7 @@ import Event from './core/event'
 import storage from './core/storage'
 import Ele, { svg } from './core/ele'
 import { initPlugins } from './plugins'
-import lifeCycle from './core/lifeCycle'
+import lifecycle from './core/lifecycle'
 import className from './config/class-name'
 import type { Theme } from './config/page-themes'
 import { getDefaultData, type Data } from './core/data'
@@ -78,7 +78,7 @@ function main(data: Data) {
   )
 
   const rawContainer = getRawContainer()
-  lifeCycle.init(rawContainer)
+  lifecycle.init(rawContainer)
   mdRaw = rawContainer?.textContent
 
   /* render content */
@@ -135,7 +135,7 @@ function main(data: Data) {
     svg(codeIcon),
   )
   rawToggleBtn.on('click', () => {
-    lifeCycle.toggleRaw([mdBody, mdSide])
+    lifecycle.toggleRaw([mdBody, mdSide])
   })
 
   /* render side expand button */
@@ -206,7 +206,7 @@ function main(data: Data) {
   )
 
   /* mount elements */
-  lifeCycle.mount([buttonWrap, mdBody, mdSide])
+  lifecycle.mount([buttonWrap, mdBody, mdSide])
   updateAnchorPosition()
 
   darkMediaQuery.addEventListener('change', (e: MediaQueryListEvent) => {
