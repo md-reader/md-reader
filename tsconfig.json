@@ -1,7 +1,7 @@
 {
   "extends": "@tsconfig/svelte/tsconfig.json",
   "compilerOptions": {
-    "target": "ES6",
+    "target": "ESNext",
     "baseUrl": ".",
     "allowJs": true,
     "module": "ESNext",

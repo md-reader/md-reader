@@ -1,14 +1,14 @@
-const merge = require('webpack-merge')
+const { merge } = require('webpack-merge')
+const ExtReloader = require('webpack-ext-reloader')
 const commentConfig = require('./webpack.common.js')
 const { HotModuleReplacementPlugin } = require('webpack')
-const ExtensionReloader = require('webpack-extension-reloader')
 
 module.exports = merge(commentConfig, {
   mode: 'development',
   devtool: 'inline-source-map',
   watch: true,
   watchOptions: {
-    ignored: [/node_modules/, /extension/, /example/, /dist/, /scripts/],
+    ignored: ['**/node_modules'],
   },
-  plugins: [new HotModuleReplacementPlugin(), new ExtensionReloader()],
+  plugins: [new HotModuleReplacementPlugin(), new ExtReloader()],
 })
