@@ -10,11 +10,11 @@
   import MD_PLUGINS from '../../config/md-plugins'
   import PAGE_THEMES from '../../config/page-themes'
   import { getDefaultData, type Data } from '../../core/data'
-  import { homepage } from '../../../package.json'
+  import pkg from '../../../package.json'
   import i18n from '../i18n'
 
   let localize = i18n()
-
+  let homepage = pkg.homepage
   let isAllowViewFile = true
   let data = getDefaultData()
 

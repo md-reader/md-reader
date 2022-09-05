@@ -11,10 +11,10 @@ export const darkMediaQuery: MediaQueryList = window.matchMedia(
   '(prefers-color-scheme: dark)',
 )
 
-export const getMediaQueryTheme = (): Theme =>
+export const getMediaQueryTheme = (): Exclude<Theme, 'auto'> =>
   darkMediaQuery.matches ? 'dark' : 'light'
 
-export const getTheme = (theme: Theme): Theme =>
+export const toTheme = (theme: Theme): Exclude<Theme, 'auto'> =>
   theme === 'auto' ? getMediaQueryTheme() : theme
 
 export function getAssetsURL(path: string): string {

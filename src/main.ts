@@ -15,7 +15,7 @@ import {
   CONTENT_TYPES,
   darkMediaQuery,
   getMediaQueryTheme,
-  getTheme,
+  toTheme,
 } from './shared'
 import codeIcon from './images/icon_code.svg'
 import sideIcon from './images/icon_side.svg'
@@ -92,7 +92,7 @@ function main(data: Data) {
     (target: HTMLElement | Ele) =>
     (code: string = '', options?: MdOptions) => {
       target.innerHTML = mdRender(code, {
-        theme: getTheme(configData.pageTheme),
+        theme: toTheme(configData.pageTheme),
         plugins: configData.mdPlugins,
         ...options,
       })
