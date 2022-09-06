@@ -21,8 +21,8 @@
   },
   "content_scripts": [
     {
-      "js": ["js/content-script.js"],
-      "css": ["css/content-script.css"],
+      "js": ["js/content.js"],
+      "css": ["css/content.css"],
       "matches": [
         "file://*/*.md",
         "file://*/*.mdx",
