@@ -66,6 +66,7 @@ function main(data: Data) {
   let pollingTimer: number = null
   let reloading: boolean = false
   let mdRaw: string = null
+  let isSideHover: boolean = false
   let globalEvent: Event = new Event()
 
   initPlugins({ event: globalEvent })
@@ -121,6 +122,12 @@ function main(data: Data) {
   let sideLiElements: HTMLElement[] = []
   let df: Ele<DocumentFragment> = null
   let targetIndex: number = null
+  mdSide.on('mouseenter', () => {
+    isSideHover = true
+  })
+  mdSide.on('mouseleave', () => {
+    isSideHover = false
+  })
 
   renderSide()
   document.addEventListener('scroll', throttle(onScroll, 100))
@@ -323,7 +330,7 @@ function main(data: Data) {
         target = sideLiElements[(targetIndex = index)]
         if (target) {
           target.classList.add(className.MD_SIDE_ACTIVE)
-          if (target.scrollIntoView) {
+          if (!isSideHover && target.scrollIntoView) {
             target.scrollIntoView({ block: 'nearest' })
           }
         }
