@@ -2,7 +2,7 @@ const { resolve } = require('path')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
-const FriendlyErrors = require('friendly-errors-webpack-plugin')
+const FriendlyErrors = require('@nuxt/friendly-errors-webpack-plugin')
 const SveltePreprocess = require('svelte-preprocess')
 
 module.exports = {
@@ -14,12 +14,16 @@ module.exports = {
   output: {
     filename: 'js/[name].js',
     path: resolve(__dirname, '../extension'),
+    publicPath: './',
   },
   module: {
     rules: [
       {
         test: /\.(js|ts)$/,
-        use: 'ts-loader',
+        use: {
+          loader: 'esbuild-loader',
+          options: { loader: 'ts', target: 'esnext' },
+        },
         exclude: /node_modules/,
       },
       {
@@ -33,20 +37,16 @@ module.exports = {
       },
       {
         test: /\.(css|less)$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'less-loader'],
-      },
-      {
-        test: /\.(png|bmp|gif|jpg)$/,
         use: [
+          MiniCssExtractPlugin.loader,
           {
-            loader: 'url-loader',
+            loader: 'css-loader',
             options: {
-              limit: 1024 * 10,
-              outputPath: 'images',
+              esModule: false,
             },
           },
+          'less-loader',
         ],
-        exclude: /node_modules/,
       },
       {
         test: /\.svg$/,
@@ -55,10 +55,10 @@ module.exports = {
       },
       {
         test: /\.woff2$/,
-        loader: 'file-loader',
-        options: {
+        type: 'asset/resource',
+        generator: {
           outputPath: 'fonts',
-          publicPath: 'chrome-extension://__MSG_@@extension_id__/fonts',
+          publicPath: 'chrome-extension://__MSG_@@extension_id__/fonts/',
         },
       },
     ],
