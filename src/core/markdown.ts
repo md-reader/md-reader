@@ -82,7 +82,7 @@ function initRender({ config = {}, plugins = [...MD_PLUGINS] }: MdOptions) {
 
   const md = new MarkdownIt({
     html: true,
-    breaks: true,
+    breaks: false,
     linkify: true,
     xhtmlOut: true,
     typographer: true,
