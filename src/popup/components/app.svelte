@@ -11,7 +11,7 @@
   import PAGE_THEMES from '../../config/page-themes'
   import { getDefaultData, type Data } from '../../core/data'
   import pkg from '../../../package.json'
-  import i18n from '../i18n'
+  import i18n from '../../config/i18n'
 
   let localize = i18n()
   let homepage = pkg.homepage

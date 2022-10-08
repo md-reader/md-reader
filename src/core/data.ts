@@ -1,6 +1,6 @@
 import MD_PLUGINS from '../config/md-plugins'
 import PAGE_THEMES from '../config/page-themes'
-import i18n from '../popup/i18n'
+import i18n from '../config/i18n'
 
 export interface Data {
   enable?: boolean

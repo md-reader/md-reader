@@ -1,0 +1,21 @@
+{
+  "ext_name": {
+    "message": "MD Reader",
+    "description": "一個可以使 Chrome 預覽 markdown 文件的瀏覽器擴展。"
+  },
+  "ext_desc": {
+    "message": "一個可以使 Chrome 預覽 markdown 文件的瀏覽器擴展。"
+  },
+  "command_toggle_side": {
+    "message": "切換側邊欄"
+  },
+  "command_toggle_centered": {
+    "message": "切换居中"
+  },
+  "command_toggle_refresh": {
+    "message": "切換自動刷新"
+  },
+  "command_toggle_theme": {
+    "message": "切換主題"
+  }
+}
