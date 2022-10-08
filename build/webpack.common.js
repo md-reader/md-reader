@@ -65,6 +65,9 @@ module.exports = {
   },
   resolve: {
     extensions: ['.ts', '.js', '.svelte', '.json', '.less'],
+    alias: {
+      '@': resolve(__dirname, '../src'),
+    },
   },
   stats: 'errors-only',
   plugins: [

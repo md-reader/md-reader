@@ -1,6 +1,6 @@
 <script>
   import Icon from './icon.svelte'
-  import logoIcon from '../../images/logo.svg'
+  import logoIcon from '@/images/logo.svg'
   export let homepage
 </script>
 

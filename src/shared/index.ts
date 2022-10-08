@@ -1,5 +1,5 @@
-import Ele from '../core/ele'
-import themeTypes, { themePrefix, type Theme } from '../config/page-themes'
+import Ele from '@/core/ele'
+import themeTypes, { themePrefix, type Theme } from '@/config/page-themes'
 
 export const HEAD = document.head
 export const BODY = document.body

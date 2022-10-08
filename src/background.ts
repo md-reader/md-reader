@@ -1,6 +1,6 @@
-import { fetch } from './shared'
-import storage from './core/storage'
-import commands from './core/commands'
+import { fetch } from '@/shared'
+import storage from '@/core/storage'
+import commands from '@/core/commands'
 
 chrome.runtime.onMessage.addListener(({ action, data }, _sender, callback) => {
   messageHandler(action, data, callback)

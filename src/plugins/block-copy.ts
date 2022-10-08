@@ -1,5 +1,5 @@
-import { writeText } from '../shared'
-import className from '../config/class-name'
+import { writeText } from '@/shared'
+import className from '@/config/class-name'
 
 export default function BlockCopyPlugin({ event }) {
   // code block copy button event

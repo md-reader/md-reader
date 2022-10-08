@@ -1,5 +1,5 @@
 import Ele, { type ElementType } from './ele'
-import { BODY, HEAD, getAssetsURL } from '../shared'
+import { BODY, HEAD, getAssetsURL } from '@/shared'
 
 const htmlHeadTags = [
   {

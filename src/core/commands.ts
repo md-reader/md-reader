@@ -1,5 +1,5 @@
-import storage from '../core/storage'
-import { toTheme } from '../shared/index'
+import storage from '@/core/storage'
+import { toTheme } from '@/shared/index'
 
 export default {
   async toggleSide(handler) {

@@ -1,6 +1,6 @@
 import debounce from 'lodash.debounce'
-import className from '../config/class-name'
-import Ele from '../core/ele'
+import className from '@/config/class-name'
+import Ele from '@/core/ele'
 
 let ele: HTMLImageElement = null
 let modal: Ele<HTMLElement> = null

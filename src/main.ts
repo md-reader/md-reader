@@ -1,13 +1,13 @@
 import throttle from 'lodash.throttle'
-import Event from './core/event'
-import storage from './core/storage'
-import Ele, { svg } from './core/ele'
-import { initPlugins } from './plugins'
-import lifecycle from './core/lifecycle'
-import className from './config/class-name'
-import type { Theme } from './config/page-themes'
-import { getDefaultData, type Data } from './core/data'
-import { mdRender, type MdOptions } from './core/markdown'
+import Event from '@/core/event'
+import storage from '@/core/storage'
+import Ele, { svg } from '@/core/ele'
+import { initPlugins } from '@/plugins'
+import lifecycle from '@/core/lifecycle'
+import className from '@/config/class-name'
+import type { Theme } from '@/config/page-themes'
+import { getDefaultData, type Data } from '@/core/data'
+import { mdRender, type MdOptions } from '@/core/markdown'
 import {
   getHeads,
   getRawContainer,
@@ -16,11 +16,11 @@ import {
   darkMediaQuery,
   getMediaQueryTheme,
   toTheme,
-} from './shared'
-import codeIcon from './images/icon_code.svg'
-import sideIcon from './images/icon_side.svg'
-import goTopIcon from './images/icon_go_top.svg'
-import './style/index.less'
+} from '@/shared'
+import codeIcon from '@/images/icon_code.svg'
+import sideIcon from '@/images/icon_side.svg'
+import goTopIcon from '@/images/icon_go_top.svg'
+import '@/style/index.less'
 
 function main(data: Data) {
   const configData = getDefaultData(data)

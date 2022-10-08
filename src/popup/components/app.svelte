@@ -1,5 +1,5 @@
 <script lang="ts">
-  import storage from '../../core/storage'
+  import storage from '@/core/storage'
   import Warning from './warning.svelte'
   import Header from './header.svelte'
   import Radio from '@smui/radio'
@@ -7,11 +7,11 @@
   import FormField from '@smui/form-field'
   import Select, { Option } from '@smui/select'
   import Chip, { Set, Text } from '@smui/chips'
-  import MD_PLUGINS from '../../config/md-plugins'
-  import PAGE_THEMES from '../../config/page-themes'
-  import { getDefaultData, type Data } from '../../core/data'
+  import MD_PLUGINS from '@/config/md-plugins'
+  import PAGE_THEMES from '@/config/page-themes'
+  import { getDefaultData, type Data } from '@/core/data'
   import pkg from '../../../package.json'
-  import i18n from '../../config/i18n'
+  import i18n from '@/config/i18n'
 
   let localize = i18n()
   let homepage = pkg.homepage

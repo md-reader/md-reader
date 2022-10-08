@@ -11,7 +11,10 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "lib": ["ESNext", "DOM"],
-    "types": ["chrome", "svelte"]
+    "types": ["chrome", "svelte"],
+    "paths": {
+      "@/*": ["./src/*"]
+    }
   },
   "include": ["src/**/*"]
 }
