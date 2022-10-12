@@ -6,3 +6,4 @@ extension.pem
 *.zip
 .vscode/settings.json
 .idea
+.fleet
