@@ -69,5 +69,5 @@
       }
     }
   },
-  "permissions": ["storage", "tabs"]
+  "permissions": ["storage"]
 }
