@@ -1,6 +1,6 @@
 {
   "name": "md-reader",
-  "version": "2.12.0",
+  "version": "2.12.1",
   "author": "Bener",
   "license": "MIT",
   "description": "A markdown reader extension for chrome",
@@ -58,7 +58,7 @@
   },
   "dependencies": {
     "@md-reader/markdown-it-mermaid": "^0.5.1",
-    "@md-reader/theme": "^1.0.21",
+    "@md-reader/theme": "^1.0.22",
     "@smui/button": "^4.2.0",
     "@smui/chips": "^4.2.0",
     "@smui/form-field": "^4.2.0",
