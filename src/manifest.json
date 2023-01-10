@@ -1,6 +1,6 @@
 {
   "name": "__MSG_ext_name__",
-  "version": "2.12.1",
+  "version": "2.12.2",
   "author": "Bener",
   "manifest_version": 2,
   "description": "__MSG_ext_desc__",
@@ -43,29 +43,25 @@
     "toggleSide": {
       "description": "__MSG_command_toggle_side__",
       "suggested_key": {
-        "windows": "Alt+Shift+B",
-        "mac": "Alt+Shift+B"
+        "default": "Alt+Shift+B"
       }
     },
     "toggleCentered": {
       "description": "__MSG_command_toggle_centered__",
       "suggested_key": {
-        "windows": "Alt+Shift+C",
-        "mac": "Alt+Shift+C"
+        "default": "Alt+Shift+C"
       }
     },
     "toggleRefresh": {
       "description": "__MSG_command_toggle_refresh__",
       "suggested_key": {
-        "windows": "Alt+Shift+R",
-        "mac": "Alt+Shift+R"
+        "default": "Alt+Shift+R"
       }
     },
     "toggleTheme": {
       "description": "__MSG_command_toggle_theme__",
       "suggested_key": {
-        "windows": "Alt+Shift+T",
-        "mac": "Alt+Shift+T"
+        "default": "Alt+Shift+T"
       }
     }
   },
