@@ -1,4 +1,5 @@
 import fs from 'fs/promises'
+import prettier from 'prettier'
 import { url, log, newVersion } from './utils.mjs'
 
 const manifestPath = url('../src/manifest.json')
@@ -11,7 +12,7 @@ try {
   )
   await fs.writeFile(
     manifestPath,
-    JSON.stringify(manifest, null, 2) + '\n',
+    prettier.format(JSON.stringify(manifest, null, 2), { parser: 'json' }),
     'utf-8',
   )
 } catch (err) {
