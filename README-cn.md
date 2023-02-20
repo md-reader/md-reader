@@ -19,6 +19,39 @@
 
 ![banner2](./example/example-2.png)
 
+## Features
+
+- 以 `HTML` 形式渲染 `Markdown`
+- 侧边栏目录
+- 原文件预览
+- 图片预览
+- 代码高亮
+- 亮色/暗色/自动 主题样式
+- 文档热重载
+- 功能快捷键
+- 文档居中显示
+- 插件:
+  - 表情
+  - 上标
+  - 下标
+  - 插入
+  - 目录
+  - 标记
+  - 图表
+  - 流程图
+  - 缩写
+  - 释义
+  - 注解
+  - 任务列表复选框
+  - 警告
+  - 提示
+- 支持系统:
+  - Windows
+  - macOS
+  - Linux
+  - Ubuntu
+  - ChromeOS
+
 ## 安装
 
 ### A. 在线安装（需要机智上网）
@@ -29,16 +62,16 @@
 
 1. 克隆 `md-reader` 仓库到本地并编译:
 
-    ```bash
-    # 克隆本仓库
-    git clone https://github.com/Heroor/md-reader.git && cd md-reader
+   ```bash
+   # 克隆本仓库
+   git clone https://github.com/Heroor/md-reader.git && cd md-reader
 
-    # 安装依赖
-    pnpm install
+   # 安装依赖
+   pnpm install
 
-    # 构建扩展程序
-    pnpm build
-    ```
+   # 构建扩展程序
+   pnpm build
+   ```
 
 2. 构建成功后，`md-reader/dist` 文件夹会生成 `md-reader-xxx.zip` 扩展程序包。
 

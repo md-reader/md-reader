@@ -19,6 +19,38 @@ Example:
 
 ![banner2](./example/example-2.png)
 
+## Features
+
+- Render markdown to HTML
+- Table of content sidebar
+- RAW preview
+- Image preview
+- Code highlighting
+- Light/Dark/Auto markdown theme
+- Shortcut key
+- Document hot reload
+- Page content centered
+- Plugins:
+  - Emoji
+  - Superscript
+  - Subscript
+  - Inserted
+  - TOC
+  - Mark
+  - Katex
+  - Mermaid
+  - Abbreviation
+  - Definition list
+  - Footnote
+  - Task Lists
+  - Warning container
+  - Tips container
+- Support OS:
+  - Windows
+  - macOS
+  - Linux
+  - Ubuntu
+  - ChromeOS
 
 ## Install
 
@@ -30,16 +62,16 @@ Install from the [chrome extension store](https://chrome.google.com/webstore/det
 
 1. Clone `md-reader` repo and build:
 
-    ```bash
-    # Clone repository
-    git clone https://github.com/Heroor/md-reader.git && cd md-reader
+   ```bash
+   # Clone repository
+   git clone https://github.com/Heroor/md-reader.git && cd md-reader
 
-    # Install dependencies
-    pnpm install
+   # Install dependencies
+   pnpm install
 
-    # Build extension
-    pnpm build
-    ```
+   # Build extension
+   pnpm build
+   ```
 
 2. After build, the `md-reader/dist` folder will generate a `md-reader-xxx.zip` extension package.
 
