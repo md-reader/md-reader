@@ -3,6 +3,13 @@ import { BODY, HEAD, getAssetsURL } from '@/shared'
 
 const htmlHeadTags = [
   {
+    tag: 'meta',
+    attrs: {
+      name: 'referrer',
+      content: 'no-referrer',
+    },
+  },
+  {
     tag: 'link',
     attrs: {
       rel: 'icon',
