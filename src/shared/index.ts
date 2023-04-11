@@ -41,7 +41,7 @@ export function setTheme(themeType: Theme) {
   BODY.classList.add(`${themePrefix}${themeType}`)
 }
 
-export function fetch(
+export function xhr(
   url: string,
   method: string = 'GET',
   body?: Document | XMLHttpRequestBodyInit,

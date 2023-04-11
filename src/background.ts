@@ -1,4 +1,3 @@
-import { fetch } from '@/shared'
 import storage from '@/core/storage'
 import commands from '@/core/commands'
 
@@ -16,7 +15,8 @@ async function messageHandler(action: string, data: any, callback?) {
       break
     case 'fetch':
       fetch(data)
-        .then((res: XMLHttpRequest) => callback?.(res.responseText))
+        .then(res => res.text())
+        .then(callback)
         .catch(err => {
           console.error(err)
           callback?.(err)
