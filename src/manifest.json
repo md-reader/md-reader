@@ -6,10 +6,11 @@
   "description": "__MSG_ext_desc__",
   "default_locale": "en",
   "icons": {
-    "16": "images/logo_16.png",
-    "32": "images/logo_32.png",
-    "48": "images/logo_48.png",
-    "128": "images/logo_128.png"
+    "16": "images/logo-stroke.png",
+    "32": "images/logo-stroke.png",
+    "48": "images/logo-stroke.png",
+    "128": "images/logo-stroke.png",
+    "512": "images/logo-stroke.png"
   },
   "web_accessible_resources": ["css/*", "fonts/*", "images/*"],
   "background": {

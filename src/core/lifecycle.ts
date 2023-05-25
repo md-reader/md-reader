@@ -14,7 +14,7 @@ const htmlHeadTags = [
     attrs: {
       rel: 'icon',
       type: 'image/svg+xml',
-      href: getAssetsURL('images/logo.svg'),
+      href: getAssetsURL('images/logo-stroke.svg'),
     },
   },
 ]
