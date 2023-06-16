@@ -1,0 +1,22 @@
+{
+  "ext_name": {
+    "message": "MD Reader",
+    "description": "Розширення для читання markdown для Chrome."
+  },
+  "ext_desc": {
+    "message": "Розширення для читання markdown для Chrome.",
+    "description": "Підтримка перегляду file://, http://, https:// посилань та файлів розширення *.md, *.mkd, *.markdown."
+  },
+  "command_toggle_side": {
+    "message": "Перемкнути бічну панель"
+  },
+  "command_toggle_centered": {
+    "message": "Перемкнути по центру"
+  },
+  "command_toggle_refresh": {
+    "message": "Загальне перезавантаження"
+  },
+  "command_toggle_theme": {
+    "message": "Перемкнути тему"
+  }
+}
