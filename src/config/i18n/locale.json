@@ -8,6 +8,7 @@
     "zh-CN": "简体中文",
     "zh-TW": "繁體中文",
     "ko": "한국어",
+    "uk": "Українська",
 
     "label_enable": "Enable",
     "label_auto-refresh": "Auto Refresh",
@@ -111,5 +112,31 @@
     "Warning": "경고",
     "Tips": "제안",
     "warning_message": "확장 프로그램 \"md-reader\" 의 세부 정보 페이지를 열고 \"파일 URL에 대한 액세스 허용\"을 활성화 하세요."
+  },
+  "uk": {
+    "label_enable": "Увімкнути",
+    "label_auto-refresh": "Автоматичне перезавантаження",
+    "label_centered": "По центру",
+    "label_theme": "Тема",
+    "label_language": "Мова",
+    "label_md-plugins": "Плаґіни",
+    "light": "Світла",
+    "dark": "Темна",
+    "auto": "Автоматична",
+    "Emoji": "Емодзі",
+    "Sub": "Підрядковий текст",
+    "Sup": "Надрядковий текст",
+    "Ins": "Вставка",
+    "Mark": "Маркування",
+    "Abbr": "Абревіатури",
+    "Katex": "Формули",
+    "Mermaid": "Діаграми",
+    "Deflist": "Визначення",
+    "Footnote": "Примітка",
+    "TaskLists": "Списки завдань",
+    "TOC": "Зміст",
+    "Warning": "Попередження",
+    "Tips": "Поради",
+    "warning_message": "Відкрийте сторінку керування розширенням «md-reader» та активуйте «Надавати доступ до URL-адрес файлу»."
   }
 }
