@@ -9,7 +9,7 @@ class Storage<T extends object> {
    * Set data to storage
    */
   set(data: T): Promise<T>
-  set(key: keyof T, value: any): Promise<T>
+  set<K extends keyof T>(key: K, value: T[K]): Promise<T>
   set(data: unknown, value?: any) {
     if (typeof data === 'string') {
       return this.setObjData(<T>{
