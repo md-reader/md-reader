@@ -14,19 +14,19 @@ dependencies:
   '@smui/button':
     specifier: ^4.2.0
     version: 4.2.0
-  '@smui/chips':
-    specifier: ^4.2.0
-    version: 4.2.0
   '@smui/form-field':
     specifier: ^4.2.0
     version: 4.2.0
-  '@smui/radio':
+  '@smui/segmented-button':
     specifier: ^4.2.0
     version: 4.2.0
   '@smui/select':
     specifier: ^4.2.0
     version: 4.2.0
   '@smui/switch':
+    specifier: ^4.2.0
+    version: 4.2.0
+  '@smui/tooltip':
     specifier: ^4.2.0
     version: 4.2.0
   '@traptitech/markdown-it-katex':
@@ -281,45 +281,6 @@ packages:
       tslib: 2.4.0
     dev: false
 
-  /@material/checkbox@11.0.0:
-    resolution:
-      {
-        integrity: sha512-vHBG9hK+I6SAn2H1/5u5PUscsHMGc2525QLWeWoZ5VRj6TKtxJ8WKZaPZKea7iwJwKYoe4sI9hOFjE1QQAL/tg==,
-      }
-    dependencies:
-      '@material/animation': 11.0.0
-      '@material/base': 11.0.0
-      '@material/density': 11.0.0
-      '@material/dom': 11.0.0
-      '@material/feature-targeting': 11.0.0
-      '@material/ripple': 11.0.0
-      '@material/theme': 11.0.0
-      '@material/touch-target': 11.0.0
-      tslib: 2.4.0
-    dev: false
-
-  /@material/chips@11.0.0:
-    resolution:
-      {
-        integrity: sha512-9gzm0G0e0VQ0SJnfrRws5SOiK+Qi7Crg/FSTsw0Lk5frsHsZt1mKB72d2rOpeXDYb8gox2GUhuO0U/IIc4EIrw==,
-      }
-    dependencies:
-      '@material/animation': 11.0.0
-      '@material/base': 11.0.0
-      '@material/checkbox': 11.0.0
-      '@material/density': 11.0.0
-      '@material/dom': 11.0.0
-      '@material/elevation': 11.0.0
-      '@material/feature-targeting': 11.0.0
-      '@material/ripple': 11.0.0
-      '@material/rtl': 11.0.0
-      '@material/shape': 11.0.0
-      '@material/theme': 11.0.0
-      '@material/touch-target': 11.0.0
-      '@material/typography': 11.0.0
-      tslib: 2.4.0
-    dev: false
-
   /@material/density@11.0.0:
     resolution:
       {
@@ -472,23 +433,6 @@ packages:
       tslib: 2.4.0
     dev: false
 
-  /@material/radio@11.0.0:
-    resolution:
-      {
-        integrity: sha512-smbW+ccgoGr6CW0Jjk+DZgIwZjVmeNONAJX9lTxSvmxZVgJ/3BVizY8Mwl4r1j4Y9jZj2ZPoAg8D1G6wVxO6ig==,
-      }
-    dependencies:
-      '@material/animation': 11.0.0
-      '@material/base': 11.0.0
-      '@material/density': 11.0.0
-      '@material/dom': 11.0.0
-      '@material/feature-targeting': 11.0.0
-      '@material/ripple': 11.0.0
-      '@material/theme': 11.0.0
-      '@material/touch-target': 11.0.0
-      tslib: 2.4.0
-    dev: false
-
   /@material/ripple@11.0.0:
     resolution:
       {
@@ -510,6 +454,22 @@ packages:
       }
     dependencies:
       '@material/theme': 11.0.0
+      tslib: 2.4.0
+    dev: false
+
+  /@material/segmented-button@11.0.0:
+    resolution:
+      {
+        integrity: sha512-JUQQLEg8wujbl3vZ4rezPVdgmGKDy+pYHpL/hti2rw3SyGG9RzliZKh9vHGVWrQISObiSphoURSutGU+6HG/jA==,
+      }
+    dependencies:
+      '@material/base': 11.0.0
+      '@material/elevation': 11.0.0
+      '@material/feature-targeting': 11.0.0
+      '@material/ripple': 11.0.0
+      '@material/theme': 11.0.0
+      '@material/touch-target': 11.0.0
+      '@material/typography': 11.0.0
       tslib: 2.4.0
     dev: false
 
@@ -575,6 +535,24 @@ packages:
       }
     dependencies:
       '@material/feature-targeting': 11.0.0
+      tslib: 2.4.0
+    dev: false
+
+  /@material/tooltip@11.0.0:
+    resolution:
+      {
+        integrity: sha512-i9PvUDB2fQ6Q+1uOU8gFfe9WmVpD3M0ilN9LgGSbY/tCIwH6kxCS2jwa3/z1yJNWXBikLkpNLlOs1JmYYqteVA==,
+      }
+    dependencies:
+      '@material/animation': 11.0.0
+      '@material/base': 11.0.0
+      '@material/dom': 11.0.0
+      '@material/elevation': 11.0.0
+      '@material/feature-targeting': 11.0.0
+      '@material/rtl': 11.0.0
+      '@material/shape': 11.0.0
+      '@material/theme': 11.0.0
+      '@material/typography': 11.0.0
       tslib: 2.4.0
     dev: false
 
@@ -680,19 +658,6 @@ packages:
       '@smui/ripple': 4.2.0
     dev: false
 
-  /@smui/chips@4.2.0:
-    resolution:
-      {
-        integrity: sha512-ux378+YSbk3ElYxAiCmKyCKCpw2Sb2G6b7Spt1IYZs7ZL1whuEnXwwGBsbvYnA7MK+ZCBMR9BB5Wc73HxEpA7A==,
-      }
-    dependencies:
-      '@material/chips': 11.0.0
-      '@material/dom': 11.0.0
-      '@material/rtl': 11.0.0
-      '@smui/common': 4.2.0
-      '@smui/ripple': 4.2.0
-    dev: false
-
   /@smui/common@4.2.0:
     resolution:
       {
@@ -782,17 +747,6 @@ packages:
       '@smui/common': 4.2.0
     dev: false
 
-  /@smui/radio@4.2.0:
-    resolution:
-      {
-        integrity: sha512-gQiVUNEexQ0H6N6GWY4r1rhHjWlBN+N4eNWTOa5OM2t8sCSVYpQiwI6WK/Ws63vLPY3VaUzbZrfssFl1+iHmpQ==,
-      }
-    dependencies:
-      '@material/radio': 11.0.0
-      '@smui/common': 4.2.0
-      '@smui/ripple': 4.2.0
-    dev: false
-
   /@smui/ripple@4.2.0:
     resolution:
       {
@@ -801,6 +755,17 @@ packages:
     dependencies:
       '@material/dom': 11.0.0
       '@material/ripple': 11.0.0
+    dev: false
+
+  /@smui/segmented-button@4.2.0:
+    resolution:
+      {
+        integrity: sha512-MLTwaO716cPmvEHw0C2+PlGBjt/GSFwGSCmz1kLEQ6It7lgW07jlJJnIKUcou7zAXSPhD99QocF5hUiBt0AIjg==,
+      }
+    dependencies:
+      '@material/segmented-button': 11.0.0
+      '@smui/common': 4.2.0
+      '@smui/ripple': 4.2.0
     dev: false
 
   /@smui/select@4.2.0:
@@ -834,6 +799,16 @@ packages:
       '@material/switch': 11.0.0
       '@smui/common': 4.2.0
       '@smui/ripple': 4.2.0
+    dev: false
+
+  /@smui/tooltip@4.2.0:
+    resolution:
+      {
+        integrity: sha512-tcCUa+b2UsksxTZi5YLQxvSIWjp5x5N8CKnF1l+Ahrhwl8LNnFdQjHPtDx6HpAmPTfjLDBI1x8KqbUyAnAnojw==,
+      }
+    dependencies:
+      '@material/tooltip': 11.0.0
+      '@smui/common': 4.2.0
     dev: false
 
   /@traptitech/markdown-it-katex@3.6.0:
