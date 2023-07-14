@@ -1,6 +1,8 @@
 body {
   --mdc-theme-primary: #607cd2;
-  --mdc-theme-secondary: #607cd2;
+  --mdc-theme-secondary: var(--mdc-theme-primary);
+  --mdc-ripple-color: var(--mdc-theme-primary);
+  --mdc-menu-max-height: 320px;
   box-sizing: border-box;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
@@ -25,4 +27,9 @@ body {
   background-color: var(--mdc-theme-primary);
   color: #fff;
   opacity: 1;
+}
+
+.form .mdc-segmented-button__segment--selected {
+  background-color: var(--mdc-theme-primary);
+  color: #fff;
 }

@@ -1,3 +1,6 @@
+.github
 dist
+example
 extension
 node_modules
+CODE_OF_CONDUCT.md

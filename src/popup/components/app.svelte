@@ -1,21 +1,50 @@
 <script lang="ts">
   import storage from '@/core/storage'
   import Warning from './warning.svelte'
-  import Header from './header.svelte'
-  import Radio from '@smui/radio'
+  import About from './about.svelte'
+  import Icon from './icon.svelte'
   import Switch from '@smui/switch'
   import FormField from '@smui/form-field'
   import Select, { Option } from '@smui/select'
-  import Chip, { Set, Text } from '@smui/chips'
+  import Tooltip, { Wrapper } from '@smui/tooltip'
+  import SegmentedButton, { Segment } from '@smui/segmented-button'
   import MD_PLUGINS from '@/config/md-plugins'
   import PAGE_THEMES from '@/config/page-themes'
   import { getDefaultData, type Data } from '@/core/data'
   import pkg from '../../../package.json'
   import i18n from '@/config/i18n'
+  import settingIcon from '@/images/setting.svg'
+  import pluginsIcon from '@/images/plugins.svg'
+  import aboutIcon from '@/images/about.svg'
+  import warningIcon from '@/images/warning.svg'
+  import lightIcon from '@/images/light.svg'
+  import darkIcon from '@/images/dark.svg'
+  import autoIcon from '@/images/auto.svg'
 
   let localize = i18n()
   let homepage = pkg.homepage
+  let version = pkg.version
   let isAllowViewFile = true
+  let tabs = [
+    {
+      title: 'General',
+      icon: settingIcon,
+    },
+    {
+      title: 'Plugins',
+      icon: pluginsIcon,
+    },
+    {
+      title: 'About',
+      icon: aboutIcon,
+    },
+  ]
+  let themeIconData = {
+    light: lightIcon,
+    dark: darkIcon,
+    auto: autoIcon,
+  }
+  let currentTab = tabs[0].title
   let data = getDefaultData()
 
   // Get if file allowed access
@@ -24,13 +53,13 @@
   )
 
   storage.get().then((_data: Data) => {
-    // need an assignment to updata UI
+    // need an assignment to update UI
     data = { ...data, ..._data }
   })
 
   $: if (data.language) {
     updateConfig('language', data.language)
-    changeLocale(data.language)
+    localize = i18n(data.language)
   }
 
   function updateConfig(key, value) {
@@ -38,98 +67,151 @@
       chrome.runtime.sendMessage({ action: 'storage', data: { key, value } })
     }, 0)
   }
-
-  function changeLocale(language) {
-    localize = i18n(language)
-  }
 </script>
 
 <main>
-  <Header {homepage} />
-
-  {#if !isAllowViewFile}
-    <Warning {localize} />
-  {/if}
-
-  <div class="form" disabled={!data.enable}>
-    <div class="form-item inline">
-      <span class="label-item">{localize('label_enable')}:</span>
-      <FormField align="end">
-        <Switch
-          bind:checked={data.enable}
-          color="primary"
-          on:change={() => updateConfig('enable', data.enable)}
-        />
-      </FormField>
+  <div class="setting-layout">
+    <div class="setting-side">
+      <ul>
+        {#each tabs as tab, idx}
+          <li
+            class={tab.title === currentTab ? 'active' : ''}
+            on:click={() => (currentTab = tab.title)}
+            tabindex={idx + 1}
+          >
+            <Icon class="side-icon" svg={tab.icon} />
+          </li>
+        {/each}
+      </ul>
     </div>
 
-    <div class="form-item inline">
-      <span class="label-item">{localize('label_centered')}:</span>
-      <FormField align="end">
-        <Switch
-          disabled={!data.enable}
-          bind:checked={data.centered}
-          color="primary"
-          on:change={() => updateConfig('centered', data.centered)}
-        />
-      </FormField>
-    </div>
+    <div class="setting-content">
+      {#if currentTab === 'General'}
+        <h2>
+          {currentTab}
+          {#if !isAllowViewFile}
+            <Wrapper rich class="warning-tooltip">
+              <Icon class="warning-icon" svg={warningIcon} />
+              <Tooltip xPos="start" yPos="below">
+                <Warning {localize} />
+              </Tooltip>
+            </Wrapper>
+          {/if}
+        </h2>
 
-    <div class="form-item inline">
-      <span class="label-item">{localize('label_auto-refresh')}:</span>
-      <FormField align="end">
-        <Switch
-          disabled={!data.enable}
-          bind:checked={data.refresh}
-          color="primary"
-          on:change={() => updateConfig('refresh', data.refresh)}
-        />
-      </FormField>
-    </div>
+        <!-- enable -->
+        <div class="form general-content">
+          <div class="form-item inline">
+            <div class="label-item">
+              <div class="form-label">{localize('label_enable')}</div>
+              <div class="form-label-desc">
+                {localize('setting_desc_enable')}
+              </div>
+            </div>
+            <FormField align="end">
+              <Switch
+                bind:checked={data.enable}
+                color="primary"
+                on:change={() => updateConfig('enable', data.enable)}
+              />
+            </FormField>
+          </div>
 
-    <div class="form-item">
-      <div class="label-item">{localize('label_md-plugins')}:</div>
-      <Set
-        let:chip
-        bind:selected={data.mdPlugins}
-        chips={MD_PLUGINS}
-        nonInteractive={!data.enable}
-        filter={data.enable}
-      >
-        <Chip
-          {chip}
-          title={chip}
-          on:click={() =>
-            data.enable && updateConfig('mdPlugins', data.mdPlugins)}
-          ><Text>{localize(chip)}</Text></Chip
-        >
-      </Set>
-    </div>
+          <!-- centered -->
+          <div class="form-item inline">
+            <div class="label-item">
+              <div class="form-label">{localize('label_centered')}</div>
+              <div class="form-label-desc">
+                {localize('setting_desc_centered')}
+              </div>
+            </div>
+            <FormField align="end">
+              <Switch
+                disabled={!data.enable}
+                bind:checked={data.centered}
+                color="primary"
+                on:change={() => updateConfig('centered', data.centered)}
+              />
+            </FormField>
+          </div>
 
-    <div class="form-item">
-      <div class="label-item">{localize('label_theme')}:</div>
-      {#each PAGE_THEMES as mode}
-        <FormField>
-          <span slot="label"> {localize(mode)} </span>
-          <Radio
-            disabled={!data.enable}
-            bind:group={data.pageTheme}
-            bind:value={mode}
-            on:change={() => updateConfig('pageTheme', mode)}
-          />
-        </FormField>
-      {/each}
-    </div>
+          <!-- auto refresh -->
+          <div class="form-item inline">
+            <div class="label-item">
+              <div class="form-label">{localize('label_autoRefresh')}</div>
+              <div class="form-label-desc">
+                {localize('setting_desc_autoRefresh')}
+              </div>
+            </div>
+            <FormField align="end">
+              <Switch
+                disabled={!data.enable}
+                bind:checked={data.refresh}
+                color="primary"
+                on:change={() => updateConfig('refresh', data.refresh)}
+              />
+            </FormField>
+          </div>
 
-    <div class="form-item">
-      <div class="label-item">{localize('label_language')}:</div>
-      <FormField style="padding-left: 10px">
-        <Select bind:value={data.language}>
-          {#each i18n.locales as locale}
-            <Option value={locale}>{localize(locale)}</Option>
+          <!-- theme -->
+          <div class="form-item inline">
+            <div class="label-item">{localize('label_theme')}</div>
+            <SegmentedButton
+              segments={PAGE_THEMES}
+              let:segment
+              singleSelect
+              bind:selected={data.pageTheme}
+            >
+              <Segment
+                {segment}
+                title={localize(segment)}
+                on:selected={() => updateConfig('pageTheme', segment)}
+              >
+                <Icon svg={themeIconData[segment]} class="theme-icon" />
+              </Segment>
+            </SegmentedButton>
+          </div>
+
+          <!-- language -->
+          <div class="form-item">
+            <div class="label-item">{localize('label_language')}:</div>
+            <FormField style="padding-left: 10px">
+              <Select bind:value={data.language}>
+                {#each i18n.locales as locale}
+                  <Option value={locale}>{localize(locale)}</Option>
+                {/each}
+              </Select>
+            </FormField>
+          </div>
+        </div>
+      {:else if currentTab === 'Plugins'}
+        <h2>{currentTab}</h2>
+        <div class="form plugin-content">
+          <!-- <div class="form-item inline">
+            <div class="label-item">
+              <div class="form-label">{localize('All plugins')}</div>
+            </div>
+            <FormField align="end">
+              <Switch color="primary" disabled={!data.enable} />
+            </FormField>
+          </div> -->
+          {#each MD_PLUGINS as plugin}
+            <div class="form-item inline">
+              <div class="label-item">{localize(`plugin_desc_${plugin}`)}</div>
+              <FormField align="end">
+                <Switch
+                  color="primary"
+                  bind:group={data.mdPlugins}
+                  value={plugin}
+                  disabled={!data.enable}
+                />
+              </FormField>
+            </div>
           {/each}
-        </Select>
-      </FormField>
+        </div>
+      {:else if currentTab === 'About'}
+        <About {homepage} {version} />
+      {/if}
     </div>
   </div>
 </main>
@@ -138,11 +220,80 @@
   main {
     overflow: auto;
     box-sizing: border-box;
-    width: 330px;
-    max-height: 599px;
-    padding: 22px 24px 10px;
-    border: 1px solid #24315870;
+    width: 500px;
+    height: 350px;
+    border: 1px solid #24315830;
     border-radius: 1px;
+  }
+  .setting-layout {
+    display: flex;
+    height: 100%;
+  }
+  .setting-side {
+    padding: 8px;
+    border-right: 1px solid #eeeeee;
+    background: #f9fafb;
+  }
+  .setting-side ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 0;
+    color: #243158e3;
+  }
+  .setting-side li {
+    padding: 9px;
+    border-radius: 8px;
+    transition: 0.2s;
+    cursor: pointer;
+    margin-bottom: 1px;
+  }
+  .setting-side li:active,
+  .setting-side li.active {
+    transition: 0.2s, background 0s;
+    background: #e9efff;
+    color: var(--mdc-theme-primary);
+  }
+  .setting-side li:focus-visible {
+    background: #e9efffb3;
+    outline: none;
+  }
+
+  .setting-side li:hover {
+    background: #e9efffdd;
+  }
+  .setting-side li:active {
+    transform: scale(0.95);
+  }
+  .setting-side li :global(svg) {
+    width: 30px;
+    height: 30px;
+  }
+  :global(.warning-tooltip) {
+    display: inline-block;
+    position: absolute;
+    margin: 0px 0 0 8px;
+  }
+  :global(.warning-tooltip) :global(.mdc-tooltip__surface) {
+    padding: 0;
+  }
+  :global(.warning-tooltip) :global(.warning-icon) {
+    width: 22px;
+    height: 22px;
+    color: #ff493c;
+    filter: drop-shadow(0 0 2px #ff493c4d);
+  }
+  .setting-content {
+    position: relative;
+    flex: 1;
+    height: 100%;
+    overflow: auto;
+    box-sizing: border-box;
+    padding: 26px 34px 0;
+  }
+  .setting-content h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
   }
   .form-item {
     margin-bottom: 6px;
@@ -150,11 +301,28 @@
   .form-item.inline {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 15px;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  .plugin-content .form-item.inline {
+    margin-bottom: 24px;
   }
   .label-item {
+    flex: 1;
     font-weight: bolder;
     font-size: 13px;
     color: #243158e3;
+  }
+  .form-label-desc {
+    font-size: 12px;
+    color: #aaa;
+    margin-top: 2px;
+  }
+  :global(.theme-icon) {
+    width: 20px;
+    color: currentColor;
+  }
+  :global(.smui-select--standard) :global(.mdc-select__anchor) {
+    height: 50px;
   }
 </style>
