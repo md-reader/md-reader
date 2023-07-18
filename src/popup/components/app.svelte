@@ -165,6 +165,7 @@
               <Segment
                 {segment}
                 title={localize(segment)}
+                disabled={!data.enable}
                 on:selected={() => updateConfig('pageTheme', segment)}
               >
                 <Icon svg={themeIconData[segment]} class="theme-icon" />
@@ -189,7 +190,7 @@
         <div class="form plugin-content">
           <!-- <div class="form-item inline">
             <div class="label-item">
-              <div class="form-label">{localize('All plugins')}</div>
+              <div class="form-label">{localize('Enable plugins')}</div>
             </div>
             <FormField align="end">
               <Switch color="primary" disabled={!data.enable} />
@@ -204,6 +205,7 @@
                   bind:group={data.mdPlugins}
                   value={plugin}
                   disabled={!data.enable}
+                  on:change={() => updateConfig('mdPlugins', data.mdPlugins)}
                 />
               </FormField>
             </div>
