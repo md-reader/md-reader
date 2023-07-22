@@ -33,6 +33,7 @@ body.md-reader {
       color: var(--color-side);
       background: var(--color-side-bg);
       transition: transform 0.3s, box-shadow 0.5s;
+      transition-timing-function: var(--func-show-in);
       will-change: transform, box-shadow;
       z-index: 1;
       li {
@@ -90,7 +91,7 @@ body.md-reader {
     &__body {
       min-height: 100vh;
       padding-left: @side-width;
-      transition: padding 0.3s;
+      transition: padding 0.3s var(--func-show-in);
       .md-reader__markdown-content {
         padding: 30px 70px 40px;
         margin: auto;
@@ -178,7 +179,7 @@ body.md-reader {
         outline: none;
         margin: 0;
         opacity: var(--opacity-img);
-        transition: 0.3s;
+        transition: 0.3s var(--func-show-in);
         transition-property: transform, opacity, width, height;
         will-change: transform, opacity, width, height;
         user-select: none;
@@ -308,7 +309,8 @@ body.md-reader {
       display: none;
       position: absolute;
       left: 16px;
-      transition: background 0.1s, color 0.1s, transform 0.3s;
+      transition: background 0.1s, color 0.1s,
+        transform 0.3s var(--func-show-in);
       transform: translateX(@side-width);
     }
     &--go-top {
