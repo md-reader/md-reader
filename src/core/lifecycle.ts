@@ -1,5 +1,6 @@
 import Ele, { type ElementType } from './ele'
-import { BODY, HEAD, getAssetsURL } from '@/shared'
+import { HTML, BODY, HEAD, getAssetsURL } from '@/shared'
+import { rootThemeDisabledPrefix } from '@/config/page-themes'
 
 const htmlHeadTags = [
   {
@@ -41,6 +42,11 @@ export default {
       container.toggle(showContainerRaw)
     }
     showContainerRaw = !showContainerRaw
+    if (showContainerRaw) {
+      delete HTML.dataset[rootThemeDisabledPrefix]
+    } else {
+      HTML.dataset[rootThemeDisabledPrefix] = ''
+    }
     eles.forEach(ele => ele.toggle(showContainerRaw))
   },
 }
