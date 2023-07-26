@@ -92,15 +92,18 @@
   @media (prefers-color-scheme: dark) {
     .dark();
   }
-  .md-reader {
+  &[data-md-reader-theme='light'] .md-reader {
     .light();
-    &.page-theme--dark {
-      .dark();
+  }
+  &[data-md-reader-theme='dark'] .md-reader {
+    .dark();
+  }
+  &:not([data-md-reader-theme-scheme-disabled]) {
+    &[data-md-reader-theme='light'] {
+      color-scheme: light;
     }
-    &.page-theme--auto {
-      @media (prefers-color-scheme: dark) {
-        .dark();
-      }
+    &[data-md-reader-theme='dark'] {
+      color-scheme: dark;
     }
   }
 }

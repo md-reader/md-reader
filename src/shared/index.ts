@@ -1,6 +1,7 @@
 import Ele from '@/core/ele'
-import themeTypes, { themePrefix, type Theme } from '@/config/page-themes'
+import { rootThemePrefix, type Theme } from '@/config/page-themes'
 
+export const HTML = document.documentElement
 export const HEAD = document.head
 export const BODY = document.body
 export const RAW_SELECTOR = 'pre'
@@ -32,13 +33,8 @@ export function getHeads(
   return Array.from(Ele.from(container).querySelectorAll(selector))
 }
 
-let allThemeClassNames = null
 export function setTheme(themeType: Theme) {
-  if (!allThemeClassNames) {
-    allThemeClassNames = themeTypes.map(type => `${themePrefix}${type}`)
-  }
-  BODY.classList.remove(...allThemeClassNames)
-  BODY.classList.add(`${themePrefix}${themeType}`)
+  HTML.dataset[rootThemePrefix] = themeType
 }
 
 export function xhr(
