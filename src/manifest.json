@@ -15,7 +15,7 @@
   "web_accessible_resources": [
     {
       "resources": ["css/*", "fonts/*", "images/*"],
-      "matches": ["*://*/*"]
+      "matches": ["<all_urls>"]
     }
   ],
   "background": {

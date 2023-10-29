@@ -65,6 +65,7 @@ module.exports = {
   },
   resolve: {
     extensions: ['.ts', '.js', '.svelte', '.json', '.less'],
+    conditionNames: ['require', 'node', 'svelte'],
     alias: {
       '@': resolve(__dirname, '../src'),
     },
