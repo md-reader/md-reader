@@ -19,6 +19,7 @@ import successIcon from '@/images/icon_success.svg'
 import copyIcon from '@/images/icon_copy.svg'
 import className from '@/config/class-name'
 import Ele, { svg } from './ele'
+import { escapeHtml } from 'markdown-it/lib/common/utils'
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type Plugins = { [p: string]: ((a: MdOptions) => any[]) | any[] }
@@ -100,7 +101,8 @@ function initRender(options: MdOptions) {
           return 'parse error'
         }
       }
-      return `<pre class="hljs-pre md-reader__code-block"><code class="hljs">${str}</code>${copyButton.ele.outerHTML}</pre>`
+      const code = escapeHtml(str)
+      return `<pre class="hljs-pre md-reader__code-block"><code class="hljs">${code}</code>${copyButton.ele.outerHTML}</pre>`
     },
     ...config,
   })
