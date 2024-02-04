@@ -1,6 +1,6 @@
 {
   "name": "__MSG_ext_name__",
-  "version": "2.12.7",
+  "version": "2.12.8",
   "author": "Bener",
   "manifest_version": 2,
   "description": "__MSG_ext_desc__",
@@ -40,7 +40,23 @@
         "file://*/*.MD",
         "file://*/*.MDX",
         "file://*/*.MKD",
-        "file://*/*.MARKDOWN"
+        "file://*/*.MARKDOWN",
+        "*://*/*.md?*",
+        "*://*/*.mdx?*",
+        "*://*/*.mkd?*",
+        "*://*/*.markdown?*",
+        "*://*/*.MD?*",
+        "*://*/*.MDX?*",
+        "*://*/*.MKD?*",
+        "*://*/*.MARKDOWN?*",
+        "file://*/*.md?*",
+        "file://*/*.mdx?*",
+        "file://*/*.mkd?*",
+        "file://*/*.markdown?*",
+        "file://*/*.MD?*",
+        "file://*/*.MDX?*",
+        "file://*/*.MKD?*",
+        "file://*/*.MARKDOWN?*"
       ]
     }
   ],

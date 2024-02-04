@@ -1,6 +1,6 @@
 {
   "name": "md-reader",
-  "version": "2.12.7",
+  "version": "2.12.8",
   "author": "Bener",
   "license": "MIT",
   "description": "A markdown reader extension for chrome",
