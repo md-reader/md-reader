@@ -1,111 +1,81 @@
-# md-reader
+# Markdown Reader
 
-<img src="./src/images/logo-stroke.svg" align="right" width="120">
+<picture>
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/md-reader/md-reader/main/src/images/logo.svg">
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/md-reader/md-reader/main/src/images/logo-light.svg">
+  <img alt="Markdown Reader Logo" src="https://raw.githubusercontent.com/md-reader/md-reader/main/src//images/logo-stroke.svg" align="right" width="120">
+</picture>
 
 English | [中文](./README-cn.md) | [한국어](./README-ko.md)
 
-[![](https://badgen.net/chrome-web-store/v/medapdbncneneejhbgcjceippjlfkmkg?icon=chrome&color=607cd2)](https://chrome.google.com/webstore/detail/md-reader/medapdbncneneejhbgcjceippjlfkmkg) [![](https://badgen.net/chrome-web-store/stars/medapdbncneneejhbgcjceippjlfkmkg?icon=chrome&color=607cd2)](https://chrome.google.com/webstore/detail/md-reader/medapdbncneneejhbgcjceippjlfkmkg) [![](https://badgen.net/chrome-web-store/users/medapdbncneneejhbgcjceippjlfkmkg?icon=chrome&color=607cd2)](https://chrome.google.com/webstore/detail/md-reader/medapdbncneneejhbgcjceippjlfkmkg)
+[![](https://badgen.net/chrome-web-store/v/medapdbncneneejhbgcjceippjlfkmkg?icon=chrome&color=607cd2)](https://chromewebstore.google.com/detail/md-reader/medapdbncneneejhbgcjceippjlfkmkg) [![](https://badgen.net/chrome-web-store/stars/medapdbncneneejhbgcjceippjlfkmkg?icon=chrome&color=607cd2)](https://chromewebstore.google.com/detail/md-reader/medapdbncneneejhbgcjceippjlfkmkg) [![](https://badgen.net/chrome-web-store/users/medapdbncneneejhbgcjceippjlfkmkg?icon=chrome&color=607cd2)](https://chromewebstore.google.com/detail/md-reader/medapdbncneneejhbgcjceippjlfkmkg)
 
-A markdown reader extension for Chrome.
+Markdown Reader is a powerful Chrome extension that helps you quickly preview markdown documents in Chrome.
 
-> Support view `file://` `http://` `https://` URL and `*.md` `*.mkd` `*.markdown` extension files.
+- Support for previewing links in the `file://` `http://` `https://` protocol as well as documents with `*.md` `*.mkd` `*.mdx` `*.markdown` extensions, like the following:
+  - `https://example.com/example.md` (online Markdown URL)
+  - `file:///Users/my-project/readme.markdown` (local Markdown file, \*[requires specific permissions](#allowing-file-access-permission))
+- Built-in multiple syntax plug-ins to support rendering Emoji emoticons, superscripts/subscripts, checkboxes, mathematical formulas, flowcharts, Gantt charts, table of contents, insertions, markdowns, abbreviations, paraphrases, annotations, and message/success/warning/danger alerts.
+- Code highlighting, and carefully arranged light/dark theme styles.
+- Support document hot reloading, real-time preview of document changes; support document centred display, more conducive to reading.
+- Automatically organise the document directory to the sidebar, and support switching to preview the original file content; support previewing image media resources.
+- Supports Chrome extension shortcuts for quick function invocation.
 
-Example:
+![banner](./example/example-1.png)
 
-- `https://example.com/example.md`
-- `file:///Users/my-project/readme.markdown`
+## Installation
 
-![banner1](./example/example-1.png)
+### A. Install from Chrome Web Store
 
-![banner2](./example/example-2.png)
-
-## Features
-
-- Render markdown to HTML
-- Table of content sidebar
-- RAW preview
-- Image preview
-- Code highlighting
-- Light/Dark/Auto markdown theme
-- Shortcut key
-- Document hot reload
-- Page content centered
-- Plugins:
-  - Emoji
-  - Superscript
-  - Subscript
-  - Inserted
-  - TOC
-  - Mark
-  - Katex
-  - Mermaid
-  - Abbreviation
-  - Definition list
-  - Footnote
-  - Task Lists
-  - Warning container
-  - Tips container
-- Support OS:
-  - Windows
-  - macOS
-  - Linux
-  - Ubuntu
-  - ChromeOS
-
-## Install
-
-### A. Online installation
-
-Install from the [chrome extension store](https://chrome.google.com/webstore/detail/md-reader/medapdbncneneejhbgcjceippjlfkmkg).
+<a href="https://chromewebstore.google.com/detail/md-reader/medapdbncneneejhbgcjceippjlfkmkg" target="_blank"><img src="./src/images/chrome-web-store.svg" alt="Chrome Web Store" style="width:247px"/></a>
 
 ### B. Building installation
 
-1. Clone `md-reader` repo and build:
+1. Clone the `md-reader` repository and build it:
 
    ```bash
-   # Clone repository
-   git clone https://github.com/Heroor/md-reader.git && cd md-reader
+   # Clone this repository
+   git clone https://github.com/md-reader/md-reader.git && cd md-reader
 
    # Install dependencies
    pnpm install
 
-   # Build extension
+   # Build the extension
    pnpm build
    ```
 
-2. After build, the `md-reader/dist` folder will generate a `md-reader-xxx.zip` extension package.
+2. After a successful build, the `md-reader/dist` folder will contain the `md-reader-xxx.zip` extension package.
 
-3. On the Chrome extension management page and drag the extension into the browser.
+3. Go to the Extensions management page in Chrome and drag the extension into the browser to install it.
 
 ## Usage
 
-After installation, you should set local file access permissions before preview local files:
+After installation, Chrome is now able to preview online markdown documents. However, it is not able to preview local markdown documents by default and requires enabling file access permission for the Chrome extension.
 
-Open `details` page of `md-reader` extension, enabled `Allow access to file URLs`.
+### Allowing File Access Permission
+
+> Due to security reasons, Chrome by default disables extension access to local files. Therefore, after installing the plugin, you need to manually enable the permission in order to preview local markdown files.
+
+In the Chrome Extensions management page, locate the installed "Markdown Reader" extension, click on "Details", and find the option "Allow access to file URLs" in the details page. Switch it to the enabled state (Please rest assured that "Markdown Reader" only performs read and display operations on markdown files and will not modify or upload user file data).
 
 <br/>
 
-All right!
+Now all the work is done~!ヾ(◍°∇°◍)ﾉ
 
-Visit this [example.md](https://raw.githubusercontent.com/Heroor/md-reader/main/example/example.md) to test if it works, Or **drag** markdown file to the Chrome!
+Try the effect by opening this online document: [Example Document](https://raw.githubusercontent.com/md-reader/md-reader/main/example/example.md); You can also try dragging a Markdown document directly into the browser!
 
-## Develop
+Feel free to ask any questions or provide suggestions.
 
-```bash
-# Clone repository
-git clone https://github.com/Heroor/md-reader.git && cd md-reader
+Giving a star to show your support is also an encouragement for me~!
 
-# Installation dependencies
-pnpm install
+## Join the WeChat Community
 
-# Develop project
-pnpm dev
-```
+Scan the code to get the latest news and technical support:
 
-On the Chrome extension management page, click "Load unpacked extension" and select `md-reader/extension` directory.
+<img src="./src/images/mp-qrcode.jpg" alt="" style="width:220px"/>
 
 ## License
 
-License [MIT](https://github.com/Heroor/md-reader/blob/master/LICENSE)
+License [MIT](https://github.com/md-reader/md-reader/blob/main/LICENSE)
 
 © 2018-present, [Bener](https://github.com/Heroor)
