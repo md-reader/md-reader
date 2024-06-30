@@ -1,5 +1,5 @@
 import storage from '@/core/storage'
-import { toTheme } from '@/shared/index'
+// import { toTheme } from '@/shared/index'
 
 export default {
   async toggleSide(handler) {
@@ -13,7 +13,7 @@ export default {
   },
   async toggleTheme(handler) {
     let { pageTheme = 'light' } = await storage.get('pageTheme')
-    pageTheme = toTheme(pageTheme)
+    // pageTheme = toTheme(pageTheme)
     const value = pageTheme === 'light' ? 'dark' : 'light'
     handler('storage', { key: 'pageTheme', value })
   },
