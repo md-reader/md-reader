@@ -121,6 +121,12 @@ function initRender({ config = {}, plugins = [...MD_PLUGINS] }: MdOptions) {
   return md
 }
 
+// identify & filter frontmatter
+function removeFrontmatter(content: string): string {
+  const frontmatterRegex = /^---[\s\S]+?---\n/
+  return content.replace(frontmatterRegex, '')
+}
+
 interface MdRender {
   (code: string, options: MdOptions): string
   md?: MarkdownIt
@@ -129,7 +135,9 @@ export const mdRender: MdRender = (code, options): string => {
   if (!mdRender.md || options) {
     mdRender.md = initRender(options)
   }
-  return mdRender.md.render(code)
+  // filter frontmatter
+  const filteredCode = removeFrontmatter(code)
+  return mdRender.md.render(filteredCode)
 }
 
 export default initRender
