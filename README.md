@@ -21,11 +21,15 @@ Markdown Reader is a powerful browser extension that enables you to conveniently
 
 ## Installation
 
-### A. Install from Chrome Web Store
+### A. Install from web extension Store
 
 <a href="https://chromewebstore.google.com/detail/md-reader/medapdbncneneejhbgcjceippjlfkmkg" target="_blank"><img src="./src/images/chrome-web-store.svg" alt="Chrome Web Store" style="width:247px"/></a>
 
+<a href="https://addons.mozilla.org/firefox/addon/markdown-reader-ext/" target="_blank"><img src="./src/images/fx-addon.svg" alt="fx addon" style="width:247px"/></a>
+
 ### B. Building installation
+
+Example of Chrome:
 
 1. Clone the `md-reader` repository and build it:
 
@@ -45,6 +49,8 @@ Markdown Reader is a powerful browser extension that enables you to conveniently
 3. Go to the Extensions management page in Chrome and drag the extension into the browser to install it.
 
 ## Usage
+
+Example of Chrome:
 
 After installation, Chrome is now able to preview online markdown documents. However, it is not able to preview local markdown documents by default and requires enabling file access permission for the Chrome extension.
 

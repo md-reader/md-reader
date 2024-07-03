@@ -21,11 +21,15 @@ Markdown Reader 是一款强大的浏览器扩展程序，能让你在浏览器�
 
 ## 安装
 
-### A. Chrome 应用商店安装（需要机智上网）
+### A. 在浏览器应用商店安装（需要机智上网）
 
 <a href="https://chromewebstore.google.com/detail/md-reader/medapdbncneneejhbgcjceippjlfkmkg" target="_blank"><img src="./src/images/chrome-web-store.svg" alt="Chrome Web Store" style="width:247px"/></a>
 
+<a href="https://addons.mozilla.org/firefox/addon/markdown-reader-ext/" target="_blank"><img src="./src/images/fx-addon.svg" alt="fx addon" style="width:247px"/></a>
+
 ### B. 本地构建
+
+以 Chrome 为例：
 
 1. 克隆 `md-reader` 仓库到本地并编译:
 
@@ -45,6 +49,8 @@ Markdown Reader 是一款强大的浏览器扩展程序，能让你在浏览器�
 3. 进入 Chrome 的扩展管理页，将扩展程序拖拽进浏览器即可安装。
 
 ## 使用
+
+以 Chrome 为例：
 
 安装完成后，此时 Chrome 已经可以预览在线的 markdown 文档了，但是还不可以预览本地的 markdown 文档，需要开启 Chrome 扩展的文件访问权限。
 

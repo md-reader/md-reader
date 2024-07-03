@@ -21,11 +21,15 @@
 
 ## 설치
 
-### A. Chrome 웹 스토어에서 설치하기
+### A. 웹 확장 스토어에서 설치
 
 <a href="https://chromewebstore.google.com/detail/md-reader/medapdbncneneejhbgcjceippjlfkmkg" target="_blank"><img src="./src/images/chrome-web-store.svg" alt="Chrome Web Store" style="width:247px"/></a>
 
+<a href="https://addons.mozilla.org/firefox/addon/markdown-reader-ext/" target="_blank"><img src="./src/images/fx-addon.svg" alt="fx addon" style="width:247px"/></a>
+
 ### B. 빌드 설치
+
+Chrome의 예:
 
 1. `md-reader` 저장소를 복제하고 빌드하세요:
 
@@ -45,6 +49,8 @@
 3. Chrome의 확장 프로그램 관리 페이지로 이동하여 확장 프로그램을 브라우저에 드래그하여 설치하세요.
 
 ## 사용법
+
+Chrome의 예:
 
 설치 후에는 Chrome에서 온라인 마크다운 문서를 미리 볼 수 있습니다. 그러나 Chrome은 기본적으로 로컬 마크다운 문서를 미리 볼 수 없으며 Chrome 확장 프로그램에 대한 파일 액세스 권한을 활성화해야 합니다.
 
