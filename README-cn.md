@@ -1,25 +1,21 @@
 # Markdown Reader
 
-<picture>
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/md-reader/md-reader/main/src/images/logo.svg">
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/md-reader/md-reader/main/src/images/logo-light.svg">
-  <img alt="Markdown Reader Logo" src="https://raw.githubusercontent.com/md-reader/md-reader/main/src//images/logo-stroke.svg" align="right" width="120">
-</picture>
+<img alt="Markdown Reader Logo" src="https://raw.githubusercontent.com/md-reader/md-reader/main/src//images/logo-stroke.svg" align="right" width="120">
 
 [English](./README.md) | 中文 | [한국어](./README-ko.md)
 
 [![](https://badgen.net/chrome-web-store/v/medapdbncneneejhbgcjceippjlfkmkg?icon=chrome&color=607cd2)](https://chromewebstore.google.com/detail/md-reader/medapdbncneneejhbgcjceippjlfkmkg) [![](https://badgen.net/chrome-web-store/stars/medapdbncneneejhbgcjceippjlfkmkg?icon=chrome&color=607cd2)](https://chromewebstore.google.com/detail/md-reader/medapdbncneneejhbgcjceippjlfkmkg) [![](https://badgen.net/chrome-web-store/users/medapdbncneneejhbgcjceippjlfkmkg?icon=chrome&color=607cd2)](https://chromewebstore.google.com/detail/md-reader/medapdbncneneejhbgcjceippjlfkmkg)
 
-Markdown Reader 是一个功能强大的 Chrome 扩展程序，它可以帮助你在 Chrome 中快速预览 markdown 文档。
+Markdown Reader 是一款强大的浏览器扩展程序，能让你在浏览器中快捷的预览 Markdown 文档。
 
-- 支持预览 `file://` `http://` `https://` 协议的链接以及 `*.md` `*.mkd` `*.mdx` `*.markdown` 扩展名的文档，就像下面的样子:
+- **文档格式**: 支持预览 `file://`、`http://`、`https://` 协议以及 `.md`、`.mkd`、`.mdx`、`.markdown` 等扩展名的文件:
   - `https://example.com/example.md`（在线 Markdown 链接）
   - `file:///Users/my-project/readme.markdown`（本地 Markdown 文件，[\*需要开启特定权限](#允许本地文件访问权限)）
-- 内置多种语法插件，支持渲染 Emoji 表情、上标/下标、复选框、数学公式、流程图、甘特图、目录、插入、标记、缩写、释义、注解、信息/成功/警告/危险提示。
-- 支持代码高亮，以及精心调配的 亮色/暗色 主题样式。
-- 支持文档热重载，实时预览文档改动；支持文档居中显示，更利于阅读。
-- 自动整理出文档目录至侧边栏，同时支持切换预览原文件内容；支持预览图片媒体资源。
-- 支持 Chrome 扩展快捷键，快速调用功能。
+- **语法插件**: 支持表情符号、上标/下标、复选框、数学公式、流程图、甘特图、目录、插入内容、缩写、注释、提醒等。
+- **主题**: 提供高质量的明暗主题和代码高亮功能。
+- **实时刷新**: 支持实时文档变更和居中显示，提升阅读体验。
+- **文档组织**: 包含侧边栏目录、原始内容预览和图像媒体预览。
+- **快捷键**: 支持通过浏览器扩展快捷键快速调用功能。
 
 ![banner](./example/example-1.png)
 

@@ -1,25 +1,21 @@
 # Markdown Reader
 
-<picture>
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/md-reader/md-reader/main/src/images/logo.svg">
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/md-reader/md-reader/main/src/images/logo-light.svg">
-  <img alt="Markdown Reader Logo" src="https://raw.githubusercontent.com/md-reader/md-reader/main/src//images/logo-stroke.svg" align="right" width="120">
-</picture>
+<img alt="Markdown Reader Logo" src="https://raw.githubusercontent.com/md-reader/md-reader/main/src//images/logo-stroke.svg" align="right" width="120">
 
 [English](./README.md) | [中文](./README-cn.md) | 한국어
 
 [![](https://badgen.net/chrome-web-store/v/medapdbncneneejhbgcjceippjlfkmkg?icon=chrome&color=607cd2)](https://chromewebstore.google.com/detail/md-reader/medapdbncneneejhbgcjceippjlfkmkg) [![](https://badgen.net/chrome-web-store/stars/medapdbncneneejhbgcjceippjlfkmkg?icon=chrome&color=607cd2)](https://chromewebstore.google.com/detail/md-reader/medapdbncneneejhbgcjceippjlfkmkg) [![](https://badgen.net/chrome-web-store/users/medapdbncneneejhbgcjceippjlfkmkg?icon=chrome&color=607cd2)](https://chromewebstore.google.com/detail/md-reader/medapdbncneneejhbgcjceippjlfkmkg)
 
-마크다운 리더는 Chrome에서 마크다운 문서를 빠르게 미리 볼 수 있는 강력한 크롬 확장 프로그램입니다.
+마크다운 리더는 브라우저에서 마크다운 문서를 편리하게 미리 볼 수 있게 해주는 강력한 브라우저 확장 프로그램입니다.
 
-- `file://` `http://` `https://` 프로토콜을 통한 링크 미리 보기 지원 및 다음과 같은 확장자(`*.md` `*.mkd` `*.mdx` `*.markdown`)를 가진 문서 미리 보기 지원:
-  - `https://example.com/example.md` (온라인 마크다운 URL)
+- **문서 형식**: `file://`, `http://`, `https://` 프로토콜과 `.md`, `.mkd`, `.mdx`, `.markdown` 확장자 파일 미리보기 지원:
+  - `https://example.com/example.md` (온라인 Markdown URL)
   - `file:///Users/my-project/readme.markdown` (로컬 마크다운 파일, \*[특정 권한 필요](#파일-액세스-권한-허용))
-- 이모지 이모티콘, 위 첨자/아래 첨자, 체크박스, 수학 공식, 플로우차트, 간트 차트, 목차, 삽입, 마크다운, 약어, 패러프레이즈, 주석, 메시지/성공/경고/위험 알림 등 여러 구문 플러그인 내장 지원.
-- 코드 강조 및 조심스럽게 정리된 라이트/다크 테마 스타일 지원.
-- 문서 핫 리로딩 지원으로 실시간 문서 변경 내용 미리 보기; 문서 중심 표시 지원으로 읽기에 더 적합.
-- 문서 디렉토리 자동 정리 및 사이드바로 이동하여 원본 파일 콘텐츠 미리 보기 지원; 이미지 미디어 자원 미리 보기 지원.
-- 크롬 확장 프로그램 바로 가기 지원으로 빠른 기능 호출 가능.
+- **구문 플러그인**: 이모지, 위첨자/아래첨자, 체크박스, 수식, 흐름도, 간트 차트, 목차, 인서션, 약어, 주석, 알림 등의 기능 제공.
+- **테마**: 고품질 라이트와 다크 테마, 코드 강조 기능 지원.
+- **실시간 리로딩**: 실시간 문서 변경과 더 나은 읽기 경험을 위한 중앙 표시 기능.
+- **문서 구성**: 사이드바 디렉토리, 원본 콘텐츠 미리보기, 이미지 미디어 지원 기능 포함.
+- **단축키**: 웹 확장 프로그램 단축키를 통한 빠른 기능 실행 지원.
 
 ![banner](./example/example-1.png)
 

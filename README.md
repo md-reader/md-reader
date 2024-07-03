@@ -6,16 +6,16 @@ English | [中文](./README-cn.md) | [한국어](./README-ko.md)
 
 [![](https://badgen.net/chrome-web-store/v/medapdbncneneejhbgcjceippjlfkmkg?icon=chrome&color=607cd2)](https://chromewebstore.google.com/detail/md-reader/medapdbncneneejhbgcjceippjlfkmkg) [![](https://badgen.net/chrome-web-store/stars/medapdbncneneejhbgcjceippjlfkmkg?icon=chrome&color=607cd2)](https://chromewebstore.google.com/detail/md-reader/medapdbncneneejhbgcjceippjlfkmkg) [![](https://badgen.net/chrome-web-store/users/medapdbncneneejhbgcjceippjlfkmkg?icon=chrome&color=607cd2)](https://chromewebstore.google.com/detail/md-reader/medapdbncneneejhbgcjceippjlfkmkg)
 
-Markdown Reader is a powerful Chrome extension that helps you quickly preview markdown documents in Chrome.
+Markdown Reader is a powerful browser extension that enables you to conveniently preview Markdown documents in your browser.
 
-- Support for previewing links in the `file://` `http://` `https://` protocol as well as documents with `*.md` `*.mkd` `*.mdx` `*.markdown` extensions, like the following:
+- **Document Formats**: Preview links in `file://`, `http://`, `https://` and files with `.md`, `.mkd`, `.mdx`, `.markdown` extensions:
   - `https://example.com/example.md` (online Markdown URL)
   - `file:///Users/my-project/readme.markdown` (local Markdown file, \*[requires specific permissions](#allowing-file-access-permission))
-- Built-in multiple syntax plug-ins to support rendering Emoji emoticons, superscripts/subscripts, checkboxes, mathematical formulas, flowcharts, Gantt charts, table of contents, insertions, markdowns, abbreviations, paraphrases, annotations, and message/success/warning/danger alerts.
-- Code highlighting, and carefully arranged light/dark theme styles.
-- Support document hot reloading, real-time preview of document changes; support document centred display, more conducive to reading.
-- Automatically organise the document directory to the sidebar, and support switching to preview the original file content; support previewing image media resources.
-- Supports Chrome extension shortcuts for quick function invocation.
+- **Syntax Plugins**: Emoji, superscripts/subscripts, checkboxes, math, flowcharts, Gantt charts, TOC, insertions, abbreviations, annotations, alerts.
+- **Themes**: High quality light/dark themes and code highlighting.
+- **Hot Reloading**: Real-time document changes and centered display for better reading.
+- **Document Organization**: Sidebar directory, original content preview, and image media support.
+- **Shortcuts**: Quick function invocation with web extension shortcuts.
 
 ![banner](./example/example-1.png)
 
