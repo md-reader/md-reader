@@ -4,8 +4,6 @@ Category: 'Non-fiction'
 Rating: 7
 ---
 
-[[TOC]]
-
 # h1 Heading 8-)
 
 ## h2 Heading
@@ -19,10 +17,6 @@ Rating: 7
 ###### h6 Heading
 
 ## Horizontal Rules
-
----
-
----
 
 ---
 
@@ -41,10 +35,6 @@ test.. test... test..... test?..... test!....
 ## Emphasis
 
 **This is bold text**
-
-**This is bold text**
-
-_This is italic text_
 
 _This is italic text_
 
@@ -75,14 +65,6 @@ Ordered
 1. Lorem ipsum dolor sit amet
 2. Consectetur adipiscing elit
 3. Integer molestie lorem at massa
-
-4. You can use sequential numbers...
-5. ...or keep all the numbers as `1.`
-
-Start numbering with offset:
-
-57. foo
-1. bar
 
 - [ ] Todo 1
 - [x] Todo 2
