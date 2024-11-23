@@ -1,7 +1,7 @@
 ---
 Author: 'John Doe'
 Category: 'Non-fiction'
-Rating: 7
+Rating: 5
 ---
 
 # h1 Heading 8-)
@@ -16,29 +16,37 @@ Rating: 7
 
 ###### h6 Heading
 
-## Horizontal Rules
+## Horizontal Rule
 
 ---
 
 ## Typographic replacements
 
-Enable typographer option to see result.
+`+- (c) (C) (r) (R) (tm) (TM)`
 
-(c) (C) (r) (R) (tm) (TM) (p) (P) +-
++- (c) (C) (r) (R) (tm) (TM)
 
-test.. test... test..... test?..... test!....
+`!!!!!! ???? ,, -- ---`
 
 !!!!!! ???? ,, -- ---
+
+`example.. example... example..... example?..... example!....`
+
+example.. example... example..... example?..... example!....
+
+`"Smartypants, double quotes" and 'single quotes'`
 
 "Smartypants, double quotes" and 'single quotes'
 
 ## Emphasis
 
-**This is bold text**
-
 _This is italic text_
 
+**This is bold text**
+
 ~~Strikethrough~~
+
+~~**_This is italic and bold text_**~~
 
 ## Blockquotes
 
@@ -66,8 +74,13 @@ Ordered
 2. Consectetur adipiscing elit
 3. Integer molestie lorem at massa
 
-- [ ] Todo 1
-- [x] Todo 2
+4. You can use sequential numbers...
+5. ...or keep all the numbers as `1.`
+
+Start numbering with offset:
+
+57. foo
+1. bar
 
 ## Code
 
@@ -75,25 +88,34 @@ Inline `code`
 
 Indented code
 
-    // Some comments
+    // Some comments with Indented code
     line 1 of code
     line 2 of code
     line 3 of code
 
-Block code "fences"
-
-```
-Sample text here...
-```
-
 Syntax highlighting
 
-```js
-var foo = function (bar) {
-  return bar++
+```typescript
+function factorial(n: number): number {
+  if (n === 0) {
+    return 1
+  }
+  return n * factorial(n - 1)
 }
 
-console.log(foo(5))
+const num: number = 5
+console.log(`The factorial of ${num} is ${factorial(num)}`)
+```
+
+```python
+def factorial(n):
+    if n == 0:
+        return 1
+    else:
+        return n * factorial(n-1)
+
+num = 5
+print(f"The factorial of {num} is {factorial(num)}")
 ```
 
 ## Tables
@@ -118,33 +140,55 @@ Right aligned columns
 
 [link with title](http://nodeca.github.io/pica/demo/ 'title text!')
 
-Autoconverted link https://github.com/nodeca/pica (enable linkify to see)
+Autoconverted link https://github.com/nodeca/pica (Auto linkify)
 
 ## Images
 
-![Minion](https://octodex.github.com/images/minion.png)
-![Stormtroopocat](https://octodex.github.com/images/stormtroopocat.jpg 'The Stormtroopocat')
+![Jetpacktocat](https://octodex.github.com/images/jetpacktocat.png)
 
-Like links, Images also have a footnote style syntax
+Image with title:
+
+![Professortocat](https://octodex.github.com/images/Professortocat_v2.png 'Professortocat')
+
+Like links, Images also have a footnote style syntax `![Alt text][id]`:
 
 ![Alt text][id]
 
 With a reference later in the document defining the URL location:
 
-[id]: https://octodex.github.com/images/dojocat.jpg 'The Dojocat'
+`[id]: https://octodex.github.com/images/nyantocat.gif "Nyantocat"`
+
+[id]: https://octodex.github.com/images/nyantocat.gif 'Nyantocat'
 
 ## Plugins
 
-The killer feature of `markdown-it` is very effective support of
-[syntax plugins](https://www.npmjs.org/browse/keyword/markdown-it-plugin).
+Very effective support of syntax plugins:
 
-### [Emojies](https://github.com/markdown-it/markdown-it-emoji)
+### Emoji
 
-Classic markup: :wink: :cry: :laughing: :yum:
+Classic markup:
 
-Shortcuts (emoticons): :-) :-( 8-) ;)
+`:wink: :cry: :laughing: :yum: :100: :dog: :cat:`
 
-### [KaTeX](https://github.com/waylonflinn/markdown-it-katex)
+:wink: :cry: :laughing: :yum: :100: :dog: :cat:
+
+Shortcuts (emoticons):
+
+`:-) :-( 8-) ;)`
+
+:-) :-( 8-) ;)
+
+### Subscript / Superscript
+
+- 19^th^
+- H~2~O
+
+### Task lists
+
+- [x] Todo 1
+- [ ] Todo 2
+
+### KaTeX
 
 $\sqrt{3x-1}+(1+x)^2$
 
@@ -168,42 +212,24 @@ $$
 \end{bmatrix}
 $$
 
-| Symbol | Code     | Lowercase  | Uppercase  |
-| ------ | -------- | ---------- | ---------- |
-| α      | \alpha   | $\alpha$   | $\Alpha$   |
-| β      | \beta    | $\beta$    | $\Beta$    |
-| γ      | \gamma   | $\gamma$   | $\Gamma$   |
-| δ      | \delta   | $\delta$   | $\Delta$   |
-| ε      | \epsilon | $\epsilon$ | $\Epsilon$ |
-| ζ      | \zeta    | $\zeta$    | $\Zeta$    |
-| η      | \eta     | $\eta$     | $\Eta$     |
-| θ      | \theta   | $\theta$   | $\Theta$   |
-| ι      | \iota    | $\iota$    | $\Iota$    |
-| κ      | \kappa   | $\kappa$   | $\Kappa$   |
-| λ      | \lambda  | $\lambda$  | $\Lambda$  |
-| μ      | \mu      | $\mu$      | $\Mu$      |
-| ν      | \nu      | $\nu$      | $\Nu$      |
-| ξ      | \xi      | $\xi$      | $\Xi$      |
-| π      | \pi      | $\pi$      | $\Pi$      |
-| ρ      | \rho     | $\rho$     | $\Rho$     |
-| σ      | \sigma   | $\sigma$   | $\Sigma$   |
-| τ      | \tau     | $\tau$     | $\Tau$     |
-| υ      | \upsilon | $\upsilon$ | $\Upsilon$ |
-| φ      | \phi     | $\phi$     | $\Phi$     |
-| χ      | \chi     | $\chi$     | $\Chi$     |
-| ψ      | \psi     | $\psi$     | $\Psi$     |
-| ω      | \omega   | $\omega$   | $\Omega$   |
+<br />
 
-### [MerMaid](https://github.com/md-reader/markdown-it-mermaid#readme)
+| Symbol |   Case (Lower/Upper)    | Symbol |   Case (Lower/Upper)    |
+| :----: | :---------------------: | :----: | :---------------------: |
+|   α    |   $\alpha$ - $\Alpha$   |   ν    |      $\nu$ - $\Nu$      |
+|   β    |    $\beta$ - $\Beta$    |   ξ    |      $\xi$ - $\Xi$      |
+|   γ    |   $\gamma$ - $\Gamma$   |   π    |      $\pi$ - $\Pi$      |
+|   δ    |   $\delta$ - $\Delta$   |   ρ    |     $\rho$ - $\Rho$     |
+|   ε    | $\epsilon$ - $\Epsilon$ |   σ    |   $\sigma$ - $\Sigma$   |
+|   ζ    |    $\zeta$ - $\Zeta$    |   τ    |     $\tau$ - $\Tau$     |
+|   η    |     $\eta$ - $\Eta$     |   υ    | $\upsilon$ - $\Upsilon$ |
+|   θ    |   $\theta$ - $\Theta$   |   φ    |     $\phi$ - $\Phi$     |
+|   ι    |    $\iota$ - $\Iota$    |   χ    |     $\chi$ - $\Chi$     |
+|   κ    |   $\kappa$ - $\Kappa$   |   ψ    |     $\psi$ - $\Psi$     |
+|   λ    |  $\lambda$ - $\Lambda$  |   ω    |   $\omega$ - $\Omega$   |
+|   μ    |      $\mu$ - $\Mu$      |        |                         |
 
-```mermaid
-graph TD
-  A[Christmas] -->|Get money| B(Go shopping)
-  B --> C{Let me think}
-  C -->|One| D[Laptop]
-  C -->|Two| E[iPhone]
-  C -->|Three| F[Car]
-```
+### Mermaid
 
 ```mermaid
 sequenceDiagram
@@ -219,36 +245,41 @@ sequenceDiagram
     Bob-->>John: Jolly good!
 ```
 
-### [Subscript](https://github.com/markdown-it/markdown-it-sub) / [Superscript](https://github.com/markdown-it/markdown-it-sup)
+```mermaid
+gantt
+    title My Product Roadmap
+    dateFormat  YYYY-MM-DD
+    section Cool Feature
+    A task           :a1, 2022-02-25, 30d
+    Another task     :after a1, 20d
+    section Rad Feature
+    Task in sequence :2022-03-04, 12d
+    Task, No. 2      :24d
+```
 
-- 19^th^
-- H~2~O
-
-### [\<ins>](https://github.com/markdown-it/markdown-it-ins)
+### Inserted
 
 ++Inserted text++
 
-### [\<mark>](https://github.com/markdown-it/markdown-it-mark)
+`++Inserted text++`
+
+### Mark
 
 ==Marked text==
 
-### [Footnotes](https://github.com/markdown-it/markdown-it-footnote)
+`==Marked text==`
 
-Footnote 1 link[^first].
+### Abbreviations
 
-Footnote 2 link[^second].
+This is HTML abbreviation example.
 
-Inline footnote^[Text of inline footnote] definition.
+It converts "HTML", but keep intact partial entries like "xxxHTMLyyy" and so on.
 
-Duplicated footnote reference[^second].
+`*[HTML]: Hyper Text Markup Language`
 
-[^first]: Footnote **can have markup**
+\*[HTML]: Hyper Text Markup Language
 
-    and multiple paragraphs.
-
-[^second]: Footnote text.
-
-### [Definition lists](https://github.com/markdown-it/markdown-it-deflist)
+### Definition lists
 
 Term 1
 
@@ -272,20 +303,36 @@ Term 2
 ~ Definition 2a
 ~ Definition 2b
 
-### [Abbreviations](https://github.com/markdown-it/markdown-it-abbr)
+### Footnotes
 
-This is HTML abbreviation example.
+Footnote 1 link[^first].
 
-It converts "HTML", but keep intact partial entries like "xxxHTMLyyy" and so on.
+Footnote 2 link[^second].
 
-\*[HTML]: Hyper Text Markup Language
+Inline footnote^[Text of inline footnote] definition.
 
-### [Custom containers](https://github.com/markdown-it/markdown-it-container)
+Duplicated footnote reference[^second].
 
-::: warning
-_Here be dragons._
-:::
+[^first]: Footnote **can have markup**
+
+    and multiple paragraphs.
+
+[^second]: Footnote text.
+
+### Custom containers
 
 ::: tips
-_Dragon is dangerous._
+**In the middle of difficulty lies opportunity.**
+:::
+
+::: success
+千里之行，始于足下。
+:::
+
+::: warning
+_Fortune favors the bold._
+:::
+
+::: danger
+**_Hic sunt dracones!_**
 :::
