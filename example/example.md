@@ -16,10 +16,6 @@ Rating: 5
 
 ###### h6 Heading
 
-## Horizontal Rule
-
----
-
 ## Typographic replacements
 
 `+- (c) (C) (r) (R) (tm) (TM)`
@@ -88,7 +84,7 @@ Inline `code`
 
 Indented code
 
-    // Some comments with Indented code
+    // Some comments with indented code
     line 1 of code
     line 2 of code
     line 3 of code
@@ -134,6 +130,20 @@ Right aligned columns
 | engine |    engine to be used for processing templates. Handlebars is the default. |
 |    ext |                                      extension to be used for dest files. |
 
+## Horizontal Rules
+
+`---`
+
+---
+
+`___`
+
+---
+
+`***`
+
+---
+
 ## Links
 
 [link text](http://dev.nodeca.com)
@@ -162,9 +172,9 @@ With a reference later in the document defining the URL location:
 
 ## Plugins
 
-Very effective support of syntax plugins:
+Very effective [syntax plugins](https://www.npmjs.org/browse/keyword/markdown-it-plugin) from `markdown-it`:
 
-### Emoji
+### [Emoji](https://github.com/markdown-it/markdown-it-emoji)
 
 Classic markup:
 
@@ -178,17 +188,17 @@ Shortcuts (emoticons):
 
 :-) :-( 8-) ;)
 
-### Subscript / Superscript
+### [Subscript](https://github.com/markdown-it/markdown-it-sub) / [Superscript](https://github.com/markdown-it/markdown-it-sup)
 
 - 19^th^
 - H~2~O
 
-### Task lists
+### [Task lists](https://github.com/revin/markdown-it-task-lists)
 
 - [x] Todo 1
 - [ ] Todo 2
 
-### KaTeX
+### [KaTeX](https://github.com/waylonflinn/markdown-it-katex)
 
 $\sqrt{3x-1}+(1+x)^2$
 
@@ -229,7 +239,7 @@ $$
 |   λ    |  $\lambda$ - $\Lambda$  |   ω    |   $\omega$ - $\Omega$   |
 |   μ    |      $\mu$ - $\Mu$      |        |                         |
 
-### Mermaid
+### [MerMaid](https://github.com/md-reader/markdown-it-mermaid#readme)
 
 ```mermaid
 sequenceDiagram
@@ -257,19 +267,19 @@ gantt
     Task, No. 2      :24d
 ```
 
-### Inserted
+### [\<ins>](https://github.com/markdown-it/markdown-it-ins)
 
 ++Inserted text++
 
 `++Inserted text++`
 
-### Mark
+### [\<mark>](https://github.com/markdown-it/markdown-it-mark)
 
 ==Marked text==
 
 `==Marked text==`
 
-### Abbreviations
+### [Abbreviations](https://github.com/markdown-it/markdown-it-abbr)
 
 This is HTML abbreviation example.
 
@@ -279,7 +289,7 @@ It converts "HTML", but keep intact partial entries like "xxxHTMLyyy" and so on.
 
 \*[HTML]: Hyper Text Markup Language
 
-### Definition lists
+### [Definition lists](https://github.com/markdown-it/markdown-it-deflist)
 
 Term 1
 
@@ -303,7 +313,7 @@ Term 2
 ~ Definition 2a
 ~ Definition 2b
 
-### Footnotes
+### [Footnotes](https://github.com/markdown-it/markdown-it-footnote)
 
 Footnote 1 link[^first].
 
@@ -319,7 +329,7 @@ Duplicated footnote reference[^second].
 
 [^second]: Footnote text.
 
-### Custom containers
+### [Custom containers](https://github.com/markdown-it/markdown-it-container)
 
 ::: tips
 **In the middle of difficulty lies opportunity.**
