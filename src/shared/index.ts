@@ -6,7 +6,7 @@ export const HEAD = document.head
 export const BODY = document.body
 export const RAW_SELECTOR = 'pre'
 export const HEADERS = 'h1, h2, h3, h4, h5, h6'
-export const CONTENT_TYPES = ['text/plain', 'text/markdown']
+export const CONTENT_TYPES = ['text/plain', 'text/markdown', 'text/x-markdown']
 
 export const darkMediaQuery: MediaQueryList = window.matchMedia(
   '(prefers-color-scheme: dark)',
