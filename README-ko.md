@@ -4,6 +4,8 @@
 
 [English](./README.md) | [中文](./README-cn.md) | 한국어
 
+https://md-reader.github.io
+
 [![](https://badgen.net/chrome-web-store/v/medapdbncneneejhbgcjceippjlfkmkg?icon=chrome&color=607cd2)](https://chromewebstore.google.com/detail/md-reader/medapdbncneneejhbgcjceippjlfkmkg) [![](https://badgen.net/chrome-web-store/stars/medapdbncneneejhbgcjceippjlfkmkg?icon=chrome&color=607cd2)](https://chromewebstore.google.com/detail/md-reader/medapdbncneneejhbgcjceippjlfkmkg) [![](https://badgen.net/chrome-web-store/users/medapdbncneneejhbgcjceippjlfkmkg?icon=chrome&color=607cd2)](https://chromewebstore.google.com/detail/md-reader/medapdbncneneejhbgcjceippjlfkmkg)
 
 마크다운 리더는 브라우저에서 마크다운 문서를 편리하게 미리 볼 수 있게 해주는 강력한 브라우저 확장 프로그램입니다.
@@ -23,9 +25,9 @@
 
 ### A. 웹 확장 스토어에서 설치
 
-<a href="https://chromewebstore.google.com/detail/md-reader/medapdbncneneejhbgcjceippjlfkmkg" target="_blank"><img src="./src/images/chrome-web-store.svg" alt="Chrome Web Store" style="width:247px"/></a>
-
-<a href="https://addons.mozilla.org/firefox/addon/markdown-reader-ext/" target="_blank"><img src="./src/images/fx-addon.svg" alt="fx addon" style="width:247px"/></a>
+| <a href="https://chromewebstore.google.com/detail/md-reader/medapdbncneneejhbgcjceippjlfkmkg" target="_blank"><img src="./src/images/Chrome.png" alt="Chrome Web Store" style="width:50px"/></a> | <a href="https://microsoftedge.microsoft.com/addons/detail/markdown-reader/djnplooklihmkcioemdjfcednfkpiodc" target="_blank"><img src="./src/images/Edge.png" alt="Edge Add-ons" style="width:50px"/></a> | <a href="https://addons.mozilla.org/firefox/addon/markdown-reader-ext/" target="_blank"><img src="./src/images/Firefox.png" alt="Firefox Add-ons" style="width:50px"/></a> |
+| :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+|                                                                                            **Chrome**                                                                                            |                                                                                                 **Edge**                                                                                                  |                                                                                **Firefox**                                                                                 |
 
 ### B. 빌드 설치
 

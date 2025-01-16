@@ -4,6 +4,8 @@
 
 English | [中文](./README-cn.md) | [한국어](./README-ko.md)
 
+https://md-reader.github.io
+
 [![](https://badgen.net/chrome-web-store/v/medapdbncneneejhbgcjceippjlfkmkg?icon=chrome&color=607cd2)](https://chromewebstore.google.com/detail/md-reader/medapdbncneneejhbgcjceippjlfkmkg) [![](https://badgen.net/chrome-web-store/stars/medapdbncneneejhbgcjceippjlfkmkg?icon=chrome&color=607cd2)](https://chromewebstore.google.com/detail/md-reader/medapdbncneneejhbgcjceippjlfkmkg) [![](https://badgen.net/chrome-web-store/users/medapdbncneneejhbgcjceippjlfkmkg?icon=chrome&color=607cd2)](https://chromewebstore.google.com/detail/md-reader/medapdbncneneejhbgcjceippjlfkmkg)
 
 Markdown Reader is a powerful browser extension that enables you to conveniently preview Markdown documents in your browser.
@@ -23,9 +25,9 @@ Markdown Reader is a powerful browser extension that enables you to conveniently
 
 ### A. Install from web extension Store
 
-<a href="https://chromewebstore.google.com/detail/md-reader/medapdbncneneejhbgcjceippjlfkmkg" target="_blank"><img src="./src/images/chrome-web-store.svg" alt="Chrome Web Store" style="width:247px"/></a>
-
-<a href="https://addons.mozilla.org/firefox/addon/markdown-reader-ext/" target="_blank"><img src="./src/images/fx-addon.svg" alt="fx addon" style="width:247px"/></a>
+| <a href="https://chromewebstore.google.com/detail/md-reader/medapdbncneneejhbgcjceippjlfkmkg" target="_blank"><img src="./src/images/Chrome.png" alt="Chrome Web Store" style="width:50px"/></a> | <a href="https://microsoftedge.microsoft.com/addons/detail/markdown-reader/djnplooklihmkcioemdjfcednfkpiodc" target="_blank"><img src="./src/images/Edge.png" alt="Edge Add-ons" style="width:50px"/></a> | <a href="https://addons.mozilla.org/firefox/addon/markdown-reader-ext/" target="_blank"><img src="./src/images/Firefox.png" alt="Firefox Add-ons" style="width:50px"/></a> |
+| :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+|                                                                                            **Chrome**                                                                                            |                                                                                                 **Edge**                                                                                                  |                                                                                **Firefox**                                                                                 |
 
 ### B. Building installation
 

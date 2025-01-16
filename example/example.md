@@ -331,7 +331,11 @@ Duplicated footnote reference[^second].
 
 ### [Custom containers](https://github.com/markdown-it/markdown-it-container)
 
-::: tips
+::: info
+Stay hungry, stay foolish.
+:::
+
+::: tip
 **In the middle of difficulty lies opportunity.**
 :::
 
@@ -346,3 +350,20 @@ _Fortune favors the bold._
 ::: danger
 **_Hic sunt dracones!_**
 :::
+
+### [Alert](https://github.com/mdit-plugins/mdit-plugins)
+
+> [!NOTE]
+> Useful information that users should know, even when skimming content.
+
+> [!TIP]
+> Helpful advice for doing things better or more easily.
+
+> [!IMPORTANT]
+> Key information users need to know to achieve their goal.
+
+> [!WARNING]
+> Urgent info that needs immediate user attention to avoid problems.
+
+> [!CAUTION]
+> Advises about risks or negative outcomes of certain actions.
