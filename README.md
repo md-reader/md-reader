@@ -21,6 +21,8 @@ Markdown Reader is a powerful browser extension that enables you to conveniently
 
 ![banner](./example/example-1.png)
 
+The default theme styles are stored in https://github.com/md-reader/theme. If you’d like to view or customize the theme styles, feel free to visit the link and adjust the CSS files as needed.
+
 ## Installation
 
 ### A. Install from web extension Store

@@ -21,6 +21,8 @@ Markdown Reader 是一款强大的浏览器扩展程序，能让你在浏览器�
 
 ![banner](./example/example-1.png)
 
+默认的主题样式存储在 https://github.com/md-reader/theme 中。如果你想查看或自定义主题样式，可以访问该链接并根据需要调整 CSS 文件。
+
 ## 安装
 
 ### A. 在浏览器应用商店安装（需要机智上网）

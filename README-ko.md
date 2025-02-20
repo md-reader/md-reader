@@ -21,6 +21,8 @@ https://md-reader.github.io
 
 ![banner](./example/example-1.png)
 
+기본 테마 형식은 https://github.com/md-reader/theme 에 저장된다.테마 스타일을 보거나 사용자 정의할 경우,이 링크에 접근하여 css 파일을 조정할 수 있다.
+
 ## 설치
 
 ### A. 웹 확장 스토어에서 설치
