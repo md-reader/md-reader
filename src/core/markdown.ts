@@ -99,7 +99,7 @@ function initRender({ config = {}, plugins = [...MD_PLUGINS] }: MdOptions) {
         }
       }
       const code = escapeHtml(str)
-      return `<pre class="hljs-pre md-reader__code-block"><code class="hljs">${code}</code>${copyButton.ele.outerHTML}</pre>`
+      return `<pre class="hljs-pre md-reader__code-block"><code class="hljs ${language}">${code}</code>${copyButton.ele.outerHTML}</pre>`
     },
     ...config,
   })
