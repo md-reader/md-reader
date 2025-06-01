@@ -1,12 +1,17 @@
 import storage from '@/core/storage'
 import commands from '@/core/commands'
 
-chrome.runtime.onMessage.addListener(({ action, data }, _sender, callback) => {
-  messageHandler(action, data, callback)
+chrome.runtime.onMessage.addListener(({ action, data }, sender, callback) => {
+  messageHandler(action, data, sender, callback)
   return true
 })
 
-async function messageHandler(action: string, data: any, callback?) {
+async function messageHandler(
+  action: string,
+  data: any,
+  sender: chrome.runtime.MessageSender,
+  callback?: (response?: any) => void,
+) {
   switch (action) {
     case 'storage':
       await storage.set({ [data.key]: data.value })
@@ -14,15 +19,24 @@ async function messageHandler(action: string, data: any, callback?) {
       callback?.(data)
       break
     case 'fetch':
-      fetch(data)
-        .then(res => res.text())
-        .then(callback)
-        .catch(err => {
-          console.error(err)
-          callback?.(err)
-        })
+      fetchData(sender.url).then(callback)
       break
   }
+}
+
+async function fetchData(url?: string) {
+  if (!url) {
+    const error = new Error('Fetch error: URL is undefined.')
+    console.error(error)
+    return error.message
+  }
+
+  return fetch(url)
+    .then(res => res.text())
+    .catch(err => {
+      console.error(err)
+      return err.message
+    })
 }
 
 // Chrome extension shortcuts
