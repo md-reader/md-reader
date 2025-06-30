@@ -15,13 +15,13 @@
 
   let localize = i18n()
   let homepage = pkg.homepage
-  let isAllowViewFile = true
+  // let isAllowViewFile = true
   let data = getDefaultData()
 
   // Get if file allowed access
-  chrome.extension.isAllowedFileSchemeAccess(
-    (isAllow: boolean) => (isAllowViewFile = !!isAllow),
-  )
+  // chrome.extension.isAllowedFileSchemeAccess(
+  //   (isAllow: boolean) => (isAllowViewFile = !!isAllow),
+  // )
 
   storage.get().then((_data: Data) => {
     // need an assignment to updata UI
@@ -47,9 +47,9 @@
 <main>
   <Header {homepage} />
 
-  {#if !isAllowViewFile}
+  <!-- {#if !isAllowViewFile}
     <Warning {localize} />
-  {/if}
+  {/if} -->
 
   <div class="form" disabled={!data.enable}>
     <div class="form-item inline">
