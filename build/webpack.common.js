@@ -32,6 +32,16 @@ module.exports = {
           loader: 'svelte-loader',
           options: {
             preprocess: SveltePreprocess.typescript(),
+            onwarn: (warning, handler) => {
+              if (
+                /noninteractive element cannot have nonnegative tabIndex value/.test(
+                  warning.message,
+                )
+              ) {
+                return
+              }
+              handler(warning)
+            },
           },
         },
       },
@@ -64,6 +74,7 @@ module.exports = {
     ],
   },
   resolve: {
+    conditionNames: ['svelte', 'browser', 'import'],
     extensions: ['.ts', '.js', '.svelte', '.json', '.less'],
     alias: {
       '@': resolve(__dirname, '../src'),
