@@ -8,11 +8,11 @@ import mMark from 'markdown-it-mark'
 import mEmoji from 'markdown-it-emoji'
 import mDeflist from 'markdown-it-deflist'
 import mFootnote from 'markdown-it-footnote'
-import mContainer from 'markdown-it-container'
 import mTaskLists from 'markdown-it-task-lists'
 import mToc from 'markdown-it-table-of-contents'
 import mKatex from '@traptitech/markdown-it-katex'
 import mMermaid from '@md-reader/markdown-it-mermaid'
+import mAlert from '@/plugins/alert'
 import mMultimdTable from 'markdown-it-multimd-table'
 import MD_PLUGINS from '@/config/md-plugins'
 import successIcon from '@/images/icon_success.svg'
@@ -38,28 +38,7 @@ const PLUGINS: Plugins = {
   Footnote: [mFootnote],
   TaskLists: [mTaskLists],
   TOC: [mToc],
-  Warning: [
-    mContainer,
-    'warning',
-    {
-      render(tokens, idx) {
-        return tokens[idx].nesting === 1
-          ? '<blockquote class="warning">\n'
-          : '</blockquote>\n'
-      },
-    },
-  ],
-  Tips: [
-    mContainer,
-    'tips',
-    {
-      render(tokens, idx) {
-        return tokens[idx].nesting === 1
-          ? '<blockquote class="tip">\n'
-          : '</blockquote>\n'
-      },
-    },
-  ],
+  Alert: [mAlert],
 }
 
 export interface MdOptions {

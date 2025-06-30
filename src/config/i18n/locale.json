@@ -31,8 +31,7 @@
     "Footnote": "Footnote",
     "TaskLists": "TaskList",
     "TOC": "TOC",
-    "Warning": "Warning",
-    "Tips": "Tips",
+    "Alert": "Alert",
     "warning_message": "Open the details page of extension \"md-reader\" and active \"allow access to file URLs\"."
   },
   "zh-CN": {
@@ -57,8 +56,7 @@
     "Footnote": "注解",
     "TaskLists": "复选框",
     "TOC": "目录",
-    "Warning": "警告",
-    "Tips": "提示",
+    "Alert": "警告框",
     "warning_message": "请在 “md-reader” 扩展程序的 “详情” 中开启 “允许访问文件网址” 权限。"
   },
   "zh-TW": {
@@ -83,9 +81,8 @@
     "Footnote": "腳註",
     "TaskLists": "任務列表",
     "TOC": "目錄",
-    "Warning": "警告",
-    "Tips": "提示",
-    "warning_message": "請在 “md-reader” 擴展程序的 “詳情” 中開啟 “允許訪問文件網址” 權限。"
+    "Alert": "警告框",
+    "warning_message": "請在 “md-reader” 扩展程序的 “詳情” 中開啟 “允許訪問文件網址” 權限。"
   },
   "ko": {
     "label_enable": "활성화",
@@ -109,8 +106,7 @@
     "Footnote": "각주",
     "TaskLists": "작업 목록",
     "TOC": "카테고리",
-    "Warning": "경고",
-    "Tips": "제안",
+    "Alert": "알림 블록",
     "warning_message": "확장 프로그램 \"md-reader\" 의 세부 정보 페이지를 열고 \"파일 URL에 대한 액세스 허용\"을 활성화 하세요."
   },
   "uk": {
@@ -135,8 +131,7 @@
     "Footnote": "Примітка",
     "TaskLists": "Списки завдань",
     "TOC": "Зміст",
-    "Warning": "Попередження",
-    "Tips": "Поради",
+    "Alert": "Блок сповіщень",
     "warning_message": "Відкрийте сторінку керування розширенням «md-reader» та активуйте «Надавати доступ до URL-адрес файлу»."
   }
 }

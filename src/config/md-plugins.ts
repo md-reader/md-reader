@@ -11,6 +11,5 @@ export default [
   'Deflist',
   'Footnote',
   'TaskLists',
-  'Warning',
-  'Tips',
+  'Alert',
 ] as string[]
