@@ -267,13 +267,13 @@ gantt
     Task, No. 2      :24d
 ```
 
-### [\<ins>](https://github.com/markdown-it/markdown-it-ins)
+### [Inserted](https://github.com/markdown-it/markdown-it-ins)
 
 ++Inserted text++
 
 `++Inserted text++`
 
-### [\<mark>](https://github.com/markdown-it/markdown-it-mark)
+### [Marked](https://github.com/markdown-it/markdown-it-mark)
 
 ==Marked text==
 
