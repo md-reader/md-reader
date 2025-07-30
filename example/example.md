@@ -287,7 +287,7 @@ It converts "HTML", but keep intact partial entries like "xxxHTMLyyy" and so on.
 
 `*[HTML]: Hyper Text Markup Language`
 
-\*[HTML]: Hyper Text Markup Language
+*[HTML]: Hyper Text Markup Language
 
 ### [Definition lists](https://github.com/markdown-it/markdown-it-deflist)
 
