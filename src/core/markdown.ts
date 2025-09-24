@@ -52,7 +52,7 @@ function initRender({ config = {}, plugins = [...MD_PLUGINS] }: MdOptions) {
     'button',
     {
       className: [className.MD_BUTTON, className.COPY_BTN],
-      title: 'Expand side',
+      title: 'Copy',
     },
     [
       svg(copyIcon, { className: 'icon-copy' }),
