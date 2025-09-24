@@ -1,7 +1,7 @@
 {
   "name": "__MSG_ext_name__",
-  "version": "2.12.10",
-  "version_name": "2.12.8",
+  "version": "2.12.12",
+  "version_name": "2.12.12",
   "author": "Bener",
   "manifest_version": 3,
   "description": "__MSG_ext_desc__",
