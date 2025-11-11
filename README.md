@@ -10,6 +10,11 @@ https://md-reader.github.io
 
 Markdown Reader is a powerful browser extension that enables you to conveniently preview Markdown documents in your browser.
 
+> This repository contains the old source code of Markdown Reader(2.x version) and is no longer maintained.
+> It is used only to collect issues about Markdown Reader.
+> 
+> Please download the 3.x version from the [website](https://md-reader.github.io).
+
 - **Document Formats**: Preview links in `file://`, `http://`, `https://` and files with `.md`, `.mkd`, `.mdx`, `.markdown` extensions:
   - `https://example.com/example.md` (online Markdown URL)
   - `file:///Users/my-project/readme.markdown` (local Markdown file, \*[requires specific permissions](#allowing-file-access-permission))
