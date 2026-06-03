@@ -66,6 +66,7 @@
     "@smui/select": "^4.2.0",
     "@smui/switch": "^4.2.0",
     "@traptitech/markdown-it-katex": "^3.6.0",
+    "@viz-js/viz": "^3.27.0",
     "highlight.js": "^11.6.0",
     "lodash.debounce": "^4.0.8",
     "lodash.throttle": "^4.1.1",

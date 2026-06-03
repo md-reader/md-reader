@@ -13,6 +13,7 @@ import mToc from 'markdown-it-table-of-contents'
 import mKatex from '@traptitech/markdown-it-katex'
 import mMermaid from '@md-reader/markdown-it-mermaid'
 import mAlert from '@/plugins/alert'
+import mGraphvizBlock from '@/plugins/graphviz-block'
 import mMultimdTable from 'markdown-it-multimd-table'
 import MD_PLUGINS from '@/config/md-plugins'
 import successIcon from '@/images/icon_success.svg'
@@ -96,6 +97,12 @@ function initRender({ config = {}, plugins = [...MD_PLUGINS] }: MdOptions) {
     }
     plugin && md.use(plugin[0], ...plugin.slice(1))
   })
+
+  if (plugins.includes('Mermaid')) {
+    // Install after diagram plugins so Graphviz can override Mermaid fences when
+    // the block content is actually DOT syntax.
+    md.use(mGraphvizBlock)
+  }
 
   return md
 }
