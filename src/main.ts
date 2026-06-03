@@ -97,6 +97,10 @@ function main(data: Data) {
         plugins: configData.mdPlugins,
         ...options,
       })
+      globalEvent.emit(
+        'contentRendered',
+        target instanceof Ele ? target.ele : target,
+      )
     }
   const contentRender = mdRenderer(mdContent)
   contentRender(mdRaw)
