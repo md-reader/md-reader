@@ -1,7 +1,6 @@
 {
   "name": "__MSG_ext_name__",
   "version": "2.12.12",
-  "version_name": "2.12.12",
   "author": "Bener",
   "manifest_version": 3,
   "description": "__MSG_ext_desc__",
@@ -20,6 +19,7 @@
     }
   ],
   "background": {
+    "scripts": ["js/background.js"],
     "service_worker": "js/background.js"
   },
   "action": {
@@ -31,41 +31,7 @@
   "content_scripts": [
     {
       "js": ["js/content.js"],
-      "css": ["css/content.css"],
-      "matches": [
-        "*://*/*.md",
-        "*://*/*.mdx",
-        "*://*/*.mkd",
-        "*://*/*.markdown",
-        "*://*/*.MD",
-        "*://*/*.MDX",
-        "*://*/*.MKD",
-        "*://*/*.MARKDOWN",
-        "file://*/*.md",
-        "file://*/*.mdx",
-        "file://*/*.mkd",
-        "file://*/*.markdown",
-        "file://*/*.MD",
-        "file://*/*.MDX",
-        "file://*/*.MKD",
-        "file://*/*.MARKDOWN",
-        "*://*/*.md?*",
-        "*://*/*.mdx?*",
-        "*://*/*.mkd?*",
-        "*://*/*.markdown?*",
-        "*://*/*.MD?*",
-        "*://*/*.MDX?*",
-        "*://*/*.MKD?*",
-        "*://*/*.MARKDOWN?*",
-        "file://*/*.md?*",
-        "file://*/*.mdx?*",
-        "file://*/*.mkd?*",
-        "file://*/*.markdown?*",
-        "file://*/*.MD?*",
-        "file://*/*.MDX?*",
-        "file://*/*.MKD?*",
-        "file://*/*.MARKDOWN?*"
-      ]
+      "matches": ["*://*/*", "file://*/*"]
     }
   ],
   "commands": {

@@ -46,6 +46,7 @@ chrome.commands.onCommand.addListener(action => {
 
 const actionMap = {
   enable: 'reload',
+  forceRender: 'reload',
   refresh: 'toggleRefresh',
   centered: 'toggleCentered',
   mdPlugins: 'updateMdPlugins',
@@ -57,8 +58,16 @@ function updatePage(key: keyof typeof actionMap, value?: any) {
   const action = actionMap[key]
   action &&
     chrome.tabs.query({ currentWindow: true, active: true }, tabs => {
-      tabs.length &&
-        chrome.tabs.sendMessage(tabs[0].id, { action, data: { key, value } })
+      if (!tabs.length) {
+        return
+      }
+
+      if (action === 'reload') {
+        chrome.tabs.reload(tabs[0].id)
+        return
+      }
+
+      chrome.tabs.sendMessage(tabs[0].id, { action, data: { key, value } })
     })
 }
 

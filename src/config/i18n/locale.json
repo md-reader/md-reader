@@ -11,6 +11,7 @@
     "uk": "Українська",
 
     "label_enable": "Enable",
+    "label_force-render": "Force Render",
     "label_auto-refresh": "Auto Refresh",
     "label_centered": "Centered",
     "label_theme": "Theme",
@@ -36,6 +37,7 @@
   },
   "zh-CN": {
     "label_enable": "启用",
+    "label_force-render": "强制渲染",
     "label_auto-refresh": "自动刷新",
     "label_centered": "内容居中",
     "label_theme": "主题",
@@ -61,6 +63,7 @@
   },
   "zh-TW": {
     "label_enable": "啟用",
+    "label_force-render": "強制渲染",
     "label_auto-refresh": "自動刷新",
     "label_centered": "內容居中",
     "label_theme": "主題",
@@ -86,6 +89,7 @@
   },
   "ko": {
     "label_enable": "활성화",
+    "label_force-render": "강제 렌더링",
     "label_auto-refresh": "자동 새로고침",
     "label_centered": "중간에서",
     "label_theme": "테마",
@@ -111,6 +115,7 @@
   },
   "uk": {
     "label_enable": "Увімкнути",
+    "label_force-render": "Примусовий рендеринг",
     "label_auto-refresh": "Автоматичне перезавантаження",
     "label_centered": "По центру",
     "label_theme": "Тема",
