@@ -12,9 +12,9 @@ import {
   getHeads,
   getRawContainer,
   setTheme,
-  CONTENT_TYPES,
   darkMediaQuery,
   getMediaQueryTheme,
+  shouldRenderMarkdownPage,
   toTheme,
 } from '@/shared'
 import codeIcon from '@/images/icon_code.svg'
@@ -24,42 +24,13 @@ import '@/style/index.less'
 
 function main(data: Data) {
   const configData = getDefaultData(data)
-  const actions = {
-    reload() {
-      window.location.reload()
-    },
-    updateMdPlugins() {
-      reloading = true
-      if (mdRaw) {
-        contentRender(mdRaw)
-        renderSide()
-      } else {
-        window.location.reload()
-      }
-      reloading = false
-    },
-    updatePageTheme(theme: Theme, prevTheme: Theme) {
-      setTheme(theme)
-      renderContentByTheme(theme, prevTheme)
-    },
-    toggleRefresh(value) {
-      clearTimeout(pollingTimer)
-      value && polling()
-    },
-    toggleCentered(value) {
-      mdContent.classList.toggle('centered', value)
-    },
-    toggleSide() {
-      onToggleSide()
-    },
-  }
-  chrome.runtime.onMessage.addListener(({ action, data: { key, value } }) => {
-    const oldValue = configData[key]
-    configData[key] = value
-    actions[action]?.(value, oldValue)
-  })
 
-  if (!configData.enable || !CONTENT_TYPES.includes(document.contentType)) {
+  if (!configData.enable || !shouldRenderMarkdownPage(configData.forceRender)) {
+    return
+  }
+
+  const rawContainer = getRawContainer()
+  if (!rawContainer) {
     return
   }
 
@@ -78,7 +49,6 @@ function main(data: Data) {
     configData.hiddenSide,
   )
 
-  const rawContainer = getRawContainer()
   lifecycle.init(rawContainer)
   mdRaw = rawContainer?.textContent
 
@@ -215,6 +185,38 @@ function main(data: Data) {
     { className: className.BUTTON_WRAP_ELE },
     [sideExpandBtn, rawToggleBtn, goTopBtn],
   )
+
+  const actions = {
+    updateMdPlugins() {
+      reloading = true
+      if (mdRaw) {
+        contentRender(mdRaw)
+        renderSide()
+      } else {
+        window.location.reload()
+      }
+      reloading = false
+    },
+    updatePageTheme(theme: Theme, prevTheme: Theme) {
+      setTheme(theme)
+      renderContentByTheme(theme, prevTheme)
+    },
+    toggleRefresh(value) {
+      clearTimeout(pollingTimer)
+      value && polling()
+    },
+    toggleCentered(value) {
+      mdContent.classList.toggle('centered', value)
+    },
+    toggleSide() {
+      onToggleSide()
+    },
+  }
+  chrome.runtime.onMessage.addListener(({ action, data: { key, value } }) => {
+    const oldValue = configData[key]
+    configData[key] = value
+    actions[action]?.(value, oldValue)
+  })
 
   /* mount elements */
   lifecycle.mount([buttonWrap, mdBody, mdSide])
