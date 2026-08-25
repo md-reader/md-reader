@@ -97,10 +97,11 @@ function main(data: Data) {
         plugins: configData.mdPlugins,
         ...options,
       })
-      globalEvent.emit(
-        'contentRendered',
-        target instanceof Ele ? target.ele : target,
-      )
+      const ele = target instanceof Ele ? target.ele : target
+      document.title =
+        ele.querySelector('h1')?.textContent.trim() ||
+        decodeURIComponent(location.pathname.split('/').pop())
+      globalEvent.emit('contentRendered', ele)
     }
   const contentRender = mdRenderer(mdContent)
   contentRender(mdRaw)
