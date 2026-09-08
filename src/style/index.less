@@ -89,7 +89,8 @@ body.md-reader {
 
     &__body {
       min-height: 100vh;
-      padding-left: @side-width;
+      --side-width: @side-width;
+      padding-left: var(--side-width);
       transition: padding 0.3s;
       .md-reader__markdown-content {
         padding: 30px 70px 40px;
@@ -98,6 +99,18 @@ body.md-reader {
         transition: max-width 0.1s;
         &.centered {
           max-width: 900px;
+          overflow-x: visible;
+          // A wide table grows past both edges of the text column, staying
+          // centered on it, until it reaches the page padding.
+          > table {
+            width: max-content;
+            min-width: 100%;
+            // 140px is the column's 70px horizontal padding on both sides.
+            max-width: calc(100vw - var(--side-width) - 140px);
+            position: relative;
+            left: 50%;
+            translate: -50%;
+          }
         }
         .theme(); // markdown theme
         h1,
@@ -207,7 +220,7 @@ body.md-reader {
         border-color: transparent;
       }
       &__body {
-        padding-left: 0px;
+        --side-width: 0px;
       }
       &__btn--side-expand {
         transform: translateX(0);
@@ -248,7 +261,7 @@ body.md-reader {
         border-color: transparent;
       }
       &__body {
-        padding-left: 0px;
+        --side-width: 0px;
       }
       &__btn--side-expand {
         transform: translateX(0);
