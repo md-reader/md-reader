@@ -4,6 +4,13 @@ import { rootThemeDisabledPrefix } from '@/config/page-themes'
 
 const htmlHeadTags = [
   {
+    tag: 'link',
+    attrs: {
+      rel: 'stylesheet',
+      href: getAssetsURL('css/content.css'),
+    },
+  },
+  {
     tag: 'meta',
     attrs: {
       name: 'referrer',
