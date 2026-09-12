@@ -113,6 +113,14 @@ body.md-reader {
           }
         }
         .theme(); // markdown theme
+        // Wrapping only between words keeps table layout from collapsing a
+        // column narrower than its longest word when the table-columns
+        // plugin removes the minimum width.
+        td,
+        th {
+          word-break: normal;
+          overflow-wrap: break-word;
+        }
         h1,
         h2,
         h3,
