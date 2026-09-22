@@ -6,7 +6,13 @@ export const HEAD = document.head
 export const BODY = document.body
 export const RAW_SELECTOR = 'pre'
 export const HEADERS = 'h1, h2, h3, h4, h5, h6'
-export const CONTENT_TYPES = ['text/plain', 'text/markdown', 'text/x-markdown']
+export const PLAIN_TEXT_CONTENT_TYPE = 'text/plain'
+export const MARKDOWN_CONTENT_TYPES = ['text/markdown', 'text/x-markdown']
+export const MARKDOWN_EXTENSIONS = ['md', 'mdx', 'mkd', 'markdown']
+export const CONTENT_TYPES = [
+  PLAIN_TEXT_CONTENT_TYPE,
+  ...MARKDOWN_CONTENT_TYPES,
+]
 
 export const darkMediaQuery: MediaQueryList = window.matchMedia(
   '(prefers-color-scheme: dark)',
@@ -17,6 +23,25 @@ export const getMediaQueryTheme = (): Exclude<Theme, 'auto'> =>
 
 export const toTheme = (theme: Theme): Exclude<Theme, 'auto'> =>
   theme === 'auto' ? getMediaQueryTheme() : theme
+
+export function hasMarkdownFileExtension(pathname: string): boolean {
+  const extension = pathname.split('/').pop()?.split('.').pop()?.toLowerCase()
+  return !!extension && MARKDOWN_EXTENSIONS.includes(extension)
+}
+
+export function shouldRenderMarkdownPage(
+  forceRender: boolean = false,
+  contentType: string = document.contentType,
+  pathname: string = window.location.pathname,
+): boolean {
+  const normalizedContentType = contentType.split(';')[0].trim().toLowerCase()
+  const isPlainText = normalizedContentType === PLAIN_TEXT_CONTENT_TYPE
+
+  return (
+    MARKDOWN_CONTENT_TYPES.includes(normalizedContentType) ||
+    (isPlainText && (forceRender || hasMarkdownFileExtension(pathname)))
+  )
+}
 
 export function getAssetsURL(path: string): string {
   return chrome.runtime.getURL(path)

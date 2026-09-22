@@ -18,10 +18,15 @@
   let isAllowViewFile = true
   let data = getDefaultData()
 
-  // Get if file allowed access
-  chrome.extension.isAllowedFileSchemeAccess(
-    (isAllow: boolean) => (isAllowViewFile = !!isAllow),
-  )
+  const isFirefox = navigator.userAgent.includes('Firefox/')
+
+  // Firefox always reports false for this Chromium API, so only use it where
+  // the browser exposes the "Allow access to file URLs" switch.
+  if (!isFirefox) {
+    chrome.extension.isAllowedFileSchemeAccess(
+      (isAllow: boolean) => (isAllowViewFile = !!isAllow),
+    )
+  }
 
   storage.get().then((_data: Data) => {
     // need an assignment to updata UI
@@ -71,6 +76,18 @@
           bind:checked={data.centered}
           color="primary"
           on:change={() => updateConfig('centered', data.centered)}
+        />
+      </FormField>
+    </div>
+
+    <div class="form-item inline">
+      <span class="label-item">{localize('label_force-render')}:</span>
+      <FormField align="end">
+        <Switch
+          disabled={!data.enable}
+          bind:checked={data.forceRender}
+          color="primary"
+          on:change={() => updateConfig('forceRender', data.forceRender)}
         />
       </FormField>
     </div>

@@ -4,6 +4,7 @@ import i18n from '@/config/i18n'
 
 export interface Data {
   enable?: boolean
+  forceRender?: boolean
   refresh?: boolean
   language?: string
   centered?: boolean
@@ -15,6 +16,7 @@ export interface Data {
 export function getDefaultData(mergeData: Data = {}): Data {
   return {
     enable: true,
+    forceRender: false,
     refresh: false,
     centered: true,
     hiddenSide: false,
