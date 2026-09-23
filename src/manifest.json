@@ -20,7 +20,17 @@
     }
   ],
   "background": {
-    "service_worker": "js/background.js"
+    "service_worker": "js/background.js",
+    "scripts": ["js/background.js"]
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "{f3ee08f8-d4d8-4095-8096-4bb784d082f9}",
+      "strict_min_version": "121.0",
+      "data_collection_permissions": {
+        "required": ["none"]
+      }
+    }
   },
   "action": {
     "default_title": "md-reader",
