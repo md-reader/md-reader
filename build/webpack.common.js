@@ -8,6 +8,7 @@ const SveltePreprocess = require('svelte-preprocess')
 module.exports = {
   entry: {
     content: resolve(__dirname, '../src/main.ts'),
+    detect: resolve(__dirname, '../src/detect.ts'),
     background: resolve(__dirname, '../src/background.ts'),
     popup: resolve(__dirname, '../src/popup/index.ts'),
   },

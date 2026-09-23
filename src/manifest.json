@@ -26,7 +26,7 @@
     "default_title": "md-reader",
     "default_popup": "popup.html"
   },
-  "permissions": ["activeTab", "storage"],
+  "permissions": ["activeTab", "scripting", "storage"],
   "host_permissions": ["*://*/*"],
   "content_scripts": [
     {
@@ -66,6 +66,45 @@
         "file://*/*.MKD?*",
         "file://*/*.MARKDOWN?*"
       ]
+    },
+    {
+      "js": ["js/detect.js"],
+      "matches": ["*://*/*", "file://*/*"],
+      "exclude_matches": [
+        "*://*/*.md",
+        "*://*/*.mdx",
+        "*://*/*.mkd",
+        "*://*/*.markdown",
+        "*://*/*.MD",
+        "*://*/*.MDX",
+        "*://*/*.MKD",
+        "*://*/*.MARKDOWN",
+        "file://*/*.md",
+        "file://*/*.mdx",
+        "file://*/*.mkd",
+        "file://*/*.markdown",
+        "file://*/*.MD",
+        "file://*/*.MDX",
+        "file://*/*.MKD",
+        "file://*/*.MARKDOWN",
+        "*://*/*.md?*",
+        "*://*/*.mdx?*",
+        "*://*/*.mkd?*",
+        "*://*/*.markdown?*",
+        "*://*/*.MD?*",
+        "*://*/*.MDX?*",
+        "*://*/*.MKD?*",
+        "*://*/*.MARKDOWN?*",
+        "file://*/*.md?*",
+        "file://*/*.mdx?*",
+        "file://*/*.mkd?*",
+        "file://*/*.markdown?*",
+        "file://*/*.MD?*",
+        "file://*/*.MDX?*",
+        "file://*/*.MKD?*",
+        "file://*/*.MARKDOWN?*"
+      ],
+      "run_at": "document_end"
     }
   ],
   "commands": {

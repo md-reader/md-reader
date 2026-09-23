@@ -21,6 +21,9 @@ async function messageHandler(
     case 'fetch':
       fetchData(sender.url).then(callback)
       break
+    case 'inject':
+      injectReader(sender).then(callback)
+      break
   }
 }
 
@@ -37,6 +40,13 @@ async function fetchData(url?: string) {
       console.error(err)
       return err.message
     })
+}
+
+// Injects the reader into a page detected as markdown by its content type
+async function injectReader({ tab, frameId }: chrome.runtime.MessageSender) {
+  const target = { tabId: tab.id, frameIds: [frameId] }
+  await chrome.scripting.insertCSS({ target, files: ['css/content.css'] })
+  await chrome.scripting.executeScript({ target, files: ['js/content.js'] })
 }
 
 // Chrome extension shortcuts
