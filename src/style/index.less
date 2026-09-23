@@ -179,6 +179,11 @@ body.md-reader {
             white-space: pre-wrap;
           }
         }
+        // inline code scales with its context (e.g. headings) instead of the
+        // theme's fixed size
+        :not(pre) > code {
+          font-size: 95%;
+        }
       }
     }
 
