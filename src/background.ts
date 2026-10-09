@@ -21,6 +21,28 @@ async function messageHandler(
     case 'fetch':
       fetchData(sender.url).then(callback)
       break
+    case 'fetchUrl':
+      fetchLocalURL(data?.url, sender.url).then(callback)
+      break
+  }
+}
+
+async function fetchLocalURL(url?: string, senderURL?: string) {
+  try {
+    if (!url || new URL(url).protocol !== 'file:') {
+      throw new Error('Only local file URLs are allowed.')
+    }
+    if (!senderURL || new URL(senderURL).protocol !== 'file:') {
+      throw new Error('Local file requests must come from a local page.')
+    }
+    const response = await fetch(url)
+    if (!response.ok && response.status !== 0) {
+      throw new Error(`Read failed with status ${response.status}.`)
+    }
+    return { ok: true, text: await response.text() }
+  } catch (error) {
+    console.error(error)
+    return { ok: false, error: error.message || String(error) }
   }
 }
 

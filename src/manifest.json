@@ -1,7 +1,7 @@
 {
-  "name": "__MSG_ext_name__",
-  "version": "2.12.12",
-  "version_name": "2.12.12",
+  "name": "Markdown Reader Local",
+  "version": "2.12.13",
+  "version_name": "2.12.13-local-folder",
   "author": "Bener",
   "manifest_version": 3,
   "description": "__MSG_ext_desc__",
@@ -23,11 +23,11 @@
     "service_worker": "js/background.js"
   },
   "action": {
-    "default_title": "md-reader",
+    "default_title": "Markdown Reader Local",
     "default_popup": "popup.html"
   },
   "permissions": ["activeTab", "storage"],
-  "host_permissions": ["*://*/*"],
+  "host_permissions": ["*://*/*", "file:///*"],
   "content_scripts": [
     {
       "js": ["js/content.js"],
@@ -64,7 +64,13 @@
         "file://*/*.MD?*",
         "file://*/*.MDX?*",
         "file://*/*.MKD?*",
-        "file://*/*.MARKDOWN?*"
+        "file://*/*.MARKDOWN?*",
+        "file://*/*.txt",
+        "file://*/*.TXT",
+        "file://*/*.txt?*",
+        "file://*/*.TXT?*",
+        "file://*/*/",
+        "file:///"
       ]
     }
   ],

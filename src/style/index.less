@@ -18,7 +18,9 @@ body.md-reader {
 
   .md-reader {
     &__side {
-      overflow: auto;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
       position: fixed;
       top: 0;
       bottom: 0;
@@ -35,6 +37,19 @@ body.md-reader {
       transition: transform 0.3s, box-shadow 0.5s;
       will-change: transform, box-shadow;
       z-index: 1;
+      .md-reader__outline,
+      .md-reader__folder-tree,
+      .md-reader__folder-tree ul {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+      }
+      .md-reader__outline {
+        flex: 1 1 auto;
+        min-height: 96px;
+        overflow: auto;
+        padding-bottom: 24px;
+      }
       li {
         &.md-reader__side-li--active {
           a {
@@ -84,6 +99,127 @@ body.md-reader {
             .head-indent(6);
           }
         }
+      }
+    }
+
+    &__folder-browser {
+      overflow: hidden;
+      display: flex;
+      flex: 0 0 42%;
+      flex-direction: column;
+      min-height: 96px;
+      padding-bottom: 6px;
+      .md-reader__folder-header {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 0 14px 10px;
+      }
+      .md-reader__folder-root {
+        flex: 1;
+        min-width: 0;
+        overflow: hidden;
+        color: var(--color-text-primary);
+        font-weight: 700;
+        text-decoration: none;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .md-reader__folder-parent {
+        flex: none;
+        padding: 2px 6px;
+        border: 1px solid var(--color-side-border);
+        border-radius: 5px;
+        color: var(--color-side);
+        font-size: 12px;
+        text-decoration: none;
+      }
+      .md-reader__folder-tree {
+        flex: 1 1 auto;
+        min-height: 0;
+        overflow: auto;
+        padding: 0 8px;
+        li {
+          min-width: 0;
+        }
+        ul {
+          padding-left: 14px;
+        }
+        summary,
+        a {
+          display: block;
+          overflow: hidden;
+          padding: 4px 7px;
+          border-radius: 5px;
+          color: inherit;
+          cursor: pointer;
+          font-size: 13px;
+          line-height: 1.4;
+          text-decoration: none;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+        summary {
+          &::marker {
+            color: var(--color-side);
+          }
+          &::after {
+            content: ' /';
+            color: var(--color-side);
+          }
+        }
+        summary:hover,
+        a:hover,
+        .md-reader__folder-file--active {
+          background: var(--color-button-bg-hover);
+          color: var(--color-primary);
+        }
+        .md-reader__folder-file--active {
+          font-weight: 700;
+        }
+        .md-reader__folder-loading::after {
+          content: ' …';
+        }
+      }
+      .md-reader__folder-status {
+        padding: 4px 16px 10px;
+        color: var(--color-side);
+        font-size: 12px;
+        &--error {
+          color: #d14343;
+        }
+      }
+      .md-reader__folder-empty {
+        padding: 4px 7px;
+        color: var(--color-side);
+        font-size: 12px;
+      }
+    }
+
+    &__folder-resizer {
+      position: relative;
+      flex: 0 0 11px;
+      cursor: row-resize;
+      touch-action: none;
+      &::before {
+        content: '';
+        position: absolute;
+        top: 5px;
+        right: 14px;
+        left: 14px;
+        height: 1px;
+        background: var(--color-side-border);
+        transition: height 0.1s, background 0.1s;
+      }
+      &:hover::before,
+      &:focus-visible::before,
+      &:active::before {
+        top: 4px;
+        height: 3px;
+        background: var(--color-primary);
+      }
+      &:focus-visible {
+        outline: none;
       }
     }
 
@@ -285,6 +421,13 @@ body.md-reader {
       &__btn--side-expand {
         transform: translateX(-50px);
       }
+    }
+  }
+  &.side-resizing {
+    cursor: row-resize;
+    user-select: none;
+    * {
+      cursor: row-resize !important;
     }
   }
 }

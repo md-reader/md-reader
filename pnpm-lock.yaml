@@ -37,6 +37,9 @@ importers:
       '@traptitech/markdown-it-katex':
         specifier: ^3.6.0
         version: 3.6.0
+      '@viz-js/viz':
+        specifier: ^3.27.0
+        version: 3.31.0
       highlight.js:
         specifier: ^11.6.0
         version: 11.6.0
@@ -656,6 +659,12 @@ packages:
     resolution:
       {
         integrity: sha512-4nZOdMwSPHZ4pTEZzSp0AsTM4K7Qmu40UKW4tJDiOVs20UzYF9l+qUe4s0ftfN0pin06n+5cWWDJXH+sbhAiDw==,
+      }
+
+  '@viz-js/viz@3.31.0':
+    resolution:
+      {
+        integrity: sha512-r7zlQdRvcwvIpjHGgs+KNWHeE/P5/Dq7k8ZAKaMCbZqomxCBJV78gVuQYaHzFVca+kB0mX0fMW9UFevCOBG50A==,
       }
 
   '@webassemblyjs/ast@1.11.1':
@@ -5005,6 +5014,8 @@ snapshots:
       '@types/node': 18.7.14
       '@types/source-list-map': 0.1.2
       source-map: 0.7.4
+
+  '@viz-js/viz@3.31.0': {}
 
   '@webassemblyjs/ast@1.11.1':
     dependencies:
