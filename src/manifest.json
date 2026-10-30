@@ -4,6 +4,15 @@
   "version_name": "2.12.12",
   "author": "Bener",
   "manifest_version": 3,
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "md-reader@widepatch.github",
+      "strict_min_version": "109.0",
+      "data_collection_permissions": {
+        "required": ["none"]
+      }
+    }
+  },
   "description": "__MSG_ext_desc__",
   "default_locale": "en",
   "icons": {
