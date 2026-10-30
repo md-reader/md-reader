@@ -20,7 +20,8 @@
     }
   ],
   "background": {
-    "service_worker": "js/background.js"
+    "service_worker": "js/background.js",
+    "scripts": ["js/background.js"]
   },
   "action": {
     "default_title": "md-reader",
