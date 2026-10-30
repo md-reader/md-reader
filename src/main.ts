@@ -222,6 +222,18 @@ function main(data: Data) {
   lifecycle.mount([buttonWrap, mdBody, mdSide])
   updateAnchorPosition()
 
+  /* Re-fetch the source with a proper UTF-8 decode: the raw text taken from
+   * the document was decoded by the browser using its default charset (e.g.
+   * windows-1252), which garbles UTF-8 when no charset header is present. */
+  chrome.runtime.sendMessage({ action: 'fetch' }, res => {
+    if (typeof res === 'string' && res) {
+      mdRaw = res
+      contentRender(mdRaw)
+      renderSide()
+      rawContainer.textContent = res
+    }
+  })
+
   darkMediaQuery.addEventListener('change', (e: MediaQueryListEvent) => {
     if (configData.pageTheme === 'auto') {
       renderContentByTheme(
